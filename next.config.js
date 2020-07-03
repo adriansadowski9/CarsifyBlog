@@ -1,4 +1,5 @@
 module.exports = {
+  target: 'serverless',
   webpack: (cfg) => {
     cfg.module.rules.push(
       {
