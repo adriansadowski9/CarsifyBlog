@@ -1,5 +1,5 @@
 import Head from "next/head"
-import { attributes, react as HomeContent } from 'content/home.md'
+import { attributes, react as HomeContent } from 'content/pages/home.md'
 
 const Home = () => {
   const { title, cats } = attributes
