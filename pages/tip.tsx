@@ -1,4 +1,4 @@
-import { attributes } from 'content/posts/tips/tipPost.md'
+import { attributes } from 'content/posts/tips/tipsPost.md'
 
 const Tip = () => {
   const { title, subtitle, date, featuredImage, category, contents, highlightedText, text } = attributes
