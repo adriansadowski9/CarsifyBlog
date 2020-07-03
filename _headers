@@ -1,7 +1,3 @@
 # A path:
-/public/assets/*
-   # Headers for that path:
+/*
    Cache-Control: public, max-age=360000
-
-/*.js
-   Cache-Control: public, max-age=604800, immutable
