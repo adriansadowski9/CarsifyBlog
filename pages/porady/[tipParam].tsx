@@ -1,36 +1,46 @@
+import * as React from 'react';
+import PageHead from 'components/PageHead';
+
 const Tip = ({ attributes, isCategory, tipExists }) => {
   if (isCategory) {
     const {title} = attributes
     return (
-      <div>
-        <span>{title}</span>
-      </div>
+      <>
+        <PageHead title="Tip category" description="Tip category description"/>
+        <div>
+          <span>{title}</span>
+        </div>
+      </>
     )
   } else if (tipExists) {
     const {title, subtitle, date, featuredImage, category, contents, highlightedText, text} = attributes
     return (
-      <article>
-        <span>{date}</span>
-        <span>{category}</span>
-        <h1>{title}</h1>
-        <h2>{subtitle}</h2>
-        <span>{featuredImage}</span>
-        <p>{highlightedText}</p>
-        <ul>
-          {contents.map((content) => (
-            <li><a href={content.link}>{content.name}</a></li>
-          ))}
-        </ul>
-        <p>{text}</p>
-      </article>
+      <>
+        <PageHead title={`Tip - ${title}`} description="Tip description"/>
+        <article>
+          <span>{date}</span>
+          <span>{category}</span>
+          <h1>{title}</h1>
+          <h2>{subtitle}</h2>
+          <span>{featuredImage}</span>
+          <p>{highlightedText}</p>
+          <ul>
+            {contents.map((content) => (
+              <li><a href={content.link}>{content.name}</a></li>
+            ))}
+          </ul>
+          <p>{text}</p>
+        </article>
+      </>
     )
   } else {
     return (
-      <div>
-        <span>
-          Error
-        </span>
-      </div>
+      <>
+        <PageHead title="Error 404" description="404 description"/>
+        <div>
+          <span>Error</span>
+        </div>
+      </>
     )
   }
 }
