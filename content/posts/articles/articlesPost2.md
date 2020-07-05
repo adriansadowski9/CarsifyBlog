@@ -1,7 +1,7 @@
 ---
 title: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien ipsum, mollis non rutrum eu, maximus aliquet eros.
-date: 2020-02-20T19:31:20.591Z
+date: 2019-02-20T19:31:20.591Z
 featuredImage: url
 categories: 
     - category: Category1
