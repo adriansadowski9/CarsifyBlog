@@ -1,11 +1,13 @@
-import React from 'react'
-import Head from "next/head"
+import * as React from 'react'
 import { attributes } from 'content/pages/home.md'
 import { getArticles, getTips, getAds } from 'utils/getPosts'
+import PageHead from 'components/PageHead';
 
 const Home = ({ articlesList, tipsList, adsList }) => {
   const { title } = attributes
   return (
+    <>
+      <PageHead title="Home" description="Home description"/>
       <div>
         <h1>{title}</h1>
         <h3>Articles:</h3>
@@ -45,6 +47,7 @@ const Home = ({ articlesList, tipsList, adsList }) => {
             )})}
         </div>
       </div>
+    </>
   )
 }
 
