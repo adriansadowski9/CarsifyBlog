@@ -100,9 +100,9 @@ collections:
           - { label: "Podtytuł ogłoszenia", name: "subtitle", widget: "string", required: true }
           - { label: "Data publikacji", name: "date", widget: "datetime", required: true }
           - { label: "Obraz", name: "featuredImage", widget: "image", required: true }
-          - label: "Dane pojazdu",
-            name: "carData",
-            widget: "list",
+          - label: "Dane pojazdu"
+            name: "carData"
+            widget: "list"
             fields:
               - { label: "Nazwa", name: "name", widget: "string", required: true }
               - { label: "Rok produkcji", name: "year", widget: "number", required: true }
