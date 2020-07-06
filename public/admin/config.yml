@@ -18,14 +18,18 @@ collections:
     files:
       - name: "articles"
         label: "Artykuły"
-        folder: "content/categories/articles"
+        folder: 'content/categories/articles'
         create: true
+        slug: '{{year}}-{{slug}}'
+        # preview_path: "content/categories/articles/{{slug}}"
         fields:
           - { label: "Nazwa kategorii dla artykułów", name: "title", widget: "string", required: true }
       - name: "tips"
         label: "Porady"
-        folder: "content/categories/tips"
+        folder: 'content/categories/tips'
         create: true
+        slug: '{{year}}-{{slug}}'
+        #preview_path: "content/categories/tips/{{slug}}"
         fields:
           - { label: "Nazwa kategorii dla porad", name: "title", widget: "string", required: true }
   - name: "posts"
@@ -33,9 +37,10 @@ collections:
     files:
       - name: "articles"
         label: "Artykuły"
-        folder: "content/posts/articles"
-        slug: "{{year}}-{{month}}-{{slug}}"
+        folder: 'content/posts/articles'
         create: true
+        slug: '{{year}}-{{month}}-{{slug}}'
+        #preview_path: "content/posts/articles/{{slug}}"
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
@@ -62,9 +67,10 @@ collections:
           - { label: "Treść", name: "text", widget: "markdown", required: true }
       - name: "tips"
         label: "Porady"
-        folder: "content/posts/tips"
-        slug: "{{year}}-{{month}}-{{slug}}"
+        folder: 'content/posts/tips'
         create: true
+        slug: '{{year}}-{{month}}-{{slug}}'
+        #preview_path: "content/posts/tips/{{slug}}"
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
@@ -90,9 +96,10 @@ collections:
           - { label: "Treść", name: "text", widget: "markdown", required: true }
       - name: "ads"
         label: "Ogłoszenia"
-        folder: "content/posts/ads"
-        slug: "{{year}}-{{month}}-{{slug}}"
+        folder: 'content/posts/ads'
         create: true
+        slug: '{{year}}-{{month}}-{{slug}}'
+        #preview_path: "content/posts/ads/{{slug}}"
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
