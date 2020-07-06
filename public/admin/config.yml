@@ -11,8 +11,8 @@ collections:
         label: "Strona główna"
         file: "content/pages/home.md"
         fields:
-          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
-          - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
+          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
   - name: "categories"
     label: "Kategorie"
     files:
@@ -21,13 +21,13 @@ collections:
         folder: "content/categories/articles"
         preview_path: "content/categories/articles/{{slug}}"
         fields:
-          - { label: "Nazwa kategorii dla artykułów", name: "title", widget: "string" }
+          - { label: "Nazwa kategorii dla artykułów", name: "title", widget: "string", required: true }
       - name: "tips"
         label: "Porady"
         folder: "content/categories/tips"
         preview_path: "content/categories/tips/{{slug}}"
         fields:
-          - { label: "Nazwa kategorii dla porad", name: "title", widget: "string" }
+          - { label: "Nazwa kategorii dla porad", name: "title", widget: "string", required: true }
   - name: "posts"
     label: "Posty"
     files:
@@ -37,42 +37,41 @@ collections:
         slug: "{{year}}-{{month}}-{{slug}}"
         preview_path: "content/posts/articles/{{slug}}"
         fields:
-          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
-          - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
-          - { label: "Tytuł artykułu", name: "title", widget: "string" }
-          - { label: "Podtytuł artykułu", name: "subtitle", widget: "string" }
-          - { label: "Data publikacji", name: "date", widget: "datetime" }
-          - { label: "Obraz", name: "featuredImage", widget: "image" }
+          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
+          - { label: "Tytuł artykułu", name: "title", widget: "string", required: true }
+          - { label: "Podtytuł artykułu", name: "subtitle", widget: "string", required: true }
+          - { label: "Data publikacji", name: "date", widget: "datetime", required: true }
+          - { label: "Obraz", name: "featuredImage", widget: "image", required: true }
           - {
             label: "Kategorie",
             name: "categories",
             widget: "relation",
             collection: "categories.articles",
             searchFields: ["title"],
-            valueField: "title"
-          }
-          - {
-            label: "Spis treści",
-            name: "contents",
-            widget: "list",
+            valueField: "title",
+            required: true
+            }
+          - label: "Spis treści"
+            name: "contents"
+            widget: "list"
             fields:
-              - { label: "Nazwa", name: "name", widget: "string" }
-              - { label: "Odnośnik", name: "link", widget: "string" }
-          }
-          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown" }
-          - { label: "Treść", name: "text", widget: "markdown" }
+              - { label: "Nazwa", name: "name", widget: "string", required: true }
+              - { label: "Odnośnik", name: "link", widget: "string", required: true }
+          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown", required: true }
+          - { label: "Treść", name: "text", widget: "markdown", required: true }
       - name: "tips"
         label: "Porady"
         folder: "content/posts/tips"
         slug: "{{year}}-{{month}}-{{slug}}"
         preview_path: "content/posts/tips/{{slug}}"
         fields:
-          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
-          - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
-          - { label: "Tytuł porady", name: "title", widget: "string" }
-          - { label: "Podtytuł porady", name: "subtitle", widget: "string" }
-          - { label: "Data publikacji", name: "date", widget: "datetime" }
-          - { label: "Obraz", name: "featuredImage", widget: "image" }
+          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
+          - { label: "Tytuł porady", name: "title", widget: "string", required: true }
+          - { label: "Podtytuł porady", name: "subtitle", widget: "string", required: true }
+          - { label: "Data publikacji", name: "date", widget: "datetime", required: true }
+          - { label: "Obraz", name: "featuredImage", widget: "image", required: true }
           - {
             label: "Kategorie",
             name: "categories",
@@ -81,51 +80,47 @@ collections:
             searchFields: ["title"],
             valueField: "title"
           }
-          - {
-            label: "Spis treści",
-            name: "contents",
-            widget: "list",
+          - label: "Spis treści"
+            name: "contents"
+            widget: "list"
             fields:
-              - { label: "Nazwa", name: "name", widget: "string" }
-              - { label: "Odnośnik", name: "link", widget: "string" }
-          }
-          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown" }
-          - { label: "Treść", name: "text", widget: "markdown" }
+              - { label: "Nazwa", name: "name", widget: "string", required: true }
+              - { label: "Odnośnik", name: "link", widget: "string", required: true }
+          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown", required: true }
+          - { label: "Treść", name: "text", widget: "markdown", required: true }
       - name: "ads"
         label: "Ogłoszenia"
         folder: "content/posts/ads"
         slug: "{{year}}-{{month}}-{{slug}}"
         preview_path: "content/posts/ads/{{slug}}"
         fields:
-          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
-          - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
-          - { label: "Tytuł ogłoszenia", name: "title", widget: "string" }
-          - { label: "Podtytuł ogłoszenia", name: "subtitle", widget: "string" }
-          - { label: "Data publikacji", name: "date", widget: "datetime" }
-          - { label: "Obraz", name: "featuredImage", widget: "image" }
+          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
+          - { label: "Tytuł ogłoszenia", name: "title", widget: "string", required: true }
+          - { label: "Podtytuł ogłoszenia", name: "subtitle", widget: "string", required: true }
+          - { label: "Data publikacji", name: "date", widget: "datetime", required: true }
+          - { label: "Obraz", name: "featuredImage", widget: "image", required: true }
           - {
             label: "Dane pojazdu",
             name: "carData",
             widget: "list",
             fields:
-              - { label: "Nazwa", name: "name", widget: "string" }
-              - { label: "Rok produkcji", name: "year", widget: "number" }
-              - { label: "Nadwozie", name: "body", widget: "string" }
-              - { label: "Silnik", name: "engine", widget: "string" }
-              - { label: "Skrzynia biegów", name: "gearbox", widget: "string" }
-              - { label: "Ilość koni mechanicznych", name: "hp", widget: "number" }
-              - { label: "Moment obrotowy", name: "torque", widget: "number" }
-              - { label: "Ilość drzwi", name: "doors", widget: "number" }
-              - { label: "Przebieg", name: "course", widget: "number" }
-              - { label: "Cena", name: "price", widget: "number" }
-          - {
-            label: "Spis treści",
-            name: "contents",
-            widget: "list",
+              - { label: "Nazwa", name: "name", widget: "string", required: true }
+              - { label: "Rok produkcji", name: "year", widget: "number", required: true }
+              - { label: "Nadwozie", name: "body", widget: "string", required: true }
+              - { label: "Silnik", name: "engine", widget: "string", required: true }
+              - { label: "Skrzynia biegów", name: "gearbox", widget: "string", required: true }
+              - { label: "Ilość koni mechanicznych", name: "hp", widget: "number", required: true }
+              - { label: "Moment obrotowy", name: "torque", widget: "number", required: true }
+              - { label: "Ilość drzwi", name: "doors", widget: "number", required: true }
+              - { label: "Przebieg", name: "course", widget: "number", required: true }
+              - { label: "Cena", name: "price", widget: "number", required: true }
+          - label: "Spis treści"
+            name: "contents"
+            widget: "list"
             fields:
-              - { label: "Nazwa", name: "name", widget: "string" }
-              - { label: "Odnośnik", name: "link", widget: "string" }
-          }
-          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown" }
-          - { label: "Treść", name: "text", widget: "markdown" }
+              - { label: "Nazwa", name: "name", widget: "string", required: true }
+              - { label: "Odnośnik", name: "link", widget: "string", required: true }
+          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown", required: true }
+          - { label: "Treść", name: "text", widget: "markdown", required: true }
 
