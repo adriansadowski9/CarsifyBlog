@@ -43,7 +43,7 @@ collections:
         label: "Kategorie",
         name: "categories",
         widget: "relation",
-        collection: "categories.articles",
+        collection: "category-articles",
         searchFields: ["title"],
         valueField: "title",
         required: true
@@ -71,7 +71,7 @@ collections:
         label: "Kategorie",
         name: "categories",
         widget: "relation",
-        collection: "categories.tips",
+        collection: "category-tips",
         searchFields: ["title"],
         valueField: "title"
       }
@@ -96,7 +96,7 @@ collections:
       - { label: "Obraz", name: "featuredImage", widget: "image", required: true }
       - label: "Dane pojazdu"
         name: "carData"
-        widget: "list"
+        widget: "object"
         fields:
           - { label: "Nazwa", name: "name", widget: "string", required: true }
           - { label: "Rok produkcji", name: "year", widget: "number", required: true }
