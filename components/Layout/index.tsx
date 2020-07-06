@@ -10,7 +10,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ darkModeEnabled, enableDarkMode, disableDarkMode, children }) => (
   <>
-    <Navigation darkModeEnabled={darkModeEnabled} enableDarkMode={enableDarkMode} disableDarkMode={disableDarkMode}/>
+    <Navigation darkModeEnabled={darkModeEnabled} enableDarkMode={enableDarkMode} disableDarkMode={disableDarkMode} />
     <main>
       {children}
     </main>

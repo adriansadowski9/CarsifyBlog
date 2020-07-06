@@ -2,21 +2,130 @@ backend:
   name: git-gateway
   branch: master
 media_folder: public/assets/img
-public_folder: img
+public_folder: /assets/img
 collections:
   - name: "pages"
-    label: "Pages"
+    label: "Strony"
     files:
-      - label: "Home"
-        name: "home"
+      - name: "home"
+        label: "Strona główna"
         file: "content/pages/home.md"
         fields:
-          - { label: "Title", name: "title", widget: "string"}
-          - { label: "Publish Date", name: "date", widget: "datetime" }
-          - { label: "Body", name: "body", widget: "markdown"}
-          - label: 'Cats'
-            name: "cats"
-            widget: list
+          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
+          - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
+  - name: "categories"
+    label: "Kategorie"
+    files:
+      - name: "articles"
+        label: "Artykuły"
+        folder: "content/categories/articles"
+        preview_path: "content/categories/articles/{{slug}}"
+        fields:
+          - { label: "Nazwa kategorii dla artykułów", name: "title", widget: "string" }
+      - name: "tips"
+        label: "Porady"
+        folder: "content/categories/tips"
+        preview_path: "content/categories/tips/{{slug}}"
+        fields:
+          - { label: "Nazwa kategorii dla porad", name: "title", widget: "string" }
+  - name: "posts"
+    label: "Posty"
+    files:
+      - name: "articles"
+        label: "Artykuły"
+        folder: "content/posts/articles"
+        slug: "{{year}}-{{month}}-{{slug}}"
+        preview_path: "content/posts/articles/{{slug}}"
+        fields:
+          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
+          - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
+          - { label: "Tytuł artykułu", name: "title", widget: "string" }
+          - { label: "Podtytuł artykułu", name: "subtitle", widget: "string" }
+          - { label: "Data publikacji", name: "date", widget: "datetime" }
+          - { label: "Obraz", name: "featuredImage", widget: "image" }
+          - {
+            label: "Kategorie",
+            name: "categories",
+            widget: "relation",
+            collection: "categories.articles",
+            searchFields: ["title"],
+            valueField: "title"
+          }
+          - {
+            label: "Spis treści",
+            name: "contents",
+            widget: "list"
             fields:
-              - { label: "Name", name: "name", widget: "string"}
-              - { label: "Description", name: "description", widget: "text"}
+              - { label: "Nazwa", name: "name", widget: "string" }
+              - { label: "Odnośnik", name: "link", widget: "string" }
+          }
+          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown" }
+          - { label: "Treść", name: "text", widget: "markdown" }
+      - name: "tips"
+        label: "Porady"
+        folder: "content/posts/tips"
+        slug: "{{year}}-{{month}}-{{slug}}"
+        preview_path: "content/posts/tips/{{slug}}"
+        fields:
+          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
+          - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
+          - { label: "Tytuł porady", name: "title", widget: "string" }
+          - { label: "Podtytuł porady", name: "subtitle", widget: "string" }
+          - { label: "Data publikacji", name: "date", widget: "datetime" }
+          - { label: "Obraz", name: "featuredImage", widget: "image" }
+          - {
+            label: "Kategorie",
+            name: "categories",
+            widget: "relation",
+            collection: "categories.tips",
+            searchFields: ["title"],
+            valueField: "title"
+          }
+          - {
+            label: "Spis treści",
+            name: "contents",
+            widget: "list"
+              fields:
+                - { label: "Nazwa", name: "name", widget: "string" }
+                - { label: "Odnośnik", name: "link", widget: "string" }
+          }
+          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown" }
+          - { label: "Treść", name: "text", widget: "markdown" }
+      - name: "ads"
+        label: "Ogłoszenia"
+        folder: "content/posts/ads"
+        slug: "{{year}}-{{month}}-{{slug}}"
+        preview_path: "content/posts/ads/{{slug}}"
+        fields:
+          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
+          - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
+          - { label: "Tytuł ogłoszenia", name: "title", widget: "string" }
+          - { label: "Podtytuł ogłoszenia", name: "subtitle", widget: "string" }
+          - { label: "Data publikacji", name: "date", widget: "datetime" }
+          - { label: "Obraz", name: "featuredImage", widget: "image" }
+          - {
+            label: "Dane pojazdu",
+            name: "carData",
+            widget: "list"
+              fields:
+                - { label: "Nazwa", name: "name", widget: "string" }
+                - { label: "Rok produkcji", name: "year", widget: "number" }
+                - { label: "Nadwozie", name: "body", widget: "string" }
+                - { label: "Silnik", name: "engine", widget: "string" }
+                - { label: "Skrzynia biegów", name: "gearbox", widget: "string" }
+                - { label: "Ilość koni mechanicznych", name: "hp", widget: "number" }
+                - { label: "Moment obrotowy", name: "torque", widget: "number" }
+                - { label: "Ilość drzwi", name: "doors", widget: "number" }
+                - { label: "Przebieg", name: "course", widget: "number" }
+                - { label: "Cena", name: "price", widget: "number" }
+          - {
+            label: "Spis treści",
+            name: "contents",
+            widget: "list"
+              fields:
+                - { label: "Nazwa", name: "name", widget: "string" }
+                - { label: "Odnośnik", name: "link", widget: "string" }
+          }
+          - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown" }
+          - { label: "Treść", name: "text", widget: "markdown" }
+

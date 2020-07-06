@@ -1,4 +1,6 @@
 ---
+pageTitle: Page Title
+pageDescription: Page Description
 title: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien ipsum, mollis non rutrum eu, maximus aliquet eros.
 date: 2020-02-20T19:31:20.591Z
@@ -6,6 +8,7 @@ featuredImage: url
 carData: 
     name: Lorem ipsum
     year: '2004'
+    body: 'coupe'
     engine: 'Gas, 2.3l'
     gearbox: 'Manual'
     hp: '215'
