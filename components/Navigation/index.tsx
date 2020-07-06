@@ -1,6 +1,12 @@
+import * as React from 'react'
 import Link from 'next/link'
 
-const Navigation = () => (
+interface NavigationProps {
+  darkModeEnabled: boolean
+  enableDarkMode: () => void
+  disableDarkMode: () => void
+}
+const Navigation: React.FC<NavigationProps> = ({ darkModeEnabled, enableDarkMode, disableDarkMode }) => (
   <nav>
     <Link href="/">
       <span>LOGO</span>
@@ -32,7 +38,11 @@ const Navigation = () => (
         </Link>
       </li>
     </ul>
-    <button type="button">Change theme mode</button>
+    {darkModeEnabled ?
+      <button type="button" onClick={disableDarkMode}>Turn on light theme</button>
+      :
+      <button type="button" onClick={enableDarkMode}>Turn on dark theme</button>
+    }
   </nav>
 )
 

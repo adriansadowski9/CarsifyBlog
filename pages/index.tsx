@@ -1,15 +1,14 @@
 import * as React from 'react'
 import { attributes } from 'content/pages/home.md'
 import { getArticles, getTips, getAds } from 'utils/getPosts'
-import PageHead from 'components/PageHead';
+import PageHead from 'components/PageHead'
 
 const Home = ({ articlesList, tipsList, adsList }) => {
-  const { title } = attributes
+  const { pageTitle, pageDescription } = attributes
   return (
     <>
-      <PageHead title="Home" description="Home description"/>
+      <PageHead title={pageTitle} description={pageDescription}/>
       <div>
-        <h1>{title}</h1>
         <h3>Articles:</h3>
         <div>
           {articlesList.map((article, index) => {
