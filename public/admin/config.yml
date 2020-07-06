@@ -4,38 +4,38 @@ backend:
 media_folder: public/assets/img
 public_folder: /assets/img
 collections:
-  - name: "pages"
-    label: "Strony"
+  - name: "pages",
+    label: "Strony",
     files:
-      - name: "home"
-        label: "Strona główna"
-        file: "content/pages/home.md"
+      - name: "home",
+        label: "Strona główna",
+        file: "content/pages/home.md",
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
-  - name: "categories"
-    label: "Kategorie"
+  - name: "categories",
+    label: "Kategorie",
     files:
-      - name: "articles"
-        label: "Artykuły"
-        folder: "content/categories/articles"
-        preview_path: "content/categories/articles/{{slug}}"
+      - name: "articles",
+        label: "Artykuły",
+        folder: "content/categories/articles",
+        preview_path: "content/categories/articles/{{slug}}",
         fields:
           - { label: "Nazwa kategorii dla artykułów", name: "title", widget: "string" }
-      - name: "tips"
-        label: "Porady"
-        folder: "content/categories/tips"
-        preview_path: "content/categories/tips/{{slug}}"
+      - name: "tips",
+        label: "Porady",
+        folder: "content/categories/tips",
+        preview_path: "content/categories/tips/{{slug}}",
         fields:
           - { label: "Nazwa kategorii dla porad", name: "title", widget: "string" }
-  - name: "posts"
-    label: "Posty"
+  - name: "posts",
+    label: "Posty",
     files:
-      - name: "articles"
-        label: "Artykuły"
-        folder: "content/posts/articles"
-        slug: "{{year}}-{{month}}-{{slug}}"
-        preview_path: "content/posts/articles/{{slug}}"
+      - name: "articles",
+        label: "Artykuły",
+        folder: "content/posts/articles",
+        slug: "{{year}}-{{month}}-{{slug}}",
+        preview_path: "content/posts/articles/{{slug}}",
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
@@ -54,18 +54,18 @@ collections:
           - {
             label: "Spis treści",
             name: "contents",
-            widget: "list"
+            widget: "list",
             fields:
               - { label: "Nazwa", name: "name", widget: "string" }
               - { label: "Odnośnik", name: "link", widget: "string" }
           }
           - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown" }
           - { label: "Treść", name: "text", widget: "markdown" }
-      - name: "tips"
-        label: "Porady"
-        folder: "content/posts/tips"
-        slug: "{{year}}-{{month}}-{{slug}}"
-        preview_path: "content/posts/tips/{{slug}}"
+      - name: "tips",
+        label: "Porady",
+        folder: "content/posts/tips",
+        slug: "{{year}}-{{month}}-{{slug}}",
+        preview_path: "content/posts/tips/{{slug}}",
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
@@ -84,18 +84,18 @@ collections:
           - {
             label: "Spis treści",
             name: "contents",
-            widget: "list"
+            widget: "list",
               fields:
                 - { label: "Nazwa", name: "name", widget: "string" }
                 - { label: "Odnośnik", name: "link", widget: "string" }
           }
           - { label: "Wyróżniony nagłówek", name: "highlightedText", widget: "markdown" }
           - { label: "Treść", name: "text", widget: "markdown" }
-      - name: "ads"
-        label: "Ogłoszenia"
-        folder: "content/posts/ads"
-        slug: "{{year}}-{{month}}-{{slug}}"
-        preview_path: "content/posts/ads/{{slug}}"
+      - name: "ads",
+        label: "Ogłoszenia",
+        folder: "content/posts/ads",
+        slug: "{{year}}-{{month}}-{{slug}}",
+        preview_path: "content/posts/ads/{{slug}}",
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string" }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string" }
@@ -106,7 +106,7 @@ collections:
           - {
             label: "Dane pojazdu",
             name: "carData",
-            widget: "list"
+            widget: "list",
               fields:
                 - { label: "Nazwa", name: "name", widget: "string" }
                 - { label: "Rok produkcji", name: "year", widget: "number" }
@@ -121,7 +121,7 @@ collections:
           - {
             label: "Spis treści",
             name: "contents",
-            widget: "list"
+            widget: "list",
               fields:
                 - { label: "Nazwa", name: "name", widget: "string" }
                 - { label: "Odnośnik", name: "link", widget: "string" }
