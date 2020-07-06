@@ -19,13 +19,13 @@ collections:
       - name: "articles"
         label: "Artykuły"
         folder: "content/categories/articles"
-        preview_path: "content/categories/articles/{{slug}}"
+        create: true
         fields:
           - { label: "Nazwa kategorii dla artykułów", name: "title", widget: "string", required: true }
       - name: "tips"
         label: "Porady"
         folder: "content/categories/tips"
-        preview_path: "content/categories/tips/{{slug}}"
+        create: true
         fields:
           - { label: "Nazwa kategorii dla porad", name: "title", widget: "string", required: true }
   - name: "posts"
@@ -35,7 +35,7 @@ collections:
         label: "Artykuły"
         folder: "content/posts/articles"
         slug: "{{year}}-{{month}}-{{slug}}"
-        preview_path: "content/posts/articles/{{slug}}"
+        create: true
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
@@ -64,7 +64,7 @@ collections:
         label: "Porady"
         folder: "content/posts/tips"
         slug: "{{year}}-{{month}}-{{slug}}"
-        preview_path: "content/posts/tips/{{slug}}"
+        create: true
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
@@ -92,7 +92,7 @@ collections:
         label: "Ogłoszenia"
         folder: "content/posts/ads"
         slug: "{{year}}-{{month}}-{{slug}}"
-        preview_path: "content/posts/ads/{{slug}}"
+        create: true
         fields:
           - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
           - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
