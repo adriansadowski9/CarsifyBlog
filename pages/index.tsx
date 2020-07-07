@@ -54,12 +54,12 @@ const Home = ({ articlesList, tipsList, adsList }) => {
       </div>
       <AdsSection>
         {adsList.map((ad, index) => {
-          const { image, title, highlightedText, carData } = ad.attributes
+          const { featuredImage, title, highlightedText, carData } = ad.attributes
           const { slug } = ad
           return (
             <AdCard
               key={`${title-index}`}
-              image={image}
+              image={featuredImage}
               title={title}
               textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
               carData={carData}

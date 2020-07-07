@@ -17,12 +17,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-        font-family: 'Maven Pro', sans-serif;
+    font-family: 'Maven Pro', sans-serif;
   }
   
   body {
     padding: 0;
     margin: 0;
+    color: ${props => props.theme.colors.text};
+    background: ${props => props.theme.colors.bg};
   }
 `;
 

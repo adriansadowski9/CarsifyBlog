@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const AdCardImage = styled.img`
   width: 100%;
-  height: 265px;
+  height: 200px;
   object-fit: cover;
   display: block;
 `

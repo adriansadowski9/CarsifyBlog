@@ -5,7 +5,7 @@ const AdCardContainer = styled.article`
   width: 100%;
   margin-bottom: ${props => props.theme.spaces.m};
   @media screen and (min-width: ${props => props.theme.breakpoints[0]}) {
-    width: 400px;
+    width: 300px;
     cursor: pointer;
   }
 `

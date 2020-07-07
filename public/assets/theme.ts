@@ -24,6 +24,7 @@ const fontWeights = {
 }
 
 const spaces = {
+  xxxs: '5px',
   xxs: '10px',
   xs: '15px',
   s: '20px',
