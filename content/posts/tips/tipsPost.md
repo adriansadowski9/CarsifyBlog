@@ -7,7 +7,7 @@ subtitle: >-
   mollis non rutrum eu, maximus aliquet eros.
 date: 2020-02-20T19:31:20.591Z
 featuredImage: url
-categories: Przepisy
+category: Przepisy
 contents:
   - link: '#parahraph1'
     name: Parahraph1
