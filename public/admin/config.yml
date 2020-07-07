@@ -50,12 +50,16 @@ collections:
     create: true
     fields:
       - { label: "Nazwa kategorii dla artykułów", name: "title", widget: "string", required: true }
+      - { label: "Tytuł podstrony dla kategorii artykułów", name: "pageTitle", widget: "string", required: true }
+      - { label: "Opis podstrony dla kategorii artykułów", name: "pageDescription", widget: "string", required: true }
   - name: "category-tips"
     label: "Kategorie porad"
     folder: 'content/categories/tips'
     create: true
     fields:
       - { label: "Nazwa kategorii dla porad", name: "title", widget: "string", required: true }
+      - { label: "Tytuł podstrony dla kategorii porad", name: "pageTitle", widget: "string", required: true }
+      - { label: "Opis podstrony dla kategorii porad", name: "pageDescription", widget: "string", required: true }
   - name: "articles"
     label: "Artykuły"
     folder: 'content/posts/articles'

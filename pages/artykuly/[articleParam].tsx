@@ -3,10 +3,10 @@ import PageHead from 'components/PageHead';
 
 const Article = ({ attributes, isCategory, articleExists }) => {
   if(isCategory) {
-    const { title } = attributes
+    const { title, pageTitle, pageDescription } = attributes
     return (
       <>
-        <PageHead title="Article category" description="Article category description"/>
+        <PageHead title={pageTitle} description={pageDescription} />
         <div>
           <span>{title}</span>
         </div>
