@@ -7,6 +7,8 @@ import TipsSection from 'components/HomeSections/TipsSection'
 import InformationSection from 'components/HomeSections/InformationSection'
 import AdsSection from 'components/HomeSections/AdsSection'
 import ArticleCard from 'components/Cards/ArticleCard'
+import TipCard from 'components/Cards/TipCard';
+import AdCard from 'components/Cards/AdCard';
 
 const Home = ({ articlesList, tipsList, adsList }) => {
   const { pageTitle, pageDescription } = attributes
@@ -16,22 +18,33 @@ const Home = ({ articlesList, tipsList, adsList }) => {
       <div>
         <ArticlesSection>
           {articlesList.map((article, index) => {
-            const { featuredImage, title, highlightedText } = article.attributes
+            const { featuredImage, title, highlightedText, category } = article.attributes
             const { slug } = article
             return (
-              <ArticleCard key={`${title-index}`} image={featuredImage} title={title} textSnippet={highlightedText} category="Kategoria" slug={slug}/>
+              <ArticleCard
+                key={`${title-index}`}
+                image={featuredImage}
+                title={title}
+                textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
+                category={category}
+                slug={slug}
+              />
             )})}
         </ArticlesSection>
         <div>
           <TipsSection>
             {tipsList.map((tip, index) => {
-              const { date, title, highlightedText } = tip.attributes
+              const { featuredImage, title, highlightedText, category } = tip.attributes
+              const { slug } = tip
               return (
-                <div key={index}>
-                  <p>{date}</p>
-                  <h3>{title}</h3>
-                  <p>{highlightedText}</p>
-                </div>
+                <TipCard
+                  key={`${title-index}`}
+                  image={featuredImage}
+                  title={title}
+                  textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
+                  category={category}
+                  slug={slug}
+                />
               )})}
           </TipsSection>
           <InformationSection>
@@ -41,13 +54,17 @@ const Home = ({ articlesList, tipsList, adsList }) => {
       </div>
       <AdsSection>
         {adsList.map((ad, index) => {
-          const { date, title, highlightedText } = ad.attributes
+          const { image, title, highlightedText, carData } = ad.attributes
+          const { slug } = ad
           return (
-            <div key={index}>
-              <p>{date}</p>
-              <h3>{title}</h3>
-              <p>{highlightedText}</p>
-            </div>
+            <AdCard
+              key={`${title-index}`}
+              image={image}
+              title={title}
+              textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
+              carData={carData}
+              slug={slug}
+            />
           )})}
       </AdsSection>
     </>
@@ -56,7 +73,7 @@ const Home = ({ articlesList, tipsList, adsList }) => {
 
 Home.getInitialProps = async () => {
   const articlesList = await getArticles({ sort: 'desc', count: 6 })
-  const tipsList = await getTips({ sort: 'desc' })
+  const tipsList = await getTips({ sort: 'desc', count: 2 })
   const adsList = await getAds({ sort: 'desc', count: 4 })
   return { articlesList, tipsList, adsList }
 }

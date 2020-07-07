@@ -4,7 +4,7 @@ pageDescription: Page Description
 title: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien ipsum, mollis non rutrum eu, maximus aliquet eros.
 date: 2020-02-20T19:31:20.591Z
-featuredImage: url
+featuredImage: https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80
 carData: 
     name: Lorem ipsum
     year: '2004'
