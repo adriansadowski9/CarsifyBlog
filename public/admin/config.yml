@@ -131,6 +131,7 @@ collections:
         widget: "object"
         fields:
           - { label: "Nazwa", name: "name", widget: "string", required: true }
+          - { label: "Miasto", name: "localization", widget: "string", required: true }
           - { label: "Rok produkcji", name: "year", widget: "number", required: true }
           - { label: "Nadwozie", name: "body", widget: "string", required: true }
           - { label: "Silnik", name: "engine", widget: "string", required: true }

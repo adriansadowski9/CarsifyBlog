@@ -7,6 +7,7 @@ date: 2020-02-20T19:31:20.591Z
 featuredImage: https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80
 carData: 
     name: Lorem ipsum
+    localization: 'Londyn'
     year: '2004'
     body: 'coupe'
     engine: 'Gas, 2.3l'
