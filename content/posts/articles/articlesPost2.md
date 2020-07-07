@@ -8,7 +8,7 @@ subtitle: >-
 date: 2019-02-20T19:31:20.591Z
 featuredImage: >-
   https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80
-categories: Wiadomości
+category: Wiadomości
 contents:
   - link: '#parahraph1'
     name: Parahraph1
