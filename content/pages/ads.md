@@ -1,0 +1,4 @@
+---
+pageTitle: Ogłoszenia
+pageDescription: Opis
+---

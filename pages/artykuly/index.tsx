@@ -1,11 +1,13 @@
-import React from 'react';
+import React from 'react'
+import { attributes } from 'content/pages/articles.md'
 import { getArticles } from 'utils/getPosts'
-import PageHead from 'components/PageHead';
+import PageHead from 'components/PageHead'
 
 const Articles = ({ articlesList }) => {
+  const { pageTitle, pageDescription } = attributes
   return (
     <>
-      <PageHead title="Artykuly" description="Artykuly description"/>
+      <PageHead title={pageTitle} description={pageDescription}/>
       <div>
         {articlesList.map((article, index) => {
           const { date, title, highlightedText } = article.attributes

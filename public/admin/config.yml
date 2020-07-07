@@ -14,8 +14,36 @@ collections:
         label: "Strona główna"
         file: "content/pages/home.md"
         fields:
-          - { label: "Tytuł podstrony", name: "pageTitle", widget: "string", required: true }
-          - { label: "Opis podstrony", name: "pageDescription", widget: "string", required: true }
+          - { label: "Tytuł strony głównej", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis strony głównej", name: "pageDescription", widget: "string", required: true }
+      - name: "articles"
+        label: "Artykuły"
+        file: "content/pages/articles.md"
+        fields:
+          - { label: "Tytuł podstrony artykułów", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis podstrony artykułów", name: "pageDescription", widget: "string", required: true }
+      - name: "tips"
+        label: "Porady"
+        file: "content/pages/tips.md"
+        fields:
+          - { label: "Tytuł podstrony artykułów", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis podstrony artykułów", name: "pageDescription", widget: "string", required: true }
+      - name: "ads"
+        label: "Ogłoszenia"
+        file: "content/pages/ads.md"
+        fields:
+          - { label: "Tytuł podstrony artykułów", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis podstrony artykułów", name: "pageDescription", widget: "string", required: true }
+      - name: "contact"
+        label: "Kontakt"
+        file: "content/pages/contact.md"
+        fields:
+          - { label: "Tytuł podstrony artykułów", name: "pageTitle", widget: "string", required: true }
+          - { label: "Opis podstrony artykułów", name: "pageDescription", widget: "string", required: true }
+          - { label: "Email kontaktowy", name: "contactEmail", widget: "string", required: true }
+          - { label: "Adres profilu na facebooku", name: "facebookUrl", widget: "string", required: true }
+          - { label: "Adres profilu na twitterze", name: "twitterUrl", widget: "string", required: true }
+          - { label: "Adres profilu na instagramie", name: "instagramUrl", widget: "string", required: true }
   - name: "category-articles"
     label: "Kategorie artykułów"
     folder: 'content/categories/articles'
