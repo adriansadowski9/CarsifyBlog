@@ -73,7 +73,7 @@ collections:
       - { label: "Obraz", name: "featuredImage", widget: "image", required: true }
       - {
         label: "Kategorie",
-        name: "categories",
+        name: "category",
         widget: "relation",
         collection: "category-articles",
         searchFields: ["title"],
@@ -101,7 +101,7 @@ collections:
       - { label: "Obraz", name: "featuredImage", widget: "image", required: true }
       - {
         label: "Kategorie",
-        name: "categories",
+        name: "category",
         widget: "relation",
         collection: "category-tips",
         searchFields: ["title"],
