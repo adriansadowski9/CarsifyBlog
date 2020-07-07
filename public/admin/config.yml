@@ -3,6 +3,9 @@ backend:
   branch: master
 media_folder: public/assets/img
 public_folder: /assets/img
+slug:
+  encoding: "ascii"
+  clean_accents: true
 collections:
   - name: "pages"
     label: "Strony"
@@ -17,15 +20,12 @@ collections:
     label: "Kategorie artykułów"
     folder: 'content/categories/articles'
     create: true
-    slug: '{{year}}-{{slug}}'
-    # preview_path: "content/categories/articles/{{slug}}"
     fields:
       - { label: "Nazwa kategorii dla artykułów", name: "title", widget: "string", required: true }
   - name: "category-tips"
     label: "Kategorie porad"
     folder: 'content/categories/tips'
     create: true
-    #preview_path: "content/categories/tips/{{slug}}"
     fields:
       - { label: "Nazwa kategorii dla porad", name: "title", widget: "string", required: true }
   - name: "articles"
