@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { AppProps } from 'next/app'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import useDarkMode from 'use-dark-mode'
@@ -11,8 +12,17 @@ const GlobalStyle = createGlobalStyle`
       src: url('/static/fonts/MavenPro-Medium.ttf');
       src: url('/static/fonts/MavenPro-Bold.ttf');
   }
-  * {
-    font-family: 'Maven Pro', sans-serif;
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+        font-family: 'Maven Pro', sans-serif;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
   }
 `;
 
