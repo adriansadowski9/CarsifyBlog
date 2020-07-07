@@ -3,10 +3,10 @@ import PageHead from 'components/PageHead';
 
 const Tip = ({ attributes, isCategory, tipExists }) => {
   if (isCategory) {
-    const {title} = attributes
+    const { title, pageTitle, pageDescription } = attributes
     return (
       <>
-        <PageHead title="Tip category" description="Tip category description"/>
+        <PageHead title={pageTitle} description={pageDescription} />
         <div>
           <span>{title}</span>
         </div>
