@@ -9,12 +9,12 @@ const colors = {
 }
 
 const fontSizes = {
-  xs: 12,
-  s: 14,
-  m: 16,
-  l: 20,
-  xl: 24,
-  xxl: 48
+  xs: '12px',
+  s: '14px',
+  m: '16px',
+  l: '20px',
+  xl: '24px',
+  xxl: '48px'
 }
 
 const fontWeights = {
@@ -24,19 +24,25 @@ const fontWeights = {
 }
 
 const spaces = {
-  xxs: 10,
-  xs: 15,
-  s: 20,
-  m: 25,
-  l: 30,
-  xl: 40,
-  xxl: 60,
+  xxs: '10px',
+  xs: '15px',
+  s: '20px',
+  m: '25px',
+  l: '30px',
+  xl: '40px',
+  xxl: '60px',
 }
+
+const breakpoints = [
+  '1024px',
+  '1280px'
+]
 
 export const lightTheme = {
   fontSizes,
   fontWeights,
   spaces,
+  breakpoints,
   colors: {
     bg: colors.white,
     text: colors.black,
@@ -74,6 +80,7 @@ export const darkTheme = {
   fontSizes,
   fontWeights,
   spaces,
+  breakpoints,
   colors: {
     bg: colors.darkGray,
     text: colors.white,
