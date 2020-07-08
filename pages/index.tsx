@@ -25,7 +25,7 @@ const Home = ({ articlesList, tipsList, adsList }) => {
             const { slug } = article
             return (
               <ArticleCard
-                key={`${title-index}`}
+                key={`${title}-${index}`}
                 image={featuredImage}
                 title={title}
                 textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
@@ -42,7 +42,7 @@ const Home = ({ articlesList, tipsList, adsList }) => {
               const { slug } = tip
               return (
                 <TipCard
-                  key={`${title-index}`}
+                  key={`${title}-${index}`}
                   image={featuredImage}
                   title={title}
                   textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
@@ -64,7 +64,7 @@ const Home = ({ articlesList, tipsList, adsList }) => {
             const { slug } = ad
             return (
               <AdCard
-                key={`${title-index}`}
+                key={`${title}-${index}`}
                 image={featuredImage}
                 title={title}
                 textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
