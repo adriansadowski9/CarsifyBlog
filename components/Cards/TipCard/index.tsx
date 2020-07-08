@@ -20,7 +20,7 @@ const TipCard: React.FC<TipCardProps> = ({ image, title, textSnippet, category, 
   return (
     <Link href="/porady/[tipParam]" as={`/porady/${slug}`}>
       <TipCardContainer>
-        <TipCardImage src={image} alt={title} />
+        <TipCardImage src={require(`../../../public/assets/img/${image}`)} alt={title} />
         <TipCardInfoContainer>
           <TipCardTitle>{title}</TipCardTitle>
           <TipCardSnippet>{textSnippet}</TipCardSnippet>
