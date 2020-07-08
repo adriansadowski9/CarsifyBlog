@@ -17,7 +17,7 @@ module.exports = withOptimizedImages(
           test: /\.(jpe?g|png)$/i,
           loader: 'responsive-loader',
           options: {
-            adapter: require('responsive-loader/sharp')
+            adapter: require('responsive-loader/sharp'),
           }
         }
       )

@@ -9,7 +9,7 @@ const PageHead = ({ title, description }: PageHeadProps) => (
     <title>{title}</title>
     <meta charSet="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="shortcut icon" href="/favicon.ico" />
   </Head>
 )

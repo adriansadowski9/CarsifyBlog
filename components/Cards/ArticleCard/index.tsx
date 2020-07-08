@@ -17,11 +17,16 @@ interface ArticleCardProps {
 }
 const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, category, slug }) => {
   const themeContext: any = React.useContext(ThemeContext)
-  const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400&sizes[]=768&sizes[]=1024`)
+  const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`)
   return (
     <Link href="/artykuly/[articleParam]" as={`/artykuly/${slug}`}>
       <ArticleCardContainer>
-        <ArticleCardImage {...responsiveImage} alt={title} />
+          <ArticleCardImage
+            src={responsiveImage.src}
+            srcSet={responsiveImage.srcSet}
+            sizes="(min-width: 768px) 400px, 100vw"
+            alt={title}
+          />
         <ArticleCardInfoContainer>
           <ArticleCardTitle>{title}</ArticleCardTitle>
           <ArticleCardSnippet>{textSnippet}</ArticleCardSnippet>
