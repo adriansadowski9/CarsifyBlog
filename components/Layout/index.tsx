@@ -1,24 +1,6 @@
 import * as React from 'react'
-import styled from 'styled-components'
 import Header from 'components/Header'
-
-const MainContent = styled.main`
-  margin: 0 ${props => props.theme.spaces.s};
-  display: flex;
-  flex-direction: column;
-  
-  @media screen and (min-width: ${props => props.theme.breakpoints[0]}) {
-    margin: 0 ${props => props.theme.xxs};
-    flex-direction: row;
-  }
-  
-  @media screen and (min-width: ${props => props.theme.breakpoints[1]}) {
-    margin: 0 ${props => props.theme.xxs};
-    max-width: ${props => props.theme.breakpoints[1]};
-    flex-direction: row;
-    align-self: center;
-  }
-`
+import MainContent from 'components/Layout/styled/MainContent'
 
 interface LayoutProps {
   darkModeEnabled: boolean
@@ -33,9 +15,6 @@ const Layout: React.FC<LayoutProps> = ({ darkModeEnabled, enableDarkMode, disabl
     <MainContent>
       {children}
     </MainContent>
-    <footer>
-      Footer
-    </footer>
   </>
 )
 

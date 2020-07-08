@@ -3,7 +3,7 @@ import { AppProps } from 'next/app'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import useDarkMode from 'use-dark-mode'
 import Layout from 'components/Layout'
-import { lightTheme, darkTheme } from 'public/assets/theme'
+import { lightTheme, darkTheme } from 'utils/theme'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {

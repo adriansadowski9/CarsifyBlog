@@ -31,7 +31,8 @@ const spaces = {
   m: '25px',
   l: '30px',
   xl: '40px',
-  xxl: '60px',
+  xxl: '50px',
+  xxxl: '60px',
 }
 
 const breakpoints = [
