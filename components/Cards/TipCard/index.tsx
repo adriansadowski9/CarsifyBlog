@@ -17,11 +17,16 @@ interface TipCardProps {
 }
 const TipCard: React.FC<TipCardProps> = ({ image, title, textSnippet, category, slug }) => {
   const themeContext: any = React.useContext(ThemeContext)
-  const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400&sizes[]=768&sizes[]=1024`)
+  const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`)
   return (
     <Link href="/porady/[tipParam]" as={`/porady/${slug}`}>
       <TipCardContainer>
-        <TipCardImage {...responsiveImage} alt={title} />
+        <TipCardImage
+          src={responsiveImage.src}
+          srcSet={responsiveImage.srcSet}
+          sizes="(min-width: 768px) 400px, 100vw"
+          alt={title}
+        />
         <TipCardInfoContainer>
           <TipCardTitle>{title}</TipCardTitle>
           <TipCardSnippet>{textSnippet}</TipCardSnippet>

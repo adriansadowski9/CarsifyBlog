@@ -23,7 +23,6 @@ const Home = ({ articlesList, tipsList, adsList }) => {
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes
             const { slug } = article
-            console.log(featuredImage)
             return (
               <ArticleCard
                 key={`${title}-${index}`}
