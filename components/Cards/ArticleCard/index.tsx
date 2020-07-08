@@ -18,7 +18,7 @@ interface ArticleCardProps {
 const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, category, slug }) => {
   const themeContext: any = React.useContext(ThemeContext)
   return (
-    <Link href={`/artykuly/${slug}`}>
+    <Link href="/artykuly/[articleParam]" as={`/artykuly/${slug}`}>
       <ArticleCardContainer>
         <ArticleCardImage src={image} alt={title} />
         <ArticleCardInfoContainer>

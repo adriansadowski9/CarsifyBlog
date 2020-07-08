@@ -18,7 +18,7 @@ interface TipCardProps {
 const TipCard: React.FC<TipCardProps> = ({ image, title, textSnippet, category, slug }) => {
   const themeContext: any = React.useContext(ThemeContext)
   return (
-    <Link href={`/porady/${slug}`}>
+    <Link href="/porady/[tipParam]" as={`/porady/${slug}`}>
       <TipCardContainer>
         <TipCardImage src={image} alt={title} />
         <TipCardInfoContainer>
