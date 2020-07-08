@@ -31,7 +31,7 @@ interface AdCardProps {
 }
 const AdCard: React.FC<AdCardProps> = ({ image, title, textSnippet, carData, slug }) => {
   return (
-    <Link href={`/ogloszenia/${slug}`}>
+    <Link href="/ogloszenia/[adParam]" as={`/ogloszenia/${slug}`}>
       <AdCardContainer>
         <AdCardImage src={image} alt={title} />
         <AdCardInfoContainer>
