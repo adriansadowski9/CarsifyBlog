@@ -10,8 +10,7 @@ import LinkButton from 'components/Header/styled/LinkButton'
 import Hamburger from 'components/Header/styled/Hamburger'
 import HamburgerContainer from 'components/Header/styled/HamburgerContainer'
 import LogoWrapper from 'components/Header/styled/LogoWrapper'
-import Logo from 'assets/icons/Logo';
-import SvgIcon from 'components/Icon';
+import Logo from 'assets/icons/Logo'
 
 interface HeaderProps {
   darkModeEnabled: boolean
@@ -20,7 +19,6 @@ interface HeaderProps {
 }
 const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disableDarkMode }) => {
   const router = useRouter()
-  const themeContext: any = React.useContext(ThemeContext)
   const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false)
   return (
     <header>
