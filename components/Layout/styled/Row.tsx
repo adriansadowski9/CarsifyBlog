@@ -1,16 +1,12 @@
 import styled from 'styled-components'
 
-const AdsSection = styled.section`
+const Row = styled.div`
   display: flex;
   flex-direction: column;
   
   @media only screen and (min-width: ${props => props.theme.breakpoints[1]}) {
-    display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
   }
 `
 
-export default AdsSection
+export default Row

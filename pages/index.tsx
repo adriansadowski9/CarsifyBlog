@@ -7,16 +7,19 @@ import TipsSection from 'components/HomeSections/TipsSection'
 import InformationSection from 'components/HomeSections/InformationSection'
 import AdsSection from 'components/HomeSections/AdsSection'
 import ArticleCard from 'components/Cards/ArticleCard'
-import TipCard from 'components/Cards/TipCard';
-import AdCard from 'components/Cards/AdCard';
+import TipCard from 'components/Cards/TipCard'
+import AdCard from 'components/Cards/AdCard'
+import SectionName from 'components/HomeSections/SectionName'
+import Row from 'components/Layout/styled/Row';
 
 const Home = ({ articlesList, tipsList, adsList }) => {
   const { pageTitle, pageDescription } = attributes
   return (
     <>
       <PageHead title={pageTitle} description={pageDescription}/>
-      <div>
+      <Row>
         <ArticlesSection>
+          <SectionName name="Aktualności" />
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes
             const { slug } = article
@@ -33,6 +36,7 @@ const Home = ({ articlesList, tipsList, adsList }) => {
         </ArticlesSection>
         <div>
           <TipsSection>
+            <SectionName name="Moto porady" />
             {tipsList.map((tip, index) => {
               const { featuredImage, title, highlightedText, category } = tip.attributes
               const { slug } = tip
@@ -51,22 +55,25 @@ const Home = ({ articlesList, tipsList, adsList }) => {
 
           </InformationSection>
         </div>
-      </div>
-      <AdsSection>
-        {adsList.map((ad, index) => {
-          const { featuredImage, title, highlightedText, carData } = ad.attributes
-          const { slug } = ad
-          return (
-            <AdCard
-              key={`${title-index}`}
-              image={featuredImage}
-              title={title}
-              textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
-              carData={carData}
-              slug={slug}
-            />
-          )})}
-      </AdsSection>
+      </Row>
+      <Row>
+        <AdsSection>
+          <SectionName name="Perełki z ogłoszeń" />
+          {adsList.map((ad, index) => {
+            const { featuredImage, title, highlightedText, carData } = ad.attributes
+            const { slug } = ad
+            return (
+              <AdCard
+                key={`${title-index}`}
+                image={featuredImage}
+                title={title}
+                textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
+                carData={carData}
+                slug={slug}
+              />
+            )})}
+        </AdsSection>
+      </Row>
     </>
   )
 }
