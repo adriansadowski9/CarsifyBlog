@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const darkMode = useDarkMode(true)
+  const darkMode = useDarkMode(false)
   const theme = darkMode.value ? darkTheme : lightTheme
   return (
     <ThemeProvider theme={theme}>

@@ -1,11 +1,17 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
+import { ThemeContext } from 'styled-components'
 import Link from 'next/link'
 import Navigation from 'components/Header/styled/Navigation'
+import Menu from 'components/Header/styled/Menu'
 import NavList from 'components/Header/styled/NavList'
 import NavListItem from 'components/Header/styled/NavListItem'
 import LinkButton from 'components/Header/styled/LinkButton'
-import Row from 'components/Layout/styled/Row';
+import Hamburger from 'components/Header/styled/Hamburger'
+import HamburgerContainer from 'components/Header/styled/HamburgerContainer'
+import LogoWrapper from 'components/Header/styled/LogoWrapper'
+import Logo from 'assets/icons/Logo';
+import SvgIcon from 'components/Icon';
 
 interface HeaderProps {
   darkModeEnabled: boolean
@@ -14,13 +20,17 @@ interface HeaderProps {
 }
 const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disableDarkMode }) => {
   const router = useRouter()
+  const themeContext: any = React.useContext(ThemeContext)
+  const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false)
   return (
     <header>
       <Navigation>
         <Link href="/">
-          <span>LOGO</span>
+          <LogoWrapper>
+            <Logo />
+          </LogoWrapper>
         </Link>
-        <Row>
+        <Menu isOpen={isMobileMenuOpened}>
           <NavList>
             <NavListItem isActive={router.pathname === '/'}>
               <Link href="/">
@@ -39,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disabl
             </NavListItem>
             <NavListItem isActive={router.pathname.startsWith('/ogloszenia')}>
               <Link href="/ogloszenia">
-                <LinkButton>Perełki z ogłoszeń</LinkButton>
+                <LinkButton>Ogłoszenia</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname === '/kontakt'}>
@@ -53,7 +63,10 @@ const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disabl
             :
             <button type="button" onClick={enableDarkMode}>Ciemność</button>
           }
-        </Row>
+        </Menu>
+        <HamburgerContainer onClick={() => setIsMobileMenuOpened(!isMobileMenuOpened)}>
+          <Hamburger isMenuOpened={isMobileMenuOpened}/>
+        </HamburgerContainer>
       </Navigation>
     </header>
   )
