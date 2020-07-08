@@ -20,7 +20,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, ca
   return (
     <Link href="/artykuly/[articleParam]" as={`/artykuly/${slug}`}>
       <ArticleCardContainer>
-        <ArticleCardImage src={image} alt={title} />
+        <ArticleCardImage src={require(`../../../public/assets/img/${image}`)} alt={title} />
         <ArticleCardInfoContainer>
           <ArticleCardTitle>{title}</ArticleCardTitle>
           <ArticleCardSnippet>{textSnippet}</ArticleCardSnippet>

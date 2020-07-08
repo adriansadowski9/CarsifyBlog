@@ -33,7 +33,7 @@ const AdCard: React.FC<AdCardProps> = ({ image, title, textSnippet, carData, slu
   return (
     <Link href="/ogloszenia/[adParam]" as={`/ogloszenia/${slug}`}>
       <AdCardContainer>
-        <AdCardImage src={image} alt={title} />
+        <AdCardImage src={require(`../../../public/assets/img/${image}`)} alt={title} />
         <AdCardInfoContainer>
           <AdCardTitle>{carData.name}</AdCardTitle>
           <AdCardLocalization city={carData.localization}/>

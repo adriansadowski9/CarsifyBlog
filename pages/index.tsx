@@ -23,10 +23,11 @@ const Home = ({ articlesList, tipsList, adsList }) => {
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes
             const { slug } = article
+            console.log(featuredImage)
             return (
               <ArticleCard
                 key={`${title}-${index}`}
-                image={featuredImage}
+                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                 title={title}
                 textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
                 category={category}
@@ -43,7 +44,7 @@ const Home = ({ articlesList, tipsList, adsList }) => {
               return (
                 <TipCard
                   key={`${title}-${index}`}
-                  image={featuredImage}
+                  image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                   title={title}
                   textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
                   category={category}
@@ -65,7 +66,7 @@ const Home = ({ articlesList, tipsList, adsList }) => {
             return (
               <AdCard
                 key={`${title}-${index}`}
-                image={featuredImage}
+                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                 title={title}
                 textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
                 carData={carData}
