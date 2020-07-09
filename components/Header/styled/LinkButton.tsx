@@ -8,7 +8,7 @@ const LinkButton = styled.a`
   @media only screen and (min-width: ${props => props.theme.breakpoints[1]}) {
     height: 90px;
     line-height: 90px;
-    padding: 0 ${props => props.theme.spaces.xxl};
+    padding: 0 ${props => props.theme.spaces.m};
     cursor: pointer;
   }
 `

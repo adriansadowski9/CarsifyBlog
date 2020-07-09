@@ -10,7 +10,12 @@ import LinkButton from 'components/Header/styled/LinkButton'
 import Hamburger from 'components/Header/styled/Hamburger'
 import HamburgerContainer from 'components/Header/styled/HamburgerContainer'
 import LogoWrapper from 'components/Header/styled/LogoWrapper'
-import Logo from 'assets/icons/Logo'
+import LogoText from 'components/Header/styled/LogoText'
+import LogoIconWrapper from 'components/Header/styled/LogoIconWrapper'
+import DarkModeButton from 'components/Header/styled/DarkModeButton'
+import Logo from '../../assets/icons/logo.svg'
+import Moon from '../../assets/icons/moon.svg'
+import Sun from '../../assets/icons/sun.svg'
 
 interface HeaderProps {
   darkModeEnabled: boolean
@@ -19,13 +24,17 @@ interface HeaderProps {
 }
 const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disableDarkMode }) => {
   const router = useRouter()
+  const themeContext: any = React.useContext(ThemeContext)
   const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false)
   return (
     <header>
       <Navigation>
         <Link href="/">
           <LogoWrapper>
-            <Logo />
+            <LogoText>Nazwa</LogoText>
+            <LogoIconWrapper>
+              <Logo />
+            </LogoIconWrapper>
           </LogoWrapper>
         </Link>
         <Menu isOpen={isMobileMenuOpened}>
@@ -57,9 +66,13 @@ const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disabl
             </NavListItem>
           </NavList>
           {darkModeEnabled ?
-            <button type="button" onClick={disableDarkMode}>Jasność</button>
+            <DarkModeButton type="button" onClick={disableDarkMode}>
+              <Sun fill={themeContext.colors.text}/>
+            </DarkModeButton>
             :
-            <button type="button" onClick={enableDarkMode}>Ciemność</button>
+            <DarkModeButton type="button" onClick={enableDarkMode}>
+              <Moon fill={themeContext.colors.text}/>
+            </DarkModeButton>
           }
         </Menu>
         <HamburgerContainer onClick={() => setIsMobileMenuOpened(!isMobileMenuOpened)}>

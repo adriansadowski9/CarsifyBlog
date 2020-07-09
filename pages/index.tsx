@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { attributes } from 'content/pages/home.md'
+import { Carousel } from 'react-responsive-carousel'
 import { getArticles, getTips, getAds } from 'utils/getPosts'
 import PageHead from 'components/PageHead'
 import ArticlesSection from 'components/HomeSections/ArticlesSection'
@@ -10,9 +11,11 @@ import ArticleCard from 'components/Cards/ArticleCard'
 import TipCard from 'components/Cards/TipCard'
 import AdCard from 'components/Cards/AdCard'
 import SectionName from 'components/HomeSections/SectionName'
-import Row from 'components/Layout/styled/Row';
+import InformationCard from 'components/Cards/InformationCard'
+import Row from 'components/Layout/styled/Row'
 
-const Home = ({ articlesList, tipsList, adsList }) => {
+const Home = ({ articlesList, tipsList, infosList, adsList }) => {
+  console.log(infosList)
   const { pageTitle, pageDescription } = attributes
   return (
     <>
@@ -52,7 +55,32 @@ const Home = ({ articlesList, tipsList, adsList }) => {
               )})}
           </TipsSection>
           <InformationSection>
-
+            <SectionName name="Informacje" />
+            <Carousel
+              infiniteLoop
+              autoPlay
+              swipeable
+              stopOnHover
+              emulateTouch
+              showThumbs={false}
+              renderArrowNext={() => null}
+              renderArrowPrev={() => null}
+              statusFormatter={() => null}
+            >
+              {infosList.map((information, index) => {
+                const {featuredImage, title, highlightedText} = information.attributes
+                const {slug} = information
+                return (
+                  <InformationCard
+                    key={`${title}-${index}`}
+                    image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                    title={title}
+                    textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0, 160)}...` : highlightedText}
+                    slug={slug}
+                  />
+                )
+              })}
+            </Carousel>
           </InformationSection>
         </div>
       </Row>
@@ -81,8 +109,9 @@ const Home = ({ articlesList, tipsList, adsList }) => {
 Home.getInitialProps = async () => {
   const articlesList = await getArticles({ sort: 'desc', count: 6 })
   const tipsList = await getTips({ sort: 'desc', count: 2 })
+  const infosList = await getTips({ sort: 'desc', count: 5, categories: ['Bezpieczeństwo', 'Technika jazdy', 'Eksploatacja', 'Warto wiedzieć']})
   const adsList = await getAds({ sort: 'desc', count: 4 })
-  return { articlesList, tipsList, adsList }
+  return { articlesList, tipsList, infosList, adsList }
 }
 
 export default Home

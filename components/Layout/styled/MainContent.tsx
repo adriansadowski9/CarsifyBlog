@@ -10,6 +10,7 @@ const MainContent = styled.main`
     padding: 0 ${props => props.theme.spaces.xxs};
     margin: 0 auto;
     margin-top: calc(90px + ${props => props.theme.spaces.m});
+    max-width: 840px;
   }
   
   @media only screen and (min-width: ${props => props.theme.breakpoints[1]}) {

@@ -25,7 +25,7 @@ const NavListItem = styled.li<{isActive: boolean}>`
     margin: 0;
     ${props => props.isActive ? `
       &:after {
-          width: calc(100% - 3 * ${props.theme.spaces.xxl});
+          width: calc(100% - 2 * ${props.theme.spaces.xxl});
           height: 5px;
           top: unset;
           right: unset;

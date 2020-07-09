@@ -4,6 +4,7 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import useDarkMode from 'use-dark-mode'
 import Layout from 'components/Layout'
 import { lightTheme, darkTheme } from 'utils/theme'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -26,12 +27,34 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.text};
     background: ${props => props.theme.colors.bg};
   }
+  
+  .carousel .control-dots .dot {
+    width: 5px;
+    height: 5px;
+    margin: 0 5px;
+    box-shadow: none;
+    
+    .selected {
+      opacity: .35;
+    }
+    
+    :focus {
+      outline: none;
+    }
+  }
 `;
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const darkMode = useDarkMode(false)
+  const darkMode = useDarkMode()
   const theme = darkMode.value ? darkTheme : lightTheme
-  return (
+
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const body = (
     <ThemeProvider theme={theme}>
       <GlobalStyle/>
       <Layout darkModeEnabled={darkMode.value} enableDarkMode={darkMode.enable} disableDarkMode={darkMode.disable}>
@@ -39,6 +62,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Layout>
     </ThemeProvider>
   )
+
+  if (!mounted) {
+    return null
+  }
+
+  return body
 }
 
 export default MyApp
