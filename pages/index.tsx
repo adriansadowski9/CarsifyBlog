@@ -15,7 +15,6 @@ import InformationCard from 'components/Cards/InformationCard'
 import Row from 'components/Layout/styled/Row'
 
 const Home = ({ articlesList, tipsList, infosList, adsList }) => {
-  console.log(infosList)
   const { pageTitle, pageDescription } = attributes
   return (
     <>
