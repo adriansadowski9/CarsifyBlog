@@ -42,14 +42,14 @@ const importAds = async () => {
 
 interface getArticlesArgs {
   sort: string
-  category?: string
+  categories?: string
   count?: number
 }
 
-export const getArticles = async ({ sort, category, count }: getArticlesArgs) => {
+export const getArticles = async ({ sort, categories, count }: getArticlesArgs) => {
   let importedArticles = await importArticles()
-  if(category) {
-    importedArticles = importedArticles.filter(article => article.attributes?.categories?.some(categoryItem => categoryItem.category === category))
+  if (categories) {
+    importedArticles = importedArticles.filter(article => categories.includes(article.attributes.category))
   }
   if(sort === 'asc') {
     importedArticles.sort((a, b) => dayjs(a.attributes.date).diff(dayjs(b.attributes.date)))
@@ -62,14 +62,14 @@ export const getArticles = async ({ sort, category, count }: getArticlesArgs) =>
 
 interface getTipsArgs {
   sort: string
-  category?: string
+  categories?: string[]
   count?: number
 }
 
-export const getTips = async ({ sort, category, count }: getTipsArgs) => {
+export const getTips = async ({ sort, categories, count }: getTipsArgs) => {
   let importedTips = await importTips()
-  if(category) {
-    importedTips = importedTips.filter(tip => tip.attributes?.categories?.some(categoryItem => categoryItem.category === category))
+  if (categories) {
+    importedTips = importedTips.filter(tip => categories.includes(tip.attributes.category))
   }
   if(sort === 'asc') {
     importedTips.sort((a, b) => dayjs(a.attributes.date).diff(dayjs(b.attributes.date)))

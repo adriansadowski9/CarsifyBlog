@@ -21,6 +21,15 @@ module.exports = withOptimizedImages(
           }
         }
       )
+      cfg.module.rules.map((rule) => {
+        if (rule.test !== undefined && rule.test.source.includes('|svg|')) {
+          rule.test = new RegExp(rule.test.source.replace('|svg|', '|'));
+        }
+      });
+      cfg.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      });
       return cfg;
     }
   })

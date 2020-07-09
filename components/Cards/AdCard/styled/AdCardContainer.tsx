@@ -5,8 +5,11 @@ const AdCardContainer = styled.article`
   width: 100%;
   margin-bottom: ${props => props.theme.spaces.m};
   @media only screen and (min-width: ${props => props.theme.breakpoints[0]}) {
-    width: 300px;
+    width: 400px;
     cursor: pointer;
+  }
+  @media only screen and (min-width: ${props => props.theme.breakpoints[1]}) {
+    width: 300px;
   }
 `
 
