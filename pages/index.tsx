@@ -20,7 +20,7 @@ const Home = ({ articlesList, tipsList, infosList, adsList }) => {
     <>
       <PageHead title={pageTitle} description={pageDescription}/>
       <Row>
-        <ArticlesSection>
+        <ArticlesSection withMargin>
           <SectionName name="Aktualności" />
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes

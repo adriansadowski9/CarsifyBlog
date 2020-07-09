@@ -3,6 +3,9 @@ import dayjs from 'dayjs'
 import { attributes } from 'content/pages/ads.md'
 import { getAds } from 'utils/getPosts'
 import PageHead from 'components/PageHead';
+import AdsSection from 'components/HomeSections/AdsSection'
+import AdCard from 'components/Cards/AdCard'
+import SectionName from 'components/HomeSections/SectionName';
 
 const Ads = ({ adsList }) => {
   const { pageTitle, pageDescription } = attributes
@@ -10,17 +13,22 @@ const Ads = ({ adsList }) => {
   return (
     <>
       <PageHead title={pageTitle} description={pageDescription}/>
-      <div>
+      <AdsSection>
+        <SectionName name="Perełki z ogłoszeń" />
         {adsList.map((ad, index) => {
-          const { date, title, highlightedText } = ad.attributes
+          const { featuredImage, title, highlightedText, carData } = ad.attributes
+          const { slug } = ad
           return (
-            <div key={index}>
-              <p>{date}</p>
-              <h3>{title}</h3>
-              <p>{highlightedText}</p>
-            </div>
+            <AdCard
+              key={`${title}-${index}`}
+              image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+              title={title}
+              textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
+              carData={carData}
+              slug={slug}
+            />
           )})}
-      </div>
+      </AdsSection>
     </>
   )
 }

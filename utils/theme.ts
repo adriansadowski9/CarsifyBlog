@@ -75,7 +75,7 @@ export const lightTheme = {
     categoryBoxActiveBg: colors.red,
     categoryBoxActiveText: colors.white,
     categoryBoxBg: colors.darkSilver,
-    categoryBoxActive: colors.black,
+    categoryBoxText: colors.black,
     inputBorder: colors.darkGray,
     submitButton: colors.red,
     socialButton: colors.darkGray
@@ -117,7 +117,7 @@ export const darkTheme = {
     categoryBoxActiveBg: colors.red,
     categoryBoxActiveText: colors.white,
     categoryBoxBg: colors.darkSilver,
-    categoryBoxActive: colors.black,
+    categoryBoxText: colors.black,
     inputBorder: colors.white,
     submitButton: colors.red,
     socialButton: colors.black

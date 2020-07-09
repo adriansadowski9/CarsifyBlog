@@ -1,15 +1,47 @@
 import * as React from 'react';
 import PageHead from 'components/PageHead';
+import { getArticles } from 'utils/getPosts';
+import { getArticleCategories } from 'utils/getCategories';
+import Categories from 'components/Categories';
+import ArticleCard from 'components/Cards/ArticleCard';
+import ArticlesSection from 'components/HomeSections/ArticlesSection';
+import SectionName from 'components/HomeSections/SectionName';
 
-const Article = ({ attributes, isCategory, articleExists }) => {
+const Article = ({ attributes, articlesList, articleCategories, isCategory, articleExists }) => {
   if(isCategory) {
     const { title, pageTitle, pageDescription } = attributes
+    const categories = Array.from(articleCategories, (c: any) => {
+      return {
+        title: c.attributes.title,
+        hrefAs: `/artykuly/${c.slug}`,
+        href: '/artykuly/[articleParam]'
+      }
+    })
+    categories.unshift({
+      title: 'Wszystkie',
+      hrefAs: '/artykuly',
+      href: '/artykuly'
+    })
     return (
       <>
         <PageHead title={pageTitle} description={pageDescription} />
-        <div>
-          <span>{title}</span>
-        </div>
+        <ArticlesSection notEnoughItems={(articlesList.length + 1) % 3 !== 0}>
+          <SectionName name={title} />
+          <Categories items={categories} height="385px"/>
+          {articlesList.map((article, index) => {
+            const { featuredImage, title, highlightedText, category } = article.attributes
+            const { slug } = article
+            return (
+              <ArticleCard
+                key={`${title}-${index}`}
+                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                title={title}
+                textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
+                category={category}
+                slug={slug}
+              />
+            )})}
+        </ArticlesSection>
       </>
     )
   } else if (articleExists) {
@@ -48,11 +80,15 @@ const Article = ({ attributes, isCategory, articleExists }) => {
 Article.getInitialProps = async ({ ...props }) => {
   const { articleParam } = props.query
   let markdownFile
+  let articlesList
+  let articleCategories
   let isCategory
   let articleExists
 
   try {
     markdownFile = await import(`../../content/categories/articles/${articleParam}.md`)
+    articlesList = await getArticles({ sort: 'desc', categories: [`${markdownFile.attributes.title}`] })
+    articleCategories = await getArticleCategories()
     isCategory = true
   } catch {
     isCategory = false
@@ -69,6 +105,8 @@ Article.getInitialProps = async ({ ...props }) => {
 
   return {
     ...markdownFile,
+    articlesList,
+    articleCategories,
     isCategory,
     articleExists
   }

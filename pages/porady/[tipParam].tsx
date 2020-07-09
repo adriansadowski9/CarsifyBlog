@@ -1,15 +1,47 @@
 import * as React from 'react';
+import { getTips } from 'utils/getPosts';
+import { getTipCategories } from 'utils/getCategories';
 import PageHead from 'components/PageHead';
+import SectionName from 'components/HomeSections/SectionName';
+import Categories from 'components/Categories';
+import TipCard from 'components/Cards/TipCard';
+import TipsSection from 'components/HomeSections/TipsSection';
 
-const Tip = ({ attributes, isCategory, tipExists }) => {
+const Tip = ({ attributes, tipsList, tipCategories, isCategory, tipExists }) => {
   if (isCategory) {
     const { title, pageTitle, pageDescription } = attributes
+    const categories = Array.from(tipCategories, (c: any) => {
+      return {
+        title: c.attributes.title,
+        hrefAs: `/porady/${c.slug}`,
+        href: '/porady/[tipParam]'
+      }
+    })
+    categories.unshift({
+      title: 'Wszystkie',
+      hrefAs: '/porady',
+      href: '/porady'
+    })
     return (
       <>
         <PageHead title={pageTitle} description={pageDescription} />
-        <div>
-          <span>{title}</span>
-        </div>
+        <TipsSection isHorizontal notEnoughItems={(tipsList.length + (tipsList.length < 3 ? 1 : 2)) % 3 !== 0}>
+          <SectionName name={title} />
+          <Categories items={categories} height="825px"/>
+          {tipsList.map((tip, index) => {
+            const { featuredImage, title, highlightedText, category } = tip.attributes
+            const { slug } = tip
+            return (
+              <TipCard
+                key={`${title}-${index}`}
+                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                title={title}
+                textSnippet={highlightedText.length > 160 ? `${highlightedText.substring(0,160)}...` : highlightedText}
+                category={category}
+                slug={slug}
+              />
+            )})}
+        </TipsSection>
       </>
     )
   } else if (tipExists) {
@@ -48,11 +80,15 @@ const Tip = ({ attributes, isCategory, tipExists }) => {
 Tip.getInitialProps = async ({ ...props }) => {
   const { tipParam } = props.query
   let markdownFile
+  let tipsList
+  let tipCategories
   let isCategory
   let tipExists
 
   try {
     markdownFile = await import(`../../content/categories/tips/${tipParam}.md`)
+    tipsList = await getTips({ sort: 'desc', categories: [`${markdownFile.attributes.title}`] })
+    tipCategories = await getTipCategories()
     isCategory = true
   } catch {
     isCategory = false
@@ -69,6 +105,8 @@ Tip.getInitialProps = async ({ ...props }) => {
 
   return {
     ...markdownFile,
+    tipsList,
+    tipCategories,
     isCategory,
     tipExists
   }

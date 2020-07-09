@@ -39,10 +39,9 @@ const importAds = async () => {
   );
 };
 
-
 interface getArticlesArgs {
   sort: string
-  categories?: string
+  categories?: string[]
   count?: number
 }
 
