@@ -13,6 +13,7 @@
   "dependencies": {
     "@svgr/webpack": "^5.4.0",
     "dayjs": "^1.8.29",
+    "html-react-parser": "^0.13.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "next": "^9.4.4",
@@ -23,6 +24,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-responsive-carousel": "^3.2.9",
+    "remark": "^12.0.1",
+    "remark-html": "^12.0.0",
     "responsive-loader": "^1.2.0",
     "sharp": "^0.25.4",
     "styled-components": "^5.1.1",

@@ -20,8 +20,9 @@ highlightedText: >-
   mollis non rutrum eu, maximus aliquet eros. Nullam sit amet enim at sapien
   vestibulum imperdiet consequat ut ipsum. Sed venenatis leo in ex lacinia, nec
   egestas lorem imperdiet. Vestibulum auctor sapien at rutrum dignissim.
-text: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas tempus
+text: |
+  ### Lorem ipsum dolor sit amet
+  Consectetur adipiscing elit. Sed egestas tempus
   eleifend. Integer mattis, nisl congue pretium fringilla, turpis sem ornare
   lorem, eu euismod urna lacus nec magna. Aliquam a ligula ac Leo congue
   efficitur. Morbi ex magna, porttitor sit amet odio at, blandit tempor metus.

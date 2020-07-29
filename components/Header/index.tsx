@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disabl
       <Navigation>
         <Link href="/">
           <LogoWrapper>
-            <LogoText>Nazwa</LogoText>
+            <LogoText>Carsify</LogoText>
             <LogoIconWrapper>
               <Logo />
             </LogoIconWrapper>
