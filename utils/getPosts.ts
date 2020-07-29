@@ -43,12 +43,16 @@ interface getArticlesArgs {
   sort: string
   categories?: string[]
   count?: number
+  excludeSlug?: string
 }
 
-export const getArticles = async ({ sort, categories, count }: getArticlesArgs) => {
+export const getArticles = async ({ sort, categories, count, excludeSlug }: getArticlesArgs) => {
   let importedArticles = await importArticles()
   if (categories) {
     importedArticles = importedArticles.filter(article => categories.includes(article.attributes.category))
+  }
+  if (excludeSlug) {
+    importedArticles = importedArticles.filter(article => article.slug !== excludeSlug)
   }
   if(sort === 'asc') {
     importedArticles.sort((a, b) => dayjs(a.attributes.date).diff(dayjs(b.attributes.date)))
@@ -63,6 +67,7 @@ interface getTipsArgs {
   sort: string
   categories?: string[]
   count?: number
+  excludeSlug?: string
 }
 
 export const getTips = async ({ sort, categories, count }: getTipsArgs) => {
@@ -82,6 +87,7 @@ export const getTips = async ({ sort, categories, count }: getTipsArgs) => {
 interface getAdsArgs {
   sort: string
   count?: number
+  excludeSlug?: string
 }
 
 export const getAds = async ({ sort, count }: getAdsArgs) => {

@@ -26,7 +26,7 @@ const Articles = ({ articlesList, articleCategories }) => {
     <>
       <PageHead title={pageTitle} description={pageDescription} />
       <ArticlesSection notEnoughItems={(articlesList.length + 1) % 3 !== 0}>
-        <SectionName name="Artykuły" />
+        <SectionName name="Aktualności" />
         <Categories items={categories} height="385px"/>
         {articlesList.map((article, index) => {
           const { featuredImage, title, highlightedText, category } = article.attributes

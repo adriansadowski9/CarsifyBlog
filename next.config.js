@@ -9,7 +9,6 @@ module.exports = withOptimizedImages(
         {
           test: /\.md$/,
           loader: 'frontmatter-markdown-loader',
-          options: { mode: ['react-component'] }
         }
       )
       cfg.module.rules.push(
