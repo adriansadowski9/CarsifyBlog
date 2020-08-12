@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const ArticleImage = styled.img`
+const PostImage = styled.img<{notFullWidth: boolean}>`
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -10,7 +10,10 @@ const ArticleImage = styled.img`
   }
   @media screen and (min-width: ${props => props.theme.breakpoints[1]}) {
     height: 450px;
+    width: ${props => props.notFullWidth ? '800px' : '100%'};
+    display: flex;
+    justify-content: flex-end;
   }
 `
 
-export default ArticleImage
+export default PostImage

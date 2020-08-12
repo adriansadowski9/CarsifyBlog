@@ -60,6 +60,9 @@ export const lightTheme = {
     menuActiveItem: colors.red,
     hamburger: colors.red,
     menuArrow: colors.red,
+    iconInfoBg: colors.silver,
+    iconInfoIcon: colors.black,
+    iconInfoText: colors.gray,
     subtitleText: colors.gray,
     bulletActive: colors.white,
     bullet: colors.silver,
@@ -68,6 +71,7 @@ export const lightTheme = {
     informationImageOverlay: colors.black,
     informationIndicator: colors.white,
     adCarBoxBg: colors.darkGray,
+    adCarBoxText: colors.white,
     adLocalization: colors.red,
     adPrice: colors.red,
     contentsList: colors.red,
@@ -79,7 +83,8 @@ export const lightTheme = {
     categoryBoxText: colors.black,
     inputBorder: colors.darkGray,
     submitButton: colors.red,
-    socialButton: colors.darkGray
+    socialButton: colors.darkGray,
+    socialBoxBg: colors.white
   }
 }
 
@@ -103,6 +108,9 @@ export const darkTheme = {
     menuActiveItem: colors.red,
     hamburger: colors.red,
     menuArrow: colors.red,
+    iconInfoBg: colors.silver,
+    iconInfoIcon: colors.black,
+    iconInfoText: colors.gray,
     subtitleText: colors.gray,
     bulletActive: colors.white,
     bullet: colors.silver,
@@ -111,6 +119,7 @@ export const darkTheme = {
     informationImageOverlay: colors.black,
     informationIndicator: colors.white,
     adCarBoxBg: colors.black,
+    adCarBoxText: colors.white,
     adLocalization: colors.red,
     adPrice: colors.red,
     contentsList: colors.red,
@@ -122,6 +131,7 @@ export const darkTheme = {
     categoryBoxText: colors.black,
     inputBorder: colors.white,
     submitButton: colors.red,
-    socialButton: colors.black
+    socialButton: colors.black,
+    socialBoxBg: colors.white
   }
 }
