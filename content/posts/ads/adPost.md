@@ -8,11 +8,11 @@ subtitle: >-
 date: 2020-02-20T19:31:20.591Z
 featuredImage: /assets/img/photo-1568605117036-5fe5e7bab0b7.jpeg
 carData:
-  body: coupe
+  body: Coupe
   course: '190000'
   doors: '5'
-  engine: 'Gas, 2.3l'
-  gearbox: Manual
+  engine: 'Benzynowy, 2.3l'
+  gearbox: 'Manualna'
   hp: '215'
   localization: Londyn
   name: Lorem ipsum

@@ -70,10 +70,17 @@ interface getTipsArgs {
   excludeSlug?: string
 }
 
-export const getTips = async ({ sort, categories, count }: getTipsArgs) => {
+export const getTips = async ({ sort, categories, count, excludeSlug }: getTipsArgs) => {
   let importedTips = await importTips()
   if (categories) {
     importedTips = importedTips.filter(tip => categories.includes(tip.attributes.category))
+  }
+  if (excludeSlug) {
+    importedTips = importedTips.filter(tip => tip.slug !== excludeSlug)
+  }
+  if (!importedTips.length && excludeSlug) {
+    importedTips = await importTips()
+    importedTips = importedTips.filter(tip => tip.slug !== excludeSlug)
   }
   if(sort === 'asc') {
     importedTips.sort((a, b) => dayjs(a.attributes.date).diff(dayjs(b.attributes.date)))
@@ -90,8 +97,12 @@ interface getAdsArgs {
   excludeSlug?: string
 }
 
-export const getAds = async ({ sort, count }: getAdsArgs) => {
-  const importedAds = await importAds()
+export const getAds = async ({ sort, count, excludeSlug }: getAdsArgs) => {
+  let importedAds = await importAds()
+
+  if (excludeSlug) {
+    importedAds = importedAds.filter(ad => ad.slug !== excludeSlug)
+  }
   if(sort === 'asc') {
     importedAds.sort((a, b) => dayjs(a.attributes.date).diff(dayjs(b.attributes.date)))
   } else {
