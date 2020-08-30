@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRouter } from 'next/router'
 import dayjs from 'dayjs';
 import remark from 'remark';
 import remarkHtml from 'remark-html';
@@ -26,7 +27,7 @@ import ShareSectionTextContainer from 'components/Post/ShareSectionTextContainer
 import ShareSectionText from 'components/Post/ShareSectionText';
 import ShareSectionBoldedText from 'components/Post/ShareSectionBoldedText';
 import PostImageContainer from 'components/Post/PostImageContainer';
-import SocialShareContainer from 'components/SocialShareSection/SocialShareContainer';
+import SocialShareSection from 'components/SocialShareSection';
 import TopInfoContainer from 'components/Post/TopInfoContainer';
 
 const Article = ({attributes, articlesList, articleCategories, isCategory, articleExists, moreArticles}) => {
@@ -73,7 +74,9 @@ const Article = ({attributes, articlesList, articleCategories, isCategory, artic
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1)
     const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`)
     const textToHtml = remark().use(remarkHtml).processSync(text).toString()
-    const shareUrl = 'http://github.com';
+    const router = useRouter()
+    const shareUrl = `https://carsify.pl${router.asPath}`
+
     return (
       <>
         <PageHead title={`Article - ${title}`} description="Article description"/>
@@ -91,7 +94,7 @@ const Article = ({attributes, articlesList, articleCategories, isCategory, artic
               sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
               alt={title}
             />
-            <SocialShareContainer shareUrl={shareUrl}
+            <SocialShareSection shareUrl={shareUrl}
                                   quote={title}
                                   pinterestMediaUrl={responsiveImage.src}
                                   isAbsolute
@@ -113,7 +116,7 @@ const Article = ({attributes, articlesList, articleCategories, isCategory, artic
                 <ShareSectionText>Spodobał Ci się ten tekst?</ShareSectionText>
                 <ShareSectionBoldedText>Podziel się z innymi!</ShareSectionBoldedText>
               </ShareSectionTextContainer>
-              <SocialShareContainer shareUrl={shareUrl} quote={title}
+              <SocialShareSection shareUrl={shareUrl} quote={title}
                                     pinterestMediaUrl={responsiveImage.src} horizontal/>
             </ShareSectionContainer>
           </TextContainer>

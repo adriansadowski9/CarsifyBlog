@@ -7,7 +7,7 @@ subtitle: >-
   mollis non rutrum eu, maximus aliquet eros.
 date: 2019-02-20T19:31:20.591Z
 featuredImage: /assets/img/photo-1568605117036-5fe5e7bab0b7.jpeg
-category: Wiadomości
+category: Premiery
 contents:
   - link: '#parahraph1'
     name: Parahraph1

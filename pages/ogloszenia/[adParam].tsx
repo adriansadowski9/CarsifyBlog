@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRouter } from 'next/router'
 import dayjs from 'dayjs';
 import remark from 'remark';
 import remarkHtml from 'remark-html';
@@ -12,7 +13,6 @@ import Heading from 'components/Post/Heading';
 import Subheading from 'components/Post/Subheading';
 import PostImageContainer from 'components/Post/PostImageContainer';
 import PostImage from 'components/Post/PostImage';
-import SocialShareContainer from 'components/SocialShareSection/SocialShareContainer';
 import TextContainer from 'components/Post/TextContainer';
 import HighlightedText from 'components/Post/HighlightedText';
 import ContentsTitle from 'components/Post/ContentsTitle';
@@ -30,6 +30,7 @@ import CarDataName from 'components/Post/CarDataName';
 import CarDataLocalization from 'components/Post/CarDataLocalization';
 import CarDataRow from 'components/Post/CarDataRow';
 import CarDataPrice from 'components/Post/CarDataPrice';
+import SocialShareSection from 'components/SocialShareSection';
 
 const Ad = ({attributes, adExists, moreAds}) => {
   if (adExists) {
@@ -37,7 +38,8 @@ const Ad = ({attributes, adExists, moreAds}) => {
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1)
     const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`)
     const textToHtml = remark().use(remarkHtml).processSync(text).toString()
-    const shareUrl = 'http://github.com';
+    const router = useRouter()
+    const shareUrl = `https://carsify.pl${router.asPath}`;
 
     return (
       <>
@@ -93,7 +95,7 @@ const Ad = ({attributes, adExists, moreAds}) => {
               alt={title}
               notFullWidth
             />
-            <SocialShareContainer shareUrl={shareUrl}
+            <SocialShareSection shareUrl={shareUrl}
                                   quote={title}
                                   pinterestMediaUrl={responsiveImage.src}
                                   isAbsolute
@@ -116,7 +118,7 @@ const Ad = ({attributes, adExists, moreAds}) => {
                 <ShareSectionText>Spodobał Ci się ten tekst?</ShareSectionText>
                 <ShareSectionBoldedText>Podziel się z innymi!</ShareSectionBoldedText>
               </ShareSectionTextContainer>
-              <SocialShareContainer shareUrl={shareUrl} quote={title}
+              <SocialShareSection shareUrl={shareUrl} quote={title}
                                     pinterestMediaUrl={responsiveImage.src} horizontal/>
             </ShareSectionContainer>
           </TextContainer>
