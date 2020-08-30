@@ -5,9 +5,9 @@ title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 subtitle: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien ipsum,
   mollis non rutrum eu, maximus aliquet eros.
-date: 2020-04-20T19:31:20.591Z
+date: 2020-02-20T19:31:20.591Z
 featuredImage: /assets/img/photo-1568605117036-5fe5e7bab0b7.jpeg
-category: Premiery
+category: Warto wiedzieć
 contents:
   - link: '#parahraph1'
     name: Parahraph1

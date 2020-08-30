@@ -20,14 +20,14 @@ interface SocialShareSectionProps {
 
 const SocialShareSection: React.FC<SocialShareSectionProps> = ({isAbsolute, shareUrl, rightSide, horizontal, quote, pinterestMediaUrl}) => (
   <SocialShareContainer isAbsolute={isAbsolute} rightSide={rightSide} horizontal={horizontal}>
-    <FacebookShareButton url={shareUrl} quote={quote}>
-      <FacebookIcon size={24} round/>
+    <FacebookShareButton title="test" url={shareUrl} quote={quote}>
+      <FacebookIcon size={28} round/>
     </FacebookShareButton>
-    <TwitterShareButton url={shareUrl}>
-      <TwitterIcon size={24} round/>
+    <TwitterShareButton title="test" url={shareUrl}>
+      <TwitterIcon size={28} round/>
     </TwitterShareButton>
-    <PinterestShareButton url={shareUrl} media={pinterestMediaUrl}>
-      <PinterestIcon size={24} round/>
+    <PinterestShareButton title="test" url={shareUrl} media={pinterestMediaUrl}>
+      <PinterestIcon size={28} round/>
     </PinterestShareButton>
   </SocialShareContainer>
 )

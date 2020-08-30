@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRouter } from 'next/router'
 import dayjs from 'dayjs';
 import remark from 'remark';
 import remarkHtml from 'remark-html';
@@ -16,7 +17,7 @@ import Heading from 'components/Post/Heading';
 import Subheading from 'components/Post/Subheading';
 import PostImageContainer from 'components/Post/PostImageContainer';
 import PostImage from 'components/Post/PostImage';
-import SocialShareContainer from 'components/SocialShareSection/SocialShareContainer';
+import SocialShareSection from 'components/SocialShareSection';
 import TextContainer from 'components/Post/TextContainer';
 import HighlightedText from 'components/Post/HighlightedText';
 import ContentsTitle from 'components/Post/ContentsTitle';
@@ -47,9 +48,9 @@ const Tip = ({ attributes, tipsList, tipCategories, isCategory, tipExists, moreT
     return (
       <>
         <PageHead title={pageTitle} description={pageDescription} />
-        <TipsSection isHorizontal notEnoughItems={(tipsList.length + (tipsList.length < 3 ? 1 : 2)) % 3 !== 0}>
-          <SectionName name={title} />
-          <Categories items={categories} height="825px"/>
+        <SectionName name={title} />
+        <TipsSection hasCategories isHorizontal>
+          <Categories items={categories} height={categories.length > 5 ? '895px' : '385px'} />
           {tipsList.map((tip, index) => {
             const { featuredImage, title, highlightedText, category } = tip.attributes
             const { slug } = tip
@@ -71,7 +72,8 @@ const Tip = ({ attributes, tipsList, tipCategories, isCategory, tipExists, moreT
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1)
     const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`)
     const textToHtml = remark().use(remarkHtml).processSync(text).toString()
-    const shareUrl = 'http://github.com';
+    const router = useRouter()
+    const shareUrl = `https://carsify.pl${router.asPath}`
 
     return (
       <>
@@ -90,7 +92,7 @@ const Tip = ({ attributes, tipsList, tipCategories, isCategory, tipExists, moreT
               sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
               alt={title}
             />
-            <SocialShareContainer shareUrl={shareUrl}
+            <SocialShareSection shareUrl={shareUrl}
                                   quote={title}
                                   pinterestMediaUrl={responsiveImage.src}
                                   isAbsolute
@@ -112,7 +114,7 @@ const Tip = ({ attributes, tipsList, tipCategories, isCategory, tipExists, moreT
                 <ShareSectionText>Spodobał Ci się ten tekst?</ShareSectionText>
                 <ShareSectionBoldedText>Podziel się z innymi!</ShareSectionBoldedText>
               </ShareSectionTextContainer>
-              <SocialShareContainer shareUrl={shareUrl} quote={title}
+              <SocialShareSection shareUrl={shareUrl} quote={title}
                                     pinterestMediaUrl={responsiveImage.src} horizontal/>
             </ShareSectionContainer>
           </TextContainer>

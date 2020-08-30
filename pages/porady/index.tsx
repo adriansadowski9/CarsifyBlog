@@ -27,9 +27,9 @@ const Tips = ({ tipsList, tipCategories }) => {
   return (
     <>
       <PageHead title={pageTitle} description={pageDescription}/>
-      <TipsSection isHorizontal notEnoughItems={(tipsList.length + (tipsList.length < 3 ? 1 : 2)) % 3 !== 0}>
-        <SectionName name="Moto porady" />
-        <Categories items={categories} height="825px"/>
+      <SectionName name="Moto porady" />
+      <TipsSection hasCategories isHorizontal>
+        <Categories items={categories} height="895px"/>
         {tipsList.map((tip, index) => {
           const { featuredImage, title, highlightedText, category } = tip.attributes
           const { slug } = tip
