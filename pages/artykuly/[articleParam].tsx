@@ -51,7 +51,7 @@ const Article = ({attributes, articlesList, articleCategories, isCategory, artic
         <PageHead title={pageTitle} description={pageDescription}/>
         <ArticlesSection notEnoughItems={(articlesList.length + 1) % 3 !== 0}>
           <SectionName name={title}/>
-          <Categories items={categories} height="385px"/>
+          <Categories items={categories} height={categories.length > 5 ? '825px' : '385px'} />
           {articlesList.map((article, index) => {
             const {featuredImage, title, highlightedText, category} = article.attributes
             const {slug} = article

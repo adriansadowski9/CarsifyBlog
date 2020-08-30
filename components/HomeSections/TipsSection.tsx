@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const TipsSection = styled.section<{isHorizontal: boolean, notEnoughItems: boolean}>`
+const TipsSection = styled.section<{isHorizontal: boolean, notEnoughItems: boolean, hasCategories?: boolean}>`
   display: flex;
   flex-direction: column;
   
@@ -11,17 +11,19 @@ const TipsSection = styled.section<{isHorizontal: boolean, notEnoughItems: boole
   }
   
   @media only screen and (min-width: ${props => props.theme.breakpoints[1]}) {
+    ${props => props.hasCategories && `
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 30px;
+      ul:first-child {
+        grid-row: 1 / span 2;
+      }
+    `}
     ${props => props.isHorizontal ? '' : `
+      display: flex;
       flex-direction: column;
       justify-content: flex-start;
     `}
-    ${props => props.notEnoughItems ?
-      `&::after {
-              content: "";
-              flex: auto;
-              max-width: 400px;
-       }` : ''
-    }
   }
 `
 

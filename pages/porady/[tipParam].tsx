@@ -48,9 +48,9 @@ const Tip = ({ attributes, tipsList, tipCategories, isCategory, tipExists, moreT
     return (
       <>
         <PageHead title={pageTitle} description={pageDescription} />
-        <TipsSection isHorizontal notEnoughItems={(tipsList.length + (tipsList.length < 3 ? 1 : 2)) % 3 !== 0}>
-          <SectionName name={title} />
-          <Categories items={categories} height="825px"/>
+        <SectionName name={title} />
+        <TipsSection hasCategories isHorizontal>
+          <Categories items={categories} height={categories.length > 5 ? '895px' : '385px'} />
           {tipsList.map((tip, index) => {
             const { featuredImage, title, highlightedText, category } = tip.attributes
             const { slug } = tip
