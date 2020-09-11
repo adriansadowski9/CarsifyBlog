@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const ShareSectionTextContainer = styled.div`
   display: flex;
-  margin-bottom: ${props => props.theme.spaces.xs};
-`
+  margin-bottom: ${(props) => props.theme.spaces.xs};
+`;
 
-export default ShareSectionTextContainer
+export default ShareSectionTextContainer;

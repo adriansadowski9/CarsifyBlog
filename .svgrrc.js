@@ -4,4 +4,4 @@ module.exports = {
     '1em': '100%',
     '#000': '{props.fill}',
   },
-}
+};

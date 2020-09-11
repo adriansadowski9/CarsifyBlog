@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const InformationCardImageOverlay = styled.div`
   position: absolute;
@@ -6,8 +6,8 @@ const InformationCardImageOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: ${props => props.theme.colors.informationImageOverlay};
+  background: ${(props) => props.theme.colors.informationImageOverlay};
   opacity: 0.5;
-`
+`;
 
-export default InformationCardImageOverlay
+export default InformationCardImageOverlay;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const CarDataBox = styled.div`
   width: 70%;
@@ -6,11 +6,11 @@ const CarDataBox = styled.div`
   position: absolute;
   top: calc(100% - 40px);
   left: 20px;
-  background: ${props => props.theme.colors.adCarBoxBg};
-  color: ${props => props.theme.colors.adCarBoxText};
-  padding: ${props => props.theme.spaces.l};
-  
-  @media screen and (min-width: ${props => props.theme.breakpoints[1]}) {
+  background: ${(props) => props.theme.colors.adCarBoxBg};
+  color: ${(props) => props.theme.colors.adCarBoxText};
+  padding: ${(props) => props.theme.spaces.l};
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     width: 520px;
     max-width: 520px;
     position: absolute;
@@ -18,6 +18,6 @@ const CarDataBox = styled.div`
     left: 0;
     transform: translateY(-50%);
   }
-`
+`;
 
-export default CarDataBox
+export default CarDataBox;

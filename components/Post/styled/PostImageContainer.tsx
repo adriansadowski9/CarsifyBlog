@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const PostImageContainer = styled.div`
   position: relative;
@@ -6,10 +6,10 @@ const PostImageContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 256px;
-  
-  @media screen and (min-width: ${props => props.theme.breakpoints[1]}) {
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     margin: 0;
   }
-`
+`;
 
-export default PostImageContainer
+export default PostImageContainer;

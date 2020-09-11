@@ -1,13 +1,14 @@
-import * as React from 'react'
+import * as React from 'react';
 import Link from 'next/link';
-import CategoryItemContainer from 'components/Categories/styled/CategoryItemContainer';
-import CategoryItemText from 'components/Categories/styled/CategoryItemText';
+
+import CategoryItemContainer from '@components/Categories/styled/CategoryItemContainer';
+import CategoryItemText from '@components/Categories/styled/CategoryItemText';
 
 interface CategoryItemProps {
-  title: string
-  hrefAs: string
-  href: string
-  isActive: boolean
+  title: string;
+  hrefAs: string;
+  href: string;
+  isActive: boolean;
 }
 
 const CategoryItem: React.FC<CategoryItemProps> = ({ title, href, hrefAs, isActive }) => {
@@ -17,9 +18,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ title, href, hrefAs, isActi
         <CategoryItemText isActive={isActive}>{title}</CategoryItemText>
       </Link>
     </CategoryItemContainer>
-  )
-}
+  );
+};
 
-
-
-export default CategoryItem
+export default CategoryItem;
