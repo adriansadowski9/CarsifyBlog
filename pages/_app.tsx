@@ -55,23 +55,22 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     setMounted(true);
   }, []);
 
-  const body = (
+  if (!mounted) {
+    return null;
+  }
+
+  return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Layout
         darkModeEnabled={darkMode.value}
         enableDarkMode={darkMode.enable}
-        disableDarkMode={darkMode.disable}>
+        disableDarkMode={darkMode.disable}
+      >
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
   );
-
-  if (!mounted) {
-    return null;
-  }
-
-  return body;
 };
 
 export default MyApp;

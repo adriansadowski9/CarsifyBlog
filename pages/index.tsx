@@ -86,7 +86,8 @@ const Home: NextPage<HomeProps> = ({ articlesList, tipsList, infosList, adsList 
               showThumbs={false}
               renderArrowNext={() => null}
               renderArrowPrev={() => null}
-              statusFormatter={() => null}>
+              statusFormatter={() => null}
+            >
               {infosList.map((information, index) => {
                 const { featuredImage, title, highlightedText } = information.attributes;
                 const { slug } = information;
