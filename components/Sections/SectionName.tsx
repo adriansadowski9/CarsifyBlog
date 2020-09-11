@@ -1,6 +1,7 @@
 import * as React from 'react'
-import SectionNameContainer from 'components/HomeSections/styled/SectionNameContainer'
-import SectionNameText from 'components/HomeSections/styled/SectionNameText'
+
+import SectionNameContainer from 'components/Sections/styled/SectionNameContainer'
+import SectionNameText from 'components/Sections/styled/SectionNameText'
 
 interface SectionNameProps {
   name: string

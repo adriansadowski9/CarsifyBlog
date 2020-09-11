@@ -1,7 +1,7 @@
 import * as React from 'react'
-import IconInfoContainer from 'components/Post/IconInfoContainer';
-import IconInfoText from 'components/Post/IconInfoText';
-import IconInfoIconContainer from 'components/Post/IconInfoIconContainer';
+import IconInfoContainer from 'components/Post/styled/IconInfoContainer';
+import IconInfoText from 'components/Post/styled/IconInfoText';
+import IconInfoIconContainer from 'components/Post/styled/IconInfoIconContainer';
 
 interface IconInfo {
   text: string

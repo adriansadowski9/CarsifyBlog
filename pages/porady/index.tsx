@@ -4,10 +4,10 @@ import { attributes } from 'content/pages/ads.md'
 import { getTips } from 'utils/getPosts'
 import { getTipCategories } from 'utils/getCategories'
 import PageHead from 'components/PageHead'
-import TipsSection from 'components/HomeSections/TipsSection'
+import TipsSection from 'components/Sections/TipsSection'
 import TipCard from 'components/Cards/TipCard'
 import Categories from 'components/Categories';
-import SectionName from 'components/HomeSections/SectionName';
+import SectionName from 'components/Sections/SectionName';
 
 const Tips = ({ tipsList, tipCategories }) => {
   const { pageTitle, pageDescription } = attributes

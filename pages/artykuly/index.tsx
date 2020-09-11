@@ -3,10 +3,10 @@ import { attributes } from 'content/pages/articles.md'
 import { getArticles } from 'utils/getPosts'
 import { getArticleCategories } from 'utils/getCategories'
 import PageHead from 'components/PageHead'
-import ArticlesSection from 'components/HomeSections/ArticlesSection'
+import ArticlesSection from 'components/Sections/ArticlesSection'
 import ArticleCard from 'components/Cards/ArticleCard'
 import Categories from 'components/Categories'
-import SectionName from 'components/HomeSections/SectionName';
+import SectionName from 'components/Sections/SectionName';
 
 const Articles = ({ articlesList, articleCategories }) => {
   const categories = Array.from(articleCategories, (c: any) => {

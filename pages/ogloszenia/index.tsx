@@ -3,9 +3,9 @@ import dayjs from 'dayjs'
 import { attributes } from 'content/pages/ads.md'
 import { getAds } from 'utils/getPosts'
 import PageHead from 'components/PageHead';
-import AdsSection from 'components/HomeSections/AdsSection'
+import AdsSection from 'components/Sections/AdsSection'
 import AdCard from 'components/Cards/AdCard'
-import SectionName from 'components/HomeSections/SectionName';
+import SectionName from 'components/Sections/SectionName';
 
 const Ads = ({ adsList }) => {
   const { pageTitle, pageDescription } = attributes
