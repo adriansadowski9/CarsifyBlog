@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Navigation = styled.nav`
   position: fixed;
@@ -9,12 +9,12 @@ const Navigation = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 ${props => props.theme.spaces.l};
-  background: ${props => props.theme.colors.bg};
+  padding: 0 ${(props) => props.theme.spaces.l};
+  background: ${(props) => props.theme.colors.bg};
   z-index: 150;
-  @media only screen and (min-width: ${props => props.theme.breakpoints[1]}) {
-    padding: 0 ${props => props.theme.spaces.xxxl};
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    padding: 0 ${(props) => props.theme.spaces.xxxl};
   }
-`
+`;
 
-export default Navigation
+export default Navigation;

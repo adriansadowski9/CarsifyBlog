@@ -1,10 +1,11 @@
-import * as React from 'react'
-import { AppProps } from 'next/app'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import useDarkMode from 'use-dark-mode'
-import Layout from 'components/Layout'
-import { lightTheme, darkTheme } from 'utils/theme'
-import "react-responsive-carousel/lib/styles/carousel.min.css"
+import * as React from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { AppProps } from 'next/app';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import useDarkMode from 'use-dark-mode';
+
+import Layout from '@components/Layout';
+import { darkTheme, lightTheme, Theme } from '@utils/theme';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -24,8 +25,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    color: ${props => props.theme.colors.text};
-    background: ${props => props.theme.colors.bg};
+    color: ${(props) => props.theme.colors.text};
+    background: ${(props) => props.theme.colors.bg};
   }
   
   .carousel .control-dots .dot {
@@ -44,30 +45,33 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-  const darkMode = useDarkMode()
-  const theme = darkMode.value ? darkTheme : lightTheme
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+  const darkMode = useDarkMode();
+  const theme: Theme = darkMode.value ? darkTheme : lightTheme;
 
-  const [mounted, setMounted] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   const body = (
     <ThemeProvider theme={theme}>
-      <GlobalStyle/>
-      <Layout darkModeEnabled={darkMode.value} enableDarkMode={darkMode.enable} disableDarkMode={darkMode.disable}>
+      <GlobalStyle />
+      <Layout
+        darkModeEnabled={darkMode.value}
+        enableDarkMode={darkMode.enable}
+        disableDarkMode={darkMode.disable}>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
-  )
+  );
 
   if (!mounted) {
-    return null
+    return null;
   }
 
-  return body
-}
+  return body;
+};
 
-export default MyApp
+export default MyApp;

@@ -8,7 +8,9 @@
     "build": "next build",
     "postbuild": "next-on-netlify",
     "start": "next start",
-    "export": "npm run build && next export"
+    "export": "npm run build && next export",
+    "lint": "eslint --fix .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
     "@svgr/webpack": "^5.4.0",
@@ -37,11 +39,34 @@
     "@types/node": "^14.0.14",
     "@types/react": "^16.9.41",
     "@types/webpack-env": "^1.15.2",
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
     "babel-plugin-styled-components": "^1.11.0-0",
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
     "frontmatter-markdown-loader": "^3.6.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
+    "prettier": "^2.1.1",
     "typescript": "^3.9.6"
   },
   "browser": {
     "fs": false
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write --config ./.prettierrc"
+    ]
   }
 }

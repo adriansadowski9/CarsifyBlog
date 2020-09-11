@@ -1,12 +1,21 @@
-import * as React from 'react'
-import { attributes } from 'content/pages/contact.md'
-import PageHead from 'components/PageHead'
+import * as React from 'react';
+import { NextPage } from 'next';
 
-const Contact = () => {
-  const { pageTitle, pageDescription, contactEmail, facebookUrl, twitterUrl, instagramUrl } = attributes
+import PageHead from '@components/PageHead';
+import { attributes } from '@content/pages/contact.md';
+
+const Contact: NextPage = () => {
+  const {
+    pageTitle,
+    pageDescription,
+    contactEmail,
+    facebookUrl,
+    twitterUrl,
+    instagramUrl,
+  } = attributes;
   return (
     <>
-      <PageHead title={pageTitle} description={pageDescription}/>
+      <PageHead title={pageTitle} description={pageDescription} />
       <div>
         <h3>Kontakt:</h3>
         <div>
@@ -17,7 +26,7 @@ const Contact = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
