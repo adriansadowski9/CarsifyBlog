@@ -14,7 +14,7 @@ interface CategoryItemProps {
 const CategoryItem: React.FC<CategoryItemProps> = ({ title, href, hrefAs, isActive }) => {
   return (
     <CategoryItemContainer isActive={isActive}>
-      <Link href={href} as={hrefAs}>
+      <Link href={href} as={hrefAs} passHref>
         <CategoryItemText isActive={isActive}>{title}</CategoryItemText>
       </Link>
     </CategoryItemContainer>

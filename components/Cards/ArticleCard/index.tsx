@@ -21,25 +21,27 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, ca
   const themeContext: Theme = React.useContext(ThemeContext);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
-    <Link href="/artykuly/[articleParam]" as={`/artykuly/${slug}`}>
+    <Link href="/artykuly/[articleParam]" as={`/artykuly/${slug}`} passHref>
       <ArticleCardContainer>
-        <ArticleCardImage
-          src={responsiveImage.src}
-          srcSet={responsiveImage.srcSet}
-          sizes="(min-width: 768px) 400px, 100vw"
-          alt={title}
-        />
-        <ArticleCardInfoContainer>
-          <ArticleCardTitle>{title}</ArticleCardTitle>
-          <ArticleCardSnippet>{textSnippet}</ArticleCardSnippet>
-          <Category
-            name={category}
-            iconName="i"
-            nameColor={themeContext.colors.categoryName}
-            bgColor={themeContext.colors.iconCircleBg}
-            iconColor={themeContext.colors.icon}
+        <article>
+          <ArticleCardImage
+            src={responsiveImage.src}
+            srcSet={responsiveImage.srcSet}
+            sizes="(min-width: 768px) 400px, 100vw"
+            alt={title}
           />
-        </ArticleCardInfoContainer>
+          <ArticleCardInfoContainer>
+            <ArticleCardTitle>{title}</ArticleCardTitle>
+            <ArticleCardSnippet>{textSnippet}</ArticleCardSnippet>
+            <Category
+              name={category}
+              iconName="i"
+              nameColor={themeContext.colors.categoryName}
+              bgColor={themeContext.colors.iconCircleBg}
+              iconColor={themeContext.colors.icon}
+            />
+          </ArticleCardInfoContainer>
+        </article>
       </ArticleCardContainer>
     </Link>
   );

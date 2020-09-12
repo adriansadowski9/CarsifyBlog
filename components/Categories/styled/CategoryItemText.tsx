@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CategoryItemText = styled.h2<{ isActive: boolean }>`
+const CategoryItemText = styled.a<{ isActive: boolean }>`
   width: 100%;
   height: 100%;
   display: flex;
@@ -12,6 +12,7 @@ const CategoryItemText = styled.h2<{ isActive: boolean }>`
   font-weight: ${(props) => props.theme.fontWeights.bold};
   margin: 0;
   text-transform: uppercase;
+  text-decoration: none;
 `;
 
 export default CategoryItemText;
