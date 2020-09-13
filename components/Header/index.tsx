@@ -32,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disabl
   return (
     <header>
       <Navigation>
-        <Link href="/">
+        <Link href="/" passHref>
           <LogoWrapper>
             <LogoText>Carsify</LogoText>
             <LogoIconWrapper>
@@ -43,27 +43,27 @@ const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disabl
         <Menu isOpen={isMobileMenuOpened}>
           <NavList>
             <NavListItem isActive={router.pathname === '/'}>
-              <Link href="/">
+              <Link href="/" passHref>
                 <LinkButton>Strona główna</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname.startsWith('/artykuly')}>
-              <Link href="/artykuly">
+              <Link href="/artykuly" passHref>
                 <LinkButton>Aktualności</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname.startsWith('/porady')}>
-              <Link href="/porady">
+              <Link href="/porady" passHref>
                 <LinkButton>Moto porady</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname.startsWith('/ogloszenia')}>
-              <Link href="/ogloszenia">
+              <Link href="/ogloszenia" passHref>
                 <LinkButton>Ogłoszenia</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname === '/kontakt'}>
-              <Link href="/kontakt">
+              <Link href="/kontakt" passHref>
                 <LinkButton>Kontakt</LinkButton>
               </Link>
             </NavListItem>
