@@ -18,19 +18,21 @@ const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSni
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
     <Link href="/porady/[tipParam]" as={`/porady/${slug}`}>
-      <InformationCardContainer>
-        <InformationCardImage
-          src={responsiveImage.src}
-          srcSet={responsiveImage.srcSet}
-          sizes="(min-width: 768px) 400px, 100vw"
-          alt={title}
-        />
-        <InformationCardImageOverlay />
-        <InformationCardInfoContainer>
-          <InformationCardTitle>{title}</InformationCardTitle>
-          <InformationCardSnippet>{textSnippet}</InformationCardSnippet>
-        </InformationCardInfoContainer>
-      </InformationCardContainer>
+      <a>
+        <InformationCardContainer>
+          <InformationCardImage
+            src={responsiveImage.src}
+            srcSet={responsiveImage.srcSet}
+            sizes="(min-width: 768px) 400px, 100vw"
+            alt={title}
+          />
+          <InformationCardImageOverlay />
+          <InformationCardInfoContainer>
+            <InformationCardTitle>{title}</InformationCardTitle>
+            <InformationCardSnippet>{textSnippet}</InformationCardSnippet>
+          </InformationCardInfoContainer>
+        </InformationCardContainer>
+      </a>
     </Link>
   );
 };
