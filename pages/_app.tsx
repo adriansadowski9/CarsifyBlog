@@ -1,12 +1,16 @@
+import { ArticleCategory } from './artykuly/[articleParam]';
+import { TipCategory } from './porady/[tipParam]';
+
 import * as React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { AppProps } from 'next/app';
+import App, { AppContext, AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 
 import Layout from '@components/Layout';
+import { getArticleCategories } from '@utils/getCategories';
+import { getTipCategories } from '@utils/getCategories';
 import { darkTheme, lightTheme, Theme } from '@utils/theme';
-
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Montserrat';
@@ -44,11 +48,19 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 `;
+interface MyAppProps extends AppProps {
+  articleCategories: ArticleCategory[];
+  tipCategories: TipCategory[];
+}
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+const MyApp: ThemeProvider<MyAppProps> = ({
+  Component,
+  pageProps,
+  articleCategories,
+  tipCategories,
+}) => {
   const darkMode = useDarkMode();
   const theme: Theme = darkMode.value ? darkTheme : lightTheme;
-
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -66,6 +78,8 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         darkModeEnabled={darkMode.value}
         enableDarkMode={darkMode.enable}
         disableDarkMode={darkMode.disable}
+        articleCategories={articleCategories}
+        tipCategories={tipCategories}
       >
         <Component {...pageProps} />
       </Layout>
@@ -73,4 +87,10 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   );
 };
 
+MyApp.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  const articleCategories = await getArticleCategories();
+  const tipCategories = await getTipCategories();
+  return { ...appProps, articleCategories, tipCategories };
+};
 export default MyApp;
