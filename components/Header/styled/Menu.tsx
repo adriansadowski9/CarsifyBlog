@@ -25,14 +25,15 @@ const Menu = styled.div<{ isOpen }>`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    position: static;
+    position: sticky;
+    top: 0;
     visibility: visible;
     opacity: 1;
     width: auto;
     height: 90px;
     flex-direction: row;
     ${DarkModeButton} {
-      position: static;
+      position: sticky;
     }
   }
 `;
