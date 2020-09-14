@@ -9,7 +9,7 @@ const MainContent = styled.main`
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     padding: 0 ${(props) => props.theme.spaces.xxs};
     margin: 0 auto;
-    margin-top: calc(${(props) => props.theme.spaces.m});
+    margin-top: ${(props) => props.theme.spaces.m};
     margin-bottom: ${(props) => props.theme.spaces.m};
     max-width: 840px;
   }
