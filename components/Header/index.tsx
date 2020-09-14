@@ -9,7 +9,6 @@ import ChevronDown from '@assets/icons/chevronDown.svg';
 import Logo from '@assets/icons/logo.svg';
 import Moon from '@assets/icons/moon.svg';
 import Sun from '@assets/icons/sun.svg';
-import Dropdown from '@components/Dropdown';
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
 import Hamburger from '@components/Header/styled/Hamburger';
 import HamburgerContainer from '@components/Header/styled/HamburgerContainer';
@@ -18,6 +17,7 @@ import LogoIconWrapper from '@components/Header/styled/LogoIconWrapper';
 import LogoText from '@components/Header/styled/LogoText';
 import LogoWrapper from '@components/Header/styled/LogoWrapper';
 import Menu from '@components/Header/styled/Menu';
+import MenuDropdown from '@components/Header/styled/MenuDropdown';
 import Navigation from '@components/Header/styled/Navigation';
 import NavItemChevronContainer from '@components/Header/styled/NavItemChevronContainer';
 import NavList from '@components/Header/styled/NavList';
@@ -46,11 +46,21 @@ const Header: React.FC<HeaderProps> = ({
   const isAnyArticleCategoryActive = articleCategories.some((articleCategory) =>
     router.asPath.startsWith(`/artykuly/${articleCategory.slug}`)
   );
+  const isAnyTipCategoryActive = tipCategories.some((tipCategory) =>
+    router.asPath.startsWith(`/porady/${tipCategory.slug}`)
+  );
   const isDropdownItemActive = (basePath, itemSlug) =>
     router.asPath.startsWith(`${basePath}/${itemSlug}`);
-  console.log('isAnyArticleCategoryActive', isAnyArticleCategoryActive);
-  console.log('router.pathname', router);
-  console.log('articleCategories', articleCategories);
+  const [isArticlesOpen, setIsArticlesOpen] = React.useState(false);
+  const [isTipsOpen, setIsTipsOpen] = React.useState(false);
+  const handleArticlesOpen = () => {
+    setIsArticlesOpen(!isArticlesOpen);
+    setIsTipsOpen(false);
+  };
+  const handleTipsOpen = () => {
+    setIsTipsOpen(!isTipsOpen);
+    setIsArticlesOpen(false);
+  };
   return (
     <header>
       <Navigation>
@@ -71,42 +81,36 @@ const Header: React.FC<HeaderProps> = ({
             </NavListItem>
             <NavListItem>
               <NavItemChevronContainer>
-                <ChevronWrapper>
-                  <ChevronDown width="16px" />
+                <ChevronWrapper isOpen={isArticlesOpen}>
+                  <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
                 </ChevronWrapper>
                 <Link href="/artykuly">
-                  <LinkButton
-                    isActive={
-                      router.pathname.startsWith('/artykuly') && !isAnyArticleCategoryActive
-                    }
-                  >
-                    Aktualności
-                  </LinkButton>
+                  <LinkButton onClick={() => handleArticlesOpen()}>Aktualności</LinkButton>
                 </Link>
               </NavItemChevronContainer>
-              <Dropdown
+              <MenuDropdown
                 categories={articleCategories}
                 basePath="/artykuly"
                 isDropdownItemActive={isDropdownItemActive}
+                isActive={router.pathname.startsWith('/artykuly') && !isAnyArticleCategoryActive}
+                isArticlesOpen={isArticlesOpen}
               />
             </NavListItem>
             <NavListItem>
               <NavItemChevronContainer>
-                <ChevronWrapper>
-                  <ChevronDown width="16px" />
+                <ChevronWrapper isOpen={isTipsOpen}>
+                  <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
                 </ChevronWrapper>
                 <Link href="/porady">
-                  <LinkButton
-                    isActive={router.pathname.startsWith('/porady') && !isAnyArticleCategoryActive}
-                  >
-                    Moto porady
-                  </LinkButton>
+                  <LinkButton onClick={() => handleTipsOpen()}>Moto porady</LinkButton>
                 </Link>
               </NavItemChevronContainer>
-              <Dropdown
+              <MenuDropdown
                 categories={tipCategories}
                 basePath="/porady"
                 isDropdownItemActive={isDropdownItemActive}
+                isActive={router.pathname.startsWith('/porady') && !isAnyTipCategoryActive}
+                isTipsOpen={isTipsOpen}
               />
             </NavListItem>
             <NavListItem>

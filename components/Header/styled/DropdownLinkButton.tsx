@@ -6,7 +6,7 @@ const DropdownLinkButton = styled.a`
   
   text-decoration:none;
   &:hover{
-    font-weight:${(props) => props.theme.fontWeights.bold};
+    font-weight:${(props) => props.theme.fontWeights.medium};
   };
   
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {

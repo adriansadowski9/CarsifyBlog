@@ -1,6 +1,6 @@
-import DropdownContainer from './styled/DropdownContainer';
-import DropdownItem from './styled/DropdownItem';
-import DropdownLinkButton from './styled/DropdownLinkButton';
+import DropdownContainer from './DropdownContainer';
+import DropdownItem from './DropdownItem';
+import DropdownLinkButton from './DropdownLinkButton';
 
 import * as React from 'react';
 import Link from 'next/link';
@@ -11,10 +11,25 @@ interface DropdownProps {
   categories: ArticleCategory[] | TipCategory[];
   basePath?: string;
   isDropdownItemActive?: (basePath: string, itemSlug: string) => void;
+  isActive?: boolean;
+  isArticlesOpen?: boolean;
+  isTipsOpen?: boolean;
 }
-const Dropdown: React.FC<DropdownProps> = ({ categories, basePath, isDropdownItemActive }) => {
+const MenuDropdown: React.FC<DropdownProps> = ({
+  categories,
+  basePath,
+  isDropdownItemActive,
+  isActive,
+  isArticlesOpen,
+  isTipsOpen,
+}) => {
   return (
-    <DropdownContainer>
+    <DropdownContainer isOpen={isArticlesOpen || isTipsOpen}>
+      <DropdownItem isActive={isActive}>
+        <Link href={`${basePath}`} passHref>
+          <DropdownLinkButton>Wszystkie</DropdownLinkButton>
+        </Link>
+      </DropdownItem>
       {categories.map((category, index) => (
         <DropdownItem
           key={index}
@@ -31,4 +46,4 @@ const Dropdown: React.FC<DropdownProps> = ({ categories, basePath, isDropdownIte
   );
 };
 
-export default Dropdown;
+export default MenuDropdown;

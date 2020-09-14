@@ -1,8 +1,6 @@
-import ChevronWrapper from './ChevronWrapper';
-
 import styled from 'styled-components';
 
-import DropdownContainer from '@components/Dropdown/styled/DropdownContainer';
+import DropdownContainer from '@components/Header/styled/DropdownContainer';
 
 const NavListItem = styled.li`
   position: relative;
@@ -11,18 +9,15 @@ const NavListItem = styled.li`
   align-items: center;
   justify-content: center;
   margin-bottom: ${(props) => props.theme.spaces.s};
-    
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     &:hover ${DropdownContainer} {
-      
       opacity: 1;
       visibility: visible;
       height:auto;
     }
-    &:hover ${ChevronWrapper} {
-      transition:transform 1s;
-      transform:rotate(180deg)
-    }
+    
   }
+}
 `;
 
 export default NavListItem;
