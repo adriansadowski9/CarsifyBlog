@@ -44,27 +44,27 @@ const Header: React.FC<HeaderProps> = ({ darkModeEnabled, enableDarkMode, disabl
           <NavList>
             <NavListItem isActive={router.pathname === '/'}>
               <Link href="/" passHref>
-                <LinkButton>Strona główna</LinkButton>
+                <LinkButton onClick={() => setIsMobileMenuOpened(false)}>Strona główna</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname.startsWith('/artykuly')}>
               <Link href="/artykuly" passHref>
-                <LinkButton>Aktualności</LinkButton>
+                <LinkButton onClick={() => setIsMobileMenuOpened(false)}>Aktualności</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname.startsWith('/porady')}>
               <Link href="/porady" passHref>
-                <LinkButton>Moto porady</LinkButton>
+                <LinkButton onClick={() => setIsMobileMenuOpened(false)}>Moto porady</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname.startsWith('/ogloszenia')}>
               <Link href="/ogloszenia" passHref>
-                <LinkButton>Ogłoszenia</LinkButton>
+                <LinkButton onClick={() => setIsMobileMenuOpened(false)}>Ogłoszenia</LinkButton>
               </Link>
             </NavListItem>
             <NavListItem isActive={router.pathname === '/kontakt'}>
               <Link href="/kontakt" passHref>
-                <LinkButton>Kontakt</LinkButton>
+                <LinkButton onClick={() => setIsMobileMenuOpened(false)}>Kontakt</LinkButton>
               </Link>
             </NavListItem>
           </NavList>
