@@ -81,12 +81,13 @@ const Header: React.FC<HeaderProps> = ({
             </NavListItem>
             <NavListItem>
               <NavItemChevronContainer>
-                <ChevronWrapper isOpen={isArticlesOpen}>
+                <ChevronWrapper isOpen={isArticlesOpen} onClick={() => handleArticlesOpen()}>
                   <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
                 </ChevronWrapper>
-                <Link href="/artykuly">
-                  <LinkButton onClick={() => handleArticlesOpen()}>Aktualności</LinkButton>
-                </Link>
+
+                <LinkButton as="button" onClick={() => handleArticlesOpen()}>
+                  Aktualności
+                </LinkButton>
               </NavItemChevronContainer>
               <MenuDropdown
                 categories={articleCategories}
@@ -98,12 +99,13 @@ const Header: React.FC<HeaderProps> = ({
             </NavListItem>
             <NavListItem>
               <NavItemChevronContainer>
-                <ChevronWrapper isOpen={isTipsOpen}>
+                <ChevronWrapper isOpen={isTipsOpen} onClick={() => handleTipsOpen()}>
                   <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
                 </ChevronWrapper>
-                <Link href="/porady">
-                  <LinkButton onClick={() => handleTipsOpen()}>Moto porady</LinkButton>
-                </Link>
+
+                <LinkButton as="button" onClick={() => handleTipsOpen()}>
+                  Moto porady
+                </LinkButton>
               </NavItemChevronContainer>
               <MenuDropdown
                 categories={tipCategories}
