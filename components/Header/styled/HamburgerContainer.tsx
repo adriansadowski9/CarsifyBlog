@@ -8,7 +8,6 @@ const HamburgerContainer = styled.div`
   padding: 5px;
   cursor: pointer;
   z-index: 1000;
-
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     display: none;
   }
