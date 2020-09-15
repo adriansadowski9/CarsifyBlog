@@ -6,7 +6,7 @@ const NavList = styled.ul`
   margin: 0;
   width: 100%;
   margin-bottom: ${(props) => props.theme.spaces.l};
-
+  height: 90px;
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     display: flex;
     margin-bottom: 0;

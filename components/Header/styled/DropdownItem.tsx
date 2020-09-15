@@ -22,7 +22,8 @@ const DropdownItem = styled.li<{ isActive: boolean }>`
     }
   `
       : ''}
-  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    justify-content: flex-start;
     width: 100%;
     padding: ${(props) => props.theme.spaces.xxxs} ${(props) => props.theme.spaces.xs};
     ${(props) =>

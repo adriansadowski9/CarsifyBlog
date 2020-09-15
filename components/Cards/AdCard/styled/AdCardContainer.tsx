@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-const AdCardContainer = styled.article`
+const AdCardContainer = styled.a`
   position: relative;
   width: 100%;
   margin-bottom: ${(props) => props.theme.spaces.m};
+  text-decoration: none;
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     width: 400px;
     cursor: pointer;

@@ -9,6 +9,7 @@ import ChevronDown from '@assets/icons/chevronDown.svg';
 import Logo from '@assets/icons/logo.svg';
 import Moon from '@assets/icons/moon.svg';
 import Sun from '@assets/icons/sun.svg';
+import MenuDropdown from '@components/Header/MenuDropdown';
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
 import Hamburger from '@components/Header/styled/Hamburger';
 import HamburgerContainer from '@components/Header/styled/HamburgerContainer';
@@ -17,7 +18,6 @@ import LogoIconWrapper from '@components/Header/styled/LogoIconWrapper';
 import LogoText from '@components/Header/styled/LogoText';
 import LogoWrapper from '@components/Header/styled/LogoWrapper';
 import Menu from '@components/Header/styled/Menu';
-import MenuDropdown from '@components/Header/styled/MenuDropdown';
 import Navigation from '@components/Header/styled/Navigation';
 import NavItemChevronContainer from '@components/Header/styled/NavItemChevronContainer';
 import NavList from '@components/Header/styled/NavList';
@@ -64,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <header>
       <Navigation>
-        <Link href="/">
+        <Link href="/" passHref>
           <LogoWrapper>
             <LogoText>Carsify</LogoText>
             <LogoIconWrapper>
@@ -84,10 +84,21 @@ const Header: React.FC<HeaderProps> = ({
                 <ChevronWrapper isOpen={isArticlesOpen} onClick={() => handleArticlesOpen()}>
                   <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
                 </ChevronWrapper>
-
-                <LinkButton as="button" onClick={() => handleArticlesOpen()}>
-                  Aktualności
-                </LinkButton>
+                {isMobileMenuOpened ? (
+                  <LinkButton
+                    as="button"
+                    onClick={() => handleArticlesOpen()}
+                    isActive={router.pathname.startsWith('/artykuly') && !isArticlesOpen}
+                  >
+                    Aktualności
+                  </LinkButton>
+                ) : (
+                  <Link href="/artykuly">
+                    <LinkButton isActive={router.pathname.startsWith('/artykuly')}>
+                      Aktualności
+                    </LinkButton>
+                  </Link>
+                )}
               </NavItemChevronContainer>
               <MenuDropdown
                 categories={articleCategories}
@@ -102,10 +113,21 @@ const Header: React.FC<HeaderProps> = ({
                 <ChevronWrapper isOpen={isTipsOpen} onClick={() => handleTipsOpen()}>
                   <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
                 </ChevronWrapper>
-
-                <LinkButton as="button" onClick={() => handleTipsOpen()}>
-                  Moto porady
-                </LinkButton>
+                {isMobileMenuOpened ? (
+                  <LinkButton
+                    as="button"
+                    onClick={() => handleTipsOpen()}
+                    isActive={router.pathname.startsWith('/porady') && !isTipsOpen}
+                  >
+                    Moto porady
+                  </LinkButton>
+                ) : (
+                  <Link href="/porady">
+                    <LinkButton isActive={router.pathname.startsWith('/porady')}>
+                      Moto porady
+                    </LinkButton>
+                  </Link>
+                )}
               </NavItemChevronContainer>
               <MenuDropdown
                 categories={tipCategories}

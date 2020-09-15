@@ -1,6 +1,6 @@
-import DropdownContainer from './DropdownContainer';
-import DropdownItem from './DropdownItem';
-import DropdownLinkButton from './DropdownLinkButton';
+import DropdownContainer from './styled/DropdownContainer';
+import DropdownItem from './styled/DropdownItem';
+import DropdownLinkButton from './styled/DropdownLinkButton';
 
 import * as React from 'react';
 import Link from 'next/link';

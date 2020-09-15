@@ -23,7 +23,6 @@ const Menu = styled.div<{ isOpen }>`
     right: ${(props) => props.theme.spaces.l};
     bottom: ${(props) => props.theme.spaces.l};
   }
-
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     position: static;
     visibility: visible;
