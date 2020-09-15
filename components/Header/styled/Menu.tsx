@@ -26,7 +26,6 @@ const Menu = styled.div<{ isOpen }>`
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     position: static;
-    top: 0;
     visibility: visible;
     opacity: 1;
     width: auto;
