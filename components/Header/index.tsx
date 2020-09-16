@@ -103,6 +103,7 @@ const Header: React.FC<HeaderProps> = ({
               <MenuDropdown
                 categories={articleCategories}
                 basePath="/artykuly"
+                pagePath="/artykuly/[articleParam]"
                 isDropdownItemActive={isDropdownItemActive}
                 isActive={router.pathname.startsWith('/artykuly') && !isAnyArticleCategoryActive}
                 isArticlesOpen={isArticlesOpen}
@@ -132,6 +133,7 @@ const Header: React.FC<HeaderProps> = ({
               <MenuDropdown
                 categories={tipCategories}
                 basePath="/porady"
+                pagePath="/porady/[tipParam]"
                 isDropdownItemActive={isDropdownItemActive}
                 isActive={router.pathname.startsWith('/porady') && !isAnyTipCategoryActive}
                 isTipsOpen={isTipsOpen}

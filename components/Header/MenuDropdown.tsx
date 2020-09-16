@@ -10,6 +10,7 @@ import { TipCategory } from '@pages/porady/[tipParam]';
 interface DropdownProps {
   categories: ArticleCategory[] | TipCategory[];
   basePath?: string;
+  pagePath?: string;
   isDropdownItemActive?: (basePath: string, itemSlug: string) => void;
   isActive?: boolean;
   isArticlesOpen?: boolean;
@@ -18,6 +19,7 @@ interface DropdownProps {
 const MenuDropdown: React.FC<DropdownProps> = ({
   categories,
   basePath,
+  pagePath,
   isDropdownItemActive,
   isActive,
   isArticlesOpen,
@@ -37,7 +39,7 @@ const MenuDropdown: React.FC<DropdownProps> = ({
             basePath && isDropdownItemActive && isDropdownItemActive(basePath, category.slug)
           }
         >
-          <Link href={`${basePath}/${category.slug}`} passHref>
+          <Link as={`${basePath}/${category.slug}`} href={pagePath} passHref>
             <DropdownLinkButton>{category.attributes.title}</DropdownLinkButton>
           </Link>
         </DropdownItem>
