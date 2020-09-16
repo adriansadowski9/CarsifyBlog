@@ -13,8 +13,7 @@ interface DropdownProps {
   pagePath?: string;
   isDropdownItemActive?: (basePath: string, itemSlug: string) => void;
   isActive?: boolean;
-  isArticlesOpen?: boolean;
-  isTipsOpen?: boolean;
+  isOpen?: boolean;
 }
 const MenuDropdown: React.FC<DropdownProps> = ({
   categories,
@@ -22,11 +21,10 @@ const MenuDropdown: React.FC<DropdownProps> = ({
   pagePath,
   isDropdownItemActive,
   isActive,
-  isArticlesOpen,
-  isTipsOpen,
+  isOpen,
 }) => {
   return (
-    <DropdownContainer isOpen={isArticlesOpen || isTipsOpen}>
+    <DropdownContainer isOpen={isOpen}>
       <DropdownItem isActive={isActive}>
         <Link href={`${basePath}`} passHref>
           <DropdownLinkButton>Wszystkie</DropdownLinkButton>
