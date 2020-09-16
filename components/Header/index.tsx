@@ -106,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({
                 pagePath="/artykuly/[articleParam]"
                 isDropdownItemActive={isDropdownItemActive}
                 isActive={router.pathname.startsWith('/artykuly') && !isAnyArticleCategoryActive}
-                isArticlesOpen={isArticlesOpen}
+                isOpen={isArticlesOpen}
               />
             </NavListItem>
             <NavListItem>
@@ -136,7 +136,7 @@ const Header: React.FC<HeaderProps> = ({
                 pagePath="/porady/[tipParam]"
                 isDropdownItemActive={isDropdownItemActive}
                 isActive={router.pathname.startsWith('/porady') && !isAnyTipCategoryActive}
-                isTipsOpen={isTipsOpen}
+                isOpen={isTipsOpen}
               />
             </NavListItem>
             <NavListItem>
