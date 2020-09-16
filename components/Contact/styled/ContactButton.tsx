@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ContactButton = styled.button<{ bgColor }>`
+const ContactButton = styled.button<{ bgColor; sizeW; sizeH }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,9 +8,10 @@ const ContactButton = styled.button<{ bgColor }>`
   color: ${(props) => props.theme.colors.socialBoxBg};
   text-transform: uppercase;
   font-size: ${(props) => props.theme.fontSizes.l};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
   border: none;
-  width: 206px;
-  height: 60px;
+  width: ${(props) => props.sizeW};
+  height: ${(props) => props.sizeH};
 
   &:hover {
     cursor: pointer;
