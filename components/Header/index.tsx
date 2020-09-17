@@ -75,8 +75,13 @@ const Header: React.FC<HeaderProps> = ({
         <Menu isOpen={isMobileMenuOpened}>
           <NavList>
             <NavListItem>
-              <Link href="/">
-                <LinkButton isActive={router.pathname === '/'}>Strona główna</LinkButton>
+              <Link href="/" passHref>
+                <LinkButton
+                  isActive={router.pathname === '/'}
+                  onClick={() => setIsMobileMenuOpened(false)}
+                >
+                  Strona główna
+                </LinkButton>
               </Link>
             </NavListItem>
             <NavListItem>
@@ -93,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({
                     Aktualności
                   </LinkButton>
                 ) : (
-                  <Link href="/artykuly">
+                  <Link href="/artykuly" passHref>
                     <LinkButton isActive={router.pathname.startsWith('/artykuly')}>
                       Aktualności
                     </LinkButton>
@@ -107,6 +112,7 @@ const Header: React.FC<HeaderProps> = ({
                 isDropdownItemActive={isDropdownItemActive}
                 isActive={router.pathname.startsWith('/artykuly') && !isAnyArticleCategoryActive}
                 isOpen={isArticlesOpen}
+                closeMobileMenu={() => setIsMobileMenuOpened(false)}
               />
             </NavListItem>
             <NavListItem>
@@ -123,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({
                     Moto porady
                   </LinkButton>
                 ) : (
-                  <Link href="/porady">
+                  <Link href="/porady" passHref>
                     <LinkButton isActive={router.pathname.startsWith('/porady')}>
                       Moto porady
                     </LinkButton>
@@ -137,18 +143,28 @@ const Header: React.FC<HeaderProps> = ({
                 isDropdownItemActive={isDropdownItemActive}
                 isActive={router.pathname.startsWith('/porady') && !isAnyTipCategoryActive}
                 isOpen={isTipsOpen}
+                closeMobileMenu={() => setIsMobileMenuOpened(false)}
               />
             </NavListItem>
             <NavListItem>
-              <Link href="/ogloszenia">
-                <LinkButton isActive={router.pathname.startsWith('/ogloszenia')}>
+              <Link href="/ogloszenia" passHref>
+                <LinkButton
+                  isActive={router.pathname.startsWith('/ogloszenia')}
+                  onClick={() => setIsMobileMenuOpened(false)}
+                >
                   Ogłoszenia
                 </LinkButton>
               </Link>
             </NavListItem>
             <NavListItem>
-              <Link href="/kontakt">
-                <LinkButton isActive={router.pathname === '/kontakt'}> Kontakt</LinkButton>
+              <Link href="/kontakt" passHref>
+                <LinkButton
+                  isActive={router.pathname === '/kontakt'}
+                  onClick={() => setIsMobileMenuOpened(false)}
+                >
+                  {' '}
+                  Kontakt
+                </LinkButton>
               </Link>
             </NavListItem>
           </NavList>

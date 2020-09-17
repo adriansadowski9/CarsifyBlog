@@ -14,6 +14,7 @@ interface DropdownProps {
   isDropdownItemActive?: (basePath: string, itemSlug: string) => void;
   isActive?: boolean;
   isOpen?: boolean;
+  closeMobileMenu?: () => void;
 }
 const MenuDropdown: React.FC<DropdownProps> = ({
   categories,
@@ -22,12 +23,13 @@ const MenuDropdown: React.FC<DropdownProps> = ({
   isDropdownItemActive,
   isActive,
   isOpen,
+  closeMobileMenu,
 }) => {
   return (
     <DropdownContainer isOpen={isOpen}>
       <DropdownItem isActive={isActive}>
         <Link href={`${basePath}`} passHref>
-          <DropdownLinkButton>Wszystkie</DropdownLinkButton>
+          <DropdownLinkButton onClick={closeMobileMenu}>Wszystkie</DropdownLinkButton>
         </Link>
       </DropdownItem>
       {categories.map((category, index) => (
@@ -38,7 +40,9 @@ const MenuDropdown: React.FC<DropdownProps> = ({
           }
         >
           <Link as={`${basePath}/${category.slug}`} href={pagePath} passHref>
-            <DropdownLinkButton>{category.attributes.title}</DropdownLinkButton>
+            <DropdownLinkButton onClick={closeMobileMenu}>
+              {category.attributes.title}
+            </DropdownLinkButton>
           </Link>
         </DropdownItem>
       ))}

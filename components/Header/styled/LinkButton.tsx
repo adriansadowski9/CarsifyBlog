@@ -7,7 +7,7 @@ const LinkButton = styled.a<{ isActive: boolean }>`
   background: transparent;
   border: none;
   outline: 0;
-
+  text-decoration: none;
   ${(props) =>
     props.isActive
       ? `

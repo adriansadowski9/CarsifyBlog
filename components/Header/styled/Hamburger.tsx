@@ -8,6 +8,7 @@ const Hamburger = styled.div<{ isMenuOpened: boolean }>`
   background: ${(props) => props.theme.colors.hamburger};
   visibility: ${(props) => (props.isMenuOpened ? 'hidden' : 'visible')};
   transition: visibility 0s ease-in 0.3s;
+
   ::before {
     content: '';
     width: 66%;
