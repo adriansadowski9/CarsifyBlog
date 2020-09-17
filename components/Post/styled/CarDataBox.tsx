@@ -9,6 +9,7 @@ const CarDataBox = styled.div`
   background: ${(props) => props.theme.colors.adCarBoxBg};
   color: ${(props) => props.theme.colors.adCarBoxText};
   padding: ${(props) => props.theme.spaces.l};
+  z-index: 2;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     width: 520px;

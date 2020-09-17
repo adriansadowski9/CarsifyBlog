@@ -2,15 +2,18 @@ import styled from 'styled-components';
 
 const SocialShareContainer = styled.div<{
   isAbsolute: boolean;
-  rightSide: boolean;
   horizontal: boolean;
+  isArticles: boolean;
 }>`
   ${(props) =>
     props.isAbsolute
       ? `
   position: absolute;
   top: 50%;
-  ${props.rightSide ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`}; 
+  
+  ${!props.isArticles ? `right: ${props.theme.spaces.xxxs}` : `left: ${props.theme.spaces.xxxs}`}; 
+
+
   transform: translateY(-50%);
   `
       : ''}
@@ -25,6 +28,15 @@ const SocialShareContainer = styled.div<{
   justify-content: space-between;
   background-color: ${(props) => props.theme.colors.socialBoxBg};
   border-radius: 20px;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    ${(props) =>
+      props.isAbsolute
+        ? `
+    ${!props.isArticles ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`};
+    `
+        : ''}
+  }
 `;
 
 export default SocialShareContainer;

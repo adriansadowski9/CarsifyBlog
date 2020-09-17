@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 
 const PostImage = styled.img<{ notFullWidth: boolean }>`
-  width: 100%;
+  position: relative;
+  max-width: 100vw;
+
+  right: 0;
+  left: 5.3%;
+  width: 100vw;
   height: 200px;
   object-fit: cover;
   display: block;
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    left: 0;
+    width: 100%;
+    max-width: 100%;
     height: 300px;
   }
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {

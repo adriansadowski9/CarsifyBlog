@@ -1,41 +1,45 @@
-import * as React from 'react';
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  PinterestIcon,
-  PinterestShareButton,
-  TwitterIcon,
-  TwitterShareButton,
-} from 'react-share';
+import SocialButton from './SocialButton';
 
+import * as React from 'react';
+import { FacebookShareButton, PinterestShareButton, TwitterShareButton } from 'react-share';
+
+import Facebook from '@assets/icons/facebook.svg';
+import Pinterest from '@assets/icons/pinterest.svg';
+import Twitter from '@assets/icons/twitter.svg';
 import SocialShareContainer from '@components/SocialShareSection/SocialShareContainer';
 
 interface SocialShareSectionProps {
   shareUrl: string;
   isAbsolute?: boolean;
-  rightSide?: boolean;
   horizontal?: boolean;
   quote: string;
   pinterestMediaUrl: string;
+  isArticles?: boolean;
 }
 
 const SocialShareSection: React.FC<SocialShareSectionProps> = ({
   isAbsolute,
   shareUrl,
-  rightSide,
   horizontal,
   quote,
   pinterestMediaUrl,
+  isArticles,
 }) => (
-  <SocialShareContainer isAbsolute={isAbsolute} rightSide={rightSide} horizontal={horizontal}>
+  <SocialShareContainer isAbsolute={isAbsolute} horizontal={horizontal} isArticles={isArticles}>
     <FacebookShareButton title="test" url={shareUrl} quote={quote}>
-      <FacebookIcon size={28} round />
+      <SocialButton>
+        <Facebook width="24px" height="19.5px" />
+      </SocialButton>
     </FacebookShareButton>
     <TwitterShareButton title="test" url={shareUrl}>
-      <TwitterIcon size={28} round />
+      <SocialButton>
+        <Twitter width="24px" height="19.5px" />
+      </SocialButton>
     </TwitterShareButton>
     <PinterestShareButton title="test" url={shareUrl} media={pinterestMediaUrl}>
-      <PinterestIcon size={28} round />
+      <SocialButton>
+        <Pinterest width="24px" height="19.5px" />
+      </SocialButton>
     </PinterestShareButton>
   </SocialShareContainer>
 );
