@@ -61,11 +61,16 @@ const Header: React.FC<HeaderProps> = ({
     setIsTipsOpen(!isTipsOpen);
     setIsArticlesOpen(false);
   };
+  const toggleMobileMenuCloseDrop = () => {
+    setIsMobileMenuOpened(!isMobileMenuOpened);
+    setIsTipsOpen(false);
+    setIsArticlesOpen(false);
+  };
   return (
     <header>
       <Navigation>
         <Link href="/" passHref>
-          <LogoWrapper>
+          <LogoWrapper onClick={() => setIsMobileMenuOpened(false)}>
             <LogoText>Carsify</LogoText>
             <LogoIconWrapper>
               <Logo />
@@ -178,7 +183,7 @@ const Header: React.FC<HeaderProps> = ({
             </DarkModeButton>
           )}
         </Menu>
-        <HamburgerContainer onClick={() => setIsMobileMenuOpened(!isMobileMenuOpened)}>
+        <HamburgerContainer onClick={() => toggleMobileMenuCloseDrop()}>
           <Hamburger isMenuOpened={isMobileMenuOpened} />
         </HamburgerContainer>
       </Navigation>
