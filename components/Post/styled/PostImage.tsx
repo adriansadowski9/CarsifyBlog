@@ -2,11 +2,7 @@ import styled from 'styled-components';
 
 const PostImage = styled.img<{ notFullWidth: boolean }>`
   position: relative;
-  max-width: 100vw;
-
-  right: 0;
-  left: 5.3%;
-  width: 100vw;
+  width: 100%;
   height: 200px;
   object-fit: cover;
   display: block;

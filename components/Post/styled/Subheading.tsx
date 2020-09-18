@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Subheading = styled.p`
   width: 100%;
-  text-align: center;
+  text-align: left;
   font-size: ${(props) => props.theme.fontSizes.s};
   color: ${(props) => props.theme.colors.subtitleText};
   font-weight: ${(props) => props.theme.fontWeights.medium};
@@ -14,6 +14,7 @@ const Subheading = styled.p`
   }
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    text-align: center;
     width: 800px;
   }
 `;
