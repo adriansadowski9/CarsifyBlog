@@ -14,7 +14,7 @@ interface SocialShareSectionProps {
   horizontal?: boolean;
   quote: string;
   pinterestMediaUrl: string;
-  isArticles?: boolean;
+  isCarData?: boolean;
 }
 
 const SocialShareSection: React.FC<SocialShareSectionProps> = ({
@@ -23,22 +23,22 @@ const SocialShareSection: React.FC<SocialShareSectionProps> = ({
   horizontal,
   quote,
   pinterestMediaUrl,
-  isArticles,
+  isCarData,
 }) => (
-  <SocialShareContainer isAbsolute={isAbsolute} horizontal={horizontal} isArticles={isArticles}>
+  <SocialShareContainer isAbsolute={isAbsolute} horizontal={horizontal} isCarData={isCarData}>
     <FacebookShareButton title="test" url={shareUrl} quote={quote}>
       <SocialButton>
-        <Facebook width="24px" height="19.5px" />
+        <Facebook width="24px" height="24px" />
       </SocialButton>
     </FacebookShareButton>
     <TwitterShareButton title="test" url={shareUrl}>
       <SocialButton>
-        <Twitter width="24px" height="19.5px" />
+        <Twitter width="24px" height="24px" />
       </SocialButton>
     </TwitterShareButton>
     <PinterestShareButton title="test" url={shareUrl} media={pinterestMediaUrl}>
       <SocialButton>
-        <Pinterest width="24px" height="19.5px" />
+        <Pinterest width="24px" height="24px" />
       </SocialButton>
     </PinterestShareButton>
   </SocialShareContainer>

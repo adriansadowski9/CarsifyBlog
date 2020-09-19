@@ -7,6 +7,10 @@ const HighlightedText = styled.p`
   color: ${(props) => props.theme.colors.text};
   font-weight: ${(props) => props.theme.fontWeights.medium};
   margin-bottom: ${(props) => props.theme.spaces.xs};
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    font-size: ${(props) => props.theme.fontSizes.xl};
+  }
 `;
 
 export default HighlightedText;

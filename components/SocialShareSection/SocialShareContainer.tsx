@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const SocialShareContainer = styled.div<{
   isAbsolute: boolean;
   horizontal: boolean;
-  isArticles: boolean;
+  isCarData: boolean;
 }>`
   ${(props) =>
     props.isAbsolute
@@ -11,7 +11,7 @@ const SocialShareContainer = styled.div<{
   position: absolute;
   top: 50%;
   
-  ${!props.isArticles ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`}; 
+  ${!props.isCarData ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`}; 
 
 
   transform: translateY(-50%);
@@ -28,19 +28,11 @@ const SocialShareContainer = styled.div<{
   justify-content: space-between;
   background-color: ${(props) => props.theme.colors.socialBoxBg};
   border-radius: 20px;
-  @media screen and (min-width: 768px) {
-    ${(props) =>
-      props.isAbsolute
-        ? `
-    ${!props.isArticles ? `right: ${props.theme.spaces.xxxl}` : `left: ${props.theme.spaces.xxxl}`};
-    `
-        : ''}
-  }
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     ${(props) =>
       props.isAbsolute
         ? `
-    ${!props.isArticles ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`};
+    ${!props.isCarData ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`};
     `
         : ''}
   }

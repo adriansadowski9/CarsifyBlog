@@ -8,8 +8,6 @@ const PostImage = styled.img<{ notFullWidth: boolean }>`
   display: block;
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     left: 0;
-    width: 100%;
-    max-width: 100%;
     height: 300px;
   }
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {

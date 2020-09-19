@@ -1,7 +1,6 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
-import { useRouter } from 'next/router';
 import remark from 'remark';
 import remarkHtml from 'remark-html';
 
@@ -74,7 +73,6 @@ const Post: React.FC<PostProps> = ({
   carData,
 }) => {
   const textToHtml = remark().use(remarkHtml).processSync(text).toString();
-  const router = useRouter();
   return (
     <article>
       <TopInfoContainer>
@@ -83,7 +81,7 @@ const Post: React.FC<PostProps> = ({
       </TopInfoContainer>
       <Heading>{title}</Heading>
       <Subheading>{subtitle}</Subheading>
-      <PostImageContainer isArticles={router.pathname.startsWith('/artykuly')}>
+      <PostImageContainer isCarData={carData === undefined}>
         {!!carData && (
           <CarDataBox>
             <CarDataName>{carData.name}</CarDataName>
@@ -134,7 +132,7 @@ const Post: React.FC<PostProps> = ({
           shareUrl={shareUrl}
           quote={title}
           pinterestMediaUrl={responsiveImage.src}
-          isArticles={router.pathname.startsWith('/artykuly')}
+          isCarData={carData === undefined}
           isAbsolute
         />
       </PostImageContainer>

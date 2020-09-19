@@ -11,10 +11,11 @@ const Subheading = styled.p`
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     width: 600px;
+    text-align: center;
+    font-size: ${(props) => props.theme.fontSizes.xl};
   }
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    text-align: center;
     width: 800px;
   }
 `;
