@@ -10,15 +10,12 @@ const Heading = styled.h1`
   margin-bottom: ${(props) => props.theme.spaces.xs};
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    margin: ${(props) => props.theme.spaces.xxxs} auto ${(props) => props.theme.spaces.xs} auto;
-    width: 600px;
-    font-size: ${(props) => props.theme.fontSizes.xxl};
     text-align: center;
+    font-size: ${(props) => props.theme.fontSizes.xxl};
   }
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     text-align: center;
-    width: 800px;
   }
 `;
 
