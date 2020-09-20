@@ -17,7 +17,12 @@ const Contact: NextPage = () => {
   return (
     <>
       <PageHead title={pageTitle} description={pageDescription} />
-      <ContactPage />
+      <ContactPage
+        contactEmail={contactEmail}
+        facebookUrl={facebookUrl}
+        twitterUrl={twitterUrl}
+        instagramUrl={instagramUrl}
+      />
     </>
   );
 };
