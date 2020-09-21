@@ -7,15 +7,12 @@ const Heading = styled.h1`
   color: ${(props) => props.theme.colors.text};
   font-weight: ${(props) => props.theme.fontWeights.bold};
   margin-top: ${(props) => props.theme.spaces.xxxs};
-  margin-bottom: ${(props) => props.theme.spaces.xs};
+  margin-bottom: ${(props) => props.theme.spaces.xxxs};
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    margin-bottom: ${(props) => props.theme.spaces.xs};
     text-align: center;
     font-size: ${(props) => props.theme.fontSizes.xxl};
-  }
-
-  @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    text-align: center;
   }
 `;
 

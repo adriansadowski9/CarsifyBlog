@@ -14,7 +14,7 @@ interface SocialShareSectionProps {
   horizontal?: boolean;
   quote: string;
   pinterestMediaUrl: string;
-  isCarData?: boolean;
+  rightSide?: boolean;
 }
 
 const SocialShareSection: React.FC<SocialShareSectionProps> = ({
@@ -23,9 +23,9 @@ const SocialShareSection: React.FC<SocialShareSectionProps> = ({
   horizontal,
   quote,
   pinterestMediaUrl,
-  isCarData,
+  rightSide,
 }) => (
-  <SocialShareContainer isAbsolute={isAbsolute} horizontal={horizontal} isCarData={isCarData}>
+  <SocialShareContainer isAbsolute={isAbsolute} horizontal={horizontal} rightSide={rightSide}>
     <FacebookShareButton title="test" url={shareUrl} quote={quote}>
       <SocialButton>
         <Facebook width="24px" height="24px" />

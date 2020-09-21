@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const SocialShareContainer = styled.div<{
   isAbsolute: boolean;
   horizontal: boolean;
-  isCarData: boolean;
+  rightSide: boolean;
 }>`
   ${(props) =>
     props.isAbsolute
@@ -11,7 +11,7 @@ const SocialShareContainer = styled.div<{
   position: absolute;
   top: 50%;
   
-  ${!props.isCarData ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`}; 
+  ${props.rightSide ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`}; 
 
 
   transform: translateY(-50%);
@@ -32,7 +32,7 @@ const SocialShareContainer = styled.div<{
     ${(props) =>
       props.isAbsolute
         ? `
-    ${!props.isCarData ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`};
+    ${props.rightSide ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`};
     `
         : ''}
   }
