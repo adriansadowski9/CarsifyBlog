@@ -12,6 +12,7 @@ const InputComponent = styled.input<{ width: string; height: string }>`
   border-top: none;
   border-left: none;
   border-right: none;
+  border-bottom: 1px solid ${(props) => props.theme.colors.inputBorder};
   resize: none;
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     margin: 0;

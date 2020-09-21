@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ButtonWrapper = styled.button<{ height: string; width: string; backgroundColor: string }>`
+const ButtonWrapper = styled.a<{ height: string; width: string; backgroundColor: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,7 +8,7 @@ const ButtonWrapper = styled.button<{ height: string; width: string; backgroundC
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.backgroundColor};
-
+  text-decoration: none;
   &:hover {
     cursor: pointer;
   }

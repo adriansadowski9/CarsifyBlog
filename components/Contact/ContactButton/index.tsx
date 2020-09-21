@@ -10,6 +10,7 @@ interface ButtonProps {
   Icon?: React.ReactElement;
   type?: 'submit' | 'reset' | 'button';
   onClick?: (event?: React.MouseEvent<HTMLElement>) => void;
+  link?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,9 +20,16 @@ const Button: React.FC<ButtonProps> = ({
   text,
   Icon,
   type,
+  link,
 }) => {
   return (
-    <ButtonWrapper width={width} height={height} backgroundColor={backgroundColor} type={type}>
+    <ButtonWrapper
+      href={link}
+      width={width}
+      height={height}
+      backgroundColor={backgroundColor}
+      type={type}
+    >
       <ButtonText>{text}</ButtonText>
     </ButtonWrapper>
   );

@@ -27,7 +27,7 @@ interface ContactProps {
   backgroundColor?: string;
   Icon?: React.ReactElement;
 }
-const ContactPage: React.FC<ContactProps> = () => {
+const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagramUrl }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   return (
     <ContactContainer>
@@ -48,18 +48,21 @@ const ContactPage: React.FC<ContactProps> = () => {
         <Button text="Wyślij" type="submit" backgroundColor={themeContext.colors.submitButton} />
         <SocialButtonsContainer>
           <Button
+            link={facebookUrl}
             text="Facebook"
             Icon={Facebook}
             type="button"
             backgroundColor={themeContext.colors.socialButton}
           ></Button>
           <Button
+            link={twitterUrl}
             text="Twitter"
             Icon={Twitter}
             type="button"
             backgroundColor={themeContext.colors.socialButton}
           ></Button>
           <Button
+            link={instagramUrl}
             text="Instagram"
             Icon={Instagram}
             type="button"
