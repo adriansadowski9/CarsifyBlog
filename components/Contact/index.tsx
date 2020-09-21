@@ -1,5 +1,6 @@
 import Button from './ContactButton';
 import Input from './Input';
+import Select from './Select';
 import ButtonsContainer from './styled/ButtonsContainer';
 import ContactContainer from './styled/ContactContainer';
 import GroupInputs from './styled/GroupInputs';
@@ -15,10 +16,6 @@ import Twitter from '@assets/icons/twitter.svg';
 import { Theme } from '@utils/theme';
 
 interface ContactProps {
-  contactEmail: string;
-  facebookUrl: string;
-  twitterUrl: string;
-  instagramUrl: string;
   width?: string;
   name?: string;
   label?: string;
@@ -37,7 +34,7 @@ const ContactPage: React.FC<ContactProps> = () => {
           <Input width="615px" name="email" label="Email" />
         </GroupInputs>
         <GroupInputs>
-          <Input width="410px" name="category" label="Kategoria" />
+          <Select width="410px" name="category" label="Kategoria" />
           <Input width="820px" name="topic" label="Temat" />
         </GroupInputs>
         <GroupInputs>

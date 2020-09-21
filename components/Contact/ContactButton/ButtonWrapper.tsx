@@ -8,7 +8,6 @@ const ButtonWrapper = styled.button<{ height: string; width: string; backgroundC
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.backgroundColor};
-
   &:hover {
     cursor: pointer;
   }
