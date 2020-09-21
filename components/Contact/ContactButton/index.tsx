@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import ButtonText from '@components/Contact/ContactButton/ButtonText';
-import ButtonWrapper from '@components/Contact/ContactButton/ButtonWrapper';
+import SocialLink from '@components/Contact/ContactButton/SocialLink';
 interface ButtonProps {
   width?: string;
   height?: string;
@@ -23,15 +23,9 @@ const Button: React.FC<ButtonProps> = ({
   link,
 }) => {
   return (
-    <ButtonWrapper
-      href={link}
-      width={width}
-      height={height}
-      backgroundColor={backgroundColor}
-      type={type}
-    >
+    <SocialLink href={link} backgroundColor={backgroundColor} type={type}>
       <ButtonText>{text}</ButtonText>
-    </ButtonWrapper>
+    </SocialLink>
   );
 };
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ButtonWrapper = styled.a<{ height: string; width: string; backgroundColor: string }>`
+const SocialLink = styled.a<{ height: string; width: string; backgroundColor: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,6 +8,7 @@ const ButtonWrapper = styled.a<{ height: string; width: string; backgroundColor:
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.backgroundColor};
+  padding: 8px 16px;
   text-decoration: none;
   &:hover {
     cursor: pointer;
@@ -20,4 +21,4 @@ const ButtonWrapper = styled.a<{ height: string; width: string; backgroundColor:
   }
 `;
 
-export default ButtonWrapper;
+export default SocialLink;
