@@ -81,7 +81,7 @@ const Post: React.FC<PostProps> = ({
       </TopInfoContainer>
       <Heading>{title}</Heading>
       <Subheading>{subtitle}</Subheading>
-      <PostImageContainer>
+      <PostImageContainer isCarData={!!carData}>
         {!!carData && (
           <CarDataBox>
             <CarDataName>{carData.name}</CarDataName>
@@ -132,8 +132,8 @@ const Post: React.FC<PostProps> = ({
           shareUrl={shareUrl}
           quote={title}
           pinterestMediaUrl={responsiveImage.src}
+          rightSide={!!carData}
           isAbsolute
-          rightSide
         />
       </PostImageContainer>
       <TextContainer>

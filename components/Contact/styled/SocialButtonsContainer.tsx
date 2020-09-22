@@ -11,6 +11,7 @@ const SocialButtonsContainer = styled.div`
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     flex-direction: row;
     > * {
+      margin-top: 0;
       margin-right: ${(props) => props.theme.spaces.s};
     }
   }

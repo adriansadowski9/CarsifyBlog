@@ -23,8 +23,11 @@ interface ContactProps {
   textarea?: boolean;
   backgroundColor?: string;
   Icon?: React.ReactElement;
+  facebookUrl: string;
+  twitterUrl: string;
+  instagramUrl: string;
 }
-const ContactPage: React.FC<ContactProps> = () => {
+const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagramUrl }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   return (
     <ContactContainer>
@@ -42,21 +45,36 @@ const ContactPage: React.FC<ContactProps> = () => {
         </GroupInputs>
       </InputContainer>
       <ButtonsContainer>
-        <Button text="Wyślij" type="submit" backgroundColor={themeContext.colors.submitButton} />
+        <Button
+          width="206px"
+          height="60px"
+          text="Wyślij"
+          type="submit"
+          backgroundColor={themeContext.colors.submitButton}
+        />
         <SocialButtonsContainer>
           <Button
+            width="206px"
+            height="60px"
+            link={facebookUrl}
             text="Facebook"
             Icon={Facebook}
             type="button"
             backgroundColor={themeContext.colors.socialButton}
           ></Button>
           <Button
+            width="206px"
+            height="60px"
+            link={twitterUrl}
             text="Twitter"
             Icon={Twitter}
             type="button"
             backgroundColor={themeContext.colors.socialButton}
           ></Button>
           <Button
+            width="206px"
+            height="60px"
+            link={instagramUrl}
             text="Instagram"
             Icon={Instagram}
             type="button"
