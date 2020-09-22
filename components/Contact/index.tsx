@@ -45,9 +45,17 @@ const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagra
         </GroupInputs>
       </InputContainer>
       <ButtonsContainer>
-        <Button text="Wyślij" type="submit" backgroundColor={themeContext.colors.submitButton} />
+        <Button
+          width="206px"
+          height="60px"
+          text="Wyślij"
+          type="submit"
+          backgroundColor={themeContext.colors.submitButton}
+        />
         <SocialButtonsContainer>
           <Button
+            width="206px"
+            height="60px"
             link={facebookUrl}
             text="Facebook"
             Icon={Facebook}
@@ -55,6 +63,8 @@ const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagra
             backgroundColor={themeContext.colors.socialButton}
           ></Button>
           <Button
+            width="206px"
+            height="60px"
             link={twitterUrl}
             text="Twitter"
             Icon={Twitter}
@@ -62,6 +72,8 @@ const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagra
             backgroundColor={themeContext.colors.socialButton}
           ></Button>
           <Button
+            width="206px"
+            height="60px"
             link={instagramUrl}
             text="Instagram"
             Icon={Instagram}
