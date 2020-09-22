@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import ButtonText from '@components/Contact/ContactButton/ButtonText';
-import SocialLink from '@components/Contact/ContactButton/SocialLink';
+import ButtonWrapper from '@components/Contact/ContactButton/ButtonWrapper';
 interface ButtonProps {
   width?: string;
   height?: string;
@@ -14,8 +14,8 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({
-  height = '60px',
-  width = '206px',
+  height,
+  width,
   backgroundColor,
   text,
   Icon,
@@ -23,9 +23,16 @@ const Button: React.FC<ButtonProps> = ({
   link,
 }) => {
   return (
-    <SocialLink href={link} backgroundColor={backgroundColor} type={type}>
+    <ButtonWrapper
+      as={!link ? 'button' : 'a'}
+      href={link}
+      backgroundColor={backgroundColor}
+      type={type}
+      width={width}
+      height={height}
+    >
       <ButtonText>{text}</ButtonText>
-    </SocialLink>
+    </ButtonWrapper>
   );
 };
 
