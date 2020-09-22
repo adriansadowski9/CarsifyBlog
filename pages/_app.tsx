@@ -3,9 +3,10 @@ import { TipCategory } from './porady/[tipParam]';
 
 import * as React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import withDarkMode from 'next-dark-mode';
+import { useDarkMode } from 'next-dark-mode';
 import App, { AppContext, AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import useDarkMode from 'use-dark-mode';
 
 import Layout from '@components/Layout';
 import { getArticleCategories } from '@utils/getCategories';
@@ -59,25 +60,16 @@ const MyApp: ThemeProvider<MyAppProps> = ({
   articleCategories,
   tipCategories,
 }) => {
-  const darkMode = useDarkMode();
-  const theme: Theme = darkMode.value ? darkTheme : lightTheme;
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
+  const { darkModeActive, switchToDarkMode, switchToLightMode } = useDarkMode();
+  const theme: Theme = darkModeActive ? darkTheme : lightTheme;
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Layout
-        darkModeEnabled={darkMode.value}
-        enableDarkMode={darkMode.enable}
-        disableDarkMode={darkMode.disable}
+        darkModeEnabled={darkModeActive}
+        enableDarkMode={switchToDarkMode}
+        disableDarkMode={switchToLightMode}
         articleCategories={articleCategories}
         tipCategories={tipCategories}
       >
@@ -93,4 +85,4 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
   const tipCategories = await getTipCategories();
   return { ...appProps, articleCategories, tipCategories };
 };
-export default MyApp;
+export default withDarkMode(MyApp);
