@@ -40,7 +40,7 @@ const ContactPage: React.FC<ContactProps> = ({
   contactEmail,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
-  const [selectedCategory, setSelectedCategory] = React.useState(items[0].value);
+  const [selectedItem, setSelectedItem] = React.useState(items[0].value);
   return (
     <ContactContainer>
       <InputContainer>
@@ -51,11 +51,10 @@ const ContactPage: React.FC<ContactProps> = ({
         <GroupInputs>
           <Select
             width="410px"
-            name="category"
             label="Kategoria"
             items={items}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
           />
           <Input width="820px" name="topic" label="Temat" />
         </GroupInputs>

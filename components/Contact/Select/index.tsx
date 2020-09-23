@@ -3,7 +3,7 @@ import ChevronContainer from './styled/ChevronContainer';
 import ChosenCategory from './styled/ChosenCategory';
 import SelectButton from './styled/SelectButton';
 import SelectDropdown from './styled/SelectDropdown';
-import SelectOption from './styled/SelectOption';
+import SelectSpan from './styled/SelectSpan';
 import SelectWrapper from './styled/SelectWrapper';
 
 import * as React from 'react';
@@ -11,34 +11,31 @@ import { ThemeContext } from 'styled-components';
 
 import ChevronDown from '@assets/icons/chevronDown.svg';
 import { Theme } from '@utils/theme';
-interface ItemsProps {
-  id: number;
-  value: string;
-}
 interface SelectProps {
   width?: string;
-  name: string;
   label: string;
   height?: string;
-  items: ItemsProps[];
-  selectedCategory: string;
-  setSelectedCategory: (value: string) => void;
+  items: {
+    id: number;
+    value: string;
+  }[];
+  selectedItem: string;
+  setSelectedItem: (value: string) => void;
 }
 const Select: React.FC<SelectProps> = ({
   width = '100%',
   height = '72px',
-  name,
   label,
   items,
-  selectedCategory,
-  setSelectedCategory,
+  selectedItem,
+  setSelectedItem,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const [isOpen, setIsOpen] = React.useState(false);
 
   const selectRef = React.useRef<HTMLDivElement>(null);
   const changeCategory = (value: string) => {
-    setSelectedCategory(value);
+    setSelectedItem(value);
     setIsOpen(!isOpen);
   };
   const closeOnClickOutside = (e) => {
@@ -53,26 +50,20 @@ const Select: React.FC<SelectProps> = ({
   }, []);
   return (
     <SelectWrapper ref={selectRef}>
-      <InputLabel htmlFor={name}>{label}</InputLabel>
-      <ChosenCategory
-        width={width}
-        height={height}
-        id={name}
-        name={name}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {selectedCategory}
+      <SelectSpan>{label}</SelectSpan>
+      <ChosenCategory width={width} height={height} onClick={() => setIsOpen(!isOpen)}>
+        {selectedItem}
         <ChevronContainer isOpen={isOpen}>
           <ChevronDown width="24px" height="12px" fill={themeContext.colors.text} />
         </ChevronContainer>
       </ChosenCategory>
       <SelectDropdown isOpen={isOpen}>
         {items.map((item) => (
-          <SelectOption key={item.id}>
+          <li key={item.id}>
             <SelectButton type="button" onClick={() => changeCategory(item.value)}>
               {item.value}
             </SelectButton>
-          </SelectOption>
+          </li>
         ))}
       </SelectDropdown>
     </SelectWrapper>
