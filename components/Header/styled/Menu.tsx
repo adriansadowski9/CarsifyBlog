@@ -7,7 +7,7 @@ const Menu = styled.div<{ isOpen }>`
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: calc(100vh - 90px);
+  height: 100%;
   background: ${(props) => props.theme.colors.bg};
   display: flex;
   visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
@@ -23,7 +23,6 @@ const Menu = styled.div<{ isOpen }>`
     right: ${(props) => props.theme.spaces.l};
     bottom: ${(props) => props.theme.spaces.l};
   }
-
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     position: static;
     visibility: visible;

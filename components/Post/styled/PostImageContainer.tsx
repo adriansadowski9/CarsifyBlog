@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
-const PostImageContainer = styled.div`
+const PostImageContainer = styled.div<{ isCarData: boolean }>`
   position: relative;
-  width: 100%;
+  width: calc(100% + 2 * ${(props) => props.theme.spaces.s});
+  margin-left: -${(props) => props.theme.spaces.s};
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 256px;
-
+  margin-bottom: ${(props) => (!props.isCarData ? '0' : '256px')};
+  @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    margin-left: 0;
+    width: 100%;
+  }
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     margin: 0;
   }

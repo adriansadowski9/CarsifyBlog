@@ -103,6 +103,7 @@ export interface Theme {
     submitButton: string;
     socialButton: string;
     socialBoxBg: string;
+    selectHover: string;
   };
 }
 
@@ -151,6 +152,7 @@ export const lightTheme: Theme = {
     submitButton: colors.red,
     socialButton: colors.darkGray,
     socialBoxBg: colors.white,
+    selectHover: colors.gray,
   },
 };
 
@@ -199,5 +201,6 @@ export const darkTheme: Theme = {
     submitButton: colors.red,
     socialButton: colors.black,
     socialBoxBg: colors.white,
+    selectHover: colors.gray,
   },
 };
