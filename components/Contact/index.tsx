@@ -1,5 +1,6 @@
 import Button from './ContactButton';
 import Input from './Input';
+import Select from './Select';
 import ButtonsContainer from './styled/ButtonsContainer';
 import ContactContainer from './styled/ContactContainer';
 import GroupInputs from './styled/GroupInputs';
@@ -15,10 +16,6 @@ import Twitter from '@assets/icons/twitter.svg';
 import { Theme } from '@utils/theme';
 
 interface ContactProps {
-  contactEmail: string;
-  facebookUrl: string;
-  twitterUrl: string;
-  instagramUrl: string;
   width?: string;
   name?: string;
   label?: string;
@@ -26,9 +23,24 @@ interface ContactProps {
   textarea?: boolean;
   backgroundColor?: string;
   Icon?: React.ReactElement;
+  facebookUrl: string;
+  twitterUrl: string;
+  instagramUrl: string;
+  contactEmail: string;
 }
-const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagramUrl }) => {
+const items = [
+  { id: 1, value: 'Samochody' },
+  { id: 2, value: 'Ogłoszenia' },
+  { id: 3, value: 'Porady' },
+];
+const ContactPage: React.FC<ContactProps> = ({
+  facebookUrl,
+  twitterUrl,
+  instagramUrl,
+  contactEmail,
+}) => {
   const themeContext: Theme = React.useContext(ThemeContext);
+  const [selectedItem, setSelectedItem] = React.useState(items[0].value);
   return (
     <ContactContainer>
       <InputContainer>
@@ -37,7 +49,13 @@ const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagra
           <Input width="615px" name="email" label="Email" />
         </GroupInputs>
         <GroupInputs>
-          <Input width="410px" name="category" label="Kategoria" />
+          <Select
+            width="410px"
+            label="Kategoria"
+            items={items}
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
+          />
           <Input width="820px" name="topic" label="Temat" />
         </GroupInputs>
         <GroupInputs>
