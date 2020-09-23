@@ -5,8 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
+    "export": "npm run build && next export",
     "postexport": "node scripts/postbuild.js",
     "lint": "eslint --fix .",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'"
