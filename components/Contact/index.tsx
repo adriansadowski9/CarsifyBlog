@@ -26,9 +26,21 @@ interface ContactProps {
   facebookUrl: string;
   twitterUrl: string;
   instagramUrl: string;
+  contactEmail: string;
 }
-const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagramUrl }) => {
+const items = [
+  { id: 1, value: 'Samochody' },
+  { id: 2, value: 'Ogłoszenia' },
+  { id: 3, value: 'Porady' },
+];
+const ContactPage: React.FC<ContactProps> = ({
+  facebookUrl,
+  twitterUrl,
+  instagramUrl,
+  contactEmail,
+}) => {
   const themeContext: Theme = React.useContext(ThemeContext);
+  const [selectedCategory, setSelectedCategory] = React.useState(items[0].value);
   return (
     <ContactContainer>
       <InputContainer>
@@ -37,7 +49,14 @@ const ContactPage: React.FC<ContactProps> = ({ facebookUrl, twitterUrl, instagra
           <Input width="615px" name="email" label="Email" />
         </GroupInputs>
         <GroupInputs>
-          <Select width="410px" name="category" label="Kategoria" />
+          <Select
+            width="410px"
+            name="category"
+            label="Kategoria"
+            items={items}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
           <Input width="820px" name="topic" label="Temat" />
         </GroupInputs>
         <GroupInputs>
