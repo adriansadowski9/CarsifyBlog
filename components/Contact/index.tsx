@@ -1,7 +1,7 @@
 import Button from './ContactButton';
+import ContactHeadingSection from './ContactHeadingSection';
 import Input from './Input';
 import Select from './Select';
-import SocialBox from './SocialBox';
 import ButtonsContainer from './styled/ButtonsContainer';
 import ContactContainer from './styled/ContactContainer';
 import GroupInputs from './styled/GroupInputs';
@@ -44,11 +44,14 @@ const ContactPage: React.FC<ContactProps> = ({
   const [selectedItem, setSelectedItem] = React.useState(items[0].value);
   return (
     <ContactContainer>
-      <SocialBox
+      <ContactHeadingSection
         contactEmail={contactEmail}
         Facebook={Facebook}
         Twitter={Twitter}
         Instagram={Instagram}
+        facebookUrl={facebookUrl}
+        twitterUrl={twitterUrl}
+        instagramUrl={instagramUrl}
       />
       <InputContainer>
         <GroupInputs>
