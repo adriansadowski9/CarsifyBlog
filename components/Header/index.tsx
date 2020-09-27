@@ -69,6 +69,7 @@ const Header: React.FC<HeaderProps> = ({
   };
   return (
     <header>
+      <SnowballDiv isOpen={isMobileMenuOpened} />
       <Navigation>
         <Link href="/" passHref>
           <LogoWrapper onClick={() => setIsMobileMenuOpened(false)}>
@@ -78,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({
             </LogoIconWrapper>
           </LogoWrapper>
         </Link>
-        <SnowballDiv isOpen={isMobileMenuOpened} />
+
         <Menu isOpen={isMobileMenuOpened}>
           <NavList>
             <NavListItem isOpen={isMobileMenuOpened}>
