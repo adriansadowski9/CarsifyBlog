@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
 
 const Menu = styled.div<{ isOpen }>`
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  top: 0;
   left: 0;
   width: 100vw;
   height: 100%;
@@ -16,7 +16,6 @@ const Menu = styled.div<{ isOpen }>`
   align-items: center;
   justify-content: center;
   z-index: 100;
-  transition: opacity 0.2s ease-in;
 
   ${DarkModeButton} {
     position: absolute;
