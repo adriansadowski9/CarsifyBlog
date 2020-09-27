@@ -4,7 +4,7 @@ const LogoWrapper = styled.a`
   display: flex;
   align-items: center;
   text-decoration: none;
-  z-index: 150;
+  z-index: 999;
   height: 90px;
   &:hover {
     cursor: pointer;

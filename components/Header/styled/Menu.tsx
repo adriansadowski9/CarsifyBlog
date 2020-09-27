@@ -3,21 +3,22 @@ import styled from 'styled-components';
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
 
 const Menu = styled.div<{ isOpen }>`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 100%;
+  position: absolute;
+  top: 0;
   background: ${(props) => props.theme.colors.bg};
   display: flex;
-  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
-  opacity: ${(props) => (props.isOpen ? '1' : '0')};
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 100;
-  transition: opacity 0.2s ease-in;
-
+  z-index: 997;
+  width: 100vw;
+  height: 100%;
+  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.isOpen ? '1' : '0')};
+  transition: ${(props) =>
+    props.isOpen
+      ? 'all 1000ms cubic-bezier(0, 0.995, 0.99, 1)'
+      : 'all 500ms cubic-bezier(0, 0.995, 0.99, 1)'};
   ${DarkModeButton} {
     position: absolute;
     right: ${(props) => props.theme.spaces.l};

@@ -1,4 +1,5 @@
 import ChevronWrapper from './styled/ChevronWrapper';
+import SnowballDiv from './styled/SnowballDiv';
 
 import * as React from 'react';
 import Link from 'next/link';
@@ -68,6 +69,7 @@ const Header: React.FC<HeaderProps> = ({
   };
   return (
     <header>
+      <SnowballDiv isOpen={isMobileMenuOpened} />
       <Navigation>
         <Link href="/" passHref>
           <LogoWrapper onClick={() => setIsMobileMenuOpened(false)}>
@@ -77,9 +79,10 @@ const Header: React.FC<HeaderProps> = ({
             </LogoIconWrapper>
           </LogoWrapper>
         </Link>
+
         <Menu isOpen={isMobileMenuOpened}>
           <NavList>
-            <NavListItem>
+            <NavListItem isOpen={isMobileMenuOpened}>
               <Link href="/" passHref>
                 <LinkButton
                   isActive={router.pathname === '/'}
@@ -89,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({
                 </LinkButton>
               </Link>
             </NavListItem>
-            <NavListItem>
+            <NavListItem isOpen={isMobileMenuOpened}>
               <NavItemChevronContainer>
                 <ChevronWrapper isOpen={isArticlesOpen} onClick={() => handleArticlesOpen()}>
                   <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
@@ -120,7 +123,7 @@ const Header: React.FC<HeaderProps> = ({
                 closeMobileMenu={() => setIsMobileMenuOpened(false)}
               />
             </NavListItem>
-            <NavListItem>
+            <NavListItem isOpen={isMobileMenuOpened}>
               <NavItemChevronContainer>
                 <ChevronWrapper isOpen={isTipsOpen} onClick={() => handleTipsOpen()}>
                   <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
@@ -151,7 +154,7 @@ const Header: React.FC<HeaderProps> = ({
                 closeMobileMenu={() => setIsMobileMenuOpened(false)}
               />
             </NavListItem>
-            <NavListItem>
+            <NavListItem isOpen={isMobileMenuOpened}>
               <Link href="/ogloszenia" passHref>
                 <LinkButton
                   isActive={router.pathname.startsWith('/ogloszenia')}
@@ -161,7 +164,7 @@ const Header: React.FC<HeaderProps> = ({
                 </LinkButton>
               </Link>
             </NavListItem>
-            <NavListItem>
+            <NavListItem isOpen={isMobileMenuOpened}>
               <Link href="/kontakt" passHref>
                 <LinkButton
                   isActive={router.pathname === '/kontakt'}
