@@ -1,4 +1,5 @@
 import Button from './ContactButton';
+import ContactHeadingSection from './ContactHeadingSection';
 import Input from './Input';
 import Select from './Select';
 import ButtonsContainer from './styled/ButtonsContainer';
@@ -43,6 +44,15 @@ const ContactPage: React.FC<ContactProps> = ({
   const [selectedItem, setSelectedItem] = React.useState(items[0].value);
   return (
     <ContactContainer>
+      <ContactHeadingSection
+        contactEmail={contactEmail}
+        Facebook={Facebook}
+        Twitter={Twitter}
+        Instagram={Instagram}
+        facebookUrl={facebookUrl}
+        twitterUrl={twitterUrl}
+        instagramUrl={instagramUrl}
+      />
       <InputContainer>
         <GroupInputs>
           <Input width="615px" name="name" label="Imię" />
