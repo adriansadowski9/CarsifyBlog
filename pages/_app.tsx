@@ -62,6 +62,15 @@ const MyApp: ThemeProvider<MyAppProps> = ({
 }) => {
   const { darkModeActive, switchToDarkMode, switchToLightMode } = useDarkMode();
   const theme: Theme = darkModeActive ? darkTheme : lightTheme;
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <ThemeProvider theme={theme}>
