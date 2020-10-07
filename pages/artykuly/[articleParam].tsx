@@ -169,6 +169,7 @@ const Article: NextPage<ArticleProps> = ({
 };
 
 Article.getInitialProps = async ({ ...props }: NextPageContext) => {
+  console.log(props.query);
   const { articleParam } = props.query;
   let markdownFile;
   let articlesList;
