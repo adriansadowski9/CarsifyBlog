@@ -31,10 +31,10 @@ module.exports = withOptimizedImages(
     exportPathMap: async () => {
       const paths = {
         '/': { page: '/' },
-        '/artykuly': { page: '/artykuly/' },
-        '/porady': { page: '/porady/' },
-        '/ogloszenia': { page: '/ogloszenia/' },
-        '/kontakt': { page: '/kontakt/' },
+        '/artykuly/': { page: '/artykuly' },
+        '/porady/': { page: '/porady' },
+        '/ogloszenia/': { page: '/ogloszenia' },
+        '/kontakt/': { page: '/kontakt' },
       };
 
       const contentFolders = [
