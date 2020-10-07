@@ -77,6 +77,8 @@ module.exports = withOptimizedImages(
         });
       });
 
+      console.log(paths);
+
       return paths;
     },
   })
