@@ -31,10 +31,10 @@ module.exports = withOptimizedImages(
     exportPathMap: async () => {
       const paths = {
         '/': { page: '/' },
-        '/artykuly/': { page: '/artykuly' },
-        '/porady/': { page: '/porady' },
-        '/ogloszenia/': { page: '/ogloszenia' },
-        '/kontakt/': { page: '/kontakt' },
+        '/artykuly': { page: '/artykuly' },
+        '/porady': { page: '/porady' },
+        '/ogloszenia': { page: '/ogloszenia' },
+        '/kontakt': { page: '/kontakt' },
       };
 
       const contentFolders = [
@@ -68,7 +68,7 @@ module.exports = withOptimizedImages(
       contentFolders.forEach((contentFolder) => {
         fs.readdirSync(contentFolder.path).map((file) => {
           const slug = file.substring(0, file.length - 3);
-          paths[`${contentFolder.baseUrl}/${slug}/`] = {
+          paths[`${contentFolder.baseUrl}/${slug}`] = {
             page: `${contentFolder.baseUrl}/[${contentFolder.slugName}]`,
             query: {
               [`${contentFolder.slugName}`]: slug,
