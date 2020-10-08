@@ -14,3 +14,18 @@
   for = "*.png" # js files should be set this way
   [headers.values]
     Cache-Control = "public, max-age=604800"
+[[redirects]]
+  from = "/artykuly/*"
+  to = "/artykuly/[articleParam].html"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/porady/*"
+  to = "/porady/[tipParam].html"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/ogloszenia/*"
+  to = "/ogloszenia/[adParam].html"
+  status = 200
+  force = true
