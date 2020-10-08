@@ -164,7 +164,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const adSlugs = ((context) => {
     const keys = context.keys();
-    return keys.map((key) => key.slice(0, -3));
+    return keys.map((key) => key.substring(2, key.length - 3));
   })(require.context('../../content/posts/ads', true, /\.md$/));
 
   const paths = adSlugs.map((slug) => `/ogloszenia/${slug}`);
