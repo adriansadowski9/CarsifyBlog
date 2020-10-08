@@ -224,14 +224,14 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const articleCategorySlugs = ((context) => {
     const keys = context.keys();
-    return keys.map((key) => key.slice(0, -3));
+    return keys.map((key) => key.substring(2, key.length - 3));
   })(require.context('../../content/categories/articles', true, /\.md$/));
 
   const articleSlugs = ((context) => {
     const keys = context.keys();
-    return keys.map((key) => key.slice(0, -3));
+    return keys.map((key) => key.substring(2, key.length - 3));
   })(require.context('../../content/posts/articles', true, /\.md$/));
-
+  console.log(articleSlugs);
   const paths = [...articleSlugs, ...articleCategorySlugs].map((slug) => `/artykuly/${slug}`);
 
   return {

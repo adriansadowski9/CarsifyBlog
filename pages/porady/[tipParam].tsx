@@ -223,12 +223,12 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const tipCategorySlugs = ((context) => {
     const keys = context.keys();
-    return keys.map((key) => key.slice(0, -3));
+    return keys.map((key) => key.substring(2, key.length - 3));
   })(require.context('../../content/categories/tips', true, /\.md$/));
 
   const tipSlugs = ((context) => {
     const keys = context.keys();
-    return keys.map((key) => key.slice(0, -3));
+    return keys.map((key) => key.substring(2, key.length - 3));
   })(require.context('../../content/posts/tips', true, /\.md$/));
 
   const paths = [...tipSlugs, ...tipCategorySlugs].map((slug) => `/porady/${slug}`);
