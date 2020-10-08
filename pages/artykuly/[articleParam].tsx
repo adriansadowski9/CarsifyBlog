@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { NextPage, NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import ArticleCard from '@components/Cards/ArticleCard';
 import Categories from '@components/Categories';
+import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import ArticlesSection from '@components/Sections/ArticlesSection';
 import SectionName from '@components/Sections/SectionName';
-import { getArticleCategories } from '@utils/getCategories';
+import { TipCategory } from '@pages/porady/[tipParam]';
+import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
 
 interface ArticleAttributes {
@@ -44,8 +46,9 @@ export interface Article {
 
 interface ArticleProps extends NextPageContext {
   attributes: ArticleAttributes;
-  articlesList: Article[];
   articleCategories: ArticleCategory[];
+  tipCategories: TipCategory[];
+  articlesList: Article[];
   isCategory: boolean;
   articleExists: boolean;
   moreArticles: Article[];
@@ -53,8 +56,9 @@ interface ArticleProps extends NextPageContext {
 
 const Article: NextPage<ArticleProps> = ({
   attributes,
-  articlesList,
   articleCategories,
+  tipCategories,
+  articlesList,
   isCategory,
   articleExists,
   moreArticles,
@@ -75,7 +79,7 @@ const Article: NextPage<ArticleProps> = ({
     });
 
     return (
-      <>
+      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={pageTitle} description={pageDescription} />
         <ArticlesSection notEnoughItems={(articlesList.length + 1) % 3 !== 0}>
           <SectionName name={title} />
@@ -99,7 +103,7 @@ const Article: NextPage<ArticleProps> = ({
             );
           })}
         </ArticlesSection>
-      </>
+      </Layout>
     );
   } else if (articleExists) {
     const {
@@ -118,7 +122,7 @@ const Article: NextPage<ArticleProps> = ({
     const shareUrl = `https://carsify.pl${router.asPath}`;
 
     return (
-      <>
+      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={`Article - ${title}`} description="Article description" />
         <Post
           date={date}
@@ -154,25 +158,26 @@ const Article: NextPage<ArticleProps> = ({
             </ArticlesSection>
           }
         />
-      </>
+      </Layout>
     );
   } else {
     return (
-      <>
+      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title="Error 404" description="404 description" />
         <div>
           <span>Error</span>
         </div>
-      </>
+      </Layout>
     );
   }
 };
 
-Article.getInitialProps = async ({ ...props }: NextPageContext) => {
-  const { articleParam } = props.query;
+export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
+  const { articleParam } = ctx.params;
+  const articleCategories = await getArticleCategories();
+  const tipCategories = await getTipCategories();
   let markdownFile;
   let articlesList;
-  let articleCategories;
   let isCategory;
   let articleExists;
   let moreArticles;
@@ -183,7 +188,6 @@ Article.getInitialProps = async ({ ...props }: NextPageContext) => {
       sort: 'desc',
       categories: [`${markdownFile.attributes.title}`],
     });
-    articleCategories = await getArticleCategories();
     isCategory = true;
   } catch {
     isCategory = false;
@@ -205,12 +209,34 @@ Article.getInitialProps = async ({ ...props }: NextPageContext) => {
   }
 
   return {
-    ...markdownFile,
-    articlesList,
-    articleCategories,
-    isCategory,
-    articleExists,
-    moreArticles,
+    props: {
+      ...markdownFile,
+      articleCategories,
+      tipCategories,
+      articlesList: articlesList || null,
+      isCategory: isCategory || null,
+      articleExists: articleExists || null,
+      moreArticles: moreArticles || null,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const articleCategorySlugs = ((context) => {
+    const keys = context.keys();
+    return keys.map((key) => key.slice(0, -3));
+  })(require.context('../../content/categories/articles', true, /\.md$/));
+
+  const articleSlugs = ((context) => {
+    const keys = context.keys();
+    return keys.map((key) => key.slice(0, -3));
+  })(require.context('../../content/posts/articles', true, /\.md$/));
+
+  const paths = [...articleSlugs, ...articleCategorySlugs].map((slug) => `/artykuly/${slug}`);
+
+  return {
+    paths,
+    fallback: false,
   };
 };
 

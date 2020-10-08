@@ -1,12 +1,16 @@
 import * as React from 'react';
-import { NextPage, NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import AdCard from '@components/Cards/AdCard';
+import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import AdsSection from '@components/Sections/AdsSection';
+import { ArticleCategory } from '@pages/artykuly/[articleParam]';
+import { TipCategory } from '@pages/porady/[tipParam]';
+import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds } from '@utils/getPosts';
 
 interface AdAttributes {
@@ -44,11 +48,19 @@ export interface Ad {
 
 interface AdProps extends NextPageContext {
   attributes: AdAttributes;
+  articleCategories: ArticleCategory[];
+  tipCategories: TipCategory[];
   adExists: boolean;
   moreAds: Ad[];
 }
 
-const Ad: NextPage<AdProps> = ({ attributes, adExists, moreAds }) => {
+const Ad: NextPage<AdProps> = ({
+  attributes,
+  articleCategories,
+  tipCategories,
+  adExists,
+  moreAds,
+}) => {
   if (adExists) {
     const {
       title,
@@ -66,7 +78,7 @@ const Ad: NextPage<AdProps> = ({ attributes, adExists, moreAds }) => {
     const shareUrl = `https://carsify.pl${router.asPath}`;
 
     return (
-      <>
+      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={`Ad - ${title}`} description="Ad description" />
         <Post
           date={date}
@@ -102,22 +114,26 @@ const Ad: NextPage<AdProps> = ({ attributes, adExists, moreAds }) => {
             </AdsSection>
           }
         />
-      </>
+      </Layout>
     );
   } else {
     return (
-      <>
+      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title="Error 404" description="404 description" />
         <div>
           <span>Error</span>
         </div>
-      </>
+      </Layout>
     );
   }
 };
 
-Ad.getInitialProps = async ({ ...props }) => {
-  const { adParam } = props.query;
+export default Ad;
+
+export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
+  const { adParam } = ctx.params;
+  const articleCategories = await getArticleCategories();
+  const tipCategories = await getTipCategories();
   let markdownFile;
   let moreAds;
   let adExists;
@@ -133,11 +149,28 @@ Ad.getInitialProps = async ({ ...props }) => {
   } catch {
     adExists = false;
   }
+
   return {
-    ...markdownFile,
-    moreAds,
-    adExists,
+    props: {
+      ...markdownFile,
+      articleCategories,
+      tipCategories,
+      moreAds: moreAds || null,
+      adExists: adExists || null,
+    },
   };
 };
 
-export default Ad;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const adSlugs = ((context) => {
+    const keys = context.keys();
+    return keys.map((key) => key.slice(0, -3));
+  })(require.context('../../content/posts/ads', true, /\.md$/));
+
+  const paths = adSlugs.map((slug) => `/ogloszenia/${slug}`);
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
