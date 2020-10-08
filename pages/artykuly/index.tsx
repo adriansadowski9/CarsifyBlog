@@ -1,22 +1,25 @@
 import React from 'react';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 import ArticleCard from '@components/Cards/ArticleCard';
 import Categories from '@components/Categories';
+import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import ArticlesSection from '@components/Sections/ArticlesSection';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/articles.md';
 import { Article, ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { getArticleCategories } from '@utils/getCategories';
+import { TipCategory } from '@pages/porady/[tipParam]';
+import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
 
 interface ArticlesProps {
   articlesList: Article[];
   articleCategories: ArticleCategory[];
+  tipCategories: TipCategory[];
 }
 
-const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories }) => {
+const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, tipCategories }) => {
   const categories = Array.from(articleCategories, (c: ArticleCategory) => {
     return {
       title: c.attributes.title,
@@ -31,7 +34,7 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories }) 
   });
   const { pageTitle, pageDescription } = attributes;
   return (
-    <>
+    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <ArticlesSection notEnoughItems={(articlesList.length + 1) % 3 !== 0}>
         <SectionName name="Aktualności" />
@@ -55,14 +58,22 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories }) 
           );
         })}
       </ArticlesSection>
-    </>
+    </Layout>
   );
 };
 
-Articles.getInitialProps = async () => {
+export default Articles;
+
+export const getStaticProps: GetStaticProps = async () => {
   const articlesList = await getArticles({ sort: 'desc' });
   const articleCategories = await getArticleCategories();
-  return { articlesList, articleCategories };
-};
+  const tipCategories = await getTipCategories();
 
-export default Articles;
+  return {
+    props: {
+      articlesList,
+      articleCategories,
+      tipCategories,
+    },
+  };
+};

@@ -1,16 +1,10 @@
-import { ArticleCategory } from './artykuly/[articleParam]';
-import { TipCategory } from './porady/[tipParam]';
-
 import * as React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import withDarkMode from 'next-dark-mode';
-import { useDarkMode } from 'next-dark-mode';
-import App, { AppContext, AppProps } from 'next/app';
+import { DarkModeContext } from 'contexts/darkModeContext';
+import { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import useDarkMode from 'use-dark-mode';
 
-import Layout from '@components/Layout';
-import { getArticleCategories } from '@utils/getCategories';
-import { getTipCategories } from '@utils/getCategories';
 import { darkTheme, lightTheme, Theme } from '@utils/theme';
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -49,19 +43,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 `;
-interface MyAppProps extends AppProps {
-  articleCategories: ArticleCategory[];
-  tipCategories: TipCategory[];
-}
 
-const MyApp: ThemeProvider<MyAppProps> = ({
-  Component,
-  pageProps,
-  articleCategories,
-  tipCategories,
-}) => {
-  const { darkModeActive, switchToDarkMode, switchToLightMode } = useDarkMode();
-  const theme: Theme = darkModeActive ? darkTheme : lightTheme;
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+  const darkMode = useDarkMode(false);
+  const theme: Theme = darkMode.value ? darkTheme : lightTheme;
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -75,23 +60,11 @@ const MyApp: ThemeProvider<MyAppProps> = ({
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Layout
-        darkModeEnabled={darkModeActive}
-        enableDarkMode={switchToDarkMode}
-        disableDarkMode={switchToLightMode}
-        articleCategories={articleCategories}
-        tipCategories={tipCategories}
-      >
+      <DarkModeContext.Provider value={darkMode}>
         <Component {...pageProps} />
-      </Layout>
+      </DarkModeContext.Provider>
     </ThemeProvider>
   );
 };
 
-MyApp.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await App.getInitialProps(appContext);
-  const articleCategories = await getArticleCategories();
-  const tipCategories = await getTipCategories();
-  return { ...appProps, articleCategories, tipCategories };
-};
-export default withDarkMode(MyApp);
+export default MyApp;

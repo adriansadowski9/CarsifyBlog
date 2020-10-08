@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { NextPage, NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import TipCard from '@components/Cards/TipCard';
 import Categories from '@components/Categories';
+import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import SectionName from '@components/Sections/SectionName';
 import TipsSection from '@components/Sections/TipsSection';
-import { getTipCategories } from '@utils/getCategories';
+import { ArticleCategory } from '@pages/artykuly/[articleParam]';
+import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
 
 interface TipAttributes {
@@ -44,8 +46,9 @@ export interface Tip {
 
 interface TipProps extends NextPageContext {
   attributes: TipAttributes;
-  tipsList: Tip[];
+  articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
+  tipsList: Tip[];
   isCategory: boolean;
   tipExists: boolean;
   moreTips: Tip[];
@@ -53,8 +56,9 @@ interface TipProps extends NextPageContext {
 
 const Tip: NextPage<TipProps> = ({
   attributes,
-  tipsList,
+  articleCategories,
   tipCategories,
+  tipsList,
   isCategory,
   tipExists,
   moreTips,
@@ -74,7 +78,7 @@ const Tip: NextPage<TipProps> = ({
       href: '/porady',
     });
     return (
-      <>
+      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={pageTitle} description={pageDescription} />
         <SectionName name={title} />
         <TipsSection hasCategories isHorizontal>
@@ -98,7 +102,7 @@ const Tip: NextPage<TipProps> = ({
             );
           })}
         </TipsSection>
-      </>
+      </Layout>
     );
   } else if (tipExists) {
     const {
@@ -117,7 +121,7 @@ const Tip: NextPage<TipProps> = ({
     const shareUrl = `https://carsify.pl${router.asPath}`;
 
     return (
-      <>
+      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={`Tip - ${title}`} description="Tip description" />
         <Post
           date={date}
@@ -153,25 +157,26 @@ const Tip: NextPage<TipProps> = ({
             </TipsSection>
           }
         />
-      </>
+      </Layout>
     );
   } else {
     return (
-      <>
+      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title="Error 404" description="404 description" />
         <div>
           <span>Error</span>
         </div>
-      </>
+      </Layout>
     );
   }
 };
 
-Tip.getInitialProps = async ({ ...props }) => {
-  const { tipParam } = props.query;
+export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
+  const { tipParam } = ctx.params;
+  const articleCategories = await getArticleCategories();
+  const tipCategories = await getTipCategories();
   let markdownFile;
   let tipsList;
-  let tipCategories;
   let isCategory;
   let tipExists;
   let moreTips;
@@ -182,7 +187,6 @@ Tip.getInitialProps = async ({ ...props }) => {
       sort: 'desc',
       categories: [`${markdownFile.attributes.title}`],
     });
-    tipCategories = await getTipCategories();
     isCategory = true;
   } catch {
     isCategory = false;
@@ -204,12 +208,34 @@ Tip.getInitialProps = async ({ ...props }) => {
   }
 
   return {
-    ...markdownFile,
-    tipsList,
-    tipCategories,
-    isCategory,
-    tipExists,
-    moreTips,
+    props: {
+      ...markdownFile,
+      articleCategories,
+      tipCategories,
+      tipsList: tipsList || null,
+      isCategory: isCategory || null,
+      tipExists: tipExists || null,
+      moreTips: moreTips || null,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const tipCategorySlugs = ((context) => {
+    const keys = context.keys();
+    return keys.map((key) => key.slice(0, -3));
+  })(require.context('../../content/categories/tips', true, /\.md$/));
+
+  const tipSlugs = ((context) => {
+    const keys = context.keys();
+    return keys.map((key) => key.slice(0, -3));
+  })(require.context('../../content/posts/tips', true, /\.md$/));
+
+  const paths = [...tipSlugs, ...tipCategorySlugs].map((slug) => `/porady/${slug}`);
+
+  return {
+    paths,
+    fallback: false,
   };
 };
 

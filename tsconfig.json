@@ -18,9 +18,10 @@
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
       "@content/*": ["content/*"],
+      "@contexts/*": ["contexts/*"],
       "@pages/*": ["pages/*"],
       "@types/*": ["types/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
     }
   },
   "exclude": ["node_modules"],
