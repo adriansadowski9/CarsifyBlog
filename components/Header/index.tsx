@@ -22,27 +22,24 @@ import Navigation from '@components/Header/styled/Navigation';
 import NavItemChevronContainer from '@components/Header/styled/NavItemChevronContainer';
 import NavList from '@components/Header/styled/NavList';
 import NavListItem from '@components/Header/styled/NavListItem';
+import DarkModeContext from '@contexts/darkModeContext';
 import { ArticleCategory } from '@pages/artykuly/[articleParam]';
 import { TipCategory } from '@pages/porady/[tipParam]';
 import { Theme } from '@utils/theme';
 
 interface HeaderProps {
-  darkModeEnabled: boolean;
-  enableDarkMode: () => void;
-  disableDarkMode: () => void;
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
 }
-const Header: React.FC<HeaderProps> = ({
-  darkModeEnabled,
-  enableDarkMode,
-  disableDarkMode,
-  articleCategories,
-  tipCategories,
-}) => {
-  const router = useRouter();
+const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
+  const darkModeContext = React.useContext(DarkModeContext);
+  const router = useRouter();
+
   const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
+  const [isArticlesOpen, setIsArticlesOpen] = React.useState(false);
+  const [isTipsOpen, setIsTipsOpen] = React.useState(false);
+
   const isAnyArticleCategoryActive = articleCategories.some((articleCategory) =>
     router.asPath.startsWith(`/artykuly/${articleCategory.slug}`)
   );
@@ -51,8 +48,7 @@ const Header: React.FC<HeaderProps> = ({
   );
   const isDropdownItemActive = (basePath, itemSlug) =>
     router.asPath.startsWith(`${basePath}/${itemSlug}`);
-  const [isArticlesOpen, setIsArticlesOpen] = React.useState(false);
-  const [isTipsOpen, setIsTipsOpen] = React.useState(false);
+
   const handleArticlesOpen = () => {
     setIsArticlesOpen(!isArticlesOpen);
     setIsTipsOpen(false);
@@ -66,6 +62,7 @@ const Header: React.FC<HeaderProps> = ({
     setIsTipsOpen(false);
     setIsArticlesOpen(false);
   };
+
   return (
     <header>
       <Navigation>
@@ -173,12 +170,12 @@ const Header: React.FC<HeaderProps> = ({
               </Link>
             </NavListItem>
           </NavList>
-          {darkModeEnabled ? (
-            <DarkModeButton type="button" onClick={disableDarkMode}>
+          {darkModeContext.value ? (
+            <DarkModeButton type="button" onClick={darkModeContext.disable}>
               <Sun fill={themeContext.colors.text} />
             </DarkModeButton>
           ) : (
-            <DarkModeButton type="button" onClick={enableDarkMode}>
+            <DarkModeButton type="button" onClick={darkModeContext.enable}>
               <Moon fill={themeContext.colors.text} />
             </DarkModeButton>
           )}

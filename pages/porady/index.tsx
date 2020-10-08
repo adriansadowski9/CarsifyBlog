@@ -1,23 +1,26 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 import TipCard from '@components/Cards/TipCard';
 import Categories from '@components/Categories';
+import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import SectionName from '@components/Sections/SectionName';
 import TipsSection from '@components/Sections/TipsSection';
 import { attributes } from '@content/pages/ads.md';
+import { ArticleCategory } from '@pages/artykuly/[articleParam]';
 import { Tip, TipCategory } from '@pages/porady/[tipParam]';
-import { getTipCategories } from '@utils/getCategories';
+import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
 
 interface TipsProps {
   tipsList: Tip[];
+  articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
 }
 
-const Tips: NextPage<TipsProps> = ({ tipsList, tipCategories }) => {
+const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories }) => {
   const { pageTitle, pageDescription } = attributes;
   const categories = Array.from(tipCategories, (c: TipCategory) => {
     return {
@@ -33,7 +36,7 @@ const Tips: NextPage<TipsProps> = ({ tipsList, tipCategories }) => {
   });
   tipsList.sort((a, b) => dayjs(b.attributes.date).diff(dayjs(a.attributes.date)));
   return (
-    <>
+    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <SectionName name="Moto porady" />
       <TipsSection hasCategories isHorizontal>
@@ -57,14 +60,15 @@ const Tips: NextPage<TipsProps> = ({ tipsList, tipCategories }) => {
           );
         })}
       </TipsSection>
-    </>
+    </Layout>
   );
 };
 
-Tips.getInitialProps = async () => {
-  const tipsList = await getTips({ sort: 'desc' });
-  const tipCategories = await getTipCategories();
-  return { tipsList, tipCategories };
-};
-
 export default Tips;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const tipsList = await getTips({ sort: 'desc' });
+  const articleCategories = await getArticleCategories();
+  const tipCategories = await getTipCategories();
+  return { props: { tipsList, articleCategories, tipCategories } };
+};

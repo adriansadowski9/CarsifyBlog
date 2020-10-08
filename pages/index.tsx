@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 import AdCard from '@components/Cards/AdCard';
 import ArticleCard from '@components/Cards/ArticleCard';
 import InformationCard from '@components/Cards/InformationCard';
 import TipCard from '@components/Cards/TipCard';
+import Layout from '@components/Layout';
 import Row from '@components/Layout/styled/Row';
 import PageHead from '@components/PageHead';
 import AdsSection from '@components/Sections/AdsSection';
@@ -14,22 +15,32 @@ import InformationSection from '@components/Sections/InformationSection';
 import SectionName from '@components/Sections/SectionName';
 import TipsSection from '@components/Sections/TipsSection';
 import { attributes } from '@content/pages/home.md';
-import { Article } from '@pages/artykuly/[articleParam]';
+import { Article, ArticleCategory } from '@pages/artykuly/[articleParam]';
 import { Ad } from '@pages/ogloszenia/[adParam]';
-import { Tip } from '@pages/porady/[tipParam]';
+import { Tip, TipCategory } from '@pages/porady/[tipParam]';
+import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds, getArticles, getTips } from '@utils/getPosts';
 
 interface HomeProps {
+  articleCategories: ArticleCategory[];
+  tipCategories: TipCategory[];
   articlesList: Article[];
   tipsList: Tip[];
   infosList: Tip[];
   adsList: Ad[];
 }
 
-const Home: NextPage<HomeProps> = ({ articlesList, tipsList, infosList, adsList }) => {
+const Home: NextPage<HomeProps> = ({
+  articleCategories,
+  tipCategories,
+  articlesList,
+  tipsList,
+  infosList,
+  adsList,
+}) => {
   const { pageTitle, pageDescription } = attributes;
   return (
-    <>
+    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <Row>
         <ArticlesSection withMargin>
@@ -132,11 +143,15 @@ const Home: NextPage<HomeProps> = ({ articlesList, tipsList, infosList, adsList 
           })}
         </AdsSection>
       </Row>
-    </>
+    </Layout>
   );
 };
 
-Home.getInitialProps = async () => {
+export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const articleCategories = await getArticleCategories();
+  const tipCategories = await getTipCategories();
   const articlesList = await getArticles({ sort: 'desc', count: 6 });
   const tipsList = await getTips({ sort: 'desc', count: 2 });
   const infosList = await getTips({
@@ -145,7 +160,15 @@ Home.getInitialProps = async () => {
     categories: ['Bezpieczeństwo', 'Technika jazdy', 'Eksploatacja', 'Warto wiedzieć'],
   });
   const adsList = await getAds({ sort: 'desc', count: 4 });
-  return { articlesList, tipsList, infosList, adsList };
-};
 
-export default Home;
+  return {
+    props: {
+      articleCategories,
+      tipCategories,
+      articlesList,
+      tipsList,
+      infosList,
+      adsList,
+    },
+  };
+};

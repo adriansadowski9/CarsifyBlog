@@ -1,24 +1,30 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 import AdCard from '@components/Cards/AdCard';
+import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import AdsSection from '@components/Sections/AdsSection';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/ads.md';
+import { ArticleCategory } from '@pages/artykuly/[articleParam]';
 import { Ad } from '@pages/ogloszenia/[adParam]';
+import { TipCategory } from '@pages/porady/[tipParam]';
+import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds } from '@utils/getPosts';
 
 interface AdsProps {
   adsList: Ad[];
+  articleCategories: ArticleCategory[];
+  tipCategories: TipCategory[];
 }
 
-const Ads: NextPage<AdsProps> = ({ adsList }) => {
+const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) => {
   const { pageTitle, pageDescription } = attributes;
   adsList.sort((a, b) => dayjs(b.attributes.date).diff(dayjs(a.attributes.date)));
   return (
-    <>
+    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <AdsSection>
         <SectionName name="Perełki z ogłoszeń" />
@@ -41,13 +47,22 @@ const Ads: NextPage<AdsProps> = ({ adsList }) => {
           );
         })}
       </AdsSection>
-    </>
+    </Layout>
   );
 };
 
-Ads.getInitialProps = async () => {
-  const adsList = await getAds({ sort: 'desc' });
-  return { adsList };
-};
-
 export default Ads;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const adsList = await getAds({ sort: 'desc' });
+  const articleCategories = await getArticleCategories();
+  const tipCategories = await getTipCategories();
+
+  return {
+    props: {
+      adsList,
+      articleCategories,
+      tipCategories,
+    },
+  };
+};

@@ -6,30 +6,14 @@ import { ArticleCategory } from '@pages/artykuly/[articleParam]';
 import { TipCategory } from '@pages/porady/[tipParam]';
 
 interface LayoutProps {
-  darkModeEnabled: boolean;
-  enableDarkMode: () => void;
-  disableDarkMode: () => void;
   children: React.ReactNode;
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
 }
 
-const Layout: React.FC<LayoutProps> = ({
-  darkModeEnabled,
-  enableDarkMode,
-  disableDarkMode,
-  children,
-  articleCategories,
-  tipCategories,
-}) => (
+const Layout: React.FC<LayoutProps> = ({ children, articleCategories, tipCategories }) => (
   <>
-    <Header
-      darkModeEnabled={darkModeEnabled}
-      enableDarkMode={enableDarkMode}
-      disableDarkMode={disableDarkMode}
-      articleCategories={articleCategories}
-      tipCategories={tipCategories}
-    />
+    <Header articleCategories={articleCategories} tipCategories={tipCategories} />
     <MainContent>{children}</MainContent>
   </>
 );
