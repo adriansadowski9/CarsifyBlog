@@ -21,7 +21,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, ca
   const themeContext: Theme = React.useContext(ThemeContext);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
-    <Link href="/artykuly/[articleParam]" as={`/artykuly/${slug}`} passHref>
+    <Link href="/artykuly/[id]" as={`/artykuly/${slug}`} passHref>
       <ArticleCardContainer>
         <article>
           <ArticleCardImage

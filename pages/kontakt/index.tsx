@@ -5,8 +5,8 @@ import ContactPage from '@components/Contact';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import { attributes } from '@content/pages/contact.md';
-import { ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { TipCategory } from '@pages/porady/[tipParam]';
+import { ArticleCategory } from '@pages/artykuly/[id]';
+import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 
 interface ContactProps {

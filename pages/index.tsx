@@ -15,9 +15,9 @@ import InformationSection from '@components/Sections/InformationSection';
 import SectionName from '@components/Sections/SectionName';
 import TipsSection from '@components/Sections/TipsSection';
 import { attributes } from '@content/pages/home.md';
-import { Article, ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { Ad } from '@pages/ogloszenia/[adParam]';
-import { Tip, TipCategory } from '@pages/porady/[tipParam]';
+import { Article, ArticleCategory } from '@pages/artykuly/[id]';
+import { Ad } from '@pages/ogloszenia/[id]';
+import { Tip, TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds, getArticles, getTips } from '@utils/getPosts';
 

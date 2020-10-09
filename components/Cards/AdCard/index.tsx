@@ -33,7 +33,7 @@ interface AdCardProps {
 const AdCard: React.FC<AdCardProps> = ({ image, title, textSnippet, carData, slug }) => {
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=300w&sizes[]=400w&sizes[]=600w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
-    <Link href="/ogloszenia/[adParam]" as={`/ogloszenia/${slug}`} passHref>
+    <Link href="/ogloszenia/[id]" as={`/ogloszenia/${slug}`} passHref>
       <AdCardContainer>
         <article>
           <AdCardImage

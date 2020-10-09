@@ -8,8 +8,8 @@ import PageHead from '@components/PageHead';
 import ArticlesSection from '@components/Sections/ArticlesSection';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/articles.md';
-import { Article, ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { TipCategory } from '@pages/porady/[tipParam]';
+import { Article, ArticleCategory } from '@pages/artykuly/[id]';
+import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
 
@@ -24,7 +24,7 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
     return {
       title: c.attributes.title,
       hrefAs: `/artykuly/${c.slug}`,
-      href: '/artykuly/[articleParam]',
+      href: '/artykuly/[id]',
     };
   });
   categories.unshift({
