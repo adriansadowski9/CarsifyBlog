@@ -21,7 +21,7 @@ const TipCard: React.FC<TipCardProps> = ({ image, title, textSnippet, category, 
   const themeContext: Theme = React.useContext(ThemeContext);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
-    <Link href="/porady/[tipParam]" as={`/porady/${slug}`} passHref>
+    <Link href="/porady/[id]" as={`/porady/${slug}`} passHref>
       <TipCardContainer>
         <article>
           <TipCardImage

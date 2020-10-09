@@ -5,8 +5,8 @@ import DropdownLinkButton from './styled/DropdownLinkButton';
 import * as React from 'react';
 import Link from 'next/link';
 
-import { ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { TipCategory } from '@pages/porady/[tipParam]';
+import { ArticleCategory } from '@pages/artykuly/[id]';
+import { TipCategory } from '@pages/porady/[id]';
 interface DropdownProps {
   categories: ArticleCategory[] | TipCategory[];
   basePath?: string;

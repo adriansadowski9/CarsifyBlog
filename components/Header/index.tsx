@@ -23,8 +23,8 @@ import NavItemChevronContainer from '@components/Header/styled/NavItemChevronCon
 import NavList from '@components/Header/styled/NavList';
 import NavListItem from '@components/Header/styled/NavListItem';
 import DarkModeContext from '@contexts/darkModeContext';
-import { ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { TipCategory } from '@pages/porady/[tipParam]';
+import { ArticleCategory } from '@pages/artykuly/[id]';
+import { TipCategory } from '@pages/porady/[id]';
 import { Theme } from '@utils/theme';
 
 interface HeaderProps {
@@ -110,7 +110,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               <MenuDropdown
                 categories={articleCategories}
                 basePath="/artykuly"
-                pagePath="/artykuly/[articleParam]"
+                pagePath="/artykuly/[id]"
                 isDropdownItemActive={isDropdownItemActive}
                 isActive={router.pathname.startsWith('/artykuly') && !isAnyArticleCategoryActive}
                 isOpen={isArticlesOpen}
@@ -141,7 +141,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               <MenuDropdown
                 categories={tipCategories}
                 basePath="/porady"
-                pagePath="/porady/[tipParam]"
+                pagePath="/porady/[id]"
                 isDropdownItemActive={isDropdownItemActive}
                 isActive={router.pathname.startsWith('/porady') && !isAnyTipCategoryActive}
                 isOpen={isTipsOpen}

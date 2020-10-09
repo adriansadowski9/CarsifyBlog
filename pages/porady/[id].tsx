@@ -2,19 +2,19 @@ import * as React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
-import ArticleCard from '@components/Cards/ArticleCard';
+import TipCard from '@components/Cards/TipCard';
 import Categories from '@components/Categories';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
-import ArticlesSection from '@components/Sections/ArticlesSection';
 import SectionName from '@components/Sections/SectionName';
-import { TipCategory } from '@pages/porady/[tipParam]';
+import TipsSection from '@components/Sections/TipsSection';
+import { ArticleCategory } from '@pages/artykuly/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
-import { getArticles } from '@utils/getPosts';
+import { getTips } from '@utils/getPosts';
 
-interface ArticleAttributes {
+interface TipAttributes {
   pageTitle: string;
   pageDescription: string;
   title: string;
@@ -30,7 +30,7 @@ interface ArticleAttributes {
   text: string;
 }
 
-export interface ArticleCategory {
+export interface TipCategory {
   attributes: {
     title: string;
     pageTitle: string;
@@ -39,56 +39,55 @@ export interface ArticleCategory {
   slug: string;
 }
 
-export interface Article {
-  attributes: ArticleAttributes;
+export interface Tip {
+  attributes: TipAttributes;
   slug: string;
 }
 
-interface ArticleProps extends NextPageContext {
-  attributes: ArticleAttributes;
+interface TipProps extends NextPageContext {
+  attributes: TipAttributes;
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
-  articlesList: Article[];
+  tipsList: Tip[];
   isCategory: boolean;
-  articleExists: boolean;
-  moreArticles: Article[];
+  tipExists: boolean;
+  moreTips: Tip[];
 }
 
-const Article: NextPage<ArticleProps> = ({
+const Tip: NextPage<TipProps> = ({
   attributes,
   articleCategories,
   tipCategories,
-  articlesList,
+  tipsList,
   isCategory,
-  articleExists,
-  moreArticles,
+  tipExists,
+  moreTips,
 }) => {
   if (isCategory) {
     const { title, pageTitle, pageDescription } = attributes;
-    const categories = Array.from(articleCategories, (c: ArticleCategory) => {
+    const categories = Array.from(tipCategories, (c: TipCategory) => {
       return {
         title: c.attributes.title,
-        hrefAs: `/artykuly/${c.slug}`,
-        href: '/artykuly/[articleParam]',
+        hrefAs: `/porady/${c.slug}`,
+        href: '/porady/[id]',
       };
     });
     categories.unshift({
       title: 'Wszystkie',
-      hrefAs: '/artykuly',
-      href: '/artykuly',
+      hrefAs: '/porady',
+      href: '/porady',
     });
-
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={pageTitle} description={pageDescription} />
-        <ArticlesSection notEnoughItems={(articlesList.length + 1) % 3 !== 0}>
-          <SectionName name={title} />
-          <Categories items={categories} height={categories.length > 5 ? '825px' : '385px'} />
-          {articlesList.map((article, index) => {
-            const { featuredImage, title, highlightedText, category } = article.attributes;
-            const { slug } = article;
+        <SectionName name={title} />
+        <TipsSection hasCategories isHorizontal>
+          <Categories items={categories} height={categories.length > 5 ? '895px' : '385px'} />
+          {tipsList.map((tip, index) => {
+            const { featuredImage, title, highlightedText, category } = tip.attributes;
+            const { slug } = tip;
             return (
-              <ArticleCard
+              <TipCard
                 key={`${title}-${index}`}
                 image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                 title={title}
@@ -102,10 +101,10 @@ const Article: NextPage<ArticleProps> = ({
               />
             );
           })}
-        </ArticlesSection>
+        </TipsSection>
       </Layout>
     );
-  } else if (articleExists) {
+  } else if (tipExists) {
     const {
       title,
       subtitle,
@@ -123,7 +122,7 @@ const Article: NextPage<ArticleProps> = ({
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={`Article - ${title}`} description="Article description" />
+        <PageHead title={`Tip - ${title}`} description="Tip description" />
         <Post
           date={date}
           category={category}
@@ -135,13 +134,13 @@ const Article: NextPage<ArticleProps> = ({
           text={text}
           contents={contents}
           moreSection={
-            <ArticlesSection>
-              <MoreSectionTitle>Więcej artykułów</MoreSectionTitle>
-              {moreArticles.map((article, index) => {
+            <TipsSection isHorizontal>
+              <MoreSectionTitle>Więcej porad</MoreSectionTitle>
+              {moreTips.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
                 const { slug } = article;
                 return (
-                  <ArticleCard
+                  <TipCard
                     key={`${title}-${index}`}
                     image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                     title={title}
@@ -155,7 +154,7 @@ const Article: NextPage<ArticleProps> = ({
                   />
                 );
               })}
-            </ArticlesSection>
+            </TipsSection>
           }
         />
       </Layout>
@@ -173,18 +172,18 @@ const Article: NextPage<ArticleProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
-  const { articleParam } = ctx.params;
+  const { id } = ctx.params;
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
   let markdownFile;
-  let articlesList;
+  let tipsList;
   let isCategory;
-  let articleExists;
-  let moreArticles;
+  let tipExists;
+  let moreTips;
 
   try {
-    markdownFile = await import(`../../content/categories/articles/${articleParam}.md`);
-    articlesList = await getArticles({
+    markdownFile = await import(`../../content/categories/tips/${id}.md`);
+    tipsList = await getTips({
       sort: 'desc',
       categories: [`${markdownFile.attributes.title}`],
     });
@@ -195,16 +194,16 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 
   if (!isCategory) {
     try {
-      markdownFile = await import(`../../content/posts/articles/${articleParam}.md`);
-      moreArticles = await getArticles({
+      markdownFile = await import(`../../content/posts/tips/${id}.md`);
+      moreTips = await getTips({
         sort: 'desc',
         categories: [`${markdownFile.attributes.category}`],
         count: 3,
-        excludeSlug: articleParam.toString(),
+        excludeSlug: id.toString(),
       });
-      articleExists = true;
+      tipExists = true;
     } catch {
-      articleExists = false;
+      tipExists = false;
     }
   }
 
@@ -213,26 +212,26 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       ...markdownFile,
       articleCategories,
       tipCategories,
-      articlesList: articlesList || null,
+      tipsList: tipsList || null,
       isCategory: isCategory || null,
-      articleExists: articleExists || null,
-      moreArticles: moreArticles || null,
+      tipExists: tipExists || null,
+      moreTips: moreTips || null,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articleCategorySlugs = ((context) => {
+  const tipCategorySlugs = ((context) => {
     const keys = context.keys();
     return keys.map((key) => key.substring(2, key.length - 3));
-  })(require.context('../../content/categories/articles', true, /\.md$/));
+  })(require.context('../../content/categories/tips', true, /\.md$/));
 
-  const articleSlugs = ((context) => {
+  const tipSlugs = ((context) => {
     const keys = context.keys();
     return keys.map((key) => key.substring(2, key.length - 3));
-  })(require.context('../../content/posts/articles', true, /\.md$/));
-  console.log(articleSlugs);
-  const paths = [...articleSlugs, ...articleCategorySlugs].map((slug) => `/artykuly/${slug}`);
+  })(require.context('../../content/posts/tips', true, /\.md$/));
+
+  const paths = [...tipSlugs, ...tipCategorySlugs].map((slug) => `/porady/${slug}`);
 
   return {
     paths,
@@ -240,4 +239,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default Article;
+export default Tip;

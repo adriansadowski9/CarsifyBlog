@@ -8,9 +8,9 @@ import PageHead from '@components/PageHead';
 import AdsSection from '@components/Sections/AdsSection';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/ads.md';
-import { ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { Ad } from '@pages/ogloszenia/[adParam]';
-import { TipCategory } from '@pages/porady/[tipParam]';
+import { ArticleCategory } from '@pages/artykuly/[id]';
+import { Ad } from '@pages/ogloszenia/[id]';
+import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds } from '@utils/getPosts';
 
