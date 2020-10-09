@@ -1,16 +1,20 @@
 [[headers]]
-  for = "*.js" # js files should be set this way
+  for = "*.js"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 [[headers]]
-  for = "*.jpg" # js files should be set this way
+  for = "*.css"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 [[headers]]
-  for = "*.jpeg" # js files should be set this way
+  for = "*.jpg"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 [[headers]]
-  for = "*.png" # js files should be set this way
+  for = "*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+[[headers]]
+  for = "*.png"
   [headers.values]
     Cache-Control = "public, max-age=604800"
