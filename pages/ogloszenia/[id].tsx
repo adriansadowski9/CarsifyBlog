@@ -8,8 +8,8 @@ import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import AdsSection from '@components/Sections/AdsSection';
-import { ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { TipCategory } from '@pages/porady/[tipParam]';
+import { ArticleCategory } from '@pages/artykuly/[id]';
+import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds } from '@utils/getPosts';
 
@@ -131,7 +131,7 @@ const Ad: NextPage<AdProps> = ({
 export default Ad;
 
 export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
-  const { adParam } = ctx.params;
+  const { id } = ctx.params;
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
   let markdownFile;
@@ -139,11 +139,11 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   let adExists;
 
   try {
-    markdownFile = await import(`../../content/posts/ads/${adParam}.md`);
+    markdownFile = await import(`../../content/posts/ads/${id}.md`);
     moreAds = await getAds({
       sort: 'desc',
       count: 4,
-      excludeSlug: adParam.toString(),
+      excludeSlug: id.toString(),
     });
     adExists = true;
   } catch {

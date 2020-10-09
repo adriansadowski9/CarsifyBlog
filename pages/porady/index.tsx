@@ -9,8 +9,8 @@ import PageHead from '@components/PageHead';
 import SectionName from '@components/Sections/SectionName';
 import TipsSection from '@components/Sections/TipsSection';
 import { attributes } from '@content/pages/ads.md';
-import { ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { Tip, TipCategory } from '@pages/porady/[tipParam]';
+import { ArticleCategory } from '@pages/artykuly/[id]';
+import { Tip, TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
 
@@ -26,7 +26,7 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
     return {
       title: c.attributes.title,
       hrefAs: `/porady/${c.slug}`,
-      href: '/porady/[tipParam]',
+      href: '/porady/[id]',
     };
   });
   categories.unshift({

@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import Header from '@components/Header';
 import MainContent from '@components/Layout/styled/MainContent';
-import { ArticleCategory } from '@pages/artykuly/[articleParam]';
-import { TipCategory } from '@pages/porady/[tipParam]';
+import { ArticleCategory } from '@pages/artykuly/[id]';
+import { TipCategory } from '@pages/porady/[id]';
 
 interface LayoutProps {
   children: React.ReactNode;
