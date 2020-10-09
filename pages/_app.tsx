@@ -53,11 +53,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return null;
-  }
-
-  return (
+  const getBody = (theme) => (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <DarkModeContext.Provider value={darkMode}>
@@ -65,6 +61,12 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       </DarkModeContext.Provider>
     </ThemeProvider>
   );
+
+  if (!mounted) {
+    return getBody(lightTheme);
+  }
+
+  return getBody(theme);
 };
 
 export default MyApp;
