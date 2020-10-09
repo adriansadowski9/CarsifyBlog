@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import { Article } from 'pages/artykuly/[articleParam]';
-import { Ad } from 'pages/ogloszenia/[adParam]';
-import { Tip } from 'pages/porady/[tipParam]';
+import { Article } from 'pages/artykuly/[id]';
+import { Ad } from 'pages/ogloszenia/[id]';
+import { Tip } from 'pages/porady/[id]';
 
 const importArticles = async () => {
   const markdownFiles = require

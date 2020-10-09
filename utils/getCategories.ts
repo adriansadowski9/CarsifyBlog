@@ -1,5 +1,5 @@
-import { ArticleCategory } from 'pages/artykuly/[articleParam]';
-import { TipCategory } from 'pages/porady/[tipParam]';
+import { ArticleCategory } from 'pages/artykuly/[id]';
+import { TipCategory } from 'pages/porady/[id]';
 
 const importArticleCategories = async () => {
   const markdownFiles = require
