@@ -6,6 +6,7 @@ const LinkButton = styled.a<{ isActive: boolean }>`
   font-weight: ${(props) => props.theme.fontWeights.medium};
   background: transparent;
   border: none;
+  padding: 0;
   outline: 0;
   text-decoration: none;
   ${(props) =>

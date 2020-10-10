@@ -1,28 +1,31 @@
 import styled from 'styled-components';
 
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
+import NavList from '@components/Header/styled/NavList';
 
 const Menu = styled.div<{ isOpen }>`
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
+  top: 0;
+  right: ${(props) => (props.isOpen ? '0%' : '-100%')};
+  width: 100%;
   height: 100%;
   background: ${(props) => props.theme.colors.bg};
   display: flex;
-  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
-  opacity: ${(props) => (props.isOpen ? '1' : '0')};
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 100;
-  transition: opacity 0.2s ease-in;
+  transition: ${(props) =>
+    props.isOpen
+      ? 'right 0.4s cubic-bezier(0.33, 0.66, 0.75, 0.75)'
+      : 'right 0.4s cubic-bezier(0.80, 0.25, 0.75, 0.75)'};
 
   ${DarkModeButton} {
     position: absolute;
     right: ${(props) => props.theme.spaces.l};
     bottom: ${(props) => props.theme.spaces.l};
   }
+
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     position: static;
     visibility: visible;
