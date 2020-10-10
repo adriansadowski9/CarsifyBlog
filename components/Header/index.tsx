@@ -40,6 +40,15 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
   const [isArticlesOpen, setIsArticlesOpen] = React.useState(false);
   const [isTipsOpen, setIsTipsOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    const body = document.getElementsByTagName('body')[0];
+    if (isMobileMenuOpened) {
+      body.style.position = 'fixed';
+    } else {
+      body.style.position = 'static';
+    }
+  }, [isMobileMenuOpened]);
+
   const isAnyArticleCategoryActive = articleCategories.some((articleCategory) =>
     router.asPath.startsWith(`/artykuly/${articleCategory.slug}`)
   );
