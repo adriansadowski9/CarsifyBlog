@@ -5,7 +5,7 @@ import { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 
-import { lightTheme } from '@utils/theme';
+import { darkTheme, lightTheme, Theme } from '@utils/theme';
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Montserrat';
@@ -46,15 +46,27 @@ const GlobalStyle = createGlobalStyle`
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const darkMode = useDarkMode(false);
+  const theme: Theme = darkMode.value ? darkTheme : lightTheme;
+  const [mounted, setMounted] = React.useState(false);
 
-  return (
-    <ThemeProvider theme={lightTheme}>
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const getBody = (usedTheme: Theme) => (
+    <ThemeProvider theme={usedTheme}>
       <GlobalStyle />
       <DarkModeContext.Provider value={darkMode}>
         <Component {...pageProps} />
       </DarkModeContext.Provider>
     </ThemeProvider>
   );
+
+  if (!mounted) {
+    return getBody(lightTheme);
+  }
+
+  return getBody(theme);
 };
 
 export default MyApp;
