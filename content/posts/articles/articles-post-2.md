@@ -32,7 +32,7 @@ text: >-
   neque.Phasellus non scelerisque erat. 
 
 
-  # [h1](#heading1)
+  # h1 {#heading1}
 
 
   Cras pretium risus a feugiat eleifend. Donec eu orci euismod mauris fringilla
@@ -48,7 +48,7 @@ text: >-
   iaculis. Phasellus vestibulum rutrum blandit. 
 
 
-  ## [h2](#heading2)
+  ## h2 {#heading2}
 
 
   Vivamus dui nulla, commodo eu hendrerit non, faucibus hendrerit odio. Nunc vel
@@ -65,7 +65,7 @@ text: >-
   maximus augue mattis in. 
 
 
-  ### [h3](#heading3)
+  ### h3 {#heading3}
 
 
   Suspendisse eu est facilisis eros pretium mattis. Donec non sollicitudin nunc.
@@ -80,7 +80,7 @@ text: >-
   ornare turpis varius.
 
 
-  [h4](#heading4)
+  #### h4 {#heading4}
 
 
   Suspendisse eu est facilisis eros pretium mattis. Donec non sollicitudin nunc.
@@ -91,7 +91,8 @@ text: >-
   risus, in accumsan elit pharetra quis. 
 
 
-  > Zobacz także: [Najlepszy portal motoryzacyjny](https://carsify.pl)
+  #### Zobacz także: [Najlepszy portal motoryzacyjny](https://carsify.pl)
+  {.see-also}
 
 
   Pellentesque imperdiet eu lacus at fringilla. In convallis lectus a massa
