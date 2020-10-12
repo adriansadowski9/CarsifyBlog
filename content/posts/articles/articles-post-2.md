@@ -80,7 +80,7 @@ text: >-
   ornare turpis varius.
 
 
-  #### [h4](#heading4)
+  [h4](#heading4)
 
 
   Suspendisse eu est facilisis eros pretium mattis. Donec non sollicitudin nunc.
@@ -88,10 +88,15 @@ text: >-
   gravida, dolor eros mollis nisi, a dictum mauris tortor id tortor.Vestibulum
   faucibus ultrices faucibus. Fusce venenatis odio massa, ornare convallis
   tortor aliquet vitae. Nulla sodales imperdiet varius. Aliquam pellentesque sem
-  risus, in accumsan elit pharetra quis. Pellentesque imperdiet eu lacus at
-  fringilla. In convallis lectus a massa fringilla posuere. Suspendisse
-  porttitor commodo nulla ac congue. Nulla urna nisl, fermentum vitae viverra
-  ac, egestas sit amet tortor. Quisque vestibulum dui at enim ultricies, ac
-  ornare turpis varius.
+  risus, in accumsan elit pharetra quis. 
+
+
+  > Zobacz także: [Najlepszy portal motoryzacyjny](https://carsify.pl)
+
+
+  Pellentesque imperdiet eu lacus at fringilla. In convallis lectus a massa
+  fringilla posuere. Suspendisse porttitor commodo nulla ac congue. Nulla urna
+  nisl, fermentum vitae viverra ac, egestas sit amet tortor. Quisque vestibulum
+  dui at enim ultricies, ac ornare turpis varius.
 ---
 
