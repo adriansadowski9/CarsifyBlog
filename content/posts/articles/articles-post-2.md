@@ -10,13 +10,13 @@ featuredImage: /assets/img/photo-1568605117036-5fe5e7bab0b7.jpeg
 category: Premiery
 contents:
   - link: '#heading1'
-    name: h1
+    name: Heading 1
   - link: '#heading2'
-    name: h2
+    name: Heading 2
   - link: '#heading3'
-    name: h3
+    name: Heading 3
   - link: '#heading4'
-    name: h4
+    name: Heading 4
 highlightedText: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien ipsum,
   mollis non rutrum eu, maximus aliquet eros. Nullam sit amet enim at sapien
@@ -91,13 +91,12 @@ text: >-
   risus, in accumsan elit pharetra quis. 
 
 
-  #### Zobacz także: [Najlepszy portal motoryzacyjny](https://carsify.pl)
-  {.see-also}
+  :-> Zobacz także: [Najlepszy portal motoryzacyjny](https://carsify.pl)
 
 
   Pellentesque imperdiet eu lacus at fringilla. In convallis lectus a massa
   fringilla posuere. Suspendisse porttitor commodo nulla ac congue. Nulla urna
   nisl, fermentum vitae viverra ac, egestas sit amet tortor. Quisque vestibulum
-  dui at enim ultricies, ac ornare turpis varius.
+  dui at enim ultricies, ac ornare turpis varius. www.google.com
 ---
 

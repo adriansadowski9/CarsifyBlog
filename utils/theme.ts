@@ -14,7 +14,8 @@ const fontSizes = {
   m: '16px',
   l: '20px',
   xl: '24px',
-  xxl: '48px',
+  xxl: '32px',
+  xxxl: '48px',
 };
 
 const fontWeights = {
@@ -93,6 +94,8 @@ export interface Theme {
     adLocalization: string;
     adPrice: string;
     contentsList: string;
+    seeAlsoBar: string;
+    seeAlsoLink: string;
     shareSection: string;
     moreSection: string;
     categoryBoxActiveBg: string;
@@ -142,6 +145,8 @@ export const lightTheme: Theme = {
     adLocalization: colors.red,
     adPrice: colors.red,
     contentsList: colors.red,
+    seeAlsoBar: colors.red,
+    seeAlsoLink: colors.red,
     shareSection: colors.red,
     moreSection: colors.red,
     categoryBoxActiveBg: colors.red,
@@ -191,6 +196,8 @@ export const darkTheme: Theme = {
     adLocalization: colors.red,
     adPrice: colors.red,
     contentsList: colors.red,
+    seeAlsoBar: colors.red,
+    seeAlsoLink: colors.red,
     shareSection: colors.red,
     moreSection: colors.red,
     categoryBoxActiveBg: colors.red,

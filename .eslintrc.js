@@ -42,6 +42,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     'sort-imports': 'off',
     'import/order': 'off',
+    'no-control-regex': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
