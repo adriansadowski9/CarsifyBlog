@@ -12,7 +12,7 @@ const Heading = styled.h1`
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     margin-bottom: ${(props) => props.theme.spaces.xs};
     text-align: center;
-    font-size: ${(props) => props.theme.fontSizes.xxl};
+    font-size: ${(props) => props.theme.fontSizes.xxxl};
   }
 `;
 

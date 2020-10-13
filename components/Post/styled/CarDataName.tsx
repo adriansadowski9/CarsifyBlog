@@ -9,7 +9,7 @@ const CarDataName = styled.h3`
   overflow: hidden;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    font-size: ${(props) => props.theme.fontSizes.xxl};
+    font-size: ${(props) => props.theme.fontSizes.xxxl};
   }
 `;
 
