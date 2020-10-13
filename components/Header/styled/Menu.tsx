@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
-import NavList from '@components/Header/styled/NavList';
 
 const Menu = styled.div<{ isOpen }>`
   position: fixed;

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
-import remark from 'remark';
-import remarkHtml from 'remark-html';
+import showdown from 'showdown';
 
 import CarDataBox from '@components/Post/styled/CarDataBox';
 import CarDataLocalization from '@components/Post/styled/CarDataLocalization';
@@ -11,7 +10,6 @@ import CarDataPrice from '@components/Post/styled/CarDataPrice';
 import CarDataRow from '@components/Post/styled/CarDataRow';
 import ContentsList from '@components/Post/styled/ContentsList';
 import ContentsListItem from '@components/Post/styled/ContentsListItem';
-import ContentsTitle from '@components/Post/styled/ContentsTitle';
 import Heading from '@components/Post/styled/Heading';
 import HighlightedText from '@components/Post/styled/HighlightedText';
 import IconInfo from '@components/Post/styled/IconInfo';
@@ -72,7 +70,22 @@ const Post: React.FC<PostProps> = ({
   moreSection,
   carData,
 }) => {
-  const textToHtml = remark().use(remarkHtml).processSync(text).toString();
+  showdown.extension('SeeAlso', {
+    type: 'output',
+    filter: (text: string) => {
+      const mainRegex = new RegExp('(^[ \t]*<p>:-&gt[ \t]?.+\n(.+\n)*\n*)+', 'gm');
+      return text.replace(mainRegex, (match, content) => {
+        content = content.replace(/^([ \t]*)<p>:-&gt;([ \t])?/gm, '');
+        return `<aside class="see-also"><p>${content}</aside>`;
+      });
+    },
+  });
+  const mdConverter = new showdown.Converter({
+    customizedHeaderId: true,
+    simplifiedAutoLink: true,
+    extensions: ['SeeAlso'],
+  });
+
   return (
     <article>
       <TopInfoContainer>
@@ -139,18 +152,15 @@ const Post: React.FC<PostProps> = ({
       <TextContainer>
         <HighlightedText>{highlightedText}</HighlightedText>
         {contents && (
-          <>
-            <ContentsTitle>Spis treści</ContentsTitle>
-            <ContentsList>
-              {contents.map((content, index) => (
-                <ContentsListItem itemsAmount={contents.length} key={index}>
-                  <a href={content.link}>{content.name}</a>
-                </ContentsListItem>
-              ))}
-            </ContentsList>
-          </>
+          <ContentsList>
+            {contents.map((content, index) => (
+              <ContentsListItem key={index}>
+                <a href={content.link}>{content.name}</a>
+              </ContentsListItem>
+            ))}
+          </ContentsList>
         )}
-        <Text>{parse(textToHtml)}</Text>
+        <Text>{parse(mdConverter.makeHtml(text))}</Text>
         <ShareSectionContainer>
           <ShareSectionTextContainer>
             <ShareSectionText>Spodobał Ci się ten tekst?</ShareSectionText>

@@ -5,6 +5,7 @@ const ShareSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-top: ${(props) => props.theme.spaces.xs};
   margin-bottom: ${(props) => props.theme.spaces.l};
   padding-right: ${(props) => props.theme.spaces.s};
   position: relative;
@@ -17,6 +18,10 @@ const ShareSectionContainer = styled.div`
     background: ${(props) => props.theme.colors.moreSection};
     height: 100%;
     width: 5px;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    margin-top: ${(props) => props.theme.spaces.l};
   }
 `;
 
