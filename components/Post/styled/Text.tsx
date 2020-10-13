@@ -10,26 +10,31 @@ const Text = styled.div`
     font-size: ${(props) => props.theme.fontSizes.l};
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: ${(props) => props.theme.spaces.l} 0 ${(props) => props.theme.spaces.xs} 0;
+  }
+
   h1 {
     font-size: ${(props) => props.theme.fontSizes.xxxl};
-    margin: ${(props) => props.theme.spaces.l} 0 ${(props) => props.theme.spaces.xs} 0;
   }
 
   h2 {
     font-size: ${(props) => props.theme.fontSizes.xxl};
-    margin: ${(props) => props.theme.spaces.l} 0 ${(props) => props.theme.spaces.xs} 0;
   }
 
   h3 {
     font-size: ${(props) => props.theme.fontSizes.xl};
-    margin: ${(props) => props.theme.spaces.l} 0 ${(props) => props.theme.spaces.xs} 0;
   }
 
   h4,
   h5,
   h6 {
     font-size: ${(props) => props.theme.fontSizes.m};
-    margin: ${(props) => props.theme.spaces.l} 0 ${(props) => props.theme.spaces.xs} 0;
   }
 
   p {
