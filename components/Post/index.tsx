@@ -73,8 +73,8 @@ const Post: React.FC<PostProps> = ({
   showdown.extension('SeeAlso', {
     type: 'output',
     filter: (text: string) => {
-      const mainRegex = new RegExp('(^[ \t]*<p>:-&gt[ \t]?.+\n(.+\n)*\n*)+', 'gm');
-      return text.replace(mainRegex, (match, content) => {
+      const mainRegex = new RegExp('(^[ \t]*<p>:-&gt[ \t]?.+)', 'gm');
+      return text.replace(mainRegex, (content) => {
         content = content.replace(/^([ \t]*)<p>:-&gt;([ \t])?/gm, '');
         return `<aside class="see-also"><p>${content}</aside>`;
       });
