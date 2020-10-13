@@ -9,12 +9,14 @@ date: 2020-02-20T19:31:20.591Z
 featuredImage: /assets/img/photo-1568605117036-5fe5e7bab0b7.jpeg
 category: Premiery
 contents:
-  - link: '#parahraph1'
-    name: Parahraph1
-  - link: '#parahraph2'
-    name: Parahraph2
-  - link: '#parahraph3'
-    name: Parahraph3
+  - link: '#heading1'
+    name: Heading1
+  - link: '#heading2'
+    name: Heading2
+  - link: '#heading3'
+    name: Heading3
+  - link: '#heading4'
+    name: Heading4
 highlightedText: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien ipsum,
   mollis non rutrum eu, maximus aliquet eros. Nullam sit amet enim at sapien
