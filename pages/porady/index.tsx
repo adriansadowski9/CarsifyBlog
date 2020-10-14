@@ -44,6 +44,10 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
         {tipsList.map((tip, index) => {
           const { featuredImage, title, highlightedText, category } = tip.attributes;
           const { slug } = tip;
+          const categoryInfo = tipCategories.find(
+            (tipCategory) => tipCategory.attributes.title === category
+          );
+
           return (
             <TipCard
               key={`${title}-${index}`}
@@ -54,7 +58,10 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
                   ? `${highlightedText.substring(0, 160)}...`
                   : highlightedText
               }
-              category={category}
+              category={{
+                name: categoryInfo.attributes.title,
+                icon: categoryInfo.attributes.icon,
+              }}
               slug={slug}
             />
           );

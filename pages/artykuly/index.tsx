@@ -42,6 +42,10 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
         {articlesList.map((article, index) => {
           const { featuredImage, title, highlightedText, category } = article.attributes;
           const { slug } = article;
+          const categoryInfo = articleCategories.find(
+            (articleCategory) => articleCategory.attributes.title === category
+          );
+
           return (
             <ArticleCard
               key={`${title}-${index}`}
@@ -52,7 +56,10 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
                   ? `${highlightedText.substring(0, 160)}...`
                   : highlightedText
               }
-              category={category}
+              category={{
+                name: categoryInfo.attributes.title,
+                icon: categoryInfo.attributes.icon,
+              }}
               slug={slug}
             />
           );

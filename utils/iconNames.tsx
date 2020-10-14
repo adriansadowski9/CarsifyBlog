@@ -10,7 +10,7 @@ enum IconName {
   Fuel = 'FUEL',
   LightBulb = 'LIGHT_BULB',
   News = 'NEWS',
-  SeatBelt = 'SEATBELT',
+  SeatBelt = 'SEAT_BELT',
   SteeringWheel = 'STEERING_WHEEL',
   Stop = 'STOP',
   Facebook = 'FACEBOOK',

@@ -8,7 +8,7 @@ import Documentation from '@assets/icons/Documentation.svg';
 import Facebook from '@assets/icons/Facebook.svg';
 import Fuel from '@assets/icons/Fuel.svg';
 import Instagram from '@assets/icons/Instagram.svg';
-import LightBulb from '@assets/icons/LightBulg.svg';
+import LightBulb from '@assets/icons/LightBulb.svg';
 import CarsifyLogo from '@assets/icons/Logo.svg';
 import Moon from '@assets/icons/Moon.svg';
 import News from '@assets/icons/News.svg';
