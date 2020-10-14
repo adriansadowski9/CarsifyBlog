@@ -1,4 +1,3 @@
-import InputLabel from '../Input/InputLabel';
 import ChevronContainer from './styled/ChevronContainer';
 import ChosenCategory from './styled/ChosenCategory';
 import SelectButton from './styled/SelectButton';
@@ -9,8 +8,10 @@ import SelectWrapper from './styled/SelectWrapper';
 import * as React from 'react';
 import { ThemeContext } from 'styled-components';
 
-import ChevronDown from '@assets/icons/chevronDown.svg';
+import Icon from '@components/Icon';
+import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
+
 interface SelectProps {
   width?: string;
   label: string;
@@ -22,6 +23,7 @@ interface SelectProps {
   selectedItem: string;
   setSelectedItem: (value: string) => void;
 }
+
 const Select: React.FC<SelectProps> = ({
   width = '100%',
   height = '72px',
@@ -54,7 +56,13 @@ const Select: React.FC<SelectProps> = ({
       <ChosenCategory width={width} height={height} onClick={() => setIsOpen(!isOpen)}>
         {selectedItem}
         <ChevronContainer isOpen={isOpen}>
-          <ChevronDown width="24px" height="12px" fill={themeContext.colors.text} />
+          <Icon
+            iconName={IconName.ChevronDown}
+            variant="flat"
+            width="24px"
+            height="24px"
+            fill={themeContext.colors.text}
+          />
         </ChevronContainer>
       </ChosenCategory>
       <SelectDropdown isOpen={isOpen}>

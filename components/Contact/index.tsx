@@ -11,9 +11,7 @@ import SocialButtonsContainer from './styled/SocialButtonsContainer';
 import * as React from 'react';
 import { ThemeContext } from 'styled-components';
 
-import Facebook from '@assets/icons/facebook.svg';
-import Instagram from '@assets/icons/instagram.svg';
-import Twitter from '@assets/icons/twitter.svg';
+import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
 
 interface ContactProps {
@@ -46,9 +44,6 @@ const ContactPage: React.FC<ContactProps> = ({
     <ContactContainer>
       <ContactHeadingSection
         contactEmail={contactEmail}
-        Facebook={Facebook}
-        Twitter={Twitter}
-        Instagram={Instagram}
         facebookUrl={facebookUrl}
         twitterUrl={twitterUrl}
         instagramUrl={instagramUrl}
@@ -86,7 +81,7 @@ const ContactPage: React.FC<ContactProps> = ({
             height="60px"
             link={facebookUrl}
             text="Facebook"
-            Icon={Facebook}
+            iconName={IconName.Facebook}
             type="button"
             backgroundColor={themeContext.colors.socialButton}
           ></Button>
@@ -95,7 +90,7 @@ const ContactPage: React.FC<ContactProps> = ({
             height="60px"
             link={twitterUrl}
             text="Twitter"
-            Icon={Twitter}
+            iconName={IconName.Twitter}
             type="button"
             backgroundColor={themeContext.colors.socialButton}
           ></Button>
@@ -104,7 +99,7 @@ const ContactPage: React.FC<ContactProps> = ({
             height="60px"
             link={instagramUrl}
             text="Instagram"
-            Icon={Instagram}
+            iconName={IconName.Instagram}
             type="button"
             backgroundColor={themeContext.colors.socialButton}
           ></Button>

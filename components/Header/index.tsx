@@ -5,10 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ThemeContext } from 'styled-components';
 
-import ChevronDown from '@assets/icons/chevronDown.svg';
-import Logo from '@assets/icons/logo.svg';
-import Moon from '@assets/icons/moon.svg';
-import Sun from '@assets/icons/sun.svg';
 import MenuDropdown from '@components/Header/MenuDropdown';
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
 import Hamburger from '@components/Header/styled/Hamburger';
@@ -22,9 +18,11 @@ import Navigation from '@components/Header/styled/Navigation';
 import NavItemChevronContainer from '@components/Header/styled/NavItemChevronContainer';
 import NavList from '@components/Header/styled/NavList';
 import NavListItem from '@components/Header/styled/NavListItem';
+import Icon from '@components/Icon';
 import DarkModeContext from '@contexts/darkModeContext';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { TipCategory } from '@pages/porady/[id]';
+import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
 
 interface HeaderProps {
@@ -79,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
           <LogoWrapper onClick={() => setIsMobileMenuOpened(false)}>
             <LogoText>Carsify</LogoText>
             <LogoIconWrapper>
-              <Logo />
+              <Icon iconName={IconName.CarsifyLogo} variant="color" />
             </LogoIconWrapper>
           </LogoWrapper>
         </Link>
@@ -98,7 +96,13 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
             <NavListItem>
               <NavItemChevronContainer>
                 <ChevronWrapper isOpen={isArticlesOpen} onClick={() => handleArticlesOpen()}>
-                  <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
+                  <Icon
+                    iconName={IconName.ChevronDown}
+                    variant="flat"
+                    width="16px"
+                    height="16px"
+                    fill={themeContext.colors.menuArrow}
+                  />
                 </ChevronWrapper>
                 {isMobileMenuOpened ? (
                   <LinkButton
@@ -129,7 +133,13 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
             <NavListItem>
               <NavItemChevronContainer>
                 <ChevronWrapper isOpen={isTipsOpen} onClick={() => handleTipsOpen()}>
-                  <ChevronDown width="16px" height="10px" fill={themeContext.colors.menuArrow} />
+                  <Icon
+                    iconName={IconName.ChevronDown}
+                    variant="flat"
+                    width="16px"
+                    height="10px"
+                    fill={themeContext.colors.menuArrow}
+                  />
                 </ChevronWrapper>
                 {isMobileMenuOpened ? (
                   <LinkButton
@@ -173,7 +183,6 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                   isActive={router.pathname === '/kontakt'}
                   onClick={() => setIsMobileMenuOpened(false)}
                 >
-                  {' '}
                   Kontakt
                 </LinkButton>
               </Link>
@@ -181,11 +190,11 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
           </NavList>
           {darkModeContext.value ? (
             <DarkModeButton type="button" onClick={darkModeContext.disable}>
-              <Sun fill={themeContext.colors.text} />
+              <Icon iconName={IconName.Sun} variant="flat" fill={themeContext.colors.text} />
             </DarkModeButton>
           ) : (
             <DarkModeButton type="button" onClick={darkModeContext.enable}>
-              <Moon fill={themeContext.colors.text} />
+              <Icon iconName={IconName.Moon} variant="flat" fill={themeContext.colors.text} />
             </DarkModeButton>
           )}
         </Menu>
