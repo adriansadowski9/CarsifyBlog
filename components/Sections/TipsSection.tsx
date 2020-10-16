@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const TipsSection = styled.section<{
   isHorizontal: boolean;
   notEnoughItems: boolean;
-  hasCategories?: boolean;
+  hasLongCategories?: boolean;
 }>`
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@ const TipsSection = styled.section<{
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     ${(props) =>
-      props.hasCategories &&
+      props.hasLongCategories &&
       `
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
