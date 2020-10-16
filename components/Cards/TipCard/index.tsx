@@ -8,13 +8,17 @@ import TipCardImage from '@components/Cards/TipCard/styled/TipCardImage';
 import TipCardInfoContainer from '@components/Cards/TipCard/styled/TipCardInfoContainer';
 import TipCardSnippet from '@components/Cards/TipCard/styled/TipCardSnippet';
 import TipCardTitle from '@components/Cards/TipCard/styled/TipCardTitle';
+import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
 
 interface TipCardProps {
   image: string;
   title: string;
   textSnippet: string;
-  category: string;
+  category: {
+    name: string;
+    icon: IconName;
+  };
   slug: string;
 }
 const TipCard: React.FC<TipCardProps> = ({ image, title, textSnippet, category, slug }) => {
@@ -34,8 +38,8 @@ const TipCard: React.FC<TipCardProps> = ({ image, title, textSnippet, category, 
             <TipCardTitle>{title}</TipCardTitle>
             <TipCardSnippet>{textSnippet}</TipCardSnippet>
             <Category
-              name={category}
-              iconName="i"
+              name={category.name}
+              iconName={category.icon}
               nameColor={themeContext.colors.tipCategoryName}
               bgColor={themeContext.colors.tipIconCircleBg}
               iconColor={themeContext.colors.tipIcon}

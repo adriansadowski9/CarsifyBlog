@@ -8,13 +8,17 @@ import ArticleCardInfoContainer from '@components/Cards/ArticleCard/styled/Artic
 import ArticleCardSnippet from '@components/Cards/ArticleCard/styled/ArticleCardSnippet';
 import ArticleCardTitle from '@components/Cards/ArticleCard/styled/ArticleCardTitle';
 import Category from '@components/Cards/Category';
+import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
 
 interface ArticleCardProps {
   image: string;
   title: string;
   textSnippet: string;
-  category: string;
+  category: {
+    name: string;
+    icon: IconName;
+  };
   slug: string;
 }
 const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, category, slug }) => {
@@ -34,8 +38,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, ca
             <ArticleCardTitle>{title}</ArticleCardTitle>
             <ArticleCardSnippet>{textSnippet}</ArticleCardSnippet>
             <Category
-              name={category}
-              iconName="i"
+              name={category.name}
+              iconName={category.icon}
               nameColor={themeContext.colors.categoryName}
               bgColor={themeContext.colors.iconCircleBg}
               iconColor={themeContext.colors.icon}
