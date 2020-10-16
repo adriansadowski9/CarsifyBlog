@@ -7,7 +7,7 @@ subtitle: >-
   mollis non rutrum eu, maximus aliquet eros.
 date: 2020-02-20T19:31:20.591Z
 featuredImage: /assets/img/photo-1568605117036-5fe5e7bab0b7.jpeg
-category: Warto wiedzieć
+category: Dokumenty
 contents:
   - link: '#parahraph1'
     name: Parahraph1
@@ -60,3 +60,4 @@ text: >-
   fermentum vitae viverra ac, egestas sit amet tortor. Quisque vestibulum dui at
   enim ultricies, ac ornare turpis varius.
 ---
+
