@@ -2,13 +2,15 @@ import * as React from 'react';
 
 import ButtonText from '@components/Contact/ContactButton/ButtonText';
 import ButtonWrapper from '@components/Contact/ContactButton/ButtonWrapper';
+import Icon from '@components/Icon';
+import IconName from '@utils/iconNames';
 
 interface ButtonProps {
   width?: string;
   height?: string;
   backgroundColor?: string;
   text: string;
-  Icon?: React.FC<{ fill?: string; width?: string; height?: string }>;
+  iconName?: IconName;
   iconFill?: string;
   type?: 'submit' | 'reset' | 'button';
   onClick?: (event?: React.MouseEvent<HTMLElement>) => void;
@@ -20,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
   width,
   backgroundColor,
   text,
-  Icon,
+  iconName,
   iconFill,
   type,
   link,
@@ -34,7 +36,15 @@ const Button: React.FC<ButtonProps> = ({
       width={width}
       height={height}
     >
-      {Icon && <Icon width="24px" height="24px" fill={iconFill} />}
+      {iconName && (
+        <Icon
+          iconName={iconName}
+          variant={iconFill ? 'flat' : 'color'}
+          width="24px"
+          height="24px"
+          fill={iconFill}
+        />
+      )}
       <ButtonText buttonHasIcon={!!Icon}>{text}</ButtonText>
     </ButtonWrapper>
   );

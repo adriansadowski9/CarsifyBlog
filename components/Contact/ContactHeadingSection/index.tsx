@@ -4,14 +4,13 @@ import SocialWrapper from './styled/SocialWrapper';
 
 import * as React from 'react';
 
+import Icon from '@components/Icon';
 import SocialButton from '@components/SocialShareSection/SocialButton';
 import SocialShareContainer from '@components/SocialShareSection/SocialShareContainer';
+import IconName from '@utils/iconNames';
 
 interface SocialProps {
   contactEmail: string;
-  Facebook: React.FC<{ fill?: string; width?: string; height?: string }>;
-  Twitter: React.FC<{ fill?: string; width?: string; height?: string }>;
-  Instagram: React.FC<{ fill?: string; width?: string; height?: string }>;
   facebookUrl: string;
   twitterUrl: string;
   instagramUrl: string;
@@ -19,9 +18,6 @@ interface SocialProps {
 
 const ContactHeadingSection: React.FC<SocialProps> = ({
   contactEmail,
-  Facebook,
-  Twitter,
-  Instagram,
   facebookUrl,
   twitterUrl,
   instagramUrl,
@@ -30,13 +26,13 @@ const ContactHeadingSection: React.FC<SocialProps> = ({
     <SocialWrapper>
       <SocialShareContainer horizontal="false">
         <SocialButton as="a" href={`https://${facebookUrl}`} target="_blank">
-          {Facebook && <Facebook />}
+          <Icon iconName={IconName.Facebook} variant="color" width="24px" height="24px" />
         </SocialButton>
         <SocialButton as="a" href={`https://${twitterUrl}`} target="_blank">
-          {Twitter && <Twitter />}
+          <Icon iconName={IconName.Twitter} variant="color" width="24px" height="24px" />
         </SocialButton>
         <SocialButton as="a" href={`https://${instagramUrl}`} target="_blank">
-          {Instagram && <Instagram />}
+          <Icon iconName={IconName.Pinterest} variant="color" width="24px" height="24px" />
         </SocialButton>
       </SocialShareContainer>
       <ContactHeading>Porozmawiajmy</ContactHeading>

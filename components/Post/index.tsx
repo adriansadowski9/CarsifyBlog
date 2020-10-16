@@ -24,10 +24,14 @@ import Text from '@components/Post/styled/Text';
 import TextContainer from '@components/Post/styled/TextContainer';
 import TopInfoContainer from '@components/Post/styled/TopInfoContainer';
 import SocialShareSection from '@components/SocialShareSection';
+import IconName from '@utils/iconNames';
 
 interface PostProps {
   date: Date;
-  category?: string;
+  category?: {
+    name: string;
+    icon: IconName;
+  };
   title: string;
   subtitle: string;
   highlightedText: string;
@@ -89,8 +93,8 @@ const Post: React.FC<PostProps> = ({
   return (
     <article>
       <TopInfoContainer>
-        <IconInfo text={dayjs(date).format('DD.MM.YYYY')} iconName="d" />
-        {category && <IconInfo text={category} iconName="c" />}
+        <IconInfo text={dayjs(date).format('DD.MM.YYYY')} iconName={IconName.Calendar} />
+        {category && <IconInfo text={category.name} iconName={category.icon} />}
       </TopInfoContainer>
       <Heading>{title}</Heading>
       <Subheading>{subtitle}</Subheading>

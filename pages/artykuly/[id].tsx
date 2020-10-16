@@ -13,6 +13,7 @@ import SectionName from '@components/Sections/SectionName';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
+import IconName from '@utils/iconNames';
 
 interface ArticleAttributes {
   pageTitle: string;
@@ -35,6 +36,7 @@ export interface ArticleCategory {
     title: string;
     pageTitle: string;
     pageDescription: string;
+    icon: IconName;
   };
   slug: string;
 }
@@ -87,6 +89,10 @@ const Article: NextPage<ArticleProps> = ({
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes;
             const { slug } = article;
+            const categoryInfo = articleCategories.find(
+              (articleCategory) => articleCategory.attributes.title === category
+            );
+
             return (
               <ArticleCard
                 key={`${title}-${index}`}
@@ -97,7 +103,10 @@ const Article: NextPage<ArticleProps> = ({
                     ? `${highlightedText.substring(0, 160)}...`
                     : highlightedText
                 }
-                category={category}
+                category={{
+                  name: categoryInfo.attributes.title,
+                  icon: categoryInfo.attributes.icon,
+                }}
                 slug={slug}
               />
             );
@@ -120,13 +129,19 @@ const Article: NextPage<ArticleProps> = ({
     const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
     const router = useRouter();
     const shareUrl = `https://carsify.pl${router.asPath}`;
+    const categoryInfo = articleCategories.find(
+      (articleCategory) => articleCategory.attributes.title === category
+    );
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={`Article - ${title}`} description="Article description" />
         <Post
           date={date}
-          category={category}
+          category={{
+            name: categoryInfo.attributes.title,
+            icon: categoryInfo.attributes.icon,
+          }}
           title={title}
           subtitle={subtitle}
           highlightedText={highlightedText}
@@ -140,6 +155,10 @@ const Article: NextPage<ArticleProps> = ({
               {moreArticles.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
                 const { slug } = article;
+                const categoryInfo = articleCategories.find(
+                  (articleCategory) => articleCategory.attributes.title === category
+                );
+
                 return (
                   <ArticleCard
                     key={`${title}-${index}`}
@@ -150,7 +169,10 @@ const Article: NextPage<ArticleProps> = ({
                         ? `${highlightedText.substring(0, 160)}...`
                         : highlightedText
                     }
-                    category={category}
+                    category={{
+                      name: categoryInfo.attributes.title,
+                      icon: categoryInfo.attributes.icon,
+                    }}
                     slug={slug}
                   />
                 );

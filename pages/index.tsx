@@ -48,6 +48,10 @@ const Home: NextPage<HomeProps> = ({
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes;
             const { slug } = article;
+            const categoryInfo = articleCategories.find(
+              (articleCategory) => articleCategory.attributes.title === category
+            );
+
             return (
               <ArticleCard
                 key={`${title}-${index}`}
@@ -58,7 +62,10 @@ const Home: NextPage<HomeProps> = ({
                     ? `${highlightedText.substring(0, 160)}...`
                     : highlightedText
                 }
-                category={category}
+                category={{
+                  name: categoryInfo.attributes.title,
+                  icon: categoryInfo.attributes.icon,
+                }}
                 slug={slug}
               />
             );
@@ -70,6 +77,10 @@ const Home: NextPage<HomeProps> = ({
             {tipsList.map((tip, index) => {
               const { featuredImage, title, highlightedText, category } = tip.attributes;
               const { slug } = tip;
+              const categoryInfo = tipCategories.find(
+                (tipCategory) => tipCategory.attributes.title === category
+              );
+
               return (
                 <TipCard
                   key={`${title}-${index}`}
@@ -80,7 +91,10 @@ const Home: NextPage<HomeProps> = ({
                       ? `${highlightedText.substring(0, 160)}...`
                       : highlightedText
                   }
-                  category={category}
+                  category={{
+                    name: categoryInfo.attributes.title,
+                    icon: categoryInfo.attributes.icon,
+                  }}
                   slug={slug}
                 />
               );

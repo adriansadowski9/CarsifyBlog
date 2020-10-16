@@ -13,6 +13,7 @@ import TipsSection from '@components/Sections/TipsSection';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
+import IconName from '@utils/iconNames';
 
 interface TipAttributes {
   pageTitle: string;
@@ -35,6 +36,7 @@ export interface TipCategory {
     title: string;
     pageTitle: string;
     pageDescription: string;
+    icon: IconName;
   };
   slug: string;
 }
@@ -86,6 +88,10 @@ const Tip: NextPage<TipProps> = ({
           {tipsList.map((tip, index) => {
             const { featuredImage, title, highlightedText, category } = tip.attributes;
             const { slug } = tip;
+            const categoryInfo = tipCategories.find(
+              (tipCategory) => tipCategory.attributes.title === category
+            );
+
             return (
               <TipCard
                 key={`${title}-${index}`}
@@ -96,7 +102,10 @@ const Tip: NextPage<TipProps> = ({
                     ? `${highlightedText.substring(0, 160)}...`
                     : highlightedText
                 }
-                category={category}
+                category={{
+                  name: categoryInfo.attributes.title,
+                  icon: categoryInfo.attributes.icon,
+                }}
                 slug={slug}
               />
             );
@@ -119,13 +128,19 @@ const Tip: NextPage<TipProps> = ({
     const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
     const router = useRouter();
     const shareUrl = `https://carsify.pl${router.asPath}`;
+    const categoryInfo = tipCategories.find(
+      (tipCategory) => tipCategory.attributes.title === category
+    );
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={`Tip - ${title}`} description="Tip description" />
         <Post
           date={date}
-          category={category}
+          category={{
+            name: categoryInfo.attributes.title,
+            icon: categoryInfo.attributes.icon,
+          }}
           title={title}
           subtitle={subtitle}
           highlightedText={highlightedText}
@@ -139,6 +154,10 @@ const Tip: NextPage<TipProps> = ({
               {moreTips.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
                 const { slug } = article;
+                const categoryInfo = tipCategories.find(
+                  (tipCategory) => tipCategory.attributes.title === category
+                );
+
                 return (
                   <TipCard
                     key={`${title}-${index}`}
@@ -149,7 +168,10 @@ const Tip: NextPage<TipProps> = ({
                         ? `${highlightedText.substring(0, 160)}...`
                         : highlightedText
                     }
-                    category={category}
+                    category={{
+                      name: categoryInfo.attributes.title,
+                      icon: categoryInfo.attributes.icon,
+                    }}
                     slug={slug}
                   />
                 );
