@@ -17,7 +17,7 @@ const Category: React.FC<CategoryProps> = ({ name, iconName, nameColor, bgColor,
   <CategoryContainer>
     <CategoryName color={nameColor}>{name}</CategoryName>
     <CategoryIconContainer backgroundColor={bgColor} iconColor={iconColor}>
-      <Icon iconName={iconName} variant="flat" width="12px" height="12px" fill={iconColor} />
+      <Icon iconName={iconName} variant="flat" width="16px" height="16px" fill={iconColor} />
     </CategoryIconContainer>
   </CategoryContainer>
 );

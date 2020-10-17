@@ -83,9 +83,12 @@ const Article: NextPage<ArticleProps> = ({
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={pageTitle} description={pageDescription} />
-        <ArticlesSection notEnoughItems={(articlesList.length + 1) % 3 !== 0}>
-          <SectionName name={title} />
-          <Categories items={categories} height={categories.length > 5 ? '825px' : '385px'} />
+        <SectionName name={title} />
+        <ArticlesSection
+          notEnoughItems={(articlesList.length + 1) % 3 !== 0}
+          hasLongCategories={categories.length > 5}
+        >
+          <Categories items={categories} height={categories.length > 5 ? '811px' : '393px'} />
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes;
             const { slug } = article;
