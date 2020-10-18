@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 const GroupInputs = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: ${(props) => props.theme.spaces.m};
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    flex-direction: row;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-areas:
+      'name email '
+      'category topic '
+      'message . ';
+    grid-gap: 30px;
   }
 `;
 export default GroupInputs;

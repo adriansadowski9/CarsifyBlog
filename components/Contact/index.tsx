@@ -50,21 +50,16 @@ const ContactPage: React.FC<ContactProps> = ({
       />
       <InputContainer>
         <GroupInputs>
-          <Input width="615px" name="name" label="Imię" />
-          <Input width="615px" name="email" label="Email" />
-        </GroupInputs>
-        <GroupInputs>
+          <Input gridColumn="span 12" name="name" label="Imię" />
+          <Input gridColumn="span 12" name="email" label="Email" />
           <Select
-            width="410px"
             label="Kategoria"
             items={items}
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
           />
-          <Input width="820px" name="topic" label="Temat" />
-        </GroupInputs>
-        <GroupInputs>
-          <Input width="1272px" name="message" label="Wiadomość" textarea={true} />
+          <Input gridColumn="span 15" name="topic" label="Temat" />
+          <Input gridColumn="span 24" name="message" label="Wiadomość" textarea={true} />
         </GroupInputs>
       </InputContainer>
       <ButtonsContainer>
