@@ -43,8 +43,8 @@ const Home: NextPage<HomeProps> = ({
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <Row>
-        <ArticlesSection withMargin>
-          <SectionName name="Aktualności" />
+        <ArticlesSection withMargin indexPage={true}>
+          <SectionName name="Aktualności" indexPage={true} />
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes;
             const { slug } = article;

@@ -5,10 +5,11 @@ import SectionNameText from '@components/Sections/styled/SectionNameText';
 
 interface SectionNameProps {
   name: string;
+  indexPage?: boolean;
 }
 
-const SectionName: React.FC<SectionNameProps> = ({ name }) => (
-  <SectionNameContainer>
+const SectionName: React.FC<SectionNameProps> = ({ name, indexPage }) => (
+  <SectionNameContainer indexPage={indexPage}>
     <SectionNameText>{name}</SectionNameText>
   </SectionNameContainer>
 );

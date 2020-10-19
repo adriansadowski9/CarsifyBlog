@@ -4,23 +4,28 @@ const TipsSection = styled.section<{
   isHorizontal: boolean;
   notEnoughItems: boolean;
   hasLongCategories?: boolean;
+  tipsPage: boolean;
 }>`
-  display: flex;
-  flex-direction: column;
+  display: grid;
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: ${(props) => (props.tipsPage ? '30px' : '20px')};
+    ul {
+      grid-column: span 2;
+    }
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    grid-template-columns: 1fr 1fr 1fr;
+    ul {
+      grid-column: auto;
+    }
     ${(props) =>
       props.hasLongCategories &&
       `
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      column-gap: 30px;
+      
       ul:first-child {
         grid-row: 1 / span 2;
       }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SectionNameContainer = styled.div`
+const SectionNameContainer = styled.div<{ indexPage?: boolean }>`
   width: 100%;
   height: 20px;
   display: flex;
@@ -14,6 +14,13 @@ const SectionNameContainer = styled.div`
     width: 100%;
     height: 1px;
     background: ${(props) => props.theme.colors.border};
+  }
+
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    grid-column: ${(props) => (props.indexPage ? '1 / 3' : '1 / 3')};
+  }
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    grid-column: ${(props) => (props.indexPage ? '1 / 3' : '1 / 5')};
   }
 `;
 
