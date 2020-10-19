@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
-const InputComponent = styled.input<{ width: string; height: string }>`
-  width: ${(props) => props.width};
+const InputComponent = styled.input<{ height: string }>`
+  width: 100%;
   height: ${(props) => props.height};
   color: ${(props) => props.theme.colors.text};
   font-size: ${(props) => props.theme.fontSizes.l};
-  padding-left: ${(props) => props.theme.spaces.xxs};
-  padding-top: ${(props) => props.theme.spaces.m};
-  margin-bottom: ${(props) => props.theme.spaces.s};
+  padding-left: ${(props) => props.theme.spaces.xs};
+  padding-top: ${(props) => props.theme.spaces.xs};
   background: transparent;
   border-top: none;
   border-left: none;
