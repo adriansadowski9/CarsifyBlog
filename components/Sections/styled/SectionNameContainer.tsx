@@ -17,7 +17,7 @@ const SectionNameContainer = styled.div<{ indexPage?: boolean }>`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    grid-column: ${(props) => (props.indexPage ? '1 / 3' : '1 / 3')};
+    grid-column: 1/3;
   }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     grid-column: ${(props) => (props.indexPage ? '1 / 3' : '1 / 5')};

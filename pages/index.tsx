@@ -135,7 +135,7 @@ const Home: NextPage<HomeProps> = ({
         </div>
       </Row>
       <Row>
-        <AdsSection>
+        <AdsSection indexPage={true}>
           <SectionName name="Perełki z ogłoszeń" />
           {adsList.map((ad, index) => {
             const { featuredImage, title, highlightedText, carData } = ad.attributes;

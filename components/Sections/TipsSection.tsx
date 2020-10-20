@@ -4,14 +4,13 @@ const TipsSection = styled.section<{
   isHorizontal: boolean;
   notEnoughItems: boolean;
   hasLongCategories?: boolean;
-  tipsPage: boolean;
 }>`
   display: grid;
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     grid-template-columns: 1fr 1fr;
 
-    column-gap: ${(props) => (props.tipsPage ? '30px' : '20px')};
+    column-gap: 30px;
     ul {
       grid-column: span 2;
     }

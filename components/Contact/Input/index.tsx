@@ -21,6 +21,7 @@ const Input: React.FC<InputProps> = ({ height = '72px', name, label, textarea, g
         height={!textarea ? height : '150px'}
         name={name}
         id={name}
+        textarea={textarea}
       />
     </InputWrapper>
   );
