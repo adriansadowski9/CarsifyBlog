@@ -8,18 +8,17 @@ const TipsSection = styled.section<{
   display: grid;
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    grid-template-columns: 1fr 1fr;
-
-    column-gap: 30px;
+    grid-template-columns: 400px 400px;
     ul {
       grid-column: span 2;
     }
+    column-gap: 30px;
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 400px 400px 400px;
     ul {
-      grid-column: auto;
+      grid-column: span 1;
     }
     ${(props) =>
       props.hasLongCategories &&
