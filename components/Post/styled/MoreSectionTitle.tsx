@@ -22,7 +22,7 @@ const MoreSectionTitle = styled.p`
     grid-column: 1/3;
   }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    grid-column: 1/4;
+    grid-column: 1/5;
   }
 `;
 

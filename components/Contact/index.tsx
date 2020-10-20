@@ -6,12 +6,10 @@ import ButtonsContainer from './styled/ButtonsContainer';
 import ContactContainer from './styled/ContactContainer';
 import GroupInputs from './styled/GroupInputs';
 import InputContainer from './styled/InputsContainer';
-import SocialButtonsContainer from './styled/SocialButtonsContainer';
 
 import * as React from 'react';
 import { ThemeContext } from 'styled-components';
 
-import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
 
 interface ContactProps {
@@ -70,35 +68,6 @@ const ContactPage: React.FC<ContactProps> = ({
           type="submit"
           backgroundColor={themeContext.colors.submitButton}
         />
-        <SocialButtonsContainer>
-          <Button
-            width="206px"
-            height="60px"
-            link={facebookUrl}
-            text="Facebook"
-            iconName={IconName.Facebook}
-            type="button"
-            backgroundColor={themeContext.colors.socialButton}
-          ></Button>
-          <Button
-            width="206px"
-            height="60px"
-            link={twitterUrl}
-            text="Twitter"
-            iconName={IconName.Twitter}
-            type="button"
-            backgroundColor={themeContext.colors.socialButton}
-          ></Button>
-          <Button
-            width="206px"
-            height="60px"
-            link={instagramUrl}
-            text="Instagram"
-            iconName={IconName.Instagram}
-            type="button"
-            backgroundColor={themeContext.colors.socialButton}
-          ></Button>
-        </SocialButtonsContainer>
       </ButtonsContainer>
     </ContactContainer>
   );

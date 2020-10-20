@@ -24,7 +24,6 @@ const TipsSection = styled.section<{
     ${(props) =>
       props.hasLongCategories &&
       `
-      
       ul:first-child {
         grid-row: 1 / span 2;
       }
@@ -33,9 +32,9 @@ const TipsSection = styled.section<{
       props.isHorizontal
         ? ''
         : `
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      display: grid;
+      grid-template-columns:400px;
+      
     `}
   }
 `;

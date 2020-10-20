@@ -19,7 +19,7 @@ const ArticlesSection = styled.section<{
     ul {
       grid-column: auto;
     }
-    margin-right: ${(props) => (props.withMargin ? props.theme.spaces.xl : 0)};
+
     ${(props) =>
       props.hasLongCategories &&
       `

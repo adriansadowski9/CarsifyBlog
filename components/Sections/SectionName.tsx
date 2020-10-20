@@ -5,11 +5,11 @@ import SectionNameText from '@components/Sections/styled/SectionNameText';
 
 interface SectionNameProps {
   name: string;
-  indexPage?: boolean;
+  gridColumn?: string;
 }
 
-const SectionName: React.FC<SectionNameProps> = ({ name, indexPage }) => (
-  <SectionNameContainer indexPage={indexPage}>
+const SectionName: React.FC<SectionNameProps> = ({ name, gridColumn }) => (
+  <SectionNameContainer gridColumn={gridColumn}>
     <SectionNameText>{name}</SectionNameText>
   </SectionNameContainer>
 );
