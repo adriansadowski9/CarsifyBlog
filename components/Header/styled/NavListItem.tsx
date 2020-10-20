@@ -14,9 +14,7 @@ const NavListItem = styled.li`
     &:hover ${DropdownContainer} {
       opacity: 1;
       visibility: visible;
-      height:auto;
     }
-    
   }
 }
 `;
