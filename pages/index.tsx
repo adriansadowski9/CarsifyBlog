@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Carousel } from 'react-responsive-carousel';
 import { GetStaticProps, NextPage } from 'next';
 
 import AdCard from '@components/Cards/AdCard';
@@ -14,6 +13,7 @@ import ArticlesSection from '@components/Sections/ArticlesSection';
 import InformationSection from '@components/Sections/InformationSection';
 import SectionName from '@components/Sections/SectionName';
 import TipsSection from '@components/Sections/TipsSection';
+import StyledCarousel from '@components/StyledCarousel/StyledCarousel';
 import { attributes } from '@content/pages/home.md';
 import { Article, ArticleCategory } from '@pages/artykuly/[id]';
 import { Ad } from '@pages/ogloszenia/[id]';
@@ -102,16 +102,14 @@ const Home: NextPage<HomeProps> = ({
           </TipsSection>
           <InformationSection>
             <SectionName name="Informacje" />
-            <Carousel
-              infiniteLoop
-              autoPlay
-              swipeable
-              stopOnHover
-              emulateTouch
-              showThumbs={false}
-              renderArrowNext={() => null}
-              renderArrowPrev={() => null}
-              statusFormatter={() => null}
+            <StyledCarousel
+              autoplay
+              autoplayInterval={3000}
+              pauseOnHover
+              wrapAround
+              dragging
+              easing={'easePolyInOut'}
+              speed={1000}
             >
               {infosList.map((information, index) => {
                 const { featuredImage, title, highlightedText } = information.attributes;
@@ -130,7 +128,7 @@ const Home: NextPage<HomeProps> = ({
                   />
                 );
               })}
-            </Carousel>
+            </StyledCarousel>
           </InformationSection>
         </div>
       </Row>
