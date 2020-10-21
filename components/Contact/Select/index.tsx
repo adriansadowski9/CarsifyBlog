@@ -16,20 +16,26 @@ interface SelectProps {
   width?: string;
   label: string;
   height?: string;
+  name: string;
   items: {
     id: number;
     value: string;
   }[];
   selectedItem: string;
   setSelectedItem: (value: string) => void;
+  register: any;
+  onChange: (e: { target: { name: string; value: string } }) => void;
 }
 
 const Select: React.FC<SelectProps> = ({
   height = '72px',
   label,
   items,
+  name,
   selectedItem,
   setSelectedItem,
+  register,
+  onChange,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -67,7 +73,14 @@ const Select: React.FC<SelectProps> = ({
       <SelectDropdown isOpen={isOpen}>
         {items.map((item) => (
           <li key={item.id}>
-            <SelectButton type="button" onClick={() => changeCategory(item.value)}>
+            <SelectButton
+              type="button"
+              onClick={() => changeCategory(item.value)}
+              ref={register}
+              onChange={onChange}
+              name={name}
+              value={selectedItem}
+            >
               {item.value}
             </SelectButton>
           </li>

@@ -10,9 +10,19 @@ interface InputProps {
   label?: string;
   textarea?: boolean;
   gridColumn?: string;
+  register: any;
+  onChange: (e: { target: { name: string; value: string } }) => void;
 }
 
-const Input: React.FC<InputProps> = ({ height = '72px', name, label, textarea, gridColumn }) => {
+const Input: React.FC<InputProps> = ({
+  height = '72px',
+  name,
+  label,
+  textarea,
+  gridColumn,
+  register,
+  onChange,
+}) => {
   return (
     <InputWrapper gridColumn={gridColumn} gridArea={name}>
       <InputLabel htmlFor={name}>{label}</InputLabel>
@@ -22,6 +32,8 @@ const Input: React.FC<InputProps> = ({ height = '72px', name, label, textarea, g
         name={name}
         id={name}
         textarea={textarea}
+        ref={register}
+        onChange={onChange}
       />
     </InputWrapper>
   );
