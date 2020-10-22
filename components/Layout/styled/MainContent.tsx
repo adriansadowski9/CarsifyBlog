@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 const MainContent = styled.main`
   padding: 0 ${(props) => props.theme.spaces.s};
-  display: flex;
-  flex-direction: column;
+  display: grid;
   margin-bottom: ${(props) => props.theme.spaces.m};
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
@@ -15,7 +14,8 @@ const MainContent = styled.main`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    max-width: ${(props) => props.theme.breakpoints[1]};
+    padding: 0;
+    max-width: 1260px;
   }
 `;
 

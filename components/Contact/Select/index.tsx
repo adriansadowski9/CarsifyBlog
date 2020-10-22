@@ -25,7 +25,6 @@ interface SelectProps {
 }
 
 const Select: React.FC<SelectProps> = ({
-  width = '100%',
   height = '72px',
   label,
   items,
@@ -53,7 +52,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <SelectWrapper ref={selectRef}>
       <SelectSpan>{label}</SelectSpan>
-      <ChosenCategory width={width} height={height} onClick={() => setIsOpen(!isOpen)}>
+      <ChosenCategory height={height} onClick={() => setIsOpen(!isOpen)}>
         {selectedItem}
         <ChevronContainer isOpen={isOpen}>
           <Icon

@@ -104,7 +104,6 @@ export interface Theme {
     categoryBoxText: string;
     inputBorder: string;
     submitButton: string;
-    socialButton: string;
     socialBoxBg: string;
     selectHover: string;
   };
@@ -155,7 +154,6 @@ export const lightTheme: Theme = {
     categoryBoxText: colors.black,
     inputBorder: colors.darkGray,
     submitButton: colors.red,
-    socialButton: colors.darkGray,
     socialBoxBg: colors.white,
     selectHover: colors.gray,
   },
@@ -206,7 +204,6 @@ export const darkTheme: Theme = {
     categoryBoxText: colors.black,
     inputBorder: colors.white,
     submitButton: colors.red,
-    socialButton: colors.black,
     socialBoxBg: colors.white,
     selectHover: colors.gray,
   },

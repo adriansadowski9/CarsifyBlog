@@ -6,12 +6,10 @@ import ButtonsContainer from './styled/ButtonsContainer';
 import ContactContainer from './styled/ContactContainer';
 import GroupInputs from './styled/GroupInputs';
 import InputContainer from './styled/InputsContainer';
-import SocialButtonsContainer from './styled/SocialButtonsContainer';
 
 import * as React from 'react';
 import { ThemeContext } from 'styled-components';
 
-import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
 
 interface ContactProps {
@@ -50,21 +48,16 @@ const ContactPage: React.FC<ContactProps> = ({
       />
       <InputContainer>
         <GroupInputs>
-          <Input width="615px" name="name" label="Imię" />
-          <Input width="615px" name="email" label="Email" />
-        </GroupInputs>
-        <GroupInputs>
+          <Input gridColumn="span 12" name="name" label="Imię" />
+          <Input gridColumn="span 12" name="email" label="Email" />
           <Select
-            width="410px"
             label="Kategoria"
             items={items}
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
           />
-          <Input width="820px" name="topic" label="Temat" />
-        </GroupInputs>
-        <GroupInputs>
-          <Input width="1272px" name="message" label="Wiadomość" textarea={true} />
+          <Input gridColumn="span 15" name="topic" label="Temat" />
+          <Input gridColumn="span 24" name="message" label="Wiadomość" textarea={true} />
         </GroupInputs>
       </InputContainer>
       <ButtonsContainer>
@@ -75,35 +68,6 @@ const ContactPage: React.FC<ContactProps> = ({
           type="submit"
           backgroundColor={themeContext.colors.submitButton}
         />
-        <SocialButtonsContainer>
-          <Button
-            width="206px"
-            height="60px"
-            link={facebookUrl}
-            text="Facebook"
-            iconName={IconName.Facebook}
-            type="button"
-            backgroundColor={themeContext.colors.socialButton}
-          ></Button>
-          <Button
-            width="206px"
-            height="60px"
-            link={twitterUrl}
-            text="Twitter"
-            iconName={IconName.Twitter}
-            type="button"
-            backgroundColor={themeContext.colors.socialButton}
-          ></Button>
-          <Button
-            width="206px"
-            height="60px"
-            link={instagramUrl}
-            text="Instagram"
-            iconName={IconName.Instagram}
-            type="button"
-            backgroundColor={themeContext.colors.socialButton}
-          ></Button>
-        </SocialButtonsContainer>
       </ButtonsContainer>
     </ContactContainer>
   );
