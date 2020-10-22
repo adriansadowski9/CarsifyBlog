@@ -27,7 +27,8 @@ const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) 
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <AdsSection>
-        <SectionName name="Perełki z ogłoszeń" />
+        <SectionName name="Perełki z ogłoszeń" gridColumn="1 / 5" />
+
         {adsList.map((ad, index) => {
           const { featuredImage, title, highlightedText, carData } = ad.attributes;
           const { slug } = ad;

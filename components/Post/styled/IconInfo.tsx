@@ -23,8 +23,8 @@ const IconInfo: React.FC<IconInfo> = ({ text, iconName }) => {
           iconName={iconName}
           variant="flat"
           fill={themeContext.colors.iconInfoIcon}
-          width="12px"
-          height="12px"
+          width="16px"
+          height="16px"
         />
       </IconInfoIconContainer>
       <IconInfoText>{text}</IconInfoText>

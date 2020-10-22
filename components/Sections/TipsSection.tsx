@@ -3,24 +3,26 @@ import styled from 'styled-components';
 const TipsSection = styled.section<{
   isHorizontal: boolean;
   notEnoughItems: boolean;
-  hasCategories?: boolean;
+  hasLongCategories?: boolean;
 }>`
-  display: flex;
-  flex-direction: column;
+  display: grid;
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    grid-template-columns: 400px 400px;
+    ul {
+      grid-column: span 2;
+    }
+    column-gap: 30px;
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    grid-template-columns: 400px 400px 400px;
+    ul {
+      grid-column: span 1;
+    }
     ${(props) =>
-      props.hasCategories &&
+      props.hasLongCategories &&
       `
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      column-gap: 30px;
       ul:first-child {
         grid-row: 1 / span 2;
       }
@@ -29,9 +31,9 @@ const TipsSection = styled.section<{
       props.isHorizontal
         ? ''
         : `
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      display: grid;
+      grid-template-columns:400px;
+      
     `}
   }
 `;

@@ -18,6 +18,12 @@ const MoreSectionTitle = styled.p`
     height: 100%;
     width: 5px;
   }
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    grid-column: 1/3;
+  }
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    grid-column: 1/5;
+  }
 `;
 
 export default MoreSectionTitle;

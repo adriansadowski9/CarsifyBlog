@@ -43,8 +43,8 @@ const Home: NextPage<HomeProps> = ({
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <Row>
-        <ArticlesSection withMargin>
-          <SectionName name="Aktualności" />
+        <ArticlesSection withMargin indexPage={true}>
+          <SectionName name="Aktualności" gridColumn="1 / 3" />
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes;
             const { slug } = article;
@@ -73,7 +73,7 @@ const Home: NextPage<HomeProps> = ({
         </ArticlesSection>
         <div>
           <TipsSection>
-            <SectionName name="Moto porady" />
+            <SectionName name="Moto porady" gridColumn="1" />
             {tipsList.map((tip, index) => {
               const { featuredImage, title, highlightedText, category } = tip.attributes;
               const { slug } = tip;
@@ -135,8 +135,8 @@ const Home: NextPage<HomeProps> = ({
         </div>
       </Row>
       <Row>
-        <AdsSection>
-          <SectionName name="Perełki z ogłoszeń" />
+        <AdsSection indexPage={true}>
+          <SectionName name="Perełki z ogłoszeń" gridColumn="1 / 5" />
           {adsList.map((ad, index) => {
             const { featuredImage, title, highlightedText, carData } = ad.attributes;
             const { slug } = ad;

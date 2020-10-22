@@ -24,14 +24,16 @@ const LinkButton = styled.a<{ isActive: boolean }>`
     }
   `
       : ''}
-
+  &:hover {
+    cursor: pointer;
+  }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     display: flex;
     margin: 0;
     height: 90px;
     line-height: 90px;
     padding: 0 ${(props) => props.theme.spaces.m};
-    cursor: pointer;
+
     ${(props) =>
       props.isActive
         ? `
@@ -46,8 +48,6 @@ const LinkButton = styled.a<{ isActive: boolean }>`
     }
   `
         : ''}
-  }
-  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
   }
 `;
 
