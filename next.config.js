@@ -7,8 +7,8 @@ module.exports = withPWA(
     withFonts({
       target: 'serverless',
       pwa: {
-        disable: process.env.NODE_ENV === 'development',
         dest: 'public',
+        buildExcludes: [/images\/.*$/],
         sw: 'service-worker.js',
       },
       webpack: (cfg) => {
