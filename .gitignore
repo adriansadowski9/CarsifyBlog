@@ -6,3 +6,5 @@ out/
 .idea
 yarn-error.log
 .vscode
+**/public/workbox-*.js
+**/public/service-worker.js
