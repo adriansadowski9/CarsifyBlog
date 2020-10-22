@@ -110,6 +110,7 @@ const Home: NextPage<HomeProps> = ({
               dragging
               easing={'easePolyInOut'}
               speed={1000}
+              height="250px"
             >
               {infosList.map((information, index) => {
                 const { featuredImage, title, highlightedText } = information.attributes;

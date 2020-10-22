@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledCarousel = styled(Carousel)`
   width: 100%;
-  height: 250px !important;
   &.slider {
     .slider-control-centerleft,
     .slider-control-centerright {
