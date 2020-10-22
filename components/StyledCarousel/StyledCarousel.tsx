@@ -12,6 +12,7 @@ const StyledCarousel = styled(Carousel)`
       display: none;
     }
     .paging-dot {
+      opacity: 0.35;
       fill: #fff;
     }
   }
