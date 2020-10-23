@@ -8,8 +8,6 @@ module.exports = withPWA(
       target: 'serverless',
       pwa: {
         disable: process.env.NODE_ENV === 'development',
-        dest: 'public',
-        publicExcludes: [/images\/.*$/],
         sw: 'service-worker.js',
       },
       webpack: (cfg) => {
