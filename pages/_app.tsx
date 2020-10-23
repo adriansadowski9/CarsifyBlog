@@ -1,5 +1,4 @@
 import * as React from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { DarkModeContext } from 'contexts/darkModeContext';
 import { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -26,21 +25,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     color: ${(props) => props.theme.colors.text};
     background: ${(props) => props.theme.colors.bg};
-  }
-  
-  .carousel .control-dots .dot {
-    width: 5px;
-    height: 5px;
-    margin: 0 5px;
-    box-shadow: none;
-    
-    .selected {
-      opacity: .35;
-    }
-    
-    :focus {
-      outline: none;
-    }
   }
 `;
 
