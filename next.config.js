@@ -11,6 +11,9 @@ module.exports = withPWA(
       pwa: {
         disable: process.env.NODE_ENV === 'development',
         dest: 'public',
+        modifyURLPrefix: {
+          'public/': '/',
+        },
         sw: 'service-worker.js',
       },
       webpack: (cfg) => {
