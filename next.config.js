@@ -5,9 +5,12 @@ const withPWA = require('next-pwa');
 module.exports = withPWA(
   withOptimizedImages(
     withFonts({
+      imagesPublicPath: '/images/',
+      imagesOutputPath: '../public/images/',
       target: 'serverless',
       pwa: {
         disable: process.env.NODE_ENV === 'development',
+        dest: 'public',
         sw: 'service-worker.js',
       },
       webpack: (cfg) => {
