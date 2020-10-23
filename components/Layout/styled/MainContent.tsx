@@ -14,7 +14,8 @@ const MainContent = styled.main`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    max-width: ${(props) => props.theme.breakpoints[1]};
+    padding: 0;
+    max-width: 1260px;
   }
 `;
 
