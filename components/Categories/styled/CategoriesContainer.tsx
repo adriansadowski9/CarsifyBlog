@@ -5,13 +5,15 @@ const CategoriesContainer = styled.ul<{ height: string }>`
   padding: 0;
   margin: 0;
   width: 100%;
-  height: ${(props) => props.height};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 15px;
+  justify-items: center;
   margin-bottom: ${(props) => props.theme.spaces.m};
-
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     width: 400px;
   }

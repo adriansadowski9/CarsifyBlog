@@ -19,6 +19,7 @@ const Categories: React.FC<CategoriesProps> = ({ items, height }) => {
     <CategoriesContainer height={height}>
       {items.map((item, index) => (
         <CategoryItem
+          isEven={items.length % 2}
           key={`${item.title}-${index}`}
           title={item.title}
           hrefAs={item.hrefAs}
