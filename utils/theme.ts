@@ -82,6 +82,7 @@ export interface Theme {
     iconInfoBg: string;
     iconInfoIcon: string;
     iconInfoText: string;
+    breadcrumbs: string;
     subtitleText: string;
     bulletActive: string;
     bullet: string;
@@ -132,6 +133,7 @@ export const lightTheme: Theme = {
     iconInfoBg: colors.silver,
     iconInfoIcon: colors.black,
     iconInfoText: colors.gray,
+    breadcrumbs: colors.gray,
     subtitleText: colors.gray,
     bulletActive: colors.white,
     bullet: colors.silver,
@@ -182,6 +184,7 @@ export const darkTheme: Theme = {
     iconInfoBg: colors.silver,
     iconInfoIcon: colors.black,
     iconInfoText: colors.gray,
+    breadcrumbs: colors.gray,
     subtitleText: colors.gray,
     bulletActive: colors.white,
     bullet: colors.silver,
