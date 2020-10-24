@@ -133,7 +133,7 @@ export const lightTheme: Theme = {
     iconInfoBg: colors.silver,
     iconInfoIcon: colors.black,
     iconInfoText: colors.gray,
-    breadcrumbs: colors.gray,
+    breadcrumbs: colors.darkGray,
     subtitleText: colors.gray,
     bulletActive: colors.white,
     bullet: colors.silver,
