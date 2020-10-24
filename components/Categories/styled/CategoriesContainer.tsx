@@ -9,7 +9,7 @@ const CategoriesContainer = styled.ul<{ height: string }>`
   grid-template-columns: repeat(2, 1fr);
   column-gap: 15px;
   justify-items: center;
-  margin-bottom: ${(props) => props.theme.spaces.m};
+  margin-bottom: ${(props) => props.theme.spaces.xxs};
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
   }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
