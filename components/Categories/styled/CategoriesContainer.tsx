@@ -5,15 +5,18 @@ const CategoriesContainer = styled.ul<{ height: string }>`
   padding: 0;
   margin: 0;
   width: 100%;
-  height: ${(props) => props.height};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: ${(props) => props.theme.spaces.m};
-
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 15px;
+  justify-items: center;
+  margin-bottom: ${(props) => props.theme.spaces.xxs};
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+  }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    margin-bottom: ${(props) => props.theme.spaces.m};
     width: 400px;
+    grid-template-columns: 1fr;
+    column-gap: 0;
   }
 
   li:last-child {

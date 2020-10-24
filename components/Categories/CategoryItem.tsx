@@ -9,11 +9,12 @@ interface CategoryItemProps {
   hrefAs: string;
   href: string;
   isActive: boolean;
+  isEven: number;
 }
 
-const CategoryItem: React.FC<CategoryItemProps> = ({ title, href, hrefAs, isActive }) => {
+const CategoryItem: React.FC<CategoryItemProps> = ({ title, href, hrefAs, isActive, isEven }) => {
   return (
-    <CategoryItemContainer isActive={isActive}>
+    <CategoryItemContainer isActive={isActive} isEven={isEven}>
       <Link href={href} as={hrefAs} passHref>
         <CategoryItemText isActive={isActive}>{title}</CategoryItemText>
       </Link>
