@@ -7,6 +7,6 @@ out/
 yarn-error.log
 .vscode
 public/workbox-*.js
-public/service-worker.js
+public/sw.js
 public/workbox-*.js.map
-public/service-worker.js.map
+public/sw.js.map
