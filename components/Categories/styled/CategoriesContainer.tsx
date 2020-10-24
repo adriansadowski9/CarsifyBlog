@@ -11,11 +11,11 @@ const CategoriesContainer = styled.ul<{ height: string }>`
   justify-items: center;
   margin-bottom: ${(props) => props.theme.spaces.m};
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    grid-template-columns: 1fr;
-    column-gap: 0;
   }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     width: 400px;
+    grid-template-columns: 1fr;
+    column-gap: 0;
   }
 
   li:last-child {

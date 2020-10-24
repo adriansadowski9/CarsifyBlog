@@ -11,6 +11,9 @@ const CategoryItemContainer = styled.li<{ isActive: boolean; isEven: number }>`
     grid-column: ${(props) => (props.isEven === 1 ? 'span 2' : 'span 1')};
   }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    height: 60px;
+  }
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     height: auto;
     flex: 1;
     grid-column: 1;
