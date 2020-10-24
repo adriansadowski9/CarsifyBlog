@@ -82,6 +82,11 @@ const Ad: NextPage<AdProps> = ({
         <PageHead title={`Ad - ${title}`} description="Ad description" />
         <Post
           date={date}
+          breadcrumbs={[
+            { name: 'Strona główna', link: { href: '/' } },
+            { name: 'Perełki z ogłoszeń', link: { href: '/ogloszenia' } },
+            { name: title },
+          ]}
           title={title}
           subtitle={subtitle}
           highlightedText={highlightedText}
