@@ -145,6 +145,15 @@ const Article: NextPage<ArticleProps> = ({
             name: categoryInfo.attributes.title,
             icon: categoryInfo.attributes.icon,
           }}
+          breadcrumbs={[
+            { name: 'Strona główna', link: { href: '/' } },
+            { name: 'Artykuły', link: { href: '/artykuly' } },
+            {
+              name: categoryInfo.attributes.title,
+              link: { href: '/artykuly/[id]', as: `/artykuly/${categoryInfo.slug}` },
+            },
+            { name: title },
+          ]}
           title={title}
           subtitle={subtitle}
           highlightedText={highlightedText}
