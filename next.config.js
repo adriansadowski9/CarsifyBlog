@@ -9,7 +9,6 @@ module.exports = withPlugins(
       pwa,
       {
         dest: 'public',
-        sw: 'service-worker.js',
       },
     ],
     [
