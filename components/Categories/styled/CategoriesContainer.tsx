@@ -13,6 +13,7 @@ const CategoriesContainer = styled.ul<{ height: string }>`
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
   }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    margin-bottom: ${(props) => props.theme.spaces.m};
     width: 400px;
     grid-template-columns: 1fr;
     column-gap: 0;
