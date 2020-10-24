@@ -8,12 +8,17 @@ module.exports = withPlugins(
     [
       pwa,
       {
-        disable: process.env.NODE_ENV === 'development',
         dest: 'public',
-        sw: 'service-worker.js',
       },
     ],
-    [optimizedImages],
+    [
+      optimizedImages,
+      {
+        responsive: {
+          adapter: require('responsive-loader/sharp'),
+        },
+      },
+    ],
     [fonts],
   ],
   {
