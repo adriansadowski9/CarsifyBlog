@@ -7,7 +7,7 @@ subtitle: >-
   mollis non rutrum eu, maximus aliquet eros.
 date: 2019-02-20T19:31:20.591Z
 featuredImage: /assets/img/photo-1568605117036-5fe5e7bab0b7.jpeg
-category: Premiery
+category: Wiadomości
 contents:
   - link: '#heading1'
     name: Heading 1
