@@ -14,8 +14,8 @@ const StyledCarousel = styled(CarouselProvider)`
   .carousel__dot {
     border: none;
     border-radius: 50%;
-    height: 12px;
-    width: 6px !important;
+    padding: 3px;
+
     margin-right: 5px;
     background-color: #fff;
     opacity: 0.35;
