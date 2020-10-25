@@ -12,9 +12,7 @@ interface InputProps {
   label?: string;
   textarea?: boolean;
   gridColumn?: string;
-  register: (e: {
-    target: { required: string; pattern?: { value: string; message: string } };
-  }) => void;
+  register: unknown;
   onChange: (e: { target: { name: string; value: string } }) => void;
   error: string;
 }
