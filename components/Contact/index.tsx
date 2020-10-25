@@ -67,50 +67,53 @@ const ContactPage: React.FC<ContactProps> = ({
             gridColumn="span 12"
             name="name"
             label="Imię"
-            register={register({ required: 'Proszę podać imię.' })}
+            register={register({ required: 'jest za krótkie' })}
             onChange={handleChange}
+            error={errors.name ? errors.name.message : ''}
           />
-          {errors.name && <p>{errors.name.message}</p>}
+
           <Input
             gridColumn="span 12"
             name="email"
             label="Email"
             register={register({
-              required: 'Podany adres e-mail jest za krótki.',
+              required: 'jest nieprawidłowy',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Podany adres e-mail jest nieprawidłowy.',
+                message: 'jest nieprawidłowy',
               },
             })}
+            error={errors.email ? errors.email.message : ''}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email.message}</p>}
           <Select
             label="Kategoria"
             items={items}
             name="category"
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
-            register={register()}
+            register={register({ required: 'nie została wybrana' })}
             onChange={handleChange}
+            error={errors.category ? errors.category.message : ''}
           />
           <Input
             gridColumn="span 15"
             name="topic"
             label="Temat"
-            register={register({ required: true, minLength: 10 })}
+            register={register({ required: true, minLength: 3 })}
             onChange={handleChange}
+            error={errors.topic ? 'jest za krótki (min. 3 znaki)' : ''}
           />
-          {errors.topic && <p>Wymagana liczba znaków to 10.</p>}
+
           <Input
             gridColumn="span 24"
             name="message"
             label="Wiadomość"
             textarea={true}
-            register={register({ required: true, minLength: 15 })}
+            register={register({ required: true, minLength: 10 })}
             onChange={handleChange}
+            error={errors.message ? 'jest za krótka (min. 10 znaków)' : ''}
           />
-          {errors.message && <p>Wiadomość jest za krótka.</p>}
         </GroupInputs>
       </InputContainer>
       <ButtonsContainer>
