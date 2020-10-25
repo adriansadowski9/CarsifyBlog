@@ -1,5 +1,6 @@
 import ChevronContainer from './styled/ChevronContainer';
 import ChosenCategory from './styled/ChosenCategory';
+import HiddenInput from './styled/HiddenInput';
 import SelectButton from './styled/SelectButton';
 import SelectDropdown from './styled/SelectDropdown';
 import SelectSpan from './styled/SelectSpan';
@@ -23,7 +24,7 @@ interface SelectProps {
   }[];
   selectedItem: string;
   setSelectedItem: (value: string) => void;
-  register: unknown;
+  register: React.Ref<HTMLInputElement>;
   onChange: (e: { target: { name: string; value: string } }) => void;
 }
 
@@ -71,17 +72,11 @@ const Select: React.FC<SelectProps> = ({
           />
         </ChevronContainer>
       </ChosenCategory>
+      <HiddenInput value={selectedItem} onChange={onChange} ref={register} name={name} />
       <SelectDropdown isOpen={isOpen}>
         {items.map((item) => (
           <li key={item.id}>
-            <SelectButton
-              type="button"
-              onClick={() => changeCategory(item.value)}
-              ref={register}
-              onChange={onChange}
-              name={name}
-              value={selectedItem}
-            >
+            <SelectButton type="button" onClick={() => changeCategory(item.value)}>
               {item.value}
             </SelectButton>
           </li>
