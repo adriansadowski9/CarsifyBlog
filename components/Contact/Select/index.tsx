@@ -1,5 +1,3 @@
-import ErrorSpan from '../Input/ErrorSpan';
-import LabelWrapper from '../Input/LabelWrapper';
 import ChevronContainer from './styled/ChevronContainer';
 import ChosenCategory from './styled/ChosenCategory';
 import SelectButton from './styled/SelectButton';
@@ -27,7 +25,6 @@ interface SelectProps {
   setSelectedItem: (value: string) => void;
   register: unknown;
   onChange: (e: { target: { name: string; value: string } }) => void;
-  error: string;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -39,7 +36,6 @@ const Select: React.FC<SelectProps> = ({
   setSelectedItem,
   register,
   onChange,
-  error,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -61,10 +57,7 @@ const Select: React.FC<SelectProps> = ({
   }, []);
   return (
     <SelectWrapper ref={selectRef}>
-      <LabelWrapper>
-        <SelectSpan>{label}</SelectSpan>
-        {error && <ErrorSpan>{error}</ErrorSpan>}
-      </LabelWrapper>
+      <SelectSpan>{label}</SelectSpan>
 
       <ChosenCategory height={height} onClick={() => setIsOpen(!isOpen)}>
         {selectedItem}

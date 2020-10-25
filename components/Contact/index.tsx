@@ -67,7 +67,7 @@ const ContactPage: React.FC<ContactProps> = ({
             gridColumn="span 12"
             name="name"
             label="Imię"
-            register={register({ required: 'jest za krótkie' })}
+            register={register({ required: 'jest za krótkie', minLength: 3 })}
             onChange={handleChange}
             error={errors.name ? errors.name.message : ''}
           />
@@ -92,9 +92,8 @@ const ContactPage: React.FC<ContactProps> = ({
             name="category"
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
-            register={register({ required: 'nie została wybrana' })}
+            register={register()}
             onChange={handleChange}
-            error={errors.category ? errors.category.message : ''}
           />
           <Input
             gridColumn="span 15"
