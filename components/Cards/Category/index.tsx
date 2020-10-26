@@ -14,8 +14,8 @@ interface CategoryProps {
   iconColor: string;
 }
 const Category: React.FC<CategoryProps> = ({ name, iconName, nameColor, bgColor, iconColor }) => (
-  <CategoryContainer>
-    <CategoryName color={nameColor}>{name}</CategoryName>
+  <CategoryContainer color={nameColor}>
+    <CategoryName>{name}</CategoryName>
     <CategoryIconContainer backgroundColor={bgColor} iconColor={iconColor}>
       <Icon iconName={iconName} variant="flat" width="16px" height="16px" fill={iconColor} />
     </CategoryIconContainer>
