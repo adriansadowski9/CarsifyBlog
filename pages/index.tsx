@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { GetStaticProps, NextPage } from 'next';
+import { DotGroup, Slide, Slider } from 'pure-react-carousel';
 
 import AdCard from '@components/Cards/AdCard';
 import ArticleCard from '@components/Cards/ArticleCard';
@@ -20,7 +21,6 @@ import { Ad } from '@pages/ogloszenia/[id]';
 import { Tip, TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds, getArticles, getTips } from '@utils/getPosts';
-
 interface HomeProps {
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
@@ -103,32 +103,34 @@ const Home: NextPage<HomeProps> = ({
           <InformationSection>
             <SectionName name="Informacje" />
             <StyledCarousel
-              autoplay
-              autoplayInterval={3000}
-              pauseOnHover
-              wrapAround
-              dragging
-              easing={'easePolyInOut'}
-              speed={1000}
-              height="250px"
+              naturalSlideHeight={250}
+              naturalSlideWidth={400}
+              interval={3000}
+              totalSlides={infosList.length}
+              isPlaying={true}
+              infinite={true}
             >
-              {infosList.map((information, index) => {
-                const { featuredImage, title, highlightedText } = information.attributes;
-                const { slug } = information;
-                return (
-                  <InformationCard
-                    key={`${title}-${index}`}
-                    image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
-                    title={title}
-                    textSnippet={
-                      highlightedText.length > 160
-                        ? `${highlightedText.substring(0, 160)}...`
-                        : highlightedText
-                    }
-                    slug={slug}
-                  />
-                );
-              })}
+              <Slider moveThreshold={0.2}>
+                {infosList.map((information, index) => {
+                  const { featuredImage, title, highlightedText } = information.attributes;
+                  const { slug } = information;
+                  return (
+                    <Slide index={index} key={`${title}-${index}`}>
+                      <InformationCard
+                        image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                        title={title}
+                        textSnippet={
+                          highlightedText.length > 160
+                            ? `${highlightedText.substring(0, 160)}...`
+                            : highlightedText
+                        }
+                        slug={slug}
+                      />
+                    </Slide>
+                  );
+                })}
+              </Slider>
+              <DotGroup className="dots" />
             </StyledCarousel>
           </InformationSection>
         </div>

@@ -10,13 +10,13 @@ const CategoriesContainer = styled.ul<{ height: string }>`
   column-gap: 15px;
   justify-items: center;
   margin-bottom: ${(props) => props.theme.spaces.xxs};
-  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-  }
+
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    margin-bottom: ${(props) => props.theme.spaces.m};
+    display: flex;
+    flex-direction: column;
     width: 400px;
-    grid-template-columns: 1fr;
-    column-gap: 0;
+    height: ${(props) => props.height};
+    margin-bottom: ${(props) => props.theme.spaces.m};
   }
 
   li:last-child {
