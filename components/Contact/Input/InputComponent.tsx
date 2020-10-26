@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const InputComponent = styled.input<{ height: string; textarea: boolean }>`
+const InputComponent = styled.input<{ customHeight: string; textarea: boolean }>`
   width: 100%;
-  height: ${(props) => props.height};
+  height: ${(props) => props.customHeight}px;
   color: ${(props) => props.theme.colors.text};
   font-size: ${(props) => props.theme.fontSizes.l};
 
