@@ -40,7 +40,10 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
       <PageHead title={pageTitle} description={pageDescription} />
       <SectionName name="Moto porady" gridColumn="1" />
       <TipsSection hasLongCategories={categories.length > 5} isHorizontal>
-        <Categories items={categories} height={categories.length > 5 ? '911px' : '443px'} />
+        <Categories
+          items={categories}
+          containerHeight={categories.length > 5 ? '911px' : '443px'}
+        />
         {tipsList.map((tip, index) => {
           const { featuredImage, title, highlightedText, category } = tip.attributes;
           const { slug } = tip;

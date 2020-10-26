@@ -26,19 +26,13 @@ const SocialShareSection: React.FC<SocialShareSectionProps> = ({
 }) => (
   <SocialShareContainer isAbsolute={isAbsolute} horizontal={horizontal} rightSide={rightSide}>
     <FacebookShareButton title="test" url={shareUrl} quote={quote}>
-      <SocialButton>
-        <Icon iconName={IconName.Facebook} variant="color" width="24px" height="24px" />
-      </SocialButton>
+      <Icon iconName={IconName.Facebook} variant="color" width="24px" height="24px" />
     </FacebookShareButton>
     <TwitterShareButton title="test" url={shareUrl}>
-      <SocialButton>
-        <Icon iconName={IconName.Twitter} variant="color" width="24px" height="24px" />
-      </SocialButton>
+      <Icon iconName={IconName.Twitter} variant="color" width="24px" height="24px" />
     </TwitterShareButton>
     <PinterestShareButton title="test" url={shareUrl} media={pinterestMediaUrl}>
-      <SocialButton>
-        <Icon iconName={IconName.Pinterest} variant="color" width="24px" height="24px" />
-      </SocialButton>
+      <Icon iconName={IconName.Pinterest} variant="color" width="24px" height="24px" />
     </PinterestShareButton>
   </SocialShareContainer>
 );
