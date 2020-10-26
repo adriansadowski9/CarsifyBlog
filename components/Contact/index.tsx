@@ -67,9 +67,9 @@ const ContactPage: React.FC<ContactProps> = ({
             gridColumn="span 12"
             name="name"
             label="Imię"
-            register={register({ required: 'jest za krótkie', minLength: 3 })}
+            register={register({ required: true, minLength: 3 })}
             onChange={handleChange}
-            error={errors.name ? errors.name.message : ''}
+            error={errors.name ? 'jest za krótkie (min. 3 znaki)' : ''}
           />
 
           <Input
