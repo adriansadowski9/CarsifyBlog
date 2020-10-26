@@ -16,8 +16,8 @@ const StyledCarousel = styled(CarouselProvider)`
     border-radius: 50%;
     padding: 3px;
 
-    margin-right: 5px;
-    background-color: #fff;
+    margin-right: ${(props) => props.theme.spaces.xxxs};
+    background-color: ${(props) => props.theme.colors.carouselDot};
     opacity: 0.35;
   }
   .carousel__dot--selected {
