@@ -1,5 +1,6 @@
 import ChevronContainer from './styled/ChevronContainer';
 import ChosenCategory from './styled/ChosenCategory';
+import HiddenInput from './styled/HiddenInput';
 import SelectButton from './styled/SelectButton';
 import SelectDropdown from './styled/SelectDropdown';
 import SelectSpan from './styled/SelectSpan';
@@ -16,20 +17,26 @@ interface SelectProps {
   width?: string;
   label: string;
   height?: string;
+  name: string;
   items: {
     id: number;
     value: string;
   }[];
   selectedItem: string;
   setSelectedItem: (value: string) => void;
+  register: React.Ref<HTMLInputElement>;
+  onChange: (e: { target: { name: string; value: string } }) => void;
 }
 
 const Select: React.FC<SelectProps> = ({
   height = '72px',
   label,
   items,
+  name,
   selectedItem,
   setSelectedItem,
+  register,
+  onChange,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -52,6 +59,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <SelectWrapper ref={selectRef}>
       <SelectSpan>{label}</SelectSpan>
+
       <ChosenCategory height={height} onClick={() => setIsOpen(!isOpen)}>
         {selectedItem}
         <ChevronContainer isOpen={isOpen}>
@@ -64,6 +72,7 @@ const Select: React.FC<SelectProps> = ({
           />
         </ChevronContainer>
       </ChosenCategory>
+      <HiddenInput value={selectedItem} onChange={onChange} ref={register} name={name} />
       <SelectDropdown isOpen={isOpen}>
         {items.map((item) => (
           <li key={item.id}>

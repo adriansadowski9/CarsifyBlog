@@ -107,6 +107,7 @@ export interface Theme {
     submitButton: string;
     socialBoxBg: string;
     selectHover: string;
+    validationError: string;
     carouselDot: string;
   };
 }
@@ -159,7 +160,8 @@ export const lightTheme: Theme = {
     submitButton: colors.red,
     socialBoxBg: colors.white,
     selectHover: colors.gray,
-    carouselDot: colors.white,
+    carouselDot: colors.gray,
+    validationError: colors.red,
   },
 };
 
@@ -212,5 +214,6 @@ export const darkTheme: Theme = {
     socialBoxBg: colors.white,
     selectHover: colors.gray,
     carouselDot: colors.white,
+    validationError: colors.red,
   },
 };
