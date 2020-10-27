@@ -38,35 +38,37 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
-      <SectionName name="Moto porady" gridColumn="1" />
-      <TipsSection hasLongCategories={categories.length > 5} isHorizontal>
-        <Categories items={categories} height={categories.length > 5 ? '911px' : '443px'} />
-        {tipsList.map((tip, index) => {
-          const { featuredImage, title, highlightedText, category } = tip.attributes;
-          const { slug } = tip;
-          const categoryInfo = tipCategories.find(
-            (tipCategory) => tipCategory.attributes.title === category
-          );
+      <section>
+        <SectionName name="Moto porady" />
+        <TipsSection hasLongCategories={categories.length > 5} isHorizontal>
+          <Categories items={categories} height={categories.length > 5 ? '911px' : '443px'} />
+          {tipsList.map((tip, index) => {
+            const { featuredImage, title, highlightedText, category } = tip.attributes;
+            const { slug } = tip;
+            const categoryInfo = tipCategories.find(
+              (tipCategory) => tipCategory.attributes.title === category
+            );
 
-          return (
-            <TipCard
-              key={`${title}-${index}`}
-              image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
-              title={title}
-              textSnippet={
-                highlightedText.length > 160
-                  ? `${highlightedText.substring(0, 160)}...`
-                  : highlightedText
-              }
-              category={{
-                name: categoryInfo.attributes.title,
-                icon: categoryInfo.attributes.icon,
-              }}
-              slug={slug}
-            />
-          );
-        })}
-      </TipsSection>
+            return (
+              <TipCard
+                key={`${title}-${index}`}
+                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                title={title}
+                textSnippet={
+                  highlightedText.length > 160
+                    ? `${highlightedText.substring(0, 160)}...`
+                    : highlightedText
+                }
+                category={{
+                  name: categoryInfo.attributes.title,
+                  icon: categoryInfo.attributes.icon,
+                }}
+                slug={slug}
+              />
+            );
+          })}
+        </TipsSection>
+      </section>
     </Layout>
   );
 };
