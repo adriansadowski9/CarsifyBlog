@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ArticlesSection = styled.section<{
+const ArticlesContainer = styled.div<{
   withMargin: boolean;
   hasLongCategories: boolean;
   notEnoughItems: boolean;
@@ -39,4 +39,4 @@ const ArticlesSection = styled.section<{
   }
 `;
 
-export default ArticlesSection;
+export default ArticlesContainer;

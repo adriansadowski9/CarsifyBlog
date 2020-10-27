@@ -15,10 +15,11 @@ interface InputProps {
   register: React.Ref<HTMLInputElement>;
   onChange: (e: { target: { name: string; value: string } }) => void;
   error: string;
+  type: string;
 }
 
 const Input: React.FC<InputProps> = ({
-  height = '72px',
+  height = '72',
   name,
   label,
   textarea,
@@ -26,6 +27,7 @@ const Input: React.FC<InputProps> = ({
   register,
   onChange,
   error,
+  type,
 }) => {
   return (
     <InputWrapper gridColumn={gridColumn} gridArea={name}>
@@ -35,8 +37,9 @@ const Input: React.FC<InputProps> = ({
       </LabelWrapper>
       <InputComponent
         as={textarea ? 'textarea' : 'input'}
-        height={!textarea ? height : '150px'}
+        customHeight={!textarea ? height : '150'}
         name={name}
+        type={type}
         id={name}
         textarea={textarea}
         ref={register}

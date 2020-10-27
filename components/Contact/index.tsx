@@ -70,6 +70,7 @@ const ContactPage: React.FC<ContactProps> = ({
             register={register({ required: true, minLength: 3 })}
             onChange={handleChange}
             error={errors.name ? 'jest za krótkie (min. 3 znaki)' : ''}
+            type="text"
           />
 
           <Input
@@ -85,6 +86,7 @@ const ContactPage: React.FC<ContactProps> = ({
             })}
             error={errors.email ? errors.email.message : ''}
             onChange={handleChange}
+            type="text"
           />
           <Select
             label="Kategoria"
@@ -102,6 +104,7 @@ const ContactPage: React.FC<ContactProps> = ({
             register={register({ required: true, minLength: 3 })}
             onChange={handleChange}
             error={errors.topic ? 'jest za krótki (min. 3 znaki)' : ''}
+            type="text"
           />
 
           <Input
@@ -112,6 +115,7 @@ const ContactPage: React.FC<ContactProps> = ({
             register={register({ required: true, minLength: 10 })}
             onChange={handleChange}
             error={errors.message ? 'jest za krótka (min. 10 znaków)' : ''}
+            type="text"
           />
         </GroupInputs>
       </InputContainer>

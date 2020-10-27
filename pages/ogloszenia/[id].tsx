@@ -7,7 +7,7 @@ import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
-import AdsSection from '@components/Sections/AdsSection';
+import AdsContainer from '@components/Sections/AdsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
@@ -96,7 +96,7 @@ const Ad: NextPage<AdProps> = ({
           carData={carData}
           contents={contents}
           moreSection={
-            <AdsSection isHorizontal>
+            <AdsContainer isHorizontal>
               <MoreSectionTitle>Więcej perełek z ogłoszeń</MoreSectionTitle>
               {moreAds.map((article, index) => {
                 const { featuredImage, title, highlightedText, carData } = article.attributes;
@@ -116,7 +116,7 @@ const Ad: NextPage<AdProps> = ({
                   />
                 );
               })}
-            </AdsSection>
+            </AdsContainer>
           }
         />
       </Layout>

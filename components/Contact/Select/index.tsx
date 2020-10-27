@@ -62,7 +62,7 @@ const Select: React.FC<SelectProps> = ({
 
       <ChosenCategory height={height} onClick={() => setIsOpen(!isOpen)}>
         {selectedItem}
-        <ChevronContainer isOpen={isOpen}>
+        <ChevronContainer isOpen={isOpen} type="button">
           <Icon
             iconName={IconName.ChevronDown}
             variant="flat"

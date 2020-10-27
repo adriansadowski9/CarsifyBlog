@@ -7,7 +7,7 @@ import Categories from '@components/Categories';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import SectionName from '@components/Sections/SectionName';
-import TipsSection from '@components/Sections/TipsSection';
+import TipsContainer from '@components/Sections/TipsContainer';
 import { attributes } from '@content/pages/ads.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { Tip, TipCategory } from '@pages/porady/[id]';
@@ -38,38 +38,40 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
-      <SectionName name="Moto porady" gridColumn="1" />
-      <TipsSection hasLongCategories={categories.length > 5} isHorizontal>
-        <Categories
-          items={categories}
-          containerHeight={categories.length > 5 ? '911px' : '443px'}
-        />
-        {tipsList.map((tip, index) => {
-          const { featuredImage, title, highlightedText, category } = tip.attributes;
-          const { slug } = tip;
-          const categoryInfo = tipCategories.find(
-            (tipCategory) => tipCategory.attributes.title === category
-          );
+      <section>
+        <SectionName name="Moto porady" />
+        <TipsContainer hasLongCategories={categories.length > 5} isHorizontal>
+          <Categories
+            items={categories}
+            containerHeight={categories.length > 5 ? '911px' : '443px'}
+          />
+          {tipsList.map((tip, index) => {
+            const { featuredImage, title, highlightedText, category } = tip.attributes;
+            const { slug } = tip;
+            const categoryInfo = tipCategories.find(
+              (tipCategory) => tipCategory.attributes.title === category
+            );
 
-          return (
-            <TipCard
-              key={`${title}-${index}`}
-              image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
-              title={title}
-              textSnippet={
-                highlightedText.length > 160
-                  ? `${highlightedText.substring(0, 160)}...`
-                  : highlightedText
-              }
-              category={{
-                name: categoryInfo.attributes.title,
-                icon: categoryInfo.attributes.icon,
-              }}
-              slug={slug}
-            />
-          );
-        })}
-      </TipsSection>
+            return (
+              <TipCard
+                key={`${title}-${index}`}
+                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                title={title}
+                textSnippet={
+                  highlightedText.length > 160
+                    ? `${highlightedText.substring(0, 160)}...`
+                    : highlightedText
+                }
+                category={{
+                  name: categoryInfo.attributes.title,
+                  icon: categoryInfo.attributes.icon,
+                }}
+                slug={slug}
+              />
+            );
+          })}
+        </TipsContainer>
+      </section>
     </Layout>
   );
 };

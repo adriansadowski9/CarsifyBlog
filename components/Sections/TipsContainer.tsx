@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TipsSection = styled.section<{
+const TipsContainer = styled.div<{
   isHorizontal: boolean;
   notEnoughItems: boolean;
   hasLongCategories?: boolean;
@@ -9,6 +9,7 @@ const TipsSection = styled.section<{
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     grid-template-columns: 400px 400px;
+
     ul {
       grid-column: span 2;
     }
@@ -38,4 +39,4 @@ const TipsSection = styled.section<{
   }
 `;
 
-export default TipsSection;
+export default TipsContainer;

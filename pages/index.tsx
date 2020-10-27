@@ -9,11 +9,12 @@ import TipCard from '@components/Cards/TipCard';
 import Layout from '@components/Layout';
 import Row from '@components/Layout/styled/Row';
 import PageHead from '@components/PageHead';
+import AdsContainer from '@components/Sections/AdsContainer';
 import AdsSection from '@components/Sections/AdsSection';
-import ArticlesSection from '@components/Sections/ArticlesSection';
+import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import InformationSection from '@components/Sections/InformationSection';
 import SectionName from '@components/Sections/SectionName';
-import TipsSection from '@components/Sections/TipsSection';
+import TipsContainer from '@components/Sections/TipsContainer';
 import StyledCarousel from '@components/StyledCarousel/StyledCarousel';
 import { attributes } from '@content/pages/home.md';
 import { Article, ArticleCategory } from '@pages/artykuly/[id]';
@@ -43,46 +44,18 @@ const Home: NextPage<HomeProps> = ({
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <Row>
-        <ArticlesSection withMargin indexPage={true}>
-          <SectionName name="Aktualności" gridColumn="1 / 3" />
-          {articlesList.map((article, index) => {
-            const { featuredImage, title, highlightedText, category } = article.attributes;
-            const { slug } = article;
-            const categoryInfo = articleCategories.find(
-              (articleCategory) => articleCategory.attributes.title === category
-            );
-
-            return (
-              <ArticleCard
-                key={`${title}-${index}`}
-                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
-                title={title}
-                textSnippet={
-                  highlightedText.length > 160
-                    ? `${highlightedText.substring(0, 160)}...`
-                    : highlightedText
-                }
-                category={{
-                  name: categoryInfo.attributes.title,
-                  icon: categoryInfo.attributes.icon,
-                }}
-                slug={slug}
-              />
-            );
-          })}
-        </ArticlesSection>
-        <div>
-          <TipsSection>
-            <SectionName name="Moto porady" gridColumn="1" />
-            {tipsList.map((tip, index) => {
-              const { featuredImage, title, highlightedText, category } = tip.attributes;
-              const { slug } = tip;
-              const categoryInfo = tipCategories.find(
-                (tipCategory) => tipCategory.attributes.title === category
+        <section>
+          <SectionName name="Aktualności" />
+          <ArticlesContainer withMargin indexPage={true}>
+            {articlesList.map((article, index) => {
+              const { featuredImage, title, highlightedText, category } = article.attributes;
+              const { slug } = article;
+              const categoryInfo = articleCategories.find(
+                (articleCategory) => articleCategory.attributes.title === category
               );
 
               return (
-                <TipCard
+                <ArticleCard
                   key={`${title}-${index}`}
                   image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                   title={title}
@@ -99,7 +72,39 @@ const Home: NextPage<HomeProps> = ({
                 />
               );
             })}
-          </TipsSection>
+          </ArticlesContainer>
+        </section>
+        <div>
+          <section>
+            <SectionName name="Moto porady" />
+            <TipsContainer>
+              {tipsList.map((tip, index) => {
+                const { featuredImage, title, highlightedText, category } = tip.attributes;
+                const { slug } = tip;
+                const categoryInfo = tipCategories.find(
+                  (tipCategory) => tipCategory.attributes.title === category
+                );
+
+                return (
+                  <TipCard
+                    key={`${title}-${index}`}
+                    image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                    title={title}
+                    textSnippet={
+                      highlightedText.length > 160
+                        ? `${highlightedText.substring(0, 160)}...`
+                        : highlightedText
+                    }
+                    category={{
+                      name: categoryInfo.attributes.title,
+                      icon: categoryInfo.attributes.icon,
+                    }}
+                    slug={slug}
+                  />
+                );
+              })}
+            </TipsContainer>
+          </section>
           <InformationSection>
             <SectionName name="Informacje" />
             <StyledCarousel
@@ -136,26 +141,28 @@ const Home: NextPage<HomeProps> = ({
         </div>
       </Row>
       <Row>
-        <AdsSection indexPage={true}>
-          <SectionName name="Perełki z ogłoszeń" gridColumn="1 / 5" />
-          {adsList.map((ad, index) => {
-            const { featuredImage, title, highlightedText, carData } = ad.attributes;
-            const { slug } = ad;
-            return (
-              <AdCard
-                key={`${title}-${index}`}
-                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
-                title={title}
-                textSnippet={
-                  highlightedText.length > 160
-                    ? `${highlightedText.substring(0, 160)}...`
-                    : highlightedText
-                }
-                carData={carData}
-                slug={slug}
-              />
-            );
-          })}
+        <AdsSection>
+          <SectionName name="Perełki z ogłoszeń" />
+          <AdsContainer indexPage={true}>
+            {adsList.map((ad, index) => {
+              const { featuredImage, title, highlightedText, carData } = ad.attributes;
+              const { slug } = ad;
+              return (
+                <AdCard
+                  key={`${title}-${index}`}
+                  image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                  title={title}
+                  textSnippet={
+                    highlightedText.length > 160
+                      ? `${highlightedText.substring(0, 160)}...`
+                      : highlightedText
+                  }
+                  carData={carData}
+                  slug={slug}
+                />
+              );
+            })}
+          </AdsContainer>
         </AdsSection>
       </Row>
     </Layout>
