@@ -5,7 +5,7 @@ import ArticleCard from '@components/Cards/ArticleCard';
 import Categories from '@components/Categories';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
-import ArticlesSection from '@components/Sections/ArticlesSection';
+import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/articles.md';
 import { Article, ArticleCategory } from '@pages/artykuly/[id]';
@@ -38,7 +38,7 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
       <PageHead title={pageTitle} description={pageDescription} />
       <section>
         <SectionName name="Aktualności" />
-        <ArticlesSection
+        <ArticlesContainer
           notEnoughItems={(articlesList.length + 1) % 3 !== 0}
           hasLongCategories={categories.length > 5}
         >
@@ -71,7 +71,7 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
               />
             );
           })}
-        </ArticlesSection>
+        </ArticlesContainer>
       </section>
     </Layout>
   );
