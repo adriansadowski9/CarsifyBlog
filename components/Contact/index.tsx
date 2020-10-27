@@ -115,7 +115,6 @@ const ContactPage: React.FC<ContactProps> = ({
             register={register({ required: true, minLength: 10 })}
             onChange={handleChange}
             error={errors.message ? 'jest za krótka (min. 10 znaków)' : ''}
-            type="text"
           />
         </GroupInputs>
       </InputContainer>

@@ -60,9 +60,9 @@ const Select: React.FC<SelectProps> = ({
     <SelectWrapper ref={selectRef}>
       <SelectSpan>{label}</SelectSpan>
 
-      <ChosenCategory height={height} onClick={() => setIsOpen(!isOpen)}>
+      <ChosenCategory customHeight={height} type="button" onClick={() => setIsOpen(!isOpen)}>
         {selectedItem}
-        <ChevronContainer isOpen={isOpen} type="button">
+        <ChevronContainer isOpen={isOpen}>
           <Icon
             iconName={IconName.ChevronDown}
             variant="flat"

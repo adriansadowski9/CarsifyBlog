@@ -15,7 +15,7 @@ interface InputProps {
   register: React.Ref<HTMLInputElement>;
   onChange: (e: { target: { name: string; value: string } }) => void;
   error: string;
-  type: string;
+  type?: string;
 }
 
 const Input: React.FC<InputProps> = ({
