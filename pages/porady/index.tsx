@@ -7,7 +7,7 @@ import Categories from '@components/Categories';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import SectionName from '@components/Sections/SectionName';
-import TipsSection from '@components/Sections/TipsSection';
+import TipsContainer from '@components/Sections/TipsContainer';
 import { attributes } from '@content/pages/ads.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { Tip, TipCategory } from '@pages/porady/[id]';
@@ -40,8 +40,11 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
       <PageHead title={pageTitle} description={pageDescription} />
       <section>
         <SectionName name="Moto porady" />
-        <TipsSection hasLongCategories={categories.length > 5} isHorizontal>
-          <Categories items={categories} height={categories.length > 5 ? '911px' : '443px'} />
+        <TipsContainer hasLongCategories={categories.length > 5} isHorizontal>
+          <Categories
+            items={categories}
+            containerHeight={categories.length > 5 ? '911px' : '443px'}
+          />
           {tipsList.map((tip, index) => {
             const { featuredImage, title, highlightedText, category } = tip.attributes;
             const { slug } = tip;
@@ -67,7 +70,7 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
               />
             );
           })}
-        </TipsSection>
+        </TipsContainer>
       </section>
     </Layout>
   );

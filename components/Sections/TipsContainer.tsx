@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TipsSection = styled.div<{
+const TipsContainer = styled.div<{
   isHorizontal: boolean;
   notEnoughItems: boolean;
   hasLongCategories?: boolean;
@@ -39,4 +39,4 @@ const TipsSection = styled.div<{
   }
 `;
 
-export default TipsSection;
+export default TipsContainer;

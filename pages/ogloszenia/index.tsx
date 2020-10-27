@@ -5,7 +5,7 @@ import { GetStaticProps, NextPage } from 'next';
 import AdCard from '@components/Cards/AdCard';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
-import AdsSection from '@components/Sections/AdsSection';
+import AdsContainer from '@components/Sections/AdsContainer';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/ads.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
@@ -29,7 +29,7 @@ const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) 
       <section>
         <SectionName name="Perełki z ogłoszeń" />
 
-        <AdsSection>
+        <AdsContainer>
           {adsList.map((ad, index) => {
             const { featuredImage, title, highlightedText, carData } = ad.attributes;
             const { slug } = ad;
@@ -48,7 +48,7 @@ const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) 
               />
             );
           })}
-        </AdsSection>
+        </AdsContainer>
       </section>
     </Layout>
   );

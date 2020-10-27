@@ -2,6 +2,7 @@ import { CarouselProvider } from 'pure-react-carousel';
 import styled from 'styled-components';
 const StyledCarousel = styled(CarouselProvider)`
   position: relative;
+  height: 250px;
   .dots {
     position: absolute;
     margin-left: auto;

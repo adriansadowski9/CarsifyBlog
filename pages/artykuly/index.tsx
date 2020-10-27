@@ -42,7 +42,10 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
           notEnoughItems={(articlesList.length + 1) % 3 !== 0}
           hasLongCategories={categories.length > 5}
         >
-          <Categories items={categories} height={categories.length > 5 ? '811px' : '393px'} />
+          <Categories
+            items={categories}
+            containerHeight={categories.length > 5 ? '811px' : '393px'}
+          />
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes;
             const { slug } = article;
