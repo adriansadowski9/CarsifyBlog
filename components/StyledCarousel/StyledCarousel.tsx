@@ -24,6 +24,9 @@ const StyledCarousel = styled(CarouselProvider)`
   .carousel__dot--selected {
     opacity: 1;
   }
+  .carousel__slider--horizontal {
+    height: 100%;
+  }
 `;
 
 export default StyledCarousel;
