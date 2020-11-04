@@ -52,7 +52,7 @@ const ContactPage: React.FC<ContactProps> = ({
   const handleChange = (e: { target: { name: string; value: string } }) =>
     setState({ ...state, [e.target.name]: e.target.value });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => console.log(state);
   return (
     <ContactContainer onSubmit={handleSubmit(onSubmit)}>
       <ContactHeadingSection
