@@ -9,6 +9,7 @@ import InputContainer from './styled/InputsContainer';
 
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import { ThemeContext } from 'styled-components';
 
 import { Theme } from '@utils/theme';
@@ -48,13 +49,61 @@ const ContactPage: React.FC<ContactProps> = ({
   const [selectedItem, setSelectedItem] = React.useState(items[0].value);
   const [state, setState] = React.useState({});
   const { register, handleSubmit, errors } = useForm<UseFormProps>();
+  const router = useRouter();
 
   const handleChange = (e: { target: { name: string; value: string } }) =>
     setState({ ...state, [e.target.name]: e.target.value });
 
-  const onSubmit = (data) => console.log(state);
+  const encode = (data) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  };
+
+  const onSubmit = () => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        ...state,
+      }),
+    })
+      .then(() => {
+        router.push(
+          {
+            pathname: '/',
+            query: {
+              alertType: 'success',
+              alertHeading: 'Dziękujemy za wysłanie wiadomości!',
+              alertMessage: 'Postaramy się odpowiedzieć jak najszybciej',
+            },
+          },
+          '/'
+        );
+      })
+      .catch((error) =>
+        router.push(
+          {
+            pathname: '/',
+            query: {
+              alertType: 'error',
+              alertHeading: 'Wystąpił błąd!',
+              alertMessage: error.message,
+            },
+          },
+          ''
+        )
+      );
+  };
+
   return (
-    <ContactContainer onSubmit={handleSubmit(onSubmit)}>
+    <ContactContainer
+      onSubmit={handleSubmit(onSubmit)}
+      method="POST"
+      name="contact"
+      data-netlify="true"
+    >
       <ContactHeadingSection
         contactEmail={contactEmail}
         facebookUrl={facebookUrl}
@@ -67,9 +116,10 @@ const ContactPage: React.FC<ContactProps> = ({
             gridColumn="span 12"
             name="name"
             label="Imię"
-            register={register({ required: 'jest za krótkie', minLength: 3 })}
+            register={register({ required: true, minLength: 3 })}
             onChange={handleChange}
-            error={errors.name ? errors.name.message : ''}
+            error={errors.name ? 'jest za krótkie (min. 3 znaki)' : ''}
+            type="text"
           />
 
           <Input
@@ -85,6 +135,7 @@ const ContactPage: React.FC<ContactProps> = ({
             })}
             error={errors.email ? errors.email.message : ''}
             onChange={handleChange}
+            type="text"
           />
           <Select
             label="Kategoria"
@@ -102,6 +153,7 @@ const ContactPage: React.FC<ContactProps> = ({
             register={register({ required: true, minLength: 3 })}
             onChange={handleChange}
             error={errors.topic ? 'jest za krótki (min. 3 znaki)' : ''}
+            type="text"
           />
 
           <Input

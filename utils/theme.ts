@@ -6,6 +6,7 @@ const colors = {
   darkSilver: '#A4B3BF',
   gray: '#A6A6A6',
   darkGray: '#262626',
+  green: '#239B56',
 };
 
 const fontSizes = {
@@ -82,6 +83,7 @@ export interface Theme {
     iconInfoBg: string;
     iconInfoIcon: string;
     iconInfoText: string;
+    breadcrumbs: string;
     subtitleText: string;
     bulletActive: string;
     bullet: string;
@@ -107,6 +109,11 @@ export interface Theme {
     socialBoxBg: string;
     selectHover: string;
     validationError: string;
+    carouselDot: string;
+    alertSuccessBg: string;
+    alertSuccessText: string;
+    alertErrorBg: string;
+    alertErrorText: string;
   };
 }
 
@@ -133,6 +140,7 @@ export const lightTheme: Theme = {
     iconInfoBg: colors.silver,
     iconInfoIcon: colors.black,
     iconInfoText: colors.gray,
+    breadcrumbs: colors.darkGray,
     subtitleText: colors.gray,
     bulletActive: colors.white,
     bullet: colors.silver,
@@ -157,7 +165,12 @@ export const lightTheme: Theme = {
     submitButton: colors.red,
     socialBoxBg: colors.white,
     selectHover: colors.gray,
+    carouselDot: colors.gray,
     validationError: colors.red,
+    alertSuccessBg: colors.green,
+    alertSuccessText: colors.white,
+    alertErrorBg: colors.red,
+    alertErrorText: colors.white,
   },
 };
 
@@ -184,6 +197,7 @@ export const darkTheme: Theme = {
     iconInfoBg: colors.silver,
     iconInfoIcon: colors.black,
     iconInfoText: colors.gray,
+    breadcrumbs: colors.gray,
     subtitleText: colors.gray,
     bulletActive: colors.white,
     bullet: colors.silver,
@@ -208,6 +222,11 @@ export const darkTheme: Theme = {
     submitButton: colors.red,
     socialBoxBg: colors.white,
     selectHover: colors.gray,
+    carouselDot: colors.white,
     validationError: colors.red,
+    alertSuccessBg: colors.green,
+    alertSuccessText: colors.white,
+    alertErrorBg: colors.red,
+    alertErrorText: colors.white,
   },
 };

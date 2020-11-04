@@ -1,6 +1,9 @@
+import ChevronRight from '@assets/icons/ChevronRight.svg';
+
 enum IconName {
   CarsifyLogo = 'CARSIFY_LOGO',
   ChevronDown = 'CHEVRON_DOWN',
+  ChevronRight = 'CHEVRON_RIGHT',
   Moon = 'MOON',
   Sun = 'SUN',
   Bucket = 'BUCKET',
