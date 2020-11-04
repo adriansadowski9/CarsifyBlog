@@ -4,6 +4,7 @@ import Bucket from '@assets/icons/Bucket.svg';
 import Calendar from '@assets/icons/Calendar.svg';
 import CarShow from '@assets/icons/CarShow.svg';
 import ChevronDown from '@assets/icons/ChevronDown.svg';
+import ChevronRight from '@assets/icons/ChevronRight.svg';
 import Documentation from '@assets/icons/Documentation.svg';
 import Facebook from '@assets/icons/Facebook.svg';
 import Fuel from '@assets/icons/Fuel.svg';
@@ -28,6 +29,7 @@ interface IconVariantProps {
 const icons: { [index: string]: IconVariantProps } = {
   [IconName.CarsifyLogo]: { color: CarsifyLogo },
   [IconName.ChevronDown]: { flat: ChevronDown },
+  [IconName.ChevronRight]: { flat: ChevronRight },
   [IconName.Moon]: { flat: Moon },
   [IconName.Sun]: { flat: Sun },
   [IconName.Bucket]: { flat: Bucket },

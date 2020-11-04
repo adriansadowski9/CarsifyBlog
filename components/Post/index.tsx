@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import parse from 'html-react-parser';
 import showdown from 'showdown';
 
+import Breadcrumbs, { BreadcrumbsItem } from '@components/Breadcrumbs';
 import CarDataBox from '@components/Post/styled/CarDataBox';
 import CarDataLocalization from '@components/Post/styled/CarDataLocalization';
 import CarDataName from '@components/Post/styled/CarDataName';
@@ -32,6 +33,7 @@ interface PostProps {
     name: string;
     icon: IconName;
   };
+  breadcrumbs: BreadcrumbsItem[];
   title: string;
   subtitle: string;
   highlightedText: string;
@@ -64,6 +66,7 @@ interface PostProps {
 const Post: React.FC<PostProps> = ({
   date,
   category,
+  breadcrumbs,
   title,
   subtitle,
   highlightedText,
@@ -96,6 +99,7 @@ const Post: React.FC<PostProps> = ({
         <IconInfo text={dayjs(date).format('DD.MM.YYYY')} iconName={IconName.Calendar} />
         {category && <IconInfo text={category.name} iconName={category.icon} />}
       </TopInfoContainer>
+      <Breadcrumbs items={breadcrumbs} />
       <Heading>{title}</Heading>
       <Subheading>{subtitle}</Subheading>
       <PostImageContainer isCarData={!!carData}>

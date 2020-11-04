@@ -5,7 +5,7 @@ import ArticleCard from '@components/Cards/ArticleCard';
 import Categories from '@components/Categories';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
-import ArticlesSection from '@components/Sections/ArticlesSection';
+import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/articles.md';
 import { Article, ArticleCategory } from '@pages/artykuly/[id]';
@@ -36,38 +36,43 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
-      <SectionName name="Aktualności" />
-      <ArticlesSection
-        notEnoughItems={(articlesList.length + 1) % 3 !== 0}
-        hasLongCategories={categories.length > 5}
-      >
-        <Categories items={categories} height={categories.length > 5 ? '811px' : '393px'} />
-        {articlesList.map((article, index) => {
-          const { featuredImage, title, highlightedText, category } = article.attributes;
-          const { slug } = article;
-          const categoryInfo = articleCategories.find(
-            (articleCategory) => articleCategory.attributes.title === category
-          );
+      <section>
+        <SectionName name="Aktualności" />
+        <ArticlesContainer
+          notEnoughItems={(articlesList.length + 1) % 3 !== 0}
+          hasLongCategories={categories.length > 5}
+        >
+          <Categories
+            items={categories}
+            containerHeight={categories.length > 5 ? '811px' : '393px'}
+          />
+          {articlesList.map((article, index) => {
+            const { featuredImage, title, highlightedText, category } = article.attributes;
+            const { slug } = article;
+            const categoryInfo = articleCategories.find(
+              (articleCategory) => articleCategory.attributes.title === category
+            );
 
-          return (
-            <ArticleCard
-              key={`${title}-${index}`}
-              image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
-              title={title}
-              textSnippet={
-                highlightedText.length > 160
-                  ? `${highlightedText.substring(0, 160)}...`
-                  : highlightedText
-              }
-              category={{
-                name: categoryInfo.attributes.title,
-                icon: categoryInfo.attributes.icon,
-              }}
-              slug={slug}
-            />
-          );
-        })}
-      </ArticlesSection>
+            return (
+              <ArticleCard
+                key={`${title}-${index}`}
+                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                title={title}
+                textSnippet={
+                  highlightedText.length > 160
+                    ? `${highlightedText.substring(0, 160)}...`
+                    : highlightedText
+                }
+                category={{
+                  name: categoryInfo.attributes.title,
+                  icon: categoryInfo.attributes.icon,
+                }}
+                slug={slug}
+              />
+            );
+          })}
+        </ArticlesContainer>
+      </section>
     </Layout>
   );
 };

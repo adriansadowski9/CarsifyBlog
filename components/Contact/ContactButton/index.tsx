@@ -33,8 +33,8 @@ const Button: React.FC<ButtonProps> = ({
       href={link}
       backgroundColor={backgroundColor}
       type={type}
-      width={width}
-      height={height}
+      customWidth={width}
+      customHeight={height}
     >
       {iconName && (
         <Icon

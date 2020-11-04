@@ -41,9 +41,10 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
   React.useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
     if (isMobileMenuOpened) {
-      body.style.position = 'fixed';
+      window.scrollTo(0, 0);
+      body.style.overflow = 'hidden';
     } else {
-      body.style.position = 'static';
+      body.style.overflow = 'auto';
     }
   }, [isMobileMenuOpened]);
 

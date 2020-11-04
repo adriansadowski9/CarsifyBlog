@@ -7,21 +7,16 @@ module.exports = withPWA(
     withFonts({
       target: 'serverless',
       pwa: {
+        disable: process.env.NODE_ENV === 'development',
         dest: 'public',
-        buildExcludes: [/images\/.*$/],
-        sw: 'service-worker.js',
+      },
+      responsive: {
+        adapter: require('responsive-loader/sharp'),
       },
       webpack: (cfg) => {
         cfg.module.rules.push({
           test: /\.md$/,
           loader: 'frontmatter-markdown-loader',
-        });
-        cfg.module.rules.push({
-          test: /\.(jpe?g|png)$/i,
-          loader: 'responsive-loader',
-          options: {
-            adapter: require('responsive-loader/sharp'),
-          },
         });
         cfg.module.rules.map((rule) => {
           if (rule.test !== undefined && rule.test.source.includes('|svg|')) {
