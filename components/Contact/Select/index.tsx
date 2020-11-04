@@ -24,7 +24,7 @@ interface SelectProps {
   }[];
   selectedItem: string;
   setSelectedItem: (value: string) => void;
-  register: React.Ref<HTMLInputElement>;
+
   onChange: (e: { target: { name: string; value: string } }) => void;
 }
 
@@ -35,7 +35,6 @@ const Select: React.FC<SelectProps> = ({
   name,
   selectedItem,
   setSelectedItem,
-  register,
   onChange,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
@@ -46,6 +45,9 @@ const Select: React.FC<SelectProps> = ({
     setSelectedItem(value);
     setIsOpen(!isOpen);
   };
+  React.useEffect(() => {
+    onChange({ target: { name: name, value: selectedItem } });
+  }, [selectedItem]);
   const closeOnClickOutside = (e) => {
     if (selectRef && selectRef.current && !selectRef.current.contains(e.target)) {
       setIsOpen(false);
@@ -72,11 +74,14 @@ const Select: React.FC<SelectProps> = ({
           />
         </ChevronContainer>
       </ChosenCategory>
-      <HiddenInput value={selectedItem} onChange={onChange} ref={register} name={name} />
       <SelectDropdown isOpen={isOpen}>
         {items.map((item) => (
           <li key={item.id}>
-            <SelectButton type="button" onClick={() => changeCategory(item.value)}>
+            <SelectButton
+              type="button"
+              onChange={onChange}
+              onClick={() => changeCategory(item.value)}
+            >
               {item.value}
             </SelectButton>
           </li>
