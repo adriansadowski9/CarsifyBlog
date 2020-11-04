@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { DotGroup, Slide, Slider } from 'pure-react-carousel';
 
+import Alert, { AlertProps, AlertType } from '@components/Alert';
 import AdCard from '@components/Cards/AdCard';
 import ArticleCard from '@components/Cards/ArticleCard';
 import InformationCard from '@components/Cards/InformationCard';
@@ -40,9 +42,22 @@ const Home: NextPage<HomeProps> = ({
   adsList,
 }) => {
   const { pageTitle, pageDescription } = attributes;
+  const {
+    query: { alertType, alertHeading, alertMessage },
+  } = useRouter();
+
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
+      {alertType && alertMessage && (
+        <Alert
+          type={alertType === 'error' ? 'error' : 'success'}
+          message={{
+            heading: alertHeading ? alertHeading.toString() : undefined,
+            text: alertMessage.toString(),
+          }}
+        />
+      )}
       <Row>
         <section>
           <SectionName name="Aktualności" />
