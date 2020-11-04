@@ -49,10 +49,11 @@ const ContactPage: React.FC<ContactProps> = ({
   const [state, setState] = React.useState({});
   const { register, handleSubmit, errors } = useForm<UseFormProps>();
 
-  const handleChange = (e: { target: { name: string; value: string } }) =>
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     setState({ ...state, [e.target.name]: e.target.value });
+  };
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = () => console.log(state);
   return (
     <ContactContainer onSubmit={handleSubmit(onSubmit)}>
       <ContactHeadingSection
@@ -92,7 +93,6 @@ const ContactPage: React.FC<ContactProps> = ({
             name="category"
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
-            register={register()}
             onChange={handleChange}
           />
           <Input
