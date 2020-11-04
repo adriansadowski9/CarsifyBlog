@@ -8,7 +8,7 @@ import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
-import ArticlesSection from '@components/Sections/ArticlesSection';
+import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import SectionName from '@components/Sections/SectionName';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
@@ -84,11 +84,14 @@ const Article: NextPage<ArticleProps> = ({
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={pageTitle} description={pageDescription} />
         <SectionName name={title} />
-        <ArticlesSection
+        <ArticlesContainer
           notEnoughItems={(articlesList.length + 1) % 3 !== 0}
           hasLongCategories={categories.length > 5}
         >
-          <Categories items={categories} height={categories.length > 5 ? '811px' : '393px'} />
+          <Categories
+            items={categories}
+            containerHeight={categories.length > 5 ? '811px' : '393px'}
+          />
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes;
             const { slug } = article;
@@ -114,7 +117,7 @@ const Article: NextPage<ArticleProps> = ({
               />
             );
           })}
-        </ArticlesSection>
+        </ArticlesContainer>
       </Layout>
     );
   } else if (articleExists) {
@@ -162,7 +165,7 @@ const Article: NextPage<ArticleProps> = ({
           text={text}
           contents={contents}
           moreSection={
-            <ArticlesSection>
+            <ArticlesContainer>
               <MoreSectionTitle>Więcej artykułów</MoreSectionTitle>
               {moreArticles.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
@@ -189,7 +192,7 @@ const Article: NextPage<ArticleProps> = ({
                   />
                 );
               })}
-            </ArticlesSection>
+            </ArticlesContainer>
           }
         />
       </Layout>

@@ -35,8 +35,8 @@ const Select: React.FC<SelectProps> = ({
   name,
   selectedItem,
   setSelectedItem,
-  register,
   onChange,
+  register,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -46,6 +46,9 @@ const Select: React.FC<SelectProps> = ({
     setSelectedItem(value);
     setIsOpen(!isOpen);
   };
+  React.useEffect(() => {
+    onChange({ target: { name: name, value: selectedItem } });
+  }, [selectedItem]);
   const closeOnClickOutside = (e) => {
     if (selectRef && selectRef.current && !selectRef.current.contains(e.target)) {
       setIsOpen(false);
@@ -60,7 +63,7 @@ const Select: React.FC<SelectProps> = ({
     <SelectWrapper ref={selectRef}>
       <SelectSpan>{label}</SelectSpan>
 
-      <ChosenCategory height={height} onClick={() => setIsOpen(!isOpen)}>
+      <ChosenCategory customHeight={height} type="button" onClick={() => setIsOpen(!isOpen)}>
         {selectedItem}
         <ChevronContainer isOpen={isOpen}>
           <Icon
@@ -72,11 +75,15 @@ const Select: React.FC<SelectProps> = ({
           />
         </ChevronContainer>
       </ChosenCategory>
-      <HiddenInput value={selectedItem} onChange={onChange} ref={register} name={name} />
+      <HiddenInput value={selectedItem} ref={register} name={name} />
       <SelectDropdown isOpen={isOpen}>
         {items.map((item) => (
           <li key={item.id}>
-            <SelectButton type="button" onClick={() => changeCategory(item.value)}>
+            <SelectButton
+              type="button"
+              onChange={onChange}
+              onClick={() => changeCategory(item.value)}
+            >
               {item.value}
             </SelectButton>
           </li>

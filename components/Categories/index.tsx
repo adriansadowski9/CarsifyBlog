@@ -10,13 +10,13 @@ interface CategoriesProps {
     hrefAs: string;
     href: string;
   }[];
-  height: string;
+  containerHeight: string;
 }
 
-const Categories: React.FC<CategoriesProps> = ({ items, height }) => {
+const Categories: React.FC<CategoriesProps> = ({ items, containerHeight }) => {
   const router = useRouter();
   return (
-    <CategoriesContainer height={height}>
+    <CategoriesContainer containerHeight={containerHeight}>
       {items.map((item, index) => (
         <CategoryItem
           isEven={items.length % 2}

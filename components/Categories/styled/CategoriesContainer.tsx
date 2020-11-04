@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CategoriesContainer = styled.ul<{ height: string }>`
+const CategoriesContainer = styled.ul<{ containerHeight: string }>`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -15,7 +15,7 @@ const CategoriesContainer = styled.ul<{ height: string }>`
     display: flex;
     flex-direction: column;
     width: 400px;
-    height: ${(props) => props.height};
+    height: ${(props) => props.containerHeight};
     margin-bottom: ${(props) => props.theme.spaces.m};
   }
 

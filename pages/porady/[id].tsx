@@ -9,7 +9,7 @@ import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import SectionName from '@components/Sections/SectionName';
-import TipsSection from '@components/Sections/TipsSection';
+import TipsContainer from '@components/Sections/TipsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
@@ -83,8 +83,11 @@ const Tip: NextPage<TipProps> = ({
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={pageTitle} description={pageDescription} />
         <SectionName name={title} />
-        <TipsSection hasLongCategories={categories.length > 5} isHorizontal>
-          <Categories items={categories} height={categories.length > 5 ? '911px' : '443px'} />
+        <TipsContainer hasLongCategories={categories.length > 5} isHorizontal>
+          <Categories
+            items={categories}
+            containerHeight={categories.length > 5 ? '911px' : '443px'}
+          />
           {tipsList.map((tip, index) => {
             const { featuredImage, title, highlightedText, category } = tip.attributes;
             const { slug } = tip;
@@ -110,7 +113,7 @@ const Tip: NextPage<TipProps> = ({
               />
             );
           })}
-        </TipsSection>
+        </TipsContainer>
       </Layout>
     );
   } else if (tipExists) {
@@ -158,7 +161,7 @@ const Tip: NextPage<TipProps> = ({
           text={text}
           contents={contents}
           moreSection={
-            <TipsSection isHorizontal>
+            <TipsContainer isHorizontal>
               <MoreSectionTitle>Więcej porad</MoreSectionTitle>
               {moreTips.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
@@ -185,7 +188,7 @@ const Tip: NextPage<TipProps> = ({
                   />
                 );
               })}
-            </TipsSection>
+            </TipsContainer>
           }
         />
       </Layout>

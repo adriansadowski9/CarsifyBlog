@@ -5,7 +5,7 @@ import { GetStaticProps, NextPage } from 'next';
 import AdCard from '@components/Cards/AdCard';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
-import AdsSection from '@components/Sections/AdsSection';
+import AdsContainer from '@components/Sections/AdsContainer';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/ads.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
@@ -26,28 +26,30 @@ const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) 
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
-      <AdsSection>
-        <SectionName name="Perełki z ogłoszeń" gridColumn="1 / 5" />
+      <section>
+        <SectionName name="Perełki z ogłoszeń" />
 
-        {adsList.map((ad, index) => {
-          const { featuredImage, title, highlightedText, carData } = ad.attributes;
-          const { slug } = ad;
-          return (
-            <AdCard
-              key={`${title}-${index}`}
-              image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
-              title={title}
-              textSnippet={
-                highlightedText.length > 160
-                  ? `${highlightedText.substring(0, 160)}...`
-                  : highlightedText
-              }
-              carData={carData}
-              slug={slug}
-            />
-          );
-        })}
-      </AdsSection>
+        <AdsContainer>
+          {adsList.map((ad, index) => {
+            const { featuredImage, title, highlightedText, carData } = ad.attributes;
+            const { slug } = ad;
+            return (
+              <AdCard
+                key={`${title}-${index}`}
+                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                title={title}
+                textSnippet={
+                  highlightedText.length > 160
+                    ? `${highlightedText.substring(0, 160)}...`
+                    : highlightedText
+                }
+                carData={carData}
+                slug={slug}
+              />
+            );
+          })}
+        </AdsContainer>
+      </section>
     </Layout>
   );
 };
