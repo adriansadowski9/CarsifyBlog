@@ -143,6 +143,7 @@ const ContactPage: React.FC<ContactProps> = ({
             name="category"
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
+            register={register()}
             onChange={handleChange}
           />
           <Input

@@ -24,7 +24,7 @@ interface SelectProps {
   }[];
   selectedItem: string;
   setSelectedItem: (value: string) => void;
-
+  register: React.Ref<HTMLInputElement>;
   onChange: (e: { target: { name: string; value: string } }) => void;
 }
 
@@ -36,6 +36,7 @@ const Select: React.FC<SelectProps> = ({
   selectedItem,
   setSelectedItem,
   onChange,
+  register,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -74,6 +75,7 @@ const Select: React.FC<SelectProps> = ({
           />
         </ChevronContainer>
       </ChosenCategory>
+      <HiddenInput value={selectedItem} ref={register} name={name} />
       <SelectDropdown isOpen={isOpen}>
         {items.map((item) => (
           <li key={item.id}>
