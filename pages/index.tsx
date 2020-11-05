@@ -42,22 +42,10 @@ const Home: NextPage<HomeProps> = ({
   adsList,
 }) => {
   const { pageTitle, pageDescription } = attributes;
-  const {
-    query: { alertType, alertHeading, alertMessage },
-  } = useRouter();
 
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
-      {alertType && alertMessage && (
-        <Alert
-          type={alertType === 'error' ? 'error' : 'success'}
-          message={{
-            heading: alertHeading ? alertHeading.toString() : undefined,
-            text: alertMessage.toString(),
-          }}
-        />
-      )}
       <Row>
         <section>
           <SectionName name="Aktualności" />

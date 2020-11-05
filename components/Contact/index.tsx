@@ -85,14 +85,14 @@ const ContactPage: React.FC<ContactProps> = ({
       .catch((error) =>
         router.push(
           {
-            pathname: '/',
+            pathname: '/kontakt',
             query: {
               alertType: 'error',
               alertHeading: 'Wystąpił błąd!',
               alertMessage: error.message,
             },
           },
-          ''
+          '/kontakt'
         )
       );
   };
