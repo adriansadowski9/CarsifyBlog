@@ -83,7 +83,7 @@ const Article: NextPage<ArticleProps> = ({
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={pageTitle} description={pageDescription} />
-        <SectionName name={title} />
+        <SectionName name={title} altTextTag="h1" />
         <ArticlesContainer
           notEnoughItems={(articlesList.length + 1) % 3 !== 0}
           hasLongCategories={categories.length > 5}
@@ -114,6 +114,7 @@ const Article: NextPage<ArticleProps> = ({
                   icon: categoryInfo.attributes.icon,
                 }}
                 slug={slug}
+                altTitleTag="h2"
               />
             );
           })}
@@ -122,6 +123,8 @@ const Article: NextPage<ArticleProps> = ({
     );
   } else if (articleExists) {
     const {
+      pageTitle,
+      pageDescription,
       title,
       subtitle,
       date,
@@ -141,7 +144,7 @@ const Article: NextPage<ArticleProps> = ({
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={`Article - ${title}`} description="Article description" />
+        <PageHead title={pageTitle} description={pageDescription} />
         <Post
           date={date}
           category={{
@@ -198,14 +201,8 @@ const Article: NextPage<ArticleProps> = ({
       </Layout>
     );
   } else {
-    return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title="Error 404" description="404 description" />
-        <div>
-          <span>Error</span>
-        </div>
-      </Layout>
-    );
+    const router = useRouter();
+    router.replace('/404');
   }
 };
 

@@ -37,7 +37,7 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <section>
-        <SectionName name="Aktualności" />
+        <SectionName name="Aktualności" altTextTag="h1" />
         <ArticlesContainer
           notEnoughItems={(articlesList.length + 1) % 3 !== 0}
           hasLongCategories={categories.length > 5}
@@ -68,6 +68,7 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
                   icon: categoryInfo.attributes.icon,
                 }}
                 slug={slug}
+                altTitleTag="h2"
               />
             );
           })}

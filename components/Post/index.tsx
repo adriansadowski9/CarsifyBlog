@@ -9,6 +9,7 @@ import CarDataLocalization from '@components/Post/styled/CarDataLocalization';
 import CarDataName from '@components/Post/styled/CarDataName';
 import CarDataPrice from '@components/Post/styled/CarDataPrice';
 import CarDataRow from '@components/Post/styled/CarDataRow';
+import CarDataRowTitle from '@components/Post/styled/CarDataRowTitle';
 import ContentsList from '@components/Post/styled/ContentsList';
 import ContentsListItem from '@components/Post/styled/ContentsListItem';
 import Heading from '@components/Post/styled/Heading';
@@ -110,33 +111,33 @@ const Post: React.FC<PostProps> = ({
               <p>{carData.localization}</p>
             </CarDataLocalization>
             <CarDataRow>
-              <p>Rok produkcji</p>
+              <CarDataRowTitle>Rok produkcji</CarDataRowTitle>
               <p>{carData.year}</p>
             </CarDataRow>
             <CarDataRow>
-              <p>Przebieg</p>
+              <CarDataRowTitle>Przebieg</CarDataRowTitle>
               <p>{carData.course} km</p>
             </CarDataRow>
             <CarDataRow>
-              <p>Nadwozie</p>
+              <CarDataRowTitle>Nadwozie</CarDataRowTitle>
               <p>{carData.body}</p>
             </CarDataRow>
             <CarDataRow>
-              <p>Silnik</p>
+              <CarDataRowTitle>Silnik</CarDataRowTitle>
               <p>{carData.engine}</p>
             </CarDataRow>
             <CarDataRow>
-              <p>Moc</p>
+              <CarDataRowTitle>Moc</CarDataRowTitle>
               <p>
                 {carData.hp} km / {carData.torque} nm
               </p>
             </CarDataRow>
             <CarDataRow>
-              <p>Skrzynia biegów</p>
+              <CarDataRowTitle>Skrzynia biegów</CarDataRowTitle>
               <p>{carData.gearbox}</p>
             </CarDataRow>
             <CarDataRow>
-              <p>Liczba drzwi</p>
+              <CarDataRowTitle>Liczba drzwi</CarDataRowTitle>
               <p>{carData.doors}</p>
             </CarDataRow>
             <CarDataPrice>{carData.price}zł</CarDataPrice>

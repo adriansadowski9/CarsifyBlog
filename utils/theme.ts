@@ -114,6 +114,8 @@ export interface Theme {
     alertSuccessText: string;
     alertErrorBg: string;
     alertErrorText: string;
+    errorButtonBg: string;
+    errorButtonText: string;
   };
 }
 
@@ -171,6 +173,8 @@ export const lightTheme: Theme = {
     alertSuccessText: colors.white,
     alertErrorBg: colors.red,
     alertErrorText: colors.white,
+    errorButtonBg: colors.red,
+    errorButtonText: colors.white,
   },
 };
 
@@ -228,5 +232,7 @@ export const darkTheme: Theme = {
     alertSuccessText: colors.white,
     alertErrorBg: colors.red,
     alertErrorText: colors.white,
+    errorButtonBg: colors.red,
+    errorButtonText: colors.white,
   },
 };
