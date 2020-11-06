@@ -119,6 +119,8 @@ const Tip: NextPage<TipProps> = ({
     );
   } else if (tipExists) {
     const {
+      pageTitle,
+      pageDescription,
       title,
       subtitle,
       date,
@@ -138,7 +140,7 @@ const Tip: NextPage<TipProps> = ({
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={`Tip - ${title}`} description="Tip description" />
+        <PageHead title={pageTitle} description={pageDescription} />
         <Post
           date={date}
           category={{

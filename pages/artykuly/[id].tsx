@@ -123,6 +123,8 @@ const Article: NextPage<ArticleProps> = ({
     );
   } else if (articleExists) {
     const {
+      pageTitle,
+      pageDescription,
       title,
       subtitle,
       date,
@@ -142,7 +144,7 @@ const Article: NextPage<ArticleProps> = ({
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={`Article - ${title}`} description="Article description" />
+        <PageHead title={pageTitle} description={pageDescription} />
         <Post
           date={date}
           category={{
