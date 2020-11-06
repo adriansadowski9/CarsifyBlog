@@ -16,6 +16,10 @@ const CarDataLocalization = styled.div`
     fill: ${(props) => props.theme.colors.adLocalization};
   }
 
+  @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    font-size: ${(props) => props.theme.fontSizes.s};
+  }
+
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     font-size: ${(props) => props.theme.fontSizes.l};
   }

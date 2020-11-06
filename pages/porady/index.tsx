@@ -39,7 +39,7 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead title={pageTitle} description={pageDescription} />
       <section>
-        <SectionName name="Moto porady" />
+        <SectionName name="Moto porady" altTextTag="h1" />
         <TipsContainer hasLongCategories={categories.length > 5} isHorizontal>
           <Categories
             items={categories}
@@ -67,6 +67,7 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
                   icon: categoryInfo.attributes.icon,
                 }}
                 slug={slug}
+                altTitleTag="h2"
               />
             );
           })}

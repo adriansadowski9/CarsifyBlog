@@ -83,7 +83,7 @@ const Article: NextPage<ArticleProps> = ({
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead title={pageTitle} description={pageDescription} />
-        <SectionName name={title} />
+        <SectionName name={title} altTextTag="h1" />
         <ArticlesContainer
           notEnoughItems={(articlesList.length + 1) % 3 !== 0}
           hasLongCategories={categories.length > 5}
@@ -114,6 +114,7 @@ const Article: NextPage<ArticleProps> = ({
                   icon: categoryInfo.attributes.icon,
                 }}
                 slug={slug}
+                altTitleTag="h2"
               />
             );
           })}

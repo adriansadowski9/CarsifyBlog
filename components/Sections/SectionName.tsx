@@ -6,11 +6,12 @@ import SectionNameText from '@components/Sections/styled/SectionNameText';
 interface SectionNameProps {
   name: string;
   gridColumn?: string;
+  altTextTag?: string;
 }
 
-const SectionName: React.FC<SectionNameProps> = ({ name, gridColumn }) => (
+const SectionName: React.FC<SectionNameProps> = ({ name, gridColumn, altTextTag }) => (
   <SectionNameContainer gridColumn={gridColumn}>
-    <SectionNameText>{name}</SectionNameText>
+    <SectionNameText as={altTextTag}>{name}</SectionNameText>
   </SectionNameContainer>
 );
 
