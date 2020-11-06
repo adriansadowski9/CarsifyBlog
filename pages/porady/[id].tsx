@@ -197,14 +197,8 @@ const Tip: NextPage<TipProps> = ({
       </Layout>
     );
   } else {
-    return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title="Error 404" description="404 description" />
-        <div>
-          <span>Error</span>
-        </div>
-      </Layout>
-    );
+    const router = useRouter();
+    router.replace('/404');
   }
 };
 
