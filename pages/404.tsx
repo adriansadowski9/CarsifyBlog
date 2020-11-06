@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Error from '@components/Error';
 import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
+import { attributes } from '@content/pages/404.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
@@ -15,10 +16,11 @@ interface Custom404Props {
 }
 
 const Custom404: NextPage<Custom404Props> = ({ articleCategories, tipCategories }) => {
+  const { pageTitle, pageDescription } = attributes;
   const router = useRouter();
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-      <PageHead title="404 - Strona nie istnieje" description="Strona nie istnieje" />
+      <PageHead title={pageTitle} description={pageDescription} />
       <Error
         heading="404 - Ups... coś poszło nie tak :("
         text="Strona, której szukasz została przeniesiona lub nie istnieje."
