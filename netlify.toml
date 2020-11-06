@@ -22,3 +22,4 @@
   from = "/index.html"
   to = "/"
   status = 301
+  force = true
