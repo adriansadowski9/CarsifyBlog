@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const MoreSectionTitle = styled.p`
+const MoreSectionTitle = styled.h2`
   width: 100%;
   font-size: ${(props) => props.theme.fontSizes.xl};
   color: ${(props) => props.theme.colors.moreSection};

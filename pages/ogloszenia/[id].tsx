@@ -63,6 +63,8 @@ const Ad: NextPage<AdProps> = ({
 }) => {
   if (adExists) {
     const {
+      pageTitle,
+      pageDescription,
       title,
       subtitle,
       date,
@@ -79,7 +81,7 @@ const Ad: NextPage<AdProps> = ({
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={`Ad - ${title}`} description="Ad description" />
+        <PageHead title={pageTitle} description={pageDescription} />
         <Post
           date={date}
           breadcrumbs={[
@@ -122,14 +124,8 @@ const Ad: NextPage<AdProps> = ({
       </Layout>
     );
   } else {
-    return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title="Error 404" description="404 description" />
-        <div>
-          <span>Error</span>
-        </div>
-      </Layout>
-    );
+    const router = useRouter();
+    router.replace('/404');
   }
 };
 

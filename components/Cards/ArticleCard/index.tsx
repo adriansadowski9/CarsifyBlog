@@ -20,8 +20,16 @@ interface ArticleCardProps {
     icon: IconName;
   };
   slug: string;
+  altTitleTag?: string;
 }
-const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, category, slug }) => {
+const ArticleCard: React.FC<ArticleCardProps> = ({
+  image,
+  title,
+  textSnippet,
+  category,
+  slug,
+  altTitleTag,
+}) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
@@ -35,7 +43,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ image, title, textSnippet, ca
             alt={title}
           />
           <ArticleCardInfoContainer>
-            <ArticleCardTitle>{title}</ArticleCardTitle>
+            <ArticleCardTitle as={altTitleTag}>{title}</ArticleCardTitle>
             <ArticleCardSnippet>{textSnippet}</ArticleCardSnippet>
             <Category
               name={category.name}

@@ -7,6 +7,10 @@ const CarDataPrice = styled.div`
   font-weight: ${(props) => props.theme.fontWeights.medium};
   text-align: right;
 
+  @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    font-size: ${(props) => props.theme.fontSizes.l};
+  }
+
   @media screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     font-size: ${(props) => props.theme.fontSizes.xl};
   }
