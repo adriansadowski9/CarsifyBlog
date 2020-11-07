@@ -1,14 +1,19 @@
 import styled from 'styled-components';
 
-const ButtonWrapper = styled.button<{ height?: string; width?: string; backgroundColor?: string }>`
+const ButtonWrapper = styled.button<{
+  customHeight?: string;
+  customWidth?: string;
+  backgroundColor?: string;
+}>`
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  ${(props) => props.width && `width: ${props.width};`}
-  ${(props) => props.height && `height: ${props.height};`}
-  background-color: ${(props) =>
-    props.backgroundColor};
+  ${(props) => props.customWidth && `width: ${props.customWidth};`}
+  ${(props) => props.customHeight && `height: ${props.customHeight};`}
+  background-color: ${(
+    props
+  ) => props.backgroundColor};
   text-decoration: none;
 
   &:hover {

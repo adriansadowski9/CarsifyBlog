@@ -6,6 +6,7 @@ const colors = {
   darkSilver: '#A4B3BF',
   gray: '#A6A6A6',
   darkGray: '#262626',
+  green: '#239B56',
 };
 
 const fontSizes = {
@@ -109,6 +110,16 @@ export interface Theme {
     selectHover: string;
     validationError: string;
     carouselDot: string;
+    alertSuccessBg: string;
+    alertSuccessText: string;
+    alertErrorBg: string;
+    alertErrorText: string;
+    errorButtonBg: string;
+    errorButtonText: string;
+    cookieConsentBg: string;
+    cookieConsentText: string;
+    cookieConsentButtonBg: string;
+    cookieConsentButtonText: string;
   };
 }
 
@@ -162,6 +173,16 @@ export const lightTheme: Theme = {
     selectHover: colors.gray,
     carouselDot: colors.gray,
     validationError: colors.red,
+    alertSuccessBg: colors.green,
+    alertSuccessText: colors.white,
+    alertErrorBg: colors.red,
+    alertErrorText: colors.white,
+    errorButtonBg: colors.red,
+    errorButtonText: colors.white,
+    cookieConsentBg: colors.white,
+    cookieConsentText: colors.black,
+    cookieConsentButtonBg: colors.red,
+    cookieConsentButtonText: colors.white,
   },
 };
 
@@ -215,5 +236,15 @@ export const darkTheme: Theme = {
     selectHover: colors.gray,
     carouselDot: colors.white,
     validationError: colors.red,
+    alertSuccessBg: colors.green,
+    alertSuccessText: colors.white,
+    alertErrorBg: colors.red,
+    alertErrorText: colors.white,
+    errorButtonBg: colors.red,
+    errorButtonText: colors.white,
+    cookieConsentBg: colors.darkGray,
+    cookieConsentText: colors.white,
+    cookieConsentButtonBg: colors.red,
+    cookieConsentButtonText: colors.white,
   },
 };

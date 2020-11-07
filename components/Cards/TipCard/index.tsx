@@ -20,8 +20,16 @@ interface TipCardProps {
     icon: IconName;
   };
   slug: string;
+  altTitleTag?: string;
 }
-const TipCard: React.FC<TipCardProps> = ({ image, title, textSnippet, category, slug }) => {
+const TipCard: React.FC<TipCardProps> = ({
+  image,
+  title,
+  textSnippet,
+  category,
+  slug,
+  altTitleTag,
+}) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
@@ -35,7 +43,7 @@ const TipCard: React.FC<TipCardProps> = ({ image, title, textSnippet, category, 
             alt={title}
           />
           <TipCardInfoContainer>
-            <TipCardTitle>{title}</TipCardTitle>
+            <TipCardTitle as={altTitleTag}>{title}</TipCardTitle>
             <TipCardSnippet>{textSnippet}</TipCardSnippet>
             <Category
               name={category.name}

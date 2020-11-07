@@ -9,7 +9,7 @@ import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import SectionName from '@components/Sections/SectionName';
-import TipsSection from '@components/Sections/TipsSection';
+import TipsContainer from '@components/Sections/TipsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
@@ -65,6 +65,7 @@ const Tip: NextPage<TipProps> = ({
   tipExists,
   moreTips,
 }) => {
+  const router = useRouter();
   if (isCategory) {
     const { title, pageTitle, pageDescription } = attributes;
     const categories = Array.from(tipCategories, (c: TipCategory) => {
@@ -81,10 +82,18 @@ const Tip: NextPage<TipProps> = ({
     });
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={pageTitle} description={pageDescription} />
-        <SectionName name={title} />
-        <TipsSection hasLongCategories={categories.length > 5} isHorizontal>
-          <Categories items={categories} height={categories.length > 5 ? '911px' : '443px'} />
+        <PageHead
+          title={pageTitle}
+          description={pageDescription}
+          path={router.asPath}
+          ogType="website"
+        />
+        <SectionName name={title} altTextTag="h1" />
+        <TipsContainer hasLongCategories={categories.length > 5} isHorizontal>
+          <Categories
+            items={categories}
+            containerHeight={categories.length > 5 ? '911px' : '443px'}
+          />
           {tipsList.map((tip, index) => {
             const { featuredImage, title, highlightedText, category } = tip.attributes;
             const { slug } = tip;
@@ -107,14 +116,17 @@ const Tip: NextPage<TipProps> = ({
                   icon: categoryInfo.attributes.icon,
                 }}
                 slug={slug}
+                altTitleTag="h2"
               />
             );
           })}
-        </TipsSection>
+        </TipsContainer>
       </Layout>
     );
   } else if (tipExists) {
     const {
+      pageTitle,
+      pageDescription,
       title,
       subtitle,
       date,
@@ -125,8 +137,7 @@ const Tip: NextPage<TipProps> = ({
       text,
     } = attributes;
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1);
-    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
-    const router = useRouter();
+    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
     const shareUrl = `https://carsify.pl${router.asPath}`;
     const categoryInfo = tipCategories.find(
       (tipCategory) => tipCategory.attributes.title === category
@@ -134,7 +145,16 @@ const Tip: NextPage<TipProps> = ({
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={`Tip - ${title}`} description="Tip description" />
+        <PageHead
+          title={pageTitle}
+          description={pageDescription}
+          path={router.asPath}
+          ogType="article"
+          image={
+            responsiveImage.images.find((image) => image.width === 1200)?.path ??
+            responsiveImage.src
+          }
+        />
         <Post
           date={date}
           category={{
@@ -158,7 +178,7 @@ const Tip: NextPage<TipProps> = ({
           text={text}
           contents={contents}
           moreSection={
-            <TipsSection isHorizontal>
+            <TipsContainer isHorizontal>
               <MoreSectionTitle>Więcej porad</MoreSectionTitle>
               {moreTips.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
@@ -185,20 +205,13 @@ const Tip: NextPage<TipProps> = ({
                   />
                 );
               })}
-            </TipsSection>
+            </TipsContainer>
           }
         />
       </Layout>
     );
   } else {
-    return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title="Error 404" description="404 description" />
-        <div>
-          <span>Error</span>
-        </div>
-      </Layout>
-    );
+    router.replace('/404');
   }
 };
 

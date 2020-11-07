@@ -7,7 +7,7 @@ import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
-import AdsSection from '@components/Sections/AdsSection';
+import AdsContainer from '@components/Sections/AdsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
@@ -61,8 +61,11 @@ const Ad: NextPage<AdProps> = ({
   adExists,
   moreAds,
 }) => {
+  const router = useRouter();
   if (adExists) {
     const {
+      pageTitle,
+      pageDescription,
       title,
       subtitle,
       date,
@@ -73,13 +76,21 @@ const Ad: NextPage<AdProps> = ({
       text,
     } = attributes;
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1);
-    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
-    const router = useRouter();
+    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
     const shareUrl = `https://carsify.pl${router.asPath}`;
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={`Ad - ${title}`} description="Ad description" />
+        <PageHead
+          title={pageTitle}
+          description={pageDescription}
+          path={router.asPath}
+          ogType="article"
+          image={
+            responsiveImage.images.find((image) => image.width === 1200)?.path ??
+            responsiveImage.src
+          }
+        />
         <Post
           date={date}
           breadcrumbs={[
@@ -96,7 +107,7 @@ const Ad: NextPage<AdProps> = ({
           carData={carData}
           contents={contents}
           moreSection={
-            <AdsSection isHorizontal>
+            <AdsContainer isHorizontal>
               <MoreSectionTitle>Więcej perełek z ogłoszeń</MoreSectionTitle>
               {moreAds.map((article, index) => {
                 const { featuredImage, title, highlightedText, carData } = article.attributes;
@@ -116,20 +127,13 @@ const Ad: NextPage<AdProps> = ({
                   />
                 );
               })}
-            </AdsSection>
+            </AdsContainer>
           }
         />
       </Layout>
     );
   } else {
-    return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title="Error 404" description="404 description" />
-        <div>
-          <span>Error</span>
-        </div>
-      </Layout>
-    );
+    router.replace('/404');
   }
 };
 

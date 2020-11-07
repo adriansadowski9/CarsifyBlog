@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SectionNameText = styled.p`
+const SectionNameText = styled.h2`
   margin: 0;
   color: ${(props) => props.theme.colors.sectionText};
   font-size: ${(props) => props.theme.fontSizes.m};

@@ -8,7 +8,7 @@ import Layout from '@components/Layout';
 import PageHead from '@components/PageHead';
 import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
-import ArticlesSection from '@components/Sections/ArticlesSection';
+import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import SectionName from '@components/Sections/SectionName';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
@@ -65,6 +65,7 @@ const Article: NextPage<ArticleProps> = ({
   articleExists,
   moreArticles,
 }) => {
+  const router = useRouter();
   if (isCategory) {
     const { title, pageTitle, pageDescription } = attributes;
     const categories = Array.from(articleCategories, (c: ArticleCategory) => {
@@ -82,13 +83,21 @@ const Article: NextPage<ArticleProps> = ({
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={pageTitle} description={pageDescription} />
-        <SectionName name={title} />
-        <ArticlesSection
+        <PageHead
+          title={pageTitle}
+          description={pageDescription}
+          path={router.asPath}
+          ogType="website"
+        />
+        <SectionName name={title} altTextTag="h1" />
+        <ArticlesContainer
           notEnoughItems={(articlesList.length + 1) % 3 !== 0}
           hasLongCategories={categories.length > 5}
         >
-          <Categories items={categories} height={categories.length > 5 ? '811px' : '393px'} />
+          <Categories
+            items={categories}
+            containerHeight={categories.length > 5 ? '811px' : '393px'}
+          />
           {articlesList.map((article, index) => {
             const { featuredImage, title, highlightedText, category } = article.attributes;
             const { slug } = article;
@@ -111,14 +120,17 @@ const Article: NextPage<ArticleProps> = ({
                   icon: categoryInfo.attributes.icon,
                 }}
                 slug={slug}
+                altTitleTag="h2"
               />
             );
           })}
-        </ArticlesSection>
+        </ArticlesContainer>
       </Layout>
     );
   } else if (articleExists) {
     const {
+      pageTitle,
+      pageDescription,
       title,
       subtitle,
       date,
@@ -129,16 +141,28 @@ const Article: NextPage<ArticleProps> = ({
       text,
     } = attributes;
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1);
-    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
-    const router = useRouter();
+    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
     const shareUrl = `https://carsify.pl${router.asPath}`;
     const categoryInfo = articleCategories.find(
       (articleCategory) => articleCategory.attributes.title === category
     );
 
+    console.log(
+      responsiveImage.images.find((image) => image.width === 1200)?.path ?? responsiveImage.src
+    );
+
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={`Article - ${title}`} description="Article description" />
+        <PageHead
+          title={pageTitle}
+          description={pageDescription}
+          path={router.asPath}
+          ogType="article"
+          image={
+            responsiveImage.images.find((image) => image.width === 1200)?.path ??
+            responsiveImage.src
+          }
+        />
         <Post
           date={date}
           category={{
@@ -162,7 +186,7 @@ const Article: NextPage<ArticleProps> = ({
           text={text}
           contents={contents}
           moreSection={
-            <ArticlesSection>
+            <ArticlesContainer>
               <MoreSectionTitle>Więcej artykułów</MoreSectionTitle>
               {moreArticles.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
@@ -189,20 +213,13 @@ const Article: NextPage<ArticleProps> = ({
                   />
                 );
               })}
-            </ArticlesSection>
+            </ArticlesContainer>
           }
         />
       </Layout>
     );
   } else {
-    return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title="Error 404" description="404 description" />
-        <div>
-          <span>Error</span>
-        </div>
-      </Layout>
-    );
+    router.replace('/404');
   }
 };
 

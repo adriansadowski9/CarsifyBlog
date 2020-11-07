@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
       <Navigation>
         <Link href="/" passHref>
           <LogoWrapper onClick={() => setIsMobileMenuOpened(false)}>
-            <LogoText>Carsify</LogoText>
+            <LogoText as={router.pathname === '/' ? 'h1' : 'p'}>Carsify</LogoText>
             <LogoIconWrapper>
               <Icon iconName={IconName.CarsifyLogo} variant="color" />
             </LogoIconWrapper>

@@ -1,15 +1,9 @@
 import styled from 'styled-components';
 
-const CarDataRow = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: ${(props) => props.theme.spaces.xxxs};
+const CarDataRowTitle = styled.h3`
   font-size: ${(props) => props.theme.fontSizes.xs};
-
-  p {
-    margin: 0;
-  }
+  font-weight: ${(props) => props.theme.fontWeights.regular};
+  margin: 0;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     font-size: ${(props) => props.theme.fontSizes.s};
@@ -20,4 +14,4 @@ const CarDataRow = styled.div`
   }
 `;
 
-export default CarDataRow;
+export default CarDataRowTitle;
