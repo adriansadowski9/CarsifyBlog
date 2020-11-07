@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@svgr/webpack": "^5.4.0",
+    "browser-update": "^3.3.23",
     "dayjs": "^1.8.29",
     "html-react-parser": "^0.13.0",
     "imagemin-mozjpeg": "^9.0.0",
