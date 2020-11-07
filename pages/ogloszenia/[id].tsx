@@ -61,6 +61,7 @@ const Ad: NextPage<AdProps> = ({
   adExists,
   moreAds,
 }) => {
+  const router = useRouter();
   if (adExists) {
     const {
       pageTitle,
@@ -75,13 +76,21 @@ const Ad: NextPage<AdProps> = ({
       text,
     } = attributes;
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1);
-    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
-    const router = useRouter();
+    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
     const shareUrl = `https://carsify.pl${router.asPath}`;
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={pageTitle} description={pageDescription} />
+        <PageHead
+          title={pageTitle}
+          description={pageDescription}
+          path={router.asPath}
+          ogType="article"
+          image={
+            responsiveImage.images.find((image) => image.width === 1200)?.path ??
+            responsiveImage.src
+          }
+        />
         <Post
           date={date}
           breadcrumbs={[
@@ -124,7 +133,6 @@ const Ad: NextPage<AdProps> = ({
       </Layout>
     );
   } else {
-    const router = useRouter();
     router.replace('/404');
   }
 };

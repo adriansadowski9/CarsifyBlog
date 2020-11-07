@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import ContactPage from '@components/Contact';
 import Layout from '@components/Layout';
@@ -23,9 +24,15 @@ const Contact: NextPage<ContactProps> = ({ articleCategories, tipCategories }) =
     twitterUrl,
     instagramUrl,
   } = attributes;
+  const router = useRouter();
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-      <PageHead title={pageTitle} description={pageDescription} />
+      <PageHead
+        title={pageTitle}
+        description={pageDescription}
+        path={router.asPath}
+        ogType="website"
+      />
       <ContactPage
         contactEmail={contactEmail}
         facebookUrl={facebookUrl}

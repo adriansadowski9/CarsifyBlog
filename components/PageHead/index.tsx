@@ -9,15 +9,35 @@ const APP_NAME = 'Carsify';
 interface PageHeadProps {
   title: string;
   description: string;
+  path: string;
+  ogType: 'website' | 'article';
+  image?: string;
 }
 
-const PageHead: React.FC<PageHeadProps> = ({ title, description }: PageHeadProps) => {
+const PageHead: React.FC<PageHeadProps> = ({
+  title,
+  description,
+  path,
+  ogType,
+  image,
+}: PageHeadProps) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   return (
     <Head>
-      <title>{title}</title>
       <meta charSet="UTF-8" />
+      <title>{title}</title>
       <meta name="description" content={description} />
+      <meta property="og:title" content={title} key="ogtitle" />
+      <meta property="og:description" content={description} key="ogdesc" />
+      <meta property="og:url" content={`https://carsify.pl${path}`} />
+      {image && <meta property="og:image" content={`https://carsify.pl${image}`} />}
+      <meta property="og:locale" content="pl-PL" />
+      <meta property="og:site_name" content="Carsify" />
+      {ogType === 'article' ? (
+        <meta property="og:type" content="article" />
+      ) : (
+        <meta property="og:type" content="website" />
+      )}
       <meta name="application-name" content={APP_NAME} />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />

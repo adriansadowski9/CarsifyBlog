@@ -1,6 +1,7 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
 import { GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import TipCard from '@components/Cards/TipCard';
 import Categories from '@components/Categories';
@@ -22,6 +23,7 @@ interface TipsProps {
 
 const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories }) => {
   const { pageTitle, pageDescription } = attributes;
+  const router = useRouter();
   const categories = Array.from(tipCategories, (c: TipCategory) => {
     return {
       title: c.attributes.title,
@@ -37,7 +39,12 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
   tipsList.sort((a, b) => dayjs(b.attributes.date).diff(dayjs(a.attributes.date)));
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-      <PageHead title={pageTitle} description={pageDescription} />
+      <PageHead
+        title={pageTitle}
+        description={pageDescription}
+        path={router.asPath}
+        ogType="website"
+      />
       <section>
         <SectionName name="Moto porady" altTextTag="h1" />
         <TipsContainer hasLongCategories={categories.length > 5} isHorizontal>
