@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CookieConsent from 'react-cookie-consent';
 import { useRouter } from 'next/router';
-import styled, { ThemeContext } from 'styled-components';
+import { ThemeContext } from 'styled-components';
 
 import Alert from '@components/Alert';
 import Header from '@components/Header';
@@ -15,22 +15,6 @@ interface LayoutProps {
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
 }
-
-const StyledCookieConsent = styled(CookieConsent)`
-  .CookieConsent {
-    display: flex;
-    align-items: center;
-    background: ${(props) => props.theme.colors.cookieConsentBg};
-    color: ${(props) => props.theme.colors.cookieConsentText};
-    font-size: ${(props) => props.theme.fontSizes.m};
-  }
-
-  #rcc-confirm-button {
-    background: ${(props) => props.theme.colors.cookieConsentButtonBg};
-    color: ${(props) => props.theme.colors.cookieConsentBg};
-    fontsize: ${(props) => props.theme.colors.cookieConsentBg};
-  }
-`;
 
 const Layout: React.FC<LayoutProps> = ({ children, articleCategories, tipCategories }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
@@ -51,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children, articleCategories, tipCategor
           />
         )}
         {children}
-        <StyledCookieConsent
+        <CookieConsent
           location="bottom"
           buttonText="Rozumiem"
           cookieName="cookie-consent"
@@ -79,7 +63,7 @@ const Layout: React.FC<LayoutProps> = ({ children, articleCategories, tipCategor
         >
           Strona wykorzystuje do poprawnego działania pliki cookies. Możesz określić warunki
           przechowywania lub dostępu do plików cookies w Twojej przeglądarce.
-        </StyledCookieConsent>
+        </CookieConsent>
       </MainContent>
     </>
   );
