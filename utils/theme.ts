@@ -116,6 +116,10 @@ export interface Theme {
     alertErrorText: string;
     errorButtonBg: string;
     errorButtonText: string;
+    cookieConsentBg: string;
+    cookieConsentText: string;
+    cookieConsentButtonBg: string;
+    cookieConsentButtonText: string;
   };
 }
 
@@ -175,6 +179,10 @@ export const lightTheme: Theme = {
     alertErrorText: colors.white,
     errorButtonBg: colors.red,
     errorButtonText: colors.white,
+    cookieConsentBg: colors.white,
+    cookieConsentText: colors.black,
+    cookieConsentButtonBg: colors.red,
+    cookieConsentButtonText: colors.white,
   },
 };
 
@@ -234,5 +242,9 @@ export const darkTheme: Theme = {
     alertErrorText: colors.white,
     errorButtonBg: colors.red,
     errorButtonText: colors.white,
+    cookieConsentBg: colors.darkGray,
+    cookieConsentText: colors.white,
+    cookieConsentButtonBg: colors.red,
+    cookieConsentButtonText: colors.white,
   },
 };
