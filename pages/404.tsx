@@ -18,9 +18,15 @@ interface Custom404Props {
 const Custom404: NextPage<Custom404Props> = ({ articleCategories, tipCategories }) => {
   const { pageTitle, pageDescription } = attributes;
   const router = useRouter();
+
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-      <PageHead title={pageTitle} description={pageDescription} />
+      <PageHead
+        title={pageTitle}
+        description={pageDescription}
+        path={router.asPath}
+        ogType="website"
+      />
       <Error
         heading="404 - Ups... coś poszło nie tak :("
         text="Strona, której szukasz została przeniesiona lub nie istnieje."

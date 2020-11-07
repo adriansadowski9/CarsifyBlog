@@ -65,6 +65,7 @@ const Article: NextPage<ArticleProps> = ({
   articleExists,
   moreArticles,
 }) => {
+  const router = useRouter();
   if (isCategory) {
     const { title, pageTitle, pageDescription } = attributes;
     const categories = Array.from(articleCategories, (c: ArticleCategory) => {
@@ -82,7 +83,12 @@ const Article: NextPage<ArticleProps> = ({
 
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={pageTitle} description={pageDescription} />
+        <PageHead
+          title={pageTitle}
+          description={pageDescription}
+          path={router.asPath}
+          ogType="website"
+        />
         <SectionName name={title} altTextTag="h1" />
         <ArticlesContainer
           notEnoughItems={(articlesList.length + 1) % 3 !== 0}
@@ -135,16 +141,28 @@ const Article: NextPage<ArticleProps> = ({
       text,
     } = attributes;
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1);
-    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
-    const router = useRouter();
+    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
     const shareUrl = `https://carsify.pl${router.asPath}`;
     const categoryInfo = articleCategories.find(
       (articleCategory) => articleCategory.attributes.title === category
     );
 
+    console.log(
+      responsiveImage.images.find((image) => image.width === 1200)?.path ?? responsiveImage.src
+    );
+
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-        <PageHead title={pageTitle} description={pageDescription} />
+        <PageHead
+          title={pageTitle}
+          description={pageDescription}
+          path={router.asPath}
+          ogType="article"
+          image={
+            responsiveImage.images.find((image) => image.width === 1200)?.path ??
+            responsiveImage.src
+          }
+        />
         <Post
           date={date}
           category={{
@@ -201,7 +219,6 @@ const Article: NextPage<ArticleProps> = ({
       </Layout>
     );
   } else {
-    const router = useRouter();
     router.replace('/404');
   }
 };
