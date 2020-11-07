@@ -42,10 +42,16 @@ const Home: NextPage<HomeProps> = ({
   adsList,
 }) => {
   const { pageTitle, pageDescription } = attributes;
+  const router = useRouter();
 
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-      <PageHead title={pageTitle} description={pageDescription} />
+      <PageHead
+        title={pageTitle}
+        description={pageDescription}
+        path={router.asPath}
+        ogType="website"
+      />
       <Row>
         <section>
           <SectionName name="Aktualności" />

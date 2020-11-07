@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import ArticleCard from '@components/Cards/ArticleCard';
 import Categories from '@components/Categories';
@@ -33,9 +34,15 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
     href: '/artykuly',
   });
   const { pageTitle, pageDescription } = attributes;
+  const router = useRouter();
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-      <PageHead title={pageTitle} description={pageDescription} />
+      <PageHead
+        title={pageTitle}
+        description={pageDescription}
+        path={router.asPath}
+        ogType="website"
+      />
       <section>
         <SectionName name="Aktualności" altTextTag="h1" />
         <ArticlesContainer

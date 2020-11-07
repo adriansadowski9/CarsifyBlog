@@ -1,6 +1,7 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import { GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import AdCard from '@components/Cards/AdCard';
 import Layout from '@components/Layout';
@@ -22,10 +23,16 @@ interface AdsProps {
 
 const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) => {
   const { pageTitle, pageDescription } = attributes;
+  const router = useRouter();
   adsList.sort((a, b) => dayjs(b.attributes.date).diff(dayjs(a.attributes.date)));
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
-      <PageHead title={pageTitle} description={pageDescription} />
+      <PageHead
+        title={pageTitle}
+        description={pageDescription}
+        path={router.asPath}
+        ogType="website"
+      />
       <section>
         <SectionName name="Perełki z ogłoszeń" altTextTag="h1" />
         <AdsContainer>
