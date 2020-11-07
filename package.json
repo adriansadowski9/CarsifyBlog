@@ -26,6 +26,7 @@
     "next-pwa": "^3.1.5",
     "pure-react-carousel": "^1.27.5",
     "react": "^16.13.1",
+    "react-cookie-consent": "^6.0.0",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.5",
     "react-responsive-carousel": "^3.2.9",
