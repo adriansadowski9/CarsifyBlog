@@ -41,7 +41,7 @@ const PageHead: React.FC<PageHeadProps> = ({
 
     import('browser-update').then((browserUpdate) => {
       if (!document.getElementById('buorg')) {
-        browserUpdate.default(browserUpdateConfig, true);
+        browserUpdate.default(browserUpdateConfig);
       }
     });
   }
