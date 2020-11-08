@@ -21,6 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children, articleCategories, tipCategor
   const {
     query: { alertType, alertHeading, alertMessage },
   } = useRouter();
+
   return (
     <>
       <Header articleCategories={articleCategories} tipCategories={tipCategories} />
