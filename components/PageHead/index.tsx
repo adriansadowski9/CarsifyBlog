@@ -22,6 +22,30 @@ const PageHead: React.FC<PageHeadProps> = ({
   image,
 }: PageHeadProps) => {
   const themeContext: Theme = React.useContext(ThemeContext);
+
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    const browserUpdateConfig = {
+      required: {
+        e: -2,
+        i: 11,
+        f: -3,
+        o: -3,
+        s: 10.1,
+        c: '64.0.3282.16817',
+        samsung: 7.0,
+        vivaldi: 1.2,
+      },
+      noclose: true,
+      l: 'pl',
+    };
+
+    import('browser-update').then((browserUpdate) => {
+      if (!document.getElementById('buorg')) {
+        browserUpdate.default(browserUpdateConfig, true);
+      }
+    });
+  }
+
   return (
     <Head>
       <meta charSet="UTF-8" />
