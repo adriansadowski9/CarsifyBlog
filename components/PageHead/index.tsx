@@ -26,13 +26,15 @@ const PageHead: React.FC<PageHeadProps> = ({
   if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     const browserUpdateConfig = {
       required: {
-        e: -2,
-        i: 11,
-        f: -3,
-        o: -3,
-        s: 10.1,
-        c: '64.0.3282.16817',
-        samsung: 7.0,
+        e: 16,
+        i: 12,
+        f: 63,
+        c: 84,
+        o: 44,
+        s: 10.01,
+        a: 81,
+        o_a: 59,
+        samsung: 6.2,
         vivaldi: 1.2,
       },
       noclose: true,
