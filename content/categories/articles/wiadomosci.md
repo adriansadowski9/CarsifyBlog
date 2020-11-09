@@ -1,6 +1,6 @@
 ---
-title: Wiadomości motoryzacyjne - Carsify.pl
-pageTitle: Wiadomości
+title: Wiadomości
+pageTitle: Wiadomości motoryzacyjne - Carsify.pl
 pageDescription: opis wiadomosci
 icon: NEWS
 ---
