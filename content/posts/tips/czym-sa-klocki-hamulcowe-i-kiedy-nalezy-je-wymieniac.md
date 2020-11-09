@@ -19,14 +19,6 @@ contents:
     name: Dlaczego klocki hamulcowe się zużywają?
   - link: '#jak-sprawdzic'
     name: Jak sprawdzić klocki hamulcowe?
-  - link: '#piszczenie'
-    name: 1. Piszczenie hamulców
-  - link: '#grubosc'
-    name: 2. Poniżej jednej czwarty grubości klocka
-  - link: '#ocieranie'
-    name: 3. Ocieranie w okolicy koła
-  - link: '#kontrolki'
-    name: 4. Lampki kontrolne
   - link: '#ile-wytrzymuja'
     name: Ile wytrzymują klocki hamulcowe?
 highlightedText: >-
@@ -37,7 +29,7 @@ highlightedText: >-
   klocków hamulcowych, aby zapewnić bezpieczeństwo sobie, rodzinie oraz innym
   uczestnikom ruchu.
 text: >-
-  ## Czym są klocki hamulcowe?{#czym-sa}
+  ## Czym są klocki hamulcowe? {#czym-sa}
 
 
   Klocki hamulcowe są kluczową częścią układu hamulcowego pojazdu. Znajdują się
@@ -48,7 +40,7 @@ text: >-
   zachowana i mogły one zapewnić bezpieczeństwo nam i naszemu otoczeniu. 
 
 
-  ## Dlaczego klocki hamulcowe się zużywają?{#dlaczego}
+  ## Dlaczego klocki hamulcowe się zużywają? {#dlaczego}
 
 
   Za każdym razem, gdy używasz hamulca pojazdu, powodujesz niewielkie zużycie
@@ -58,14 +50,14 @@ text: >-
   czasie dojdą do punktu, w którym należy je wymienić. 
 
 
-  ## Typowe objawy zużytych klocków hamulcowych{#jak-sprawdzic}
+  ## Typowe objawy zużytych klocków hamulcowych {#jak-sprawdzic}
 
 
   Oto kilka oznak, na które należy zwrócić uwagę, aby wiedzieć, kiedy wymienić
   klocki hamulcowe.
 
 
-  ### 1. Piszczenie hamulców{#piszczenie}
+  ### 1. Piszczenie hamulców
 
 
   Ogólnie rzecz biorąc, pierwszym sygnałem, który zauważy każdy kierowca, jest
@@ -83,7 +75,7 @@ text: >-
   konieczna.
 
 
-  ### 2. Poniżej jednej czwarty grubości klocka{#grubosc}
+  ### 2. Poniżej jednej czwarty grubości klocka
 
 
   Możesz również wizualnie sprawdzić klocki hamulcowe, aby dowiedzieć się, czy
@@ -94,7 +86,7 @@ text: >-
   od ostatniej kontroli.
 
 
-  ### 3. Ocieranie w okolicy koła{#ocieranie}
+  ### 3. Ocieranie w okolicy koła
 
 
   Jeśli z okolicy Twojego koła docierają dziwne dźwięki podobne do ocierania
@@ -104,7 +96,7 @@ text: >-
   jak najszybciej skontrolować pojazd w serwisie.
 
 
-  ### 4. Lampki kontrolne{#kontrolki}
+  ### 4. Lampki kontrolne
 
 
   Niektóre pojazdy, zwłaszcza nowoczesne, mają na desce rozdzielczej lampkę
@@ -113,7 +105,7 @@ text: >-
   wyposażony w system ostrzegania o zużyciu klocków hamulcowych. 
 
 
-  ## Ile wytrzymują klocki hamulcowe?{#ile-wytrzymuja}
+  ## Ile wytrzymują klocki hamulcowe? {#ile-wytrzymuja}
 
 
   Żywotność klocków hamulcowych określa się zazwyczaj na 45 000 do 55 000km. 
