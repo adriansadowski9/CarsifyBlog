@@ -23,9 +23,11 @@ text: >-
   najnowszych oświadczeń firmy nie będzie jedynym modelem powstającym w tym
   miejscu.
 
+
   Ford potwierdzili, że marka rozwija nowy model oparty na tej samej platformie
   co Mustang Mach-E, choć na razie nie są znane żadne szczegóły tego modelu,
   poza tym, że będzie dzielił architekturę i części mechaniczne z Mach-E.
+
 
   Na chwilę obecną możemy założyć, że nowy model będzie crossoverem, ciekawe
   natomiast jest to, czy będzie to wariant Mustanga Mach-E czy zupełnie nowy
@@ -38,13 +40,15 @@ text: >-
   podczas ładowania")
 
 
-  \##Elektryczny Ford F-150 EV
+  ## Elektryczny Ford F-150 EV
+
 
   Kolejną nowością związaną z pojazdami elektrycznym Forda jest wzrost produkcji
   przyszłego Forda F-150 EV, modelu, który powinien trafić do salonów dopiero w
   połowie 2022 r.. Według marki wzbudził tak duże zainteresowanie, że firma
   postanowił zmodyfikować swoje plany i zwiększyć planowaną początkową zdolność
   produkcyjną pierwszego pełnowymiarowego pick-upa „na baterie”.
+
 
   Według potwierdzonych danych, Ford zamierza zwiększyć produkcję modelu (która
   obecnie jest wciąż w fazie rozwoju) o co najmniej 50%. W tym celu zdecydowano
