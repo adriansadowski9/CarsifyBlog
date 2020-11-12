@@ -17,8 +17,8 @@ contents:
     name: Czym są klocki hamulcowe?
   - link: '#dlaczego'
     name: Dlaczego klocki hamulcowe się zużywają?
-  - link: '#jak-sprawdzic'
-    name: Jak sprawdzić klocki hamulcowe?
+  - link: '#typowe-objawy'
+    name: Typowe objawy zużytych klocków hamulcowych
   - link: '#ile-wytrzymuja'
     name: Ile wytrzymują klocki hamulcowe?
 highlightedText: >-
@@ -50,7 +50,7 @@ text: >-
   czasie dojdą do punktu, w którym należy je wymienić. 
 
 
-  ## Typowe objawy zużytych klocków hamulcowych {#jak-sprawdzic}
+  ## Typowe objawy zużytych klocków hamulcowych {#typowe-objawy}
 
 
   Oto kilka oznak, na które należy zwrócić uwagę, aby wiedzieć, kiedy wymienić
@@ -75,7 +75,7 @@ text: >-
   konieczna.
 
 
-  ### 2. Poniżej jednej czwarty grubości klocka
+  ### 2. Poniżej jednej czwartej grubości klocka
 
 
   Możesz również wizualnie sprawdzić klocki hamulcowe, aby dowiedzieć się, czy
