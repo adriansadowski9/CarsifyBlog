@@ -65,7 +65,7 @@ const AdCard: React.FC<AdCardProps> = ({
               <AdCardCarInfoText>Moc</AdCardCarInfoText>
               <AdCardCarInfoText>{carData.hp} km</AdCardCarInfoText>
             </AdCardCarInfoRow>
-            <AdCardCarInfoPrice>{carData.price}zł</AdCardCarInfoPrice>
+            <AdCardCarInfoPrice>{carData.price}</AdCardCarInfoPrice>
             <AdCardSnippet>{textSnippet}</AdCardSnippet>
           </AdCardInfoContainer>
         </article>

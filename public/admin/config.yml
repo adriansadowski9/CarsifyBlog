@@ -142,7 +142,7 @@ collections:
           - { label: "Moment obrotowy", name: "torque", widget: "number", required: true }
           - { label: "Ilość drzwi", name: "doors", widget: "number", required: true }
           - { label: "Przebieg", name: "course", widget: "number", required: true }
-          - { label: "Cena", name: "price", widget: "number", required: true }
+          - { label: "Cena", name: "price", widget: "string", required: true }
       - label: "Spis treści"
         name: "contents"
         widget: "list"
