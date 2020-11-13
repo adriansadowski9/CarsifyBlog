@@ -50,6 +50,7 @@ const Layout: React.FC<LayoutProps> = ({ children, articleCategories, tipCategor
           }}
           contentStyle={{
             marginTop: 0,
+            flex: '1 0 200px',
           }}
           buttonStyle={{
             background: themeContext.colors.cookieConsentButtonBg,

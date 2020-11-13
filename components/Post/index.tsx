@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
 import showdown from 'showdown';
@@ -160,7 +161,9 @@ const Post: React.FC<PostProps> = ({
         />
       </PostImageContainer>
       <TextContainer>
-        <HighlightedText>{highlightedText}</HighlightedText>
+        <HighlightedText>
+          <Linkify>{highlightedText}</Linkify>
+        </HighlightedText>
         {contents && (
           <ContentsList>
             {contents.map((content, index) => (

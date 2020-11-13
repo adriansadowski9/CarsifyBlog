@@ -38,7 +38,7 @@ const Text = styled.div`
   }
 
   p {
-    margin: ${(props) => props.theme.spaces.xxxs} 0;
+    margin: ${(props) => props.theme.spaces.xs} 0;
   }
 
   a {
