@@ -38,7 +38,7 @@ const Text = styled.div`
   }
 
   p {
-    margin: ${(props) => props.theme.spaces.xxxs} 0;
+    margin: ${(props) => props.theme.spaces.xs} 0;
   }
 
   a {
@@ -49,6 +49,10 @@ const Text = styled.div`
 
   a:hover {
     text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
   }
 
   .see-also {

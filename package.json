@@ -29,6 +29,7 @@
     "react-cookie-consent": "^6.0.0",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.5",
+    "react-linkify": "^1.0.0-alpha",
     "react-responsive-carousel": "^3.2.9",
     "react-share": "^4.2.1",
     "responsive-loader": "^2.2.0",
