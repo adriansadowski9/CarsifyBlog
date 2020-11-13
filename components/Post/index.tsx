@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
 import showdown from 'showdown';
@@ -89,6 +90,7 @@ const Post: React.FC<PostProps> = ({
     },
   });
   const mdConverter = new showdown.Converter({
+    ghCompatibleHeaderId: true,
     customizedHeaderId: true,
     simplifiedAutoLink: true,
     extensions: ['SeeAlso'],
@@ -129,7 +131,7 @@ const Post: React.FC<PostProps> = ({
             <CarDataRow>
               <CarDataRowTitle>Moc</CarDataRowTitle>
               <p>
-                {carData.hp} km / {carData.torque} nm
+                {carData.hp} KM / {carData.torque} Nm
               </p>
             </CarDataRow>
             <CarDataRow>
@@ -140,7 +142,7 @@ const Post: React.FC<PostProps> = ({
               <CarDataRowTitle>Liczba drzwi</CarDataRowTitle>
               <p>{carData.doors}</p>
             </CarDataRow>
-            <CarDataPrice>{carData.price}zł</CarDataPrice>
+            <CarDataPrice>{carData.price}</CarDataPrice>
           </CarDataBox>
         )}
         <PostImage
@@ -159,7 +161,9 @@ const Post: React.FC<PostProps> = ({
         />
       </PostImageContainer>
       <TextContainer>
-        <HighlightedText>{highlightedText}</HighlightedText>
+        <HighlightedText>
+          <Linkify>{highlightedText}</Linkify>
+        </HighlightedText>
         {contents && (
           <ContentsList>
             {contents.map((content, index) => (

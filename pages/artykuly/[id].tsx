@@ -147,10 +147,6 @@ const Article: NextPage<ArticleProps> = ({
       (articleCategory) => articleCategory.attributes.title === category
     );
 
-    console.log(
-      responsiveImage.images.find((image) => image.width === 1200)?.path ?? responsiveImage.src
-    );
-
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead

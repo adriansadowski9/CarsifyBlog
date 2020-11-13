@@ -1,4 +1,5 @@
 ---
-pageTitle: Speedometer
+pageTitle: Portal motoryzacyjny - Carsify.pl
 pageDescription: Description
 ---
+
