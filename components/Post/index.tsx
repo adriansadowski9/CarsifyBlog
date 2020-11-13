@@ -89,6 +89,7 @@ const Post: React.FC<PostProps> = ({
     },
   });
   const mdConverter = new showdown.Converter({
+    noHeaderId: true,
     customizedHeaderId: true,
     simplifiedAutoLink: true,
     extensions: ['SeeAlso'],

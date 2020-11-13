@@ -51,6 +51,10 @@ const Text = styled.div`
     text-decoration: underline;
   }
 
+  img {
+    max-width: 100%;
+  }
+
   .see-also {
     position: relative;
     padding-left: ${(props) => props.theme.spaces.s};
