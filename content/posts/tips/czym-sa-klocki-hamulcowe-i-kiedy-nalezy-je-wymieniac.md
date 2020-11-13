@@ -29,7 +29,7 @@ highlightedText: >-
   klocków hamulcowych, aby zapewnić bezpieczeństwo sobie, rodzinie oraz innym
   uczestnikom ruchu.
 text: >-
-  ## Czym są klocki hamulcowe? {#czym-sa}
+  ## Czym są klocki hamulcowe? {czym-sa}
 
 
   Klocki hamulcowe są kluczową częścią układu hamulcowego pojazdu. Znajdują się
@@ -40,7 +40,7 @@ text: >-
   zachowana i mogły one zapewnić bezpieczeństwo nam i naszemu otoczeniu. 
 
 
-  ## Dlaczego klocki hamulcowe się zużywają? {#dlaczego}
+  ## Dlaczego klocki hamulcowe się zużywają? {dlaczego}
 
 
   Za każdym razem, gdy używasz hamulca pojazdu, powodujesz niewielkie zużycie
@@ -50,7 +50,7 @@ text: >-
   czasie dojdą do punktu, w którym należy je wymienić. 
 
 
-  ## Typowe objawy zużytych klocków hamulcowych {#typowe-objawy}
+  ## Typowe objawy zużytych klocków hamulcowych {typowe-objawy}
 
 
   Oto kilka oznak, na które należy zwrócić uwagę, aby wiedzieć, kiedy wymienić
@@ -105,7 +105,7 @@ text: >-
   wyposażony w system ostrzegania o zużyciu klocków hamulcowych. 
 
 
-  ## Ile wytrzymują klocki hamulcowe? {#ile-wytrzymuja}
+  ## Ile wytrzymują klocki hamulcowe? {ile-wytrzymuja}
 
 
   Żywotność klocków hamulcowych określa się zazwyczaj na 45 000 do 55 000km. 
