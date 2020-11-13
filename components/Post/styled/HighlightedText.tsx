@@ -9,6 +9,8 @@ const HighlightedText = styled.p`
   margin-bottom: ${(props) => props.theme.spaces.xs};
 
   a {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     text-decoration: none;
     color: ${(props) => props.theme.colors.seeAlsoLink};
     font-style: italic;
