@@ -28,8 +28,8 @@ const PageHead: React.FC<PageHeadProps> = ({
       required: {
         e: 16,
         i: 12,
-        f: 63,
-        c: 84,
+        f: 54,
+        c: 57,
         o: 44,
         s: 10.01,
         a: 81,
