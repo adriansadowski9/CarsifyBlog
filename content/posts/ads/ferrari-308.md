@@ -3,7 +3,7 @@ pageTitle: Przepiękne Ferrari 308 na sprzedaż w Katowicach
 pageDescription: >-
   308 GTB zadebiutował na pokazach w Paryżu i Londynie w 1975 roku. Zbudowany
   według projektu Leonardo Fioravanti’ego, zachował V8 z Ferrari 308 GT4.
-title: Ferrari 308
+title: Przepiękne Ferrari 308 na sprzedaż w Katowicach
 subtitle: >-
   308 GTB zadebiutował na pokazach w Paryżu i Londynie w 1975 roku. Zbudowany
   według projektu Leonardo Fioravanti’ego, zachował V8 z Ferrari 308 GT4,
@@ -20,7 +20,7 @@ carData:
   hp: 205
   localization: Katowice
   name: Ferrari 308 GTB
-  price: 135300 Euro
+  price: 135 300 Euro
   torque: 283
   year: 1979
 highlightedText: >-
