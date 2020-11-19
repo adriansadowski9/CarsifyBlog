@@ -31,7 +31,7 @@ highlightedText: >-
   częścią wspaniałej historii marki. 
 
 
-  Ogłoszenie znajduje się pod adresem:
+  :-> Ogłoszenie znajduje się pod adresem:
   https://www.otomoto.pl/oferta/ferrari-308-gtb-official-ferrari-dealer-ID6yqvwL.html
 text: >-
   ![Wnętrze Ferrari 308 GTB](/assets/img/wnetrze-ferrari-308.jpg "Wnętrze
