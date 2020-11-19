@@ -20,7 +20,7 @@ carData:
   hp: 205
   localization: Katowice
   name: Ferrari 308 GTB
-  price: 135300zł
+  price: 135300 Euro
   torque: 283
   year: 1979
 highlightedText: >-
