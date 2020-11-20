@@ -40,7 +40,12 @@ const MenuDropdown: React.FC<DropdownProps> = ({
           }
         >
           <Link as={`${basePath}/${category.slug}`} href={pagePath} passHref>
-            <DropdownLinkButton onClick={closeMobileMenu}>
+            <DropdownLinkButton
+              onClick={closeMobileMenu}
+              isActive={
+                basePath && isDropdownItemActive && isDropdownItemActive(basePath, category.slug)
+              }
+            >
               {category.attributes.title}
             </DropdownLinkButton>
           </Link>
