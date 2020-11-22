@@ -29,7 +29,9 @@ const MenuDropdown: React.FC<DropdownProps> = ({
     <DropdownContainer isOpen={isOpen}>
       <DropdownItem isActive={isActive}>
         <Link href={`${basePath}`} passHref>
-          <DropdownLinkButton onClick={closeMobileMenu}>Wszystkie</DropdownLinkButton>
+          <DropdownLinkButton onClick={closeMobileMenu} isAll={true}>
+            Wszystkie
+          </DropdownLinkButton>
         </Link>
       </DropdownItem>
       {categories.map((category, index) => (

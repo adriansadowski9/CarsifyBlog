@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-const DropdownLinkButton = styled.a<{ isActive: boolean }>`
+const DropdownLinkButton = styled.a<{ isActive: boolean; isAll?: boolean }>`
   color: ${(props) => props.theme.colors.text};
   font-size: ${(props) => props.theme.fontSizes.l};
   text-decoration: none;
   position: relative;
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    display: ${(props) => (props.isAll ? 'none' : 'initial')};
     padding: ${(props) => props.theme.spaces.xxs} ${(props) => props.theme.spaces.xs};
     justify-content: flex-start;
     width: 100%;
