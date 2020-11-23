@@ -157,7 +157,7 @@ collections:
           name: 'featuredImage',
           widget: 'image',
           required: true,
-          allowMultiple: false,
+          allow_multiple: false,
         }
       - {
           label: 'Kategorie',
@@ -174,7 +174,7 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - { label: 'Galeria zdjęć', name: 'gallery', widget: 'image', allowMultiple: true }
+      - { label: 'Galeria zdjęć', name: 'gallery', widget: 'image', allow_multiple: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -214,7 +214,7 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - { label: 'Galeria zdjęć', name: 'gallery', widget: 'image', allowMultiple: true }
+      - { label: 'Galeria zdjęć', name: 'gallery', widget: 'image', allow_multiple: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -261,7 +261,7 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - { label: 'Galeria zdjęć', name: 'gallery', widget: 'image', allowMultiple: true }
+      - { label: 'Galeria zdjęć', name: 'gallery', widget: 'image', allow_multiple: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
