@@ -144,7 +144,9 @@ const Article: NextPage<ArticleProps> = ({
     } = attributes;
     const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1);
     const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
-    const galleryImages = gallery.map((image) => image.substring(image.lastIndexOf('/') + 1));
+    const galleryImages = gallery
+      ? gallery.map((image) => image.substring(image.lastIndexOf('/') + 1))
+      : [];
     const galleryResponsiveImages = galleryImages.map((image) =>
       require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&sizes[]=1260&sizes[]=1640&sizes[]=2520`)
     );
