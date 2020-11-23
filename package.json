@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@svgr/webpack": "^5.4.0",
+    "@types/gtag.js": "^0.0.3",
+    "browser-update": "^3.3.23",
     "dayjs": "^1.8.29",
     "html-react-parser": "^0.13.0",
     "imagemin-mozjpeg": "^9.0.0",
@@ -29,6 +31,7 @@
     "react-cookie-consent": "^6.0.0",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.5",
+    "react-image-gallery": "^1.0.8",
     "react-linkify": "^1.0.0-alpha",
     "react-responsive-carousel": "^3.2.9",
     "react-share": "^4.2.1",
@@ -72,5 +75,19 @@
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not IE_Mob 11",
+    "and_uc >=12.12",
+    "android >=81",
+    "chrome >=57",
+    "edge >=16",
+    "firefox >=54",
+    "ios_saf >=10.3",
+    "opera >=44",
+    "safari >=10.01",
+    "samsung >=6.2"
+  ]
 }

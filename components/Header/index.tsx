@@ -70,7 +70,6 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
     setIsTipsOpen(false);
     setIsArticlesOpen(false);
   };
-
   return (
     <header>
       <Navigation>
@@ -109,7 +108,10 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                   <LinkButton
                     as="button"
                     onClick={() => handleArticlesOpen()}
-                    isActive={router.pathname.startsWith('/artykuly') && !isArticlesOpen}
+                    isActive={
+                      (router.pathname === '/artykuly' && !isArticlesOpen) ||
+                      (router.pathname === '/artykuly/[id]' && !isAnyArticleCategoryActive)
+                    }
                   >
                     Aktualności
                   </LinkButton>
@@ -126,7 +128,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 basePath="/artykuly"
                 pagePath="/artykuly/[id]"
                 isDropdownItemActive={isDropdownItemActive}
-                isActive={router.pathname.startsWith('/artykuly') && !isAnyArticleCategoryActive}
+                isActive={router.pathname === '/artykuly' && !isAnyArticleCategoryActive}
                 isOpen={isArticlesOpen}
                 closeMobileMenu={() => setIsMobileMenuOpened(false)}
               />
@@ -146,7 +148,10 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                   <LinkButton
                     as="button"
                     onClick={() => handleTipsOpen()}
-                    isActive={router.pathname.startsWith('/porady') && !isTipsOpen}
+                    isActive={
+                      (router.pathname.startsWith('/porady') && !isTipsOpen) ||
+                      (router.pathname === '/porady/[id]' && !isAnyTipCategoryActive)
+                    }
                   >
                     Moto porady
                   </LinkButton>
@@ -163,7 +168,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 basePath="/porady"
                 pagePath="/porady/[id]"
                 isDropdownItemActive={isDropdownItemActive}
-                isActive={router.pathname.startsWith('/porady') && !isAnyTipCategoryActive}
+                isActive={router.pathname === '/porady' && !isAnyTipCategoryActive}
                 isOpen={isTipsOpen}
                 closeMobileMenu={() => setIsMobileMenuOpened(false)}
               />

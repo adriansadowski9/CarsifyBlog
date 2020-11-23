@@ -11,7 +11,9 @@ const ButtonWrapper = styled.button<{
   border: none;
   ${(props) => props.customWidth && `width: ${props.customWidth};`}
   ${(props) => props.customHeight && `height: ${props.customHeight};`}
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(
+    props
+  ) => props.backgroundColor};
   text-decoration: none;
 
   &:hover {
