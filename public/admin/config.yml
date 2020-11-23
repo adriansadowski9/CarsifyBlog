@@ -3,6 +3,9 @@ backend:
   branch: master
 media_folder: public/assets/img
 public_folder: /assets/img
+media_library: 
+  config:
+    multiple: true 
 slug:
   encoding: 'ascii'
   clean_accents: true
