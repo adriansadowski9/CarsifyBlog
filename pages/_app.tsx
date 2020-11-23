@@ -1,5 +1,6 @@
 import * as React from 'react';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
 import { DarkModeContext } from 'contexts/darkModeContext';
 import { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';

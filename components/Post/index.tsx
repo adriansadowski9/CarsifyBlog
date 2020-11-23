@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ReactElement } from 'react';
+import ImageGallery from 'react-image-gallery';
 import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
@@ -30,6 +31,16 @@ import TopInfoContainer from '@components/Post/styled/TopInfoContainer';
 import SocialShareSection from '@components/SocialShareSection';
 import IconName from '@utils/iconNames';
 
+type ResponsiveImage = {
+  src: string;
+  srcSet: string;
+  images: {
+    path: string;
+    width: number;
+    height: number;
+  }[];
+};
+
 interface PostProps {
   date: Date;
   category?: {
@@ -40,10 +51,7 @@ interface PostProps {
   title: string;
   subtitle: string;
   highlightedText: string;
-  responsiveImage: {
-    src: string;
-    srcSet: string;
-  };
+  responsiveImage: ResponsiveImage;
   shareUrl: string;
   contents?: {
     name: string;
@@ -64,6 +72,7 @@ interface PostProps {
     doors: string;
     price: string;
   };
+  galleryImages: ResponsiveImage[];
 }
 
 const Post: React.FC<PostProps> = ({
@@ -79,6 +88,7 @@ const Post: React.FC<PostProps> = ({
   text,
   moreSection,
   carData,
+  galleryImages,
 }) => {
   showdown.extension('SeeAlso', {
     type: 'output',
@@ -95,7 +105,7 @@ const Post: React.FC<PostProps> = ({
     type: 'output',
     filter: (text: string) => {
       const mainRegex = new RegExp('(^[ \t]*<p>:-gallery&gt;[ \t]?.+)', 'gm');
-      return text.replace(mainRegex, `<div id="post-gallery"></div>`);
+      return text.replace(mainRegex, galleryImages ? `<div id="post-gallery"></div>` : '');
     },
   });
 
@@ -105,6 +115,10 @@ const Post: React.FC<PostProps> = ({
     simplifiedAutoLink: true,
     extensions: ['SeeAlso', 'AddGallery'],
   });
+  const images = galleryImages.map((image) => ({
+    original: image.images[image.images.length - 1].path,
+    thumbnail: image.images[0].path,
+  }));
 
   const turnIntoGallery = (parsedHtml: ReactElement[] | ReactElement) => {
     if (Array.isArray(parsedHtml)) {
@@ -118,11 +132,14 @@ const Post: React.FC<PostProps> = ({
       );
       // CHANGE PLACEHOLDER DIV INTO GALLERY
       indexToReplace.forEach(
-        (index) => (parsedHtml[index] = <div key={parsedHtml[index].key}>new gallery</div>)
+        (index) =>
+          (parsedHtml[index] = (
+            <ImageGallery items={images} key={parsedHtml[index].key} showPlayButton={false} />
+          ))
       );
       return parsedHtml;
     } else if (parsedHtml.type === 'div' && parsedHtml.props.id === 'post-gallery') {
-      return <div>new gallery</div>;
+      return <ImageGallery items={images} showPlayButton={false} />;
     } else {
       return parsedHtml;
     }
@@ -130,7 +147,11 @@ const Post: React.FC<PostProps> = ({
 
   const parseToHtml = (text) => {
     const parsedHtml = parse(mdConverter.makeHtml(text));
-    return turnIntoGallery(parsedHtml);
+    if (galleryImages) {
+      return turnIntoGallery(parsedHtml);
+    } else {
+      return parsedHtml;
+    }
   };
 
   return (
@@ -142,6 +163,7 @@ const Post: React.FC<PostProps> = ({
       <Breadcrumbs items={breadcrumbs} />
       <Heading>{title}</Heading>
       <Subheading>{subtitle}</Subheading>
+
       <PostImageContainer isCarData={!!carData}>
         {!!carData && (
           <CarDataBox>
