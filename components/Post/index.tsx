@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ReactElement } from 'react';
 import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
@@ -89,12 +90,48 @@ const Post: React.FC<PostProps> = ({
       });
     },
   });
+
+  showdown.extension('AddGallery', {
+    type: 'output',
+    filter: (text: string) => {
+      const mainRegex = new RegExp('(^[ \t]*<p>:-gallery&gt;[ \t]?.+)', 'gm');
+      return text.replace(mainRegex, `<div id="post-gallery"></div>`);
+    },
+  });
+
   const mdConverter = new showdown.Converter({
     ghCompatibleHeaderId: true,
     customizedHeaderId: true,
     simplifiedAutoLink: true,
-    extensions: ['SeeAlso'],
+    extensions: ['SeeAlso', 'AddGallery'],
   });
+
+  const turnIntoGallery = (parsedHtml: ReactElement[] | ReactElement) => {
+    if (Array.isArray(parsedHtml)) {
+      const indexToReplace = [];
+      // FIND ALL GALLERY USAGES
+      parsedHtml.forEach(
+        (element, index) =>
+          element.type === 'div' &&
+          element.props.id === 'post-gallery' &&
+          indexToReplace.push(index)
+      );
+      // CHANGE PLACEHOLDER DIV INTO GALLERY
+      indexToReplace.forEach(
+        (index) => (parsedHtml[index] = <div key={parsedHtml[index].key}>new gallery</div>)
+      );
+      return parsedHtml;
+    } else if (parsedHtml.type === 'div' && parsedHtml.props.id === 'post-gallery') {
+      return <div>new gallery</div>;
+    } else {
+      return parsedHtml;
+    }
+  };
+
+  const parseToHtml = (text) => {
+    const parsedHtml = parse(mdConverter.makeHtml(text));
+    return turnIntoGallery(parsedHtml);
+  };
 
   return (
     <article>
@@ -173,7 +210,7 @@ const Post: React.FC<PostProps> = ({
             ))}
           </ContentsList>
         )}
-        <Text>{parse(mdConverter.makeHtml(text))}</Text>
+        <Text>{parseToHtml(text)}</Text>
         <ShareSectionContainer>
           <ShareSectionTextContainer>
             <ShareSectionText>Spodobał Ci się ten tekst?</ShareSectionText>
