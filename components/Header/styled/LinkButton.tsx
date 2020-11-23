@@ -16,7 +16,7 @@ const LinkButton = styled.a<{ isActive: boolean }>`
         content: '';
         position: absolute;
         width: 5px;
-        height: 100%;
+        height: 28px;
         top: 0;
         right: ${props.theme.spaces.l};
         bottom: 0;
