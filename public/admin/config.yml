@@ -174,10 +174,10 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć', 
-        name: 'gallery', 
-        widget: 'image', 
-        allow_multiple: true, 
+      - label: 'Galeria zdjęć' 
+        name: 'gallery'
+        widget: 'image'
+        allow_multiple: true
         media_library: 
           config:
             multiple: true 
@@ -220,10 +220,10 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć', 
-        name: 'gallery', 
-        widget: 'image', 
-        allow_multiple: true, 
+      - label: 'Galeria zdjęć'
+        name: 'gallery'
+        widget: 'image'
+        allow_multiple: true
         media_library: 
           config:
             multiple: true 
@@ -273,10 +273,10 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć', 
-        name: 'gallery', 
-        widget: 'image', 
-        allow_multiple: true, 
+      - label: 'Galeria zdjęć'
+        name: 'gallery'
+        widget: 'image'
+        allow_multiple: true
         media_library: 
           config:
             multiple: true 
