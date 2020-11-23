@@ -105,7 +105,7 @@ const Post: React.FC<PostProps> = ({
     type: 'output',
     filter: (text: string) => {
       const mainRegex = new RegExp('(^[ \t]*<p>:-gallery&gt;[ \t]?.+)', 'gm');
-      return text.replace(mainRegex, galleryImages ? `<div id="post-gallery"></div>` : '');
+      return text.replace(mainRegex, galleryImages.length ? `<div id="post-gallery"></div>` : '');
     },
   });
 
@@ -149,7 +149,7 @@ const Post: React.FC<PostProps> = ({
 
   const parseToHtml = (text) => {
     const parsedHtml = parse(mdConverter.makeHtml(text));
-    if (galleryImages) {
+    if (galleryImages.length) {
       return turnIntoGallery(parsedHtml);
     } else {
       return parsedHtml;
