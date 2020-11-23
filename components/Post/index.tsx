@@ -115,10 +115,12 @@ const Post: React.FC<PostProps> = ({
     simplifiedAutoLink: true,
     extensions: ['SeeAlso', 'AddGallery'],
   });
-  const images = galleryImages.map((image) => ({
-    original: image.images[image.images.length - 1].path,
-    thumbnail: image.images[0].path,
-  }));
+  const images = galleryImages
+    ? galleryImages.map((image) => ({
+        original: image.images[image.images.length - 1].path,
+        thumbnail: image.images[0].path,
+      }))
+    : [];
 
   const turnIntoGallery = (parsedHtml: ReactElement[] | ReactElement) => {
     if (Array.isArray(parsedHtml)) {
