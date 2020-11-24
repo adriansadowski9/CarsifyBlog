@@ -8,14 +8,27 @@ import PageHead from '@components/PageHead';
 import { attributes } from '@content/pages/contact.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { TipCategory } from '@pages/porady/[id]';
-import { getArticleCategories, getTipCategories } from '@utils/getCategories';
+import { getArticleCategories, getContactCategories, getTipCategories } from '@utils/getCategories';
+
+export interface ContactCategory {
+  slug: string;
+  attributes: {
+    title: string;
+    position: number;
+  };
+}
 
 interface ContactProps {
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
+  contactCategories: ContactCategory[];
 }
 
-const Contact: NextPage<ContactProps> = ({ articleCategories, tipCategories }) => {
+const Contact: NextPage<ContactProps> = ({
+  articleCategories,
+  tipCategories,
+  contactCategories,
+}) => {
   const {
     pageTitle,
     pageDescription,
@@ -23,9 +36,13 @@ const Contact: NextPage<ContactProps> = ({ articleCategories, tipCategories }) =
     facebookUrl,
     twitterUrl,
     instagramUrl,
-    contactCategories,
   } = attributes;
   const router = useRouter();
+  const categoriesArray = contactCategories
+    .map((category) => category.attributes)
+    .sort((a, b) => a.position - b.position)
+    .map((a) => a.title);
+
   return (
     <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
       <PageHead
@@ -39,7 +56,7 @@ const Contact: NextPage<ContactProps> = ({ articleCategories, tipCategories }) =
         facebookUrl={facebookUrl}
         twitterUrl={twitterUrl}
         instagramUrl={instagramUrl}
-        contactCategories={contactCategories.split(' ')}
+        contactCategories={categoriesArray}
       />
     </Layout>
   );
@@ -50,11 +67,12 @@ export default Contact;
 export const getStaticProps: GetStaticProps = async () => {
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
-
+  const contactCategories = await getContactCategories();
   return {
     props: {
       articleCategories,
       tipCategories,
+      contactCategories,
     },
   };
 };

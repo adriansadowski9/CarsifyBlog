@@ -77,7 +77,7 @@ const Select: React.FC<SelectProps> = ({
         {contactCategories.map((item, index) => (
           <li key={index}>
             <SelectButton type="button" onChange={onChange} onClick={() => changeCategory(item)}>
-              {item.replace('-', ' ')}
+              {item}
             </SelectButton>
           </li>
         ))}
