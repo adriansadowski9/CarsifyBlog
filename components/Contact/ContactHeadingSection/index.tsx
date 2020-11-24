@@ -1,5 +1,5 @@
 import ContactHeading from './styled/ContactHeading';
-import EmailSpan from './styled/EmailSpan';
+import Email from './styled/Email';
 import SocialWrapper from './styled/SocialWrapper';
 
 import * as React from 'react';
@@ -36,7 +36,7 @@ const ContactHeadingSection: React.FC<SocialProps> = ({
         </SocialButton>
       </SocialShareContainer>
       <ContactHeading>Porozmawiajmy</ContactHeading>
-      <EmailSpan>{contactEmail}</EmailSpan>
+      <Email href={`mailto:${contactEmail}`}>{contactEmail}</Email>
     </SocialWrapper>
   );
 };

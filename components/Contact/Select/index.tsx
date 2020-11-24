@@ -18,10 +18,7 @@ interface SelectProps {
   label: string;
   height?: string;
   name: string;
-  items: {
-    id: number;
-    value: string;
-  }[];
+  contactCategories: string[];
   selectedItem: string;
   setSelectedItem: (value: string) => void;
   register: React.Ref<HTMLInputElement>;
@@ -31,7 +28,7 @@ interface SelectProps {
 const Select: React.FC<SelectProps> = ({
   height = '72px',
   label,
-  items,
+  contactCategories,
   name,
   selectedItem,
   setSelectedItem,
@@ -77,14 +74,10 @@ const Select: React.FC<SelectProps> = ({
       </ChosenCategory>
       <HiddenInput value={selectedItem} ref={register} name={name} />
       <SelectDropdown isOpen={isOpen}>
-        {items.map((item) => (
-          <li key={item.id}>
-            <SelectButton
-              type="button"
-              onChange={onChange}
-              onClick={() => changeCategory(item.value)}
-            >
-              {item.value}
+        {contactCategories.map((item, index) => (
+          <li key={index}>
+            <SelectButton type="button" onChange={onChange} onClick={() => changeCategory(item)}>
+              {item}
             </SelectButton>
           </li>
         ))}

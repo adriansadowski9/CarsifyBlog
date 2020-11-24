@@ -26,6 +26,7 @@ interface ContactProps {
   twitterUrl: string;
   instagramUrl: string;
   contactEmail: string;
+  contactCategories: string[];
 }
 interface UseFormProps {
   name: string;
@@ -34,19 +35,16 @@ interface UseFormProps {
   topic: string;
   message: string;
 }
-const items = [
-  { id: 1, value: 'Samochody' },
-  { id: 2, value: 'Ogłoszenia' },
-  { id: 3, value: 'Porady' },
-];
+
 const ContactPage: React.FC<ContactProps> = ({
   facebookUrl,
   twitterUrl,
   instagramUrl,
   contactEmail,
+  contactCategories,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
-  const [selectedItem, setSelectedItem] = React.useState(items[0].value);
+  const [selectedItem, setSelectedItem] = React.useState(contactCategories[0]);
   const [state, setState] = React.useState({});
   const { register, handleSubmit, errors } = useForm<UseFormProps>();
   const router = useRouter();
@@ -139,7 +137,7 @@ const ContactPage: React.FC<ContactProps> = ({
           />
           <Select
             label="Kategoria"
-            items={items}
+            contactCategories={contactCategories}
             name="category"
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
