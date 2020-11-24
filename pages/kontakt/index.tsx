@@ -23,6 +23,7 @@ const Contact: NextPage<ContactProps> = ({ articleCategories, tipCategories }) =
     facebookUrl,
     twitterUrl,
     instagramUrl,
+    contactCategories,
   } = attributes;
   const router = useRouter();
   return (
@@ -38,6 +39,7 @@ const Contact: NextPage<ContactProps> = ({ articleCategories, tipCategories }) =
         facebookUrl={facebookUrl}
         twitterUrl={twitterUrl}
         instagramUrl={instagramUrl}
+        contactCategories={contactCategories.split(' ')}
       />
     </Layout>
   );
