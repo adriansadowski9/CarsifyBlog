@@ -174,13 +174,12 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć' 
+      - label: 'Zdjęcia w galerii'
         name: 'gallery'
-        widget: 'image'
-        allow_multiple: true
-        media_library: 
-          config:
-            multiple: true 
+        widget: 'list'
+        fields:
+          - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
+          - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -220,13 +219,12 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć'
+      - label: 'Zdjęcia w galerii'
         name: 'gallery'
-        widget: 'image'
-        allow_multiple: true
-        media_library: 
-          config:
-            multiple: true 
+        widget: 'list'
+        fields:
+          - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
+          - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -273,13 +271,12 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć'
+      - label: 'Zdjęcia w galerii'
         name: 'gallery'
-        widget: 'image'
-        allow_multiple: true
-        media_library: 
-          config:
-            multiple: true 
+        widget: 'list'
+        fields:
+          - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
+          - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
