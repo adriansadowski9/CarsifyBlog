@@ -23,7 +23,9 @@ carData:
   price: 135 300 Euro
   torque: 283
   year: 1979
-gallery: /assets/img/ferrari-308-pod-salonem-w-katowicach.jpg
+gallery:
+  - 'https://ucarecdn.com/bb02d26f-2234-46dd-baa2-b8d19d1a3c23~2/nth/0/'
+  - 'https://ucarecdn.com/bb02d26f-2234-46dd-baa2-b8d19d1a3c23~2/nth/1/'
 highlightedText: >-
   308 GTB zadebiutował na pokazach w Paryżu i Londynie w 1975 roku. Zbudowany
   według projektu Leonardo Fioravanti’ego, zachował V8 z Ferrari 308 GT4,
