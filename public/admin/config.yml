@@ -142,6 +142,13 @@ collections:
           required: true,
         }
       - { label: 'Ikona kategorii', name: 'icon', widget: 'string', required: true }
+  - name: 'category-contact'
+    label: 'Kategorie kontakt'
+    folder: 'content/categories/contact'
+    create: true
+    fields:
+      - { label: 'Nazwa kategorii', name: 'title', widget: 'string', required: true }
+      - { label: 'Pozycja na liście', name: 'position', widget: 'number', required: true }
   - name: 'articles'
     label: 'Artykuły'
     folder: 'content/posts/articles'
