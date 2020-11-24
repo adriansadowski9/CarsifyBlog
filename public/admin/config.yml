@@ -1,6 +1,10 @@
 backend:
   name: git-gateway
   branch: master
+media_library:
+  name: uploadcare
+  config:
+    publicKey: a1f45fe42163833710fa
 media_folder: public/assets/img
 public_folder: /assets/img
 slug:
