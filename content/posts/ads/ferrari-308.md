@@ -24,8 +24,10 @@ carData:
   torque: 283
   year: 1979
 gallery:
-  - 'https://ucarecdn.com/bb02d26f-2234-46dd-baa2-b8d19d1a3c23~2/nth/0/'
-  - 'https://ucarecdn.com/bb02d26f-2234-46dd-baa2-b8d19d1a3c23~2/nth/1/'
+  - image: '/assets/img/wnetrze-ferrari-308.jpg'
+    alt: Wnętrze Ferrari 308 GTB
+  - image: '/assets/img/ferrari-308-pod-salonem-w-katowicach.jpg'
+    alt: Ferrari 308 pod salonem w Katowicach
 highlightedText: >-
   308 GTB zadebiutował na pokazach w Paryżu i Londynie w 1975 roku. Zbudowany
   według projektu Leonardo Fioravanti’ego, zachował V8 z Ferrari 308 GT4,
