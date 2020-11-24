@@ -1,10 +1,6 @@
 backend:
   name: git-gateway
   branch: master
-media_library:
-  name: uploadcare
-  config:
-    publicKey: a1f45fe42163833710fa
 media_folder: public/assets/img
 public_folder: /assets/img
 slug:
@@ -178,13 +174,12 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć' 
-        name: 'gallery'
-        widget: 'image'
-        allow_multiple: true
-        media_library: 
-          config:
-            multiple: true 
+      - label: 'Zdjęcia w galerii'
+          name: 'gallery'
+          widget: 'list'
+          fields:
+            - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
+            - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -224,13 +219,12 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć'
-        name: 'gallery'
-        widget: 'image'
-        allow_multiple: true
-        media_library: 
-          config:
-            multiple: true 
+      - label: 'Zdjęcia w galerii'
+          name: 'gallery'
+          widget: 'list'
+          fields:
+            - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
+            - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -277,13 +271,12 @@ collections:
         fields:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
-      - label: 'Galeria zdjęć'
-        name: 'gallery'
-        widget: 'image'
-        allow_multiple: true
-        media_library: 
-          config:
-            multiple: true 
+      - label: 'Zdjęcia w galerii'
+          name: 'gallery'
+          widget: 'list'
+          fields:
+            - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
+            - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',

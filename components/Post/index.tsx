@@ -72,7 +72,10 @@ interface PostProps {
     doors: string;
     price: string;
   };
-  galleryImages: ResponsiveImage[];
+  galleryImages: {
+    image: ResponsiveImage;
+    alt: string;
+  }[];
 }
 
 const Post: React.FC<PostProps> = ({
@@ -116,9 +119,11 @@ const Post: React.FC<PostProps> = ({
     extensions: ['SeeAlso', 'AddGallery'],
   });
   const images = galleryImages
-    ? galleryImages.map((image) => ({
-        original: image.images[image.images.length - 1].path,
-        thumbnail: image.images[0].path,
+    ? galleryImages.map((galleryItem) => ({
+        original: galleryItem.image.images[galleryItem.image.images.length - 1].path,
+        thumbnail: galleryItem.image.images[0].path,
+        originalAlt: galleryItem.alt,
+        thumbnailAlt: `${galleryItem.alt} (miniatura)`,
       }))
     : [];
 
