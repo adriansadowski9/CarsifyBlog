@@ -220,11 +220,11 @@ collections:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
       - label: 'Zdjęcia w galerii'
-          name: 'gallery'
-          widget: 'list'
-          fields:
-            - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
-            - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
+        name: 'gallery'
+        widget: 'list'
+        fields:
+          - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
+          - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -272,11 +272,11 @@ collections:
           - { label: 'Nazwa', name: 'name', widget: 'string', required: true }
           - { label: 'Odnośnik', name: 'link', widget: 'string', required: true }
       - label: 'Zdjęcia w galerii'
-          name: 'gallery'
-          widget: 'list'
-          fields:
-            - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
-            - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
+        name: 'gallery'
+        widget: 'list'
+        fields:
+          - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
+          - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
