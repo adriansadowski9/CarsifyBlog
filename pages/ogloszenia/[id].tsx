@@ -130,7 +130,7 @@ const Ad: NextPage<AdProps> = ({
           galleryImages={galleryResponsiveImages}
           moreSection={
             <AdsContainer isHorizontal>
-              <MoreSectionTitle>Więcej perełek z ogłoszeń</MoreSectionTitle>
+              <MoreSectionTitle isMore={moreAds.length}>Więcej perełek z ogłoszeń</MoreSectionTitle>
               {moreAds.map((article, index) => {
                 const { featuredImage, title, highlightedText, carData } = article.attributes;
                 const { slug } = article;

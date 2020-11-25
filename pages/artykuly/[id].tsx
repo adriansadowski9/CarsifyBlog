@@ -166,7 +166,6 @@ const Article: NextPage<ArticleProps> = ({
     const categoryInfo = articleCategories.find(
       (articleCategory) => articleCategory.attributes.title === category
     );
-
     return (
       <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
         <PageHead
@@ -204,7 +203,7 @@ const Article: NextPage<ArticleProps> = ({
           galleryImages={galleryResponsiveImages}
           moreSection={
             <ArticlesContainer>
-              <MoreSectionTitle>Więcej artykułów</MoreSectionTitle>
+              <MoreSectionTitle isMore={moreArticles.length}>Więcej artykułów</MoreSectionTitle>
               {moreArticles.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
                 const { slug } = article;
