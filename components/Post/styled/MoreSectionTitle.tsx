@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const MoreSectionTitle = styled.h2<{ isMore: boolean }>`
-  display: ${(props) => (props.isMore ? 'initial' : 'none')};
+  ${(props) => (!props.isMore ? 'display: none;' : '')}
   width: 100%;
   font-size: ${(props) => props.theme.fontSizes.xl};
   color: ${(props) => props.theme.colors.moreSection};
