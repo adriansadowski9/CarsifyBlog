@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
 
-const Menu = styled.div<{ isOpen }>`
+const Menu = styled.div<{ isOpen: boolean; isTipsOpen: boolean }>`
   position: fixed;
-  top: 0;
+  top: ${(props) => (props.isTipsOpen ? '30px' : '0')};
   right: ${(props) => (props.isOpen ? '0%' : '-100%')};
   width: 100%;
   height: 100%;
@@ -24,7 +24,9 @@ const Menu = styled.div<{ isOpen }>`
     right: ${(props) => props.theme.spaces.l};
     bottom: ${(props) => props.theme.spaces.l};
   }
-
+  @media only screen and (min-width: 375px) {
+    top: 0;
+  }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     position: static;
     visibility: visible;

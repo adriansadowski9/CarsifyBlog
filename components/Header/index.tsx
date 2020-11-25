@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
             </LogoIconWrapper>
           </LogoWrapper>
         </Link>
-        <Menu isOpen={isMobileMenuOpened}>
+        <Menu isOpen={isMobileMenuOpened} isTipsOpen={isTipsOpen}>
           <NavList>
             <NavListItem>
               <Link href="/" passHref>
@@ -109,7 +109,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                     as="button"
                     onClick={() => handleArticlesOpen()}
                     isActive={
-                      (router.pathname === '/artykuly' && !isArticlesOpen) ||
+                      (router.pathname.startsWith('/artykuly') && !isArticlesOpen) ||
                       (router.pathname === '/artykuly/[id]' && !isAnyArticleCategoryActive)
                     }
                   >
