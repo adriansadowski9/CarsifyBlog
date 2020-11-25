@@ -24,7 +24,7 @@ const Menu = styled.div<{ isOpen: boolean; isTipsOpen: boolean }>`
     right: ${(props) => props.theme.spaces.l};
     bottom: ${(props) => props.theme.spaces.l};
   }
-  @media only screen and (min-width: 375px) {
+  @media only screen and (min-height: 630px) {
     top: 0;
   }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
