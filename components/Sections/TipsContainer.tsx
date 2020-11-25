@@ -6,7 +6,6 @@ const TipsContainer = styled.div<{
   hasLongCategories?: boolean;
 }>`
   display: grid;
-
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     grid-template-columns: 400px 400px;
 

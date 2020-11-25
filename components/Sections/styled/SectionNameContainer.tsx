@@ -16,9 +16,6 @@ const SectionNameContainer = styled.div`
     height: 1px;
     background: ${(props) => props.theme.colors.border};
   }
-  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    grid-column: 1/3;
-  }
 `;
 
 export default SectionNameContainer;
