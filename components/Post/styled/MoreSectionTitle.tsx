@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const MoreSectionTitle = styled.h2`
+const MoreSectionTitle = styled.h2<{ isMore: boolean }>`
+  display: ${(props) => (props.isMore ? 'initial' : 'none')};
   width: 100%;
   font-size: ${(props) => props.theme.fontSizes.xl};
   color: ${(props) => props.theme.colors.moreSection};
@@ -8,7 +9,6 @@ const MoreSectionTitle = styled.h2`
   margin-bottom: ${(props) => props.theme.spaces.s};
   padding-left: ${(props) => props.theme.spaces.s};
   position: relative;
-
   &:before {
     content: '';
     position: absolute;

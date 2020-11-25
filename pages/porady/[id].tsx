@@ -200,7 +200,7 @@ const Tip: NextPage<TipProps> = ({
           galleryImages={galleryResponsiveImages}
           moreSection={
             <TipsContainer isHorizontal>
-              <MoreSectionTitle>Więcej porad</MoreSectionTitle>
+              <MoreSectionTitle isMore={moreTips.length}>Więcej porad</MoreSectionTitle>
               {moreTips.map((article, index) => {
                 const { featuredImage, title, highlightedText, category } = article.attributes;
                 const { slug } = article;
