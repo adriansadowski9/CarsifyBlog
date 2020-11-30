@@ -7,8 +7,8 @@ title: BMW E23 735i Touring - prototyp na sprzedaż!
 subtitle: >-
   BMW E23 735i Touring została zaprezentowana we Frankfurcie w 1980 roku i jest
   to to niezwykle rzadka seria 7, której produkcja zakończyła się na dwóch
-  prototypowych sztukach. Jedna z nich jest obecnie dostępna w Szwajcarii na
-  sprzedaż za blisko 500 000zł! 
+  prototypowych sztukach. Jedna z nich jest obecnie dostępna na sprzedaż w
+  Szwajcarii za blisko 500 000zł! 
 date: 2020-11-30T10:03:54.515Z
 featuredImage: /assets/img/4.jpg
 carData:
@@ -72,7 +72,7 @@ text: >-
 
 
   :-> Ogłoszenie znajduje się tutaj:
-  <https://www.autoscout24.ch/de/d/bmw-735-kombi-1983-oldtimer?utm_campaign=as24_share_android&utm_medium=social_sharing&utm_source=app_share&vehid=8092981>
+  <https://www.autoscout24.ch/de/d/bmw-735-kombi-1983-oldtimer?vehid=8092981>
 
 
   :-gallery>
