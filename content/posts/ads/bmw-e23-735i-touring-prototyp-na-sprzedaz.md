@@ -14,7 +14,7 @@ featuredImage: /assets/img/4.jpg
 carData:
   body: Touring
   course: 11000
-  doors: 4
+  doors: 5
   engine: 3430 cm3
   gearbox: Automatyczna
   hp: 204
@@ -44,7 +44,7 @@ highlightedText: >-
   na seryjną produkcję tego modelu w rezultacie czego powstał w jedynie dwóch
   sztukach! Cena? Zawrotnie 120 000 franków szwajcarskich co przekłada się na
   blisko pół miliona złotych! W tej kwocie jesteśmy w stanie kupić chociażby
-  nowe, dobrze doposażone **BMW serii 7**!
+  nowe, dobrze doposażone BMW serii 7!
 text: >-
   ## Wyposażenie
 
@@ -53,7 +53,7 @@ text: >-
   oferowanym aucie znajdziemy takie dogodności jak między innymi: elektrycznie
   regulowane i podgrzewane lusterka, komputer pokładowy, elektryczne szyby z
   przodu oraz z tyłu, elektrycznie wspomagany układ kierowniczy, centralny
-  zamek, klimatyzacja automatyczna. 
+  zamek, klimatyzację automatyczną. 
 
   Powyższe wyposażenie potrafi zaskoczyć nawet właścicieli obecnie produkowanych
   samochodów, w których niejednokrotnie możemy spotkać się z brakiem
@@ -65,9 +65,9 @@ text: >-
 
   Pod maską BMW E23 735i w wersji Touring pracuje sześciocylindrowa, trzy i pół
   litrowa benzynowa jednostką generująca 204 konie mechaniczne. Jasne wnętrze,
-  które zostało zachowane w niemal idealnym stanie wygląda na prawdę świetnie!
-  Samochód ten przetrwał na prawdę bardzo dobrze próbę czasu (w ciągu 30 lat nie
-  nabawił się nawet grama rdzy!) przez co jest niewątpliwie gratką dla
+  które zostało zachowane w niemal idealnym stanie wygląda naprawdę świetnie!
+  Samochód ten świetnie przetrwał bardzo dobrze próbę czasu (w ciągu 30 lat nie
+  nabawił się ani grama rdzy!) przez co jest niewątpliwie gratką dla
   kolekcjonerów. 
 
 
