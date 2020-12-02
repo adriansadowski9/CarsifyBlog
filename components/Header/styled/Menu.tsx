@@ -19,12 +19,6 @@ const Menu = styled.div<{ isOpen }>`
       ? 'right 0.4s cubic-bezier(0.33, 0.66, 0.75, 0.75)'
       : 'right 0.4s cubic-bezier(0.80, 0.25, 0.75, 0.75)'};
 
-  ${DarkModeButton} {
-    position: absolute;
-    right: ${(props) => props.theme.spaces.l};
-    bottom: ${(props) => props.theme.spaces.l};
-  }
-
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     position: static;
     visibility: visible;
@@ -32,9 +26,6 @@ const Menu = styled.div<{ isOpen }>`
     width: auto;
     height: 90px;
     flex-direction: row;
-    ${DarkModeButton} {
-      position: static;
-    }
   }
 `;
 

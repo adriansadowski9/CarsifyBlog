@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const DarkModeButton = styled.button`
-  width: 70px;
-  height: 70px;
-  background: ${(props) => props.theme.colors.themeButtonBg};
+const SearchButton = styled.button`
+  background: none;
   border: none;
-  margin: 0;
+  padding: ${(props) => props.theme.spaces.xxxs};
+  margin-right: ${(props) => props.theme.spaces.xxs};
   cursor: pointer;
+  line-height: 0;
 
   svg {
     width: 23px;
@@ -18,8 +18,7 @@ const DarkModeButton = styled.button`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    width: 90px;
-    height: 90px;
+    margin-right: ${(props) => props.theme.spaces.s};
 
     svg {
       width: 32px;
@@ -28,4 +27,4 @@ const DarkModeButton = styled.button`
   }
 `;
 
-export default DarkModeButton;
+export default SearchButton;

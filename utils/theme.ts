@@ -7,6 +7,7 @@ const colors = {
   gray: '#A6A6A6',
   darkGray: '#262626',
   green: '#239B56',
+  lightGray: '#F0F0F0',
 };
 
 const fontSizes = {
@@ -78,6 +79,9 @@ export interface Theme {
     tipIconCircleBg: string;
     tipIcon: string;
     menuActiveItem: string;
+    themeButtonBg: string;
+    themeButtonIcon: string;
+    actionButton: string;
     hamburger: string;
     menuArrow: string;
     iconInfoBg: string;
@@ -141,6 +145,9 @@ export const lightTheme: Theme = {
     tipIconCircleBg: colors.black,
     tipIcon: colors.white,
     menuActiveItem: colors.red,
+    themeButtonBg: colors.darkGray,
+    themeButtonIcon: colors.white,
+    actionButton: colors.black,
     hamburger: colors.red,
     menuArrow: colors.red,
     iconInfoBg: colors.silver,
@@ -204,6 +211,9 @@ export const darkTheme: Theme = {
     tipIconCircleBg: colors.black,
     tipIcon: colors.white,
     menuActiveItem: colors.red,
+    themeButtonBg: colors.lightGray,
+    themeButtonIcon: colors.darkGray,
+    actionButton: colors.white,
     hamburger: colors.red,
     menuArrow: colors.red,
     iconInfoBg: colors.silver,
