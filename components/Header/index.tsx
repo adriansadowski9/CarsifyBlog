@@ -70,6 +70,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
     setIsTipsOpen(false);
     setIsArticlesOpen(false);
   };
+  console.log('push');
   return (
     <header>
       <Navigation>
