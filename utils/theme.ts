@@ -1,13 +1,14 @@
 const colors = {
   white: '#FFFFFF',
-  black: '#0D0D0D',
-  red: '#C20708',
-  silver: '#CCD4DA',
-  darkSilver: '#A4B3BF',
+  lightestGray: '#FEFEFE',
+  lightGray: '#F0F0F0',
   gray: '#A6A6A6',
   darkGray: '#262626',
+  silver: '#CCD4DA',
+  darkSilver: '#A4B3BF',
+  black: '#0D0D0D',
+  red: '#C20708',
   green: '#239B56',
-  lightGray: '#F0F0F0',
 };
 
 const fontSizes = {
@@ -133,7 +134,7 @@ export const lightTheme: Theme = {
   spaces,
   breakpoints,
   colors: {
-    bg: colors.white,
+    bg: colors.lightestGray,
     text: colors.black,
     sectionText: colors.gray,
     border: colors.silver,
@@ -211,7 +212,7 @@ export const darkTheme: Theme = {
     tipIconCircleBg: colors.black,
     tipIcon: colors.white,
     menuActiveItem: colors.red,
-    themeButtonBg: colors.lightGray,
+    themeButtonBg: colors.lightestGray,
     themeButtonIcon: colors.darkGray,
     actionButton: colors.white,
     hamburger: colors.red,

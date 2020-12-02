@@ -4,6 +4,7 @@ const MainContent = styled.main`
   padding: 0 ${(props) => props.theme.spaces.s};
   display: grid;
   margin-bottom: ${(props) => props.theme.spaces.m};
+
   @media only screen and (max-width: 320px) {
     grid-template-columns: 280px;
   }

@@ -16,7 +16,7 @@ const SelectDropdown = styled.ul<{ isOpen: boolean }>`
   padding: 0;
   z-index: 2;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
-  transition: opacity 0.3s;
+  transition: all 0.3s;
 `;
 
 export default SelectDropdown;

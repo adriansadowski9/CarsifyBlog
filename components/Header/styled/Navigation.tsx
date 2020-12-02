@@ -7,7 +7,6 @@ const Navigation = styled.nav<{ scrollStyles: boolean }>`
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  background: ${(props) => props.theme.colors.bg};
   z-index: 150;
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
