@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const LinkButton = styled.a<{ isActive?: boolean }>`
   width: 100%;
   color: ${(props) => props.theme.colors.text};
-  font-size: ${(props) => props.theme.fontSizes.l};
-  font-weight: ${(props) => props.theme.fontWeights.medium};
+  font-size: ${(props) => props.theme.fontSizes.xl};
+  font-weight: ${(props) => props.theme.fontWeights.regular};
   background: transparent;
   border: none;
   outline: 0;

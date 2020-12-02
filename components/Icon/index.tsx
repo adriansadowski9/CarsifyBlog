@@ -14,7 +14,9 @@ import CarsifyLogo from '@assets/icons/Logo.svg';
 import Moon from '@assets/icons/Moon.svg';
 import News from '@assets/icons/News.svg';
 import Pinterest from '@assets/icons/Pinterest.svg';
+import Search from '@assets/icons/Search.svg';
 import SeatBelt from '@assets/icons/SeatBelt.svg';
+import Socials from '@assets/icons/Socials.svg';
 import SteeringWheel from '@assets/icons/SteeringWheel.svg';
 import Stop from '@assets/icons/Stop.svg';
 import Sun from '@assets/icons/Sun.svg';
@@ -39,7 +41,9 @@ const icons: { [index: string]: IconVariantProps } = {
   [IconName.Fuel]: { flat: Fuel },
   [IconName.LightBulb]: { flat: LightBulb },
   [IconName.News]: { flat: News },
+  [IconName.Search]: { flat: Search },
   [IconName.SeatBelt]: { flat: SeatBelt },
+  [IconName.Socials]: { flat: Socials },
   [IconName.SteeringWheel]: { flat: SteeringWheel },
   [IconName.Stop]: { flat: Stop },
   [IconName.Facebook]: { color: Facebook },

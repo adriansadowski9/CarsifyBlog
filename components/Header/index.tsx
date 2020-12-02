@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { ThemeContext } from 'styled-components';
 
 import MenuDropdown from '@components/Header/MenuDropdown';
+import ActionButtonsContainer from '@components/Header/styled/ActionButtonsContainer';
 import DarkModeButton from '@components/Header/styled/DarkModeButton';
 import Hamburger from '@components/Header/styled/Hamburger';
 import HamburgerContainer from '@components/Header/styled/HamburgerContainer';
@@ -18,6 +19,8 @@ import Navigation from '@components/Header/styled/Navigation';
 import NavItemChevronContainer from '@components/Header/styled/NavItemChevronContainer';
 import NavList from '@components/Header/styled/NavList';
 import NavListItem from '@components/Header/styled/NavListItem';
+import SearchButton from '@components/Header/styled/SearchButton';
+import SocialsButton from '@components/Header/styled/SocialsButton';
 import Icon from '@components/Icon';
 import DarkModeContext from '@contexts/darkModeContext';
 import { ArticleCategory } from '@pages/artykuly/[id]';
@@ -201,19 +204,45 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               </Link>
             </NavListItem>
           </NavList>
+        </Menu>
+        <ActionButtonsContainer>
+          {!isMobileMenuOpened && (
+            <SearchButton>
+              <Icon
+                iconName={IconName.Search}
+                variant="flat"
+                fill={themeContext.colors.actionButton}
+              />
+            </SearchButton>
+          )}
+          <SocialsButton>
+            <Icon
+              iconName={IconName.Socials}
+              variant="flat"
+              fill={themeContext.colors.actionButton}
+            />
+          </SocialsButton>
+          <HamburgerContainer onClick={() => toggleMobileMenuCloseDrop()}>
+            <Hamburger isMenuOpened={isMobileMenuOpened} />
+          </HamburgerContainer>
           {darkModeContext.value ? (
             <DarkModeButton type="button" onClick={darkModeContext.disable}>
-              <Icon iconName={IconName.Sun} variant="flat" fill={themeContext.colors.text} />
+              <Icon
+                iconName={IconName.Sun}
+                variant="flat"
+                fill={themeContext.colors.themeButtonIcon}
+              />
             </DarkModeButton>
           ) : (
             <DarkModeButton type="button" onClick={darkModeContext.enable}>
-              <Icon iconName={IconName.Moon} variant="flat" fill={themeContext.colors.text} />
+              <Icon
+                iconName={IconName.Moon}
+                variant="flat"
+                fill={themeContext.colors.themeButtonIcon}
+              />
             </DarkModeButton>
           )}
-        </Menu>
-        <HamburgerContainer onClick={() => toggleMobileMenuCloseDrop()}>
-          <Hamburger isMenuOpened={isMobileMenuOpened} />
-        </HamburgerContainer>
+        </ActionButtonsContainer>
       </Navigation>
     </header>
   );

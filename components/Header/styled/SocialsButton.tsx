@@ -1,25 +1,20 @@
 import styled from 'styled-components';
 
-const DarkModeButton = styled.button`
-  width: 70px;
-  height: 70px;
-  background: ${(props) => props.theme.colors.themeButtonBg};
+const SocialsButton = styled.button`
+  display: none;
+  background: none;
   border: none;
-  margin: 0;
   cursor: pointer;
-
-  svg {
-    width: 23px;
-    height: 23px;
-  }
+  line-height: 0;
 
   &:focus {
     outline: none;
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    width: 90px;
-    height: 90px;
+    display: block;
+    padding: ${(props) => props.theme.spaces.xxxs};
+    margin-right: ${(props) => props.theme.spaces.m};
 
     svg {
       width: 32px;
@@ -28,4 +23,4 @@ const DarkModeButton = styled.button`
   }
 `;
 
-export default DarkModeButton;
+export default SocialsButton;
