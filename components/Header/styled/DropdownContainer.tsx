@@ -1,19 +1,25 @@
 import styled from 'styled-components';
 
 const DropdownContainer = styled.ul<{ isOpen: boolean }>`
-  opacity: ${(props) => (props.isOpen ? '1' : '0')};
-  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
-  height: ${(props) => (props.isOpen ? 'auto' : '0')};
+  position: fixed;
+  top: 80px;
+  bottom: 0;
+  right: ${(props) => (props.isOpen ? '0%' : '-100%')};
   list-style: none;
   width: 100%;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: ${(props) => props.theme.colors.bg};
   transition: opacity 0.5s;
+  transition: ${(props) =>
+    props.isOpen
+      ? 'right 0.4s cubic-bezier(0.33, 0.66, 0.75, 0.75)'
+      : 'right 0.4s cubic-bezier(0.80, 0.25, 0.75, 0.75)'};
+
+  z-index: 155;
+
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     opacity: 0;
     visibility: hidden;

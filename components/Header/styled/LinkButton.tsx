@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 
-const LinkButton = styled.a<{ isActive: boolean }>`
+const LinkButton = styled.a<{ isActive?: boolean }>`
+  width: 100%;
   color: ${(props) => props.theme.colors.text};
-  font-size: ${(props) => props.theme.fontSizes.xl};
+  font-size: ${(props) => props.theme.fontSizes.l};
   font-weight: ${(props) => props.theme.fontWeights.medium};
   background: transparent;
   border: none;
-  padding: 0;
   outline: 0;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  text-align: left;
   ${(props) =>
     props.isActive
       ? `
@@ -16,9 +20,9 @@ const LinkButton = styled.a<{ isActive: boolean }>`
         content: '';
         position: absolute;
         width: 5px;
-        height: 28px;
+        height: 100%;
         top: 0;
-        right: ${props.theme.spaces.l};
+        left:0;
         bottom: 0;
         background: ${props.theme.colors.menuActiveItem};
     }

@@ -7,6 +7,7 @@ const colors = {
   gray: '#A6A6A6',
   darkGray: '#262626',
   green: '#239B56',
+  lightGray: '#F0F0F0',
 };
 
 const fontSizes = {
@@ -120,6 +121,7 @@ export interface Theme {
     cookieConsentText: string;
     cookieConsentButtonBg: string;
     cookieConsentButtonText: string;
+    mobileMenuBorderBottom: string;
   };
 }
 
@@ -183,6 +185,7 @@ export const lightTheme: Theme = {
     cookieConsentText: colors.black,
     cookieConsentButtonBg: colors.red,
     cookieConsentButtonText: colors.white,
+    mobileMenuBorderBottom: colors.lightGray,
   },
 };
 
@@ -246,5 +249,6 @@ export const darkTheme: Theme = {
     cookieConsentText: colors.white,
     cookieConsentButtonBg: colors.red,
     cookieConsentButtonText: colors.white,
+    mobileMenuBorderBottom: colors.lightGray,
   },
 };

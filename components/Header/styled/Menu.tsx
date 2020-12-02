@@ -5,13 +5,14 @@ import DarkModeButton from '@components/Header/styled/DarkModeButton';
 const Menu = styled.div<{ isOpen }>`
   position: fixed;
   top: 0;
+  padding-top: 90px;
+
   right: ${(props) => (props.isOpen ? '0%' : '-100%')};
   width: 100%;
   height: 100%;
   background: ${(props) => props.theme.colors.bg};
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   z-index: 100;
   transition: ${(props) =>

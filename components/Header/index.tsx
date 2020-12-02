@@ -70,7 +70,11 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
     setIsTipsOpen(false);
     setIsArticlesOpen(false);
   };
-  console.log('push');
+
+  const toggleSubMenu = () => {
+    setIsTipsOpen(false);
+    setIsArticlesOpen(false);
+  };
   return (
     <header>
       <Navigation>
@@ -96,15 +100,6 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
             </NavListItem>
             <NavListItem>
               <NavItemChevronContainer>
-                <ChevronWrapper isOpen={isArticlesOpen} onClick={() => handleArticlesOpen()}>
-                  <Icon
-                    iconName={IconName.ChevronDown}
-                    variant="flat"
-                    width="16px"
-                    height="16px"
-                    fill={themeContext.colors.menuArrow}
-                  />
-                </ChevronWrapper>
                 {isMobileMenuOpened ? (
                   <LinkButton
                     as="button"
@@ -123,6 +118,15 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                     </LinkButton>
                   </Link>
                 )}
+                <ChevronWrapper onClick={() => handleArticlesOpen()}>
+                  <Icon
+                    iconName={IconName.ChevronDown}
+                    variant="flat"
+                    width="16px"
+                    height="16px"
+                    fill={themeContext.colors.menuArrow}
+                  />
+                </ChevronWrapper>
               </NavItemChevronContainer>
               <MenuDropdown
                 categories={articleCategories}
@@ -132,19 +136,11 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 isActive={router.pathname === '/artykuly' && !isAnyArticleCategoryActive}
                 isOpen={isArticlesOpen}
                 closeMobileMenu={() => setIsMobileMenuOpened(false)}
+                toggleSubMenu={toggleSubMenu}
               />
             </NavListItem>
             <NavListItem>
               <NavItemChevronContainer>
-                <ChevronWrapper isOpen={isTipsOpen} onClick={() => handleTipsOpen()}>
-                  <Icon
-                    iconName={IconName.ChevronDown}
-                    variant="flat"
-                    width="16px"
-                    height="10px"
-                    fill={themeContext.colors.menuArrow}
-                  />
-                </ChevronWrapper>
                 {isMobileMenuOpened ? (
                   <LinkButton
                     as="button"
@@ -163,6 +159,15 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                     </LinkButton>
                   </Link>
                 )}
+                <ChevronWrapper onClick={() => handleTipsOpen()}>
+                  <Icon
+                    iconName={IconName.ChevronDown}
+                    variant="flat"
+                    width="16px"
+                    height="10px"
+                    fill={themeContext.colors.menuArrow}
+                  />
+                </ChevronWrapper>
               </NavItemChevronContainer>
               <MenuDropdown
                 categories={tipCategories}
@@ -172,6 +177,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 isActive={router.pathname === '/porady' && !isAnyTipCategoryActive}
                 isOpen={isTipsOpen}
                 closeMobileMenu={() => setIsMobileMenuOpened(false)}
+                toggleSubMenu={toggleSubMenu}
               />
             </NavListItem>
             <NavListItem>

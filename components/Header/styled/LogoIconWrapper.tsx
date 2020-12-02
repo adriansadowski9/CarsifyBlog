@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const LogoIconWrapper = styled.div`
-  width: 64px;
+  width: 52px;
   margin-left: -${(props) => props.theme.spaces.m};
   z-index: 150;
 `;
