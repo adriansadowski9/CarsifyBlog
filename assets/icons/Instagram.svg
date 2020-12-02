@@ -1,9 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
   <defs>
     <style>.a{fill:url(#a);}.b{fill:#fff;}</style>
-    <linearGradient id="a" x1="-1.539" y1="-3.018" x2="-1.1" y2="-3.49" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#fd5"/><stop offset="0.5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/>
-    </linearGradient>
+    <radialGradient id="a" r="110%" cx="30%" fy="107%">
+      <stop offset="0%" stop-color="#fdf497" />
+      <stop offset="5%" stop-color="#fdf497" />
+      <stop offset="45%" stop-color="#fd5949" />
+      <stop offset="60%" stop-color="#d6249f" />
+      <stop offset="90%" stop-color="#285AEB" />
+    </radialGradient>
+<!--    <linearGradient id="a" x1="-1.539" y1="-3.018" x2="-1.1" y2="-3.49" gradientUnits="objectBoundingBox">-->
+<!--      <stop offset="0" stop-color="#fd5"/><stop offset="0.5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/>-->
+<!--    </linearGradient>-->
   </defs>
     <g transform="translate(0.07 0.038)">
       <path class="a" d="M1.5,1.628C-.385,3.581,0,5.655,0,11.958c0,5.234-.913,10.481,3.867,11.716,1.493.384,14.719.384,16.209,0a5.139,5.139,0,0,0,3.831-4.942c.031-.393.031-13.145,0-13.545A5.147,5.147,0,0,0,19.393.11,21.533,21.533,0,0,0,15.864,0C5.72,0,3.5-.447,1.5,1.628Z"/>

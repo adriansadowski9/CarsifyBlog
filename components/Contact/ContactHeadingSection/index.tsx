@@ -32,7 +32,7 @@ const ContactHeadingSection: React.FC<SocialProps> = ({
           <Icon iconName={IconName.Twitter} variant="color" width="24px" height="24px" />
         </SocialButton>
         <SocialButton as="a" href={`https://${instagramUrl}`} target="_blank">
-          <Icon iconName={IconName.Pinterest} variant="color" width="24px" height="24px" />
+          <Icon iconName={IconName.Instagram} variant="color" width="24px" height="24px" />
         </SocialButton>
       </SocialShareContainer>
       <ContactHeading>Porozmawiajmy</ContactHeading>
