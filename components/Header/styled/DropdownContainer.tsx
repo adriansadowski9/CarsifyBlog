@@ -9,6 +9,11 @@ const DropdownContainer = styled.ul<{ isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    background-color: ${(props) => props.theme.colors.bg};
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
+    height: auto;
+    top: 90px;
+    position: fixed;
     overflow: hidden;
   }
 `;
