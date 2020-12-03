@@ -5,6 +5,7 @@ import Calendar from '@assets/icons/Calendar.svg';
 import CarShow from '@assets/icons/CarShow.svg';
 import ChevronDown from '@assets/icons/ChevronDown.svg';
 import ChevronRight from '@assets/icons/ChevronRight.svg';
+import Close from '@assets/icons/Close.svg';
 import Documentation from '@assets/icons/Documentation.svg';
 import Facebook from '@assets/icons/Facebook.svg';
 import FacebookFlat from '@assets/icons/FacebookFlat.svg';
@@ -25,6 +26,7 @@ import Sun from '@assets/icons/Sun.svg';
 import Twitter from '@assets/icons/Twitter.svg';
 import TwitterFlat from '@assets/icons/TwitterFlat.svg';
 import IconName from '@utils/iconNames';
+
 interface IconVariantProps {
   flat?: React.FC;
   color?: React.FC;
@@ -39,6 +41,7 @@ const icons: { [index: string]: IconVariantProps } = {
   [IconName.Bucket]: { flat: Bucket },
   [IconName.Calendar]: { flat: Calendar },
   [IconName.CarShow]: { flat: CarShow },
+  [IconName.Close]: { flat: Close },
   [IconName.Documentation]: { flat: Documentation },
   [IconName.Fuel]: { flat: Fuel },
   [IconName.LightBulb]: { flat: LightBulb },

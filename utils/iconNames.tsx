@@ -7,6 +7,7 @@ enum IconName {
   Bucket = 'BUCKET',
   Calendar = 'CALENDAR',
   CarShow = 'CAR_SHOW',
+  Close = 'CLOSE',
   Documentation = 'DOCUMENTATION',
   Fuel = 'FUEL',
   LightBulb = 'LIGHT_BULB',

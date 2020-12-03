@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 
-const InputComponent = styled.input<{ customHeight: string; textarea: boolean }>`
+const InputComponent = styled.input<{
+  customHeight: string;
+  textarea?: boolean;
+  customPaddingBottom?: string;
+  useBiggerFont?: boolean;
+}>`
   width: 100%;
-  height: ${(props) => props.customHeight}px;
+  height: ${(props) => (props.customHeight ? `${props.customHeight}px` : '100%')};
   color: ${(props) => props.theme.colors.text};
-  font-size: ${(props) => props.theme.fontSizes.l};
+  font-size: ${(props) =>
+    props.useBiggerFont ? props.theme.fontSizes.xl : props.theme.fontSizes.l};
 
   padding-left: ${(props) => props.theme.spaces.xs};
   padding-top: ${(props) => (props.textarea ? props.theme.spaces.l : props.theme.spaces.xs)};
+  ${(props) => (props.customPaddingBottom ? `padding-bottom: ${props.customPaddingBottom};` : '')}
 
   background: transparent;
   border-top: none;

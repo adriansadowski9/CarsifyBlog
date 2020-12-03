@@ -13,7 +13,7 @@ const LogoWrapper = styled.a`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    margin-left: ${(props) => props.theme.spaces.xxxl};
+    margin-left: 37px;
   }
 `;
 
