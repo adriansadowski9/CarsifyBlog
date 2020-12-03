@@ -19,8 +19,6 @@ const DropdownInnerWrapper = styled.div`
   z-index: 155;
   background-color: ${(props) => props.theme.colors.bg};
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    opacity: 0;
-    visibility: hidden;
     position: relative;
     right: auto;
     left: 0;

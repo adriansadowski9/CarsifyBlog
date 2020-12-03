@@ -25,13 +25,28 @@ const ContactHeadingSection: React.FC<SocialProps> = ({
   return (
     <SocialWrapper>
       <SocialShareContainer horizontal="false">
-        <SocialButton as="a" href={`https://${facebookUrl}`} target="_blank">
+        <SocialButton
+          as="a"
+          href={`https://${facebookUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Icon iconName={IconName.Facebook} variant="color" width="24px" height="24px" />
         </SocialButton>
-        <SocialButton as="a" href={`https://${twitterUrl}`} target="_blank">
+        <SocialButton
+          as="a"
+          href={`https://${twitterUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Icon iconName={IconName.Twitter} variant="color" width="24px" height="24px" />
         </SocialButton>
-        <SocialButton as="a" href={`https://${instagramUrl}`} target="_blank">
+        <SocialButton
+          as="a"
+          href={`https://${instagramUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Icon iconName={IconName.Instagram} variant="color" width="24px" height="24px" />
         </SocialButton>
       </SocialShareContainer>

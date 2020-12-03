@@ -1,3 +1,5 @@
+import IconsContainer from './IconsContainer';
+
 import styled from 'styled-components';
 
 const SocialsButton = styled.button`

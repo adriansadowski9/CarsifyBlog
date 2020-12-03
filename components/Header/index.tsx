@@ -29,7 +29,6 @@ import { ArticleCategory } from '@pages/artykuly/[id]';
 import { TipCategory } from '@pages/porady/[id]';
 import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
-
 interface HeaderProps {
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
@@ -42,7 +41,8 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
   const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [isArticlesOpen, setIsArticlesOpen] = React.useState(false);
   const [isTipsOpen, setIsTipsOpen] = React.useState(false);
-
+  const [isIconsVisible, setIsIconsVisible] = React.useState(false);
+  const socialButtonRef = React.useRef<HTMLButtonElement>(null!);
   React.useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
     if (isMobileMenuOpened) {
@@ -52,7 +52,14 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
       body.style.overflow = 'auto';
     }
   }, [isMobileMenuOpened]);
-
+  const handleIconsVisible = (e) => {
+    if (socialButtonRef && socialButtonRef.current) {
+      isIconsVisible && !socialButtonRef.current.contains(e.target) ? setIsIconsVisible(false) : '';
+    }
+  };
+  React.useEffect(() => {
+    window.addEventListener('click', handleIconsVisible);
+  }, [isIconsVisible]);
   const isAnyArticleCategoryActive = articleCategories.some((articleCategory) =>
     router.asPath.startsWith(`/artykuly/${articleCategory.slug}`)
   );
@@ -104,8 +111,8 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               </Link>
             </NavListItem>
             <NavListItem>
-              <NavItemChevronContainer>
-                {isMobileMenuOpened ? (
+              {isMobileMenuOpened ? (
+                <NavItemChevronContainer>
                   <LinkButton
                     as="button"
                     onClick={() => handleArticlesOpen()}
@@ -116,23 +123,24 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                   >
                     Aktualności
                   </LinkButton>
-                ) : (
-                  <Link href="/artykuly" passHref>
-                    <LinkButton isActive={router.pathname.startsWith('/artykuly')}>
-                      Aktualności
-                    </LinkButton>
-                  </Link>
-                )}
-                <ChevronWrapper onClick={() => handleArticlesOpen()}>
-                  <Icon
-                    iconName={IconName.ChevronDown}
-                    variant="flat"
-                    width="16px"
-                    height="16px"
-                    fill={themeContext.colors.menuArrow}
-                  />
-                </ChevronWrapper>
-              </NavItemChevronContainer>
+                  <ChevronWrapper onClick={() => handleArticlesOpen()}>
+                    <Icon
+                      iconName={IconName.ChevronDown}
+                      variant="flat"
+                      width="16px"
+                      height="16px"
+                      fill={themeContext.colors.menuArrow}
+                    />
+                  </ChevronWrapper>
+                </NavItemChevronContainer>
+              ) : (
+                <Link href="/artykuly" passHref>
+                  <LinkButton isActive={router.pathname.startsWith('/artykuly')}>
+                    Aktualności
+                  </LinkButton>
+                </Link>
+              )}
+
               <MenuDropdown
                 categories={articleCategories}
                 basePath="/artykuly"
@@ -146,8 +154,8 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               />
             </NavListItem>
             <NavListItem>
-              <NavItemChevronContainer>
-                {isMobileMenuOpened ? (
+              {isMobileMenuOpened ? (
+                <NavItemChevronContainer>
                   <LinkButton
                     as="button"
                     onClick={() => handleTipsOpen()}
@@ -158,23 +166,24 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                   >
                     Moto porady
                   </LinkButton>
-                ) : (
-                  <Link href="/porady" passHref>
-                    <LinkButton isActive={router.pathname.startsWith('/porady')}>
-                      Moto porady
-                    </LinkButton>
-                  </Link>
-                )}
-                <ChevronWrapper onClick={() => handleTipsOpen()}>
-                  <Icon
-                    iconName={IconName.ChevronDown}
-                    variant="flat"
-                    width="16px"
-                    height="10px"
-                    fill={themeContext.colors.menuArrow}
-                  />
-                </ChevronWrapper>
-              </NavItemChevronContainer>
+                  <ChevronWrapper onClick={() => handleTipsOpen()}>
+                    <Icon
+                      iconName={IconName.ChevronDown}
+                      variant="flat"
+                      width="16px"
+                      height="10px"
+                      fill={themeContext.colors.menuArrow}
+                    />
+                  </ChevronWrapper>
+                </NavItemChevronContainer>
+              ) : (
+                <Link href="/porady" passHref>
+                  <LinkButton isActive={router.pathname.startsWith('/porady')}>
+                    Moto porady
+                  </LinkButton>
+                </Link>
+              )}
+
               <MenuDropdown
                 categories={tipCategories}
                 basePath="/porady"
@@ -207,41 +216,45 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 </LinkButton>
               </Link>
             </NavListItem>
-            <NavListItem isIcons={true}>
-              <IconsContainer>
-                <SingleIconWrapper backgroundColorProps="#4267B2" isDark={darkModeContext.value}>
-                  <Icon
-                    iconName={IconName.FacebookFlat}
-                    variant="flat"
-                    width="32px"
-                    height="32px"
-                    fill="#fff"
-                  />
-                </SingleIconWrapper>
-                <SingleIconWrapper backgroundColorProps="#1DA1F2" isDark={darkModeContext.value}>
-                  <Icon
-                    iconName={IconName.TwitterFlat}
-                    variant="flat"
-                    width="32px"
-                    height="32px"
-                    fill="#fff"
-                  />
-                </SingleIconWrapper>
-                <SingleIconWrapper
-                  backgroundColorProps="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)"
-                  isDark={darkModeContext.value}
-                >
-                  <Icon
-                    iconName={IconName.InstagramOutline}
-                    variant="flat"
-                    width="32px"
-                    height="32px"
-                    fill="#fff"
-                  />
-                </SingleIconWrapper>
-              </IconsContainer>
-            </NavListItem>
           </NavList>
+          <IconsContainer isIconsVisible={isIconsVisible}>
+            <a href="/" target="_blank" rel="noopener noreferrer">
+              <SingleIconWrapper backgroundColorProps="#4267B2" isDark={darkModeContext.value}>
+                <Icon
+                  iconName={IconName.FacebookFlat}
+                  variant="flat"
+                  width="32px"
+                  height="32px"
+                  fill="#fff"
+                />
+              </SingleIconWrapper>
+            </a>
+            <a href="/" target="_blank" rel="noopener noreferrer">
+              <SingleIconWrapper backgroundColorProps="#1DA1F2" isDark={darkModeContext.value}>
+                <Icon
+                  iconName={IconName.TwitterFlat}
+                  variant="flat"
+                  width="32px"
+                  height="32px"
+                  fill="#fff"
+                />
+              </SingleIconWrapper>
+            </a>
+            <a href="/" target="_blank" rel="noopener noreferrer">
+              <SingleIconWrapper
+                backgroundColorProps="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)"
+                isDark={darkModeContext.value}
+              >
+                <Icon
+                  iconName={IconName.InstagramOutline}
+                  variant="flat"
+                  width="32px"
+                  height="32px"
+                  fill="#fff"
+                />
+              </SingleIconWrapper>
+            </a>
+          </IconsContainer>
         </Menu>
         <ActionButtonsContainer>
           {!isMobileMenuOpened && (
@@ -253,7 +266,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               />
             </SearchButton>
           )}
-          <SocialsButton>
+          <SocialsButton onClick={() => setIsIconsVisible(!isIconsVisible)} ref={socialButtonRef}>
             <Icon
               iconName={IconName.Socials}
               variant="flat"
