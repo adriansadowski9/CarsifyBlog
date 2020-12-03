@@ -21,6 +21,7 @@ interface DropdownProps {
   isActive?: boolean;
   isOpen?: boolean;
   closeMobileMenu?: () => void;
+  isMobileMenuOpened: boolean;
   toggleSubMenu: () => void;
 }
 const MenuDropdown: React.FC<DropdownProps> = ({
@@ -32,13 +33,14 @@ const MenuDropdown: React.FC<DropdownProps> = ({
   isOpen,
   closeMobileMenu,
   toggleSubMenu,
+  isMobileMenuOpened,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   return (
-    <DropdownContainer isOpen={isOpen}>
-      <DropdownInnerWrapper>
-        <DropdownItem>
-          <Link href={`${basePath}`} passHref>
+    <DropdownInnerWrapper isOpen={isOpen}>
+      <DropdownContainer>
+        {isMobileMenuOpened ? (
+          <DropdownItem>
             <LinkButton onClick={toggleSubMenu}>
               <Icon
                 iconName={IconName.ChevronDown}
@@ -49,8 +51,10 @@ const MenuDropdown: React.FC<DropdownProps> = ({
               />
               <BackParagraph>Cofnij</BackParagraph>
             </LinkButton>
-          </Link>
-        </DropdownItem>
+          </DropdownItem>
+        ) : (
+          ''
+        )}
         <DropdownItem isActive={isActive}>
           <Link href={`${basePath}`} passHref>
             <LinkButton onClick={closeMobileMenu} isActive={isActive}>
@@ -77,8 +81,8 @@ const MenuDropdown: React.FC<DropdownProps> = ({
             </Link>
           </DropdownItem>
         ))}
-      </DropdownInnerWrapper>
-    </DropdownContainer>
+      </DropdownContainer>
+    </DropdownInnerWrapper>
   );
 };
 

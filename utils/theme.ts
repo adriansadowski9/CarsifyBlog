@@ -9,7 +9,6 @@ const colors = {
   black: '#0D0D0D',
   red: '#C20708',
   green: '#239B56',
-  lightGray: '#F0F0F0',
 };
 
 const fontSizes = {
@@ -260,6 +259,6 @@ export const darkTheme: Theme = {
     cookieConsentText: colors.white,
     cookieConsentButtonBg: colors.red,
     cookieConsentButtonText: colors.white,
-    mobileMenuBorderBottom: colors.lightGray,
+    mobileMenuBorderBottom: colors.black,
   },
 };

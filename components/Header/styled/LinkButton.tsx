@@ -1,3 +1,5 @@
+import DropdownContainer from './DropdownContainer';
+
 import styled from 'styled-components';
 
 const LinkButton = styled.a<{ isActive?: boolean }>`
@@ -52,6 +54,11 @@ const LinkButton = styled.a<{ isActive?: boolean }>`
     }
   `
         : ''}
+
+    &:hover ${DropdownContainer} {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 `;
 

@@ -7,8 +7,10 @@ import ChevronDown from '@assets/icons/ChevronDown.svg';
 import ChevronRight from '@assets/icons/ChevronRight.svg';
 import Documentation from '@assets/icons/Documentation.svg';
 import Facebook from '@assets/icons/Facebook.svg';
+import FacebookFlat from '@assets/icons/FacebookFlat.svg';
 import Fuel from '@assets/icons/Fuel.svg';
 import Instagram from '@assets/icons/Instagram.svg';
+import InstagramOutline from '@assets/icons/InstagramOutline.svg';
 import LightBulb from '@assets/icons/LightBulb.svg';
 import CarsifyLogo from '@assets/icons/Logo.svg';
 import Moon from '@assets/icons/Moon.svg';
@@ -21,8 +23,8 @@ import SteeringWheel from '@assets/icons/SteeringWheel.svg';
 import Stop from '@assets/icons/Stop.svg';
 import Sun from '@assets/icons/Sun.svg';
 import Twitter from '@assets/icons/Twitter.svg';
+import TwitterFlat from '@assets/icons/TwitterFlat.svg';
 import IconName from '@utils/iconNames';
-
 interface IconVariantProps {
   flat?: React.FC;
   color?: React.FC;
@@ -50,6 +52,9 @@ const icons: { [index: string]: IconVariantProps } = {
   [IconName.Instagram]: { color: Instagram },
   [IconName.Pinterest]: { color: Pinterest },
   [IconName.Twitter]: { color: Twitter },
+  [IconName.FacebookFlat]: { flat: FacebookFlat },
+  [IconName.TwitterFlat]: { flat: TwitterFlat },
+  [IconName.InstagramOutline]: { flat: InstagramOutline },
 };
 
 type IconVariant = 'flat' | 'color';

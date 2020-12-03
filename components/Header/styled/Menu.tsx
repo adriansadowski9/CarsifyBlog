@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-import DarkModeButton from '@components/Header/styled/DarkModeButton';
-
-const Menu = styled.div<{ isOpen }>`
+const Menu = styled.div<{ isOpen: boolean }>`
   position: fixed;
   top: 0;
   padding-top: 90px;
@@ -21,6 +19,8 @@ const Menu = styled.div<{ isOpen }>`
       : 'background .3s linear, color .3s linear, right 0.4s cubic-bezier(0.80, 0.25, 0.75, 0.75)'};
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    overflow: hidden;
+    padding: 0;
     position: static;
     visibility: visible;
     opacity: 1;

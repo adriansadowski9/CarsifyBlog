@@ -10,6 +10,7 @@ const NavList = styled.ul`
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     display: flex;
     margin-bottom: 0;
+    overflow-y: hidden;
   }
 `;
 

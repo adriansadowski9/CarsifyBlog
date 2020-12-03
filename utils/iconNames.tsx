@@ -1,5 +1,3 @@
-import ChevronRight from '@assets/icons/ChevronRight.svg';
-
 enum IconName {
   CarsifyLogo = 'CARSIFY_LOGO',
   ChevronDown = 'CHEVRON_DOWN',
@@ -22,6 +20,9 @@ enum IconName {
   Instagram = 'INSTAGRAM',
   Pinterest = 'PINTEREST',
   Twitter = 'TWITTER',
+  TwitterFlat = 'TWITTER_FLAT',
+  FacebookFlat = 'FACEBOOK_FLAT',
+  InstagramOutline = 'INSTAGRAM_OUTLINE',
 }
 
 export default IconName;

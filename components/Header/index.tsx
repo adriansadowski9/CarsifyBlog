@@ -1,4 +1,6 @@
 import ChevronWrapper from './styled/ChevronWrapper';
+import IconsContainer from './styled/IconsContainer';
+import SingleIconWrapper from './styled/SingleIconWrapper';
 
 import * as React from 'react';
 import Link from 'next/link';
@@ -139,6 +141,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 isActive={router.pathname === '/artykuly' && !isAnyArticleCategoryActive}
                 isOpen={isArticlesOpen}
                 closeMobileMenu={() => setIsMobileMenuOpened(false)}
+                isMobileMenuOpened={isMobileMenuOpened}
                 toggleSubMenu={toggleSubMenu}
               />
             </NavListItem>
@@ -180,6 +183,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 isActive={router.pathname === '/porady' && !isAnyTipCategoryActive}
                 isOpen={isTipsOpen}
                 closeMobileMenu={() => setIsMobileMenuOpened(false)}
+                isMobileMenuOpened={isMobileMenuOpened}
                 toggleSubMenu={toggleSubMenu}
               />
             </NavListItem>
@@ -202,6 +206,40 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                   Kontakt
                 </LinkButton>
               </Link>
+            </NavListItem>
+            <NavListItem isIcons={true}>
+              <IconsContainer>
+                <SingleIconWrapper backgroundColorProps="#4267B2" isDark={darkModeContext.value}>
+                  <Icon
+                    iconName={IconName.FacebookFlat}
+                    variant="flat"
+                    width="32px"
+                    height="32px"
+                    fill="#fff"
+                  />
+                </SingleIconWrapper>
+                <SingleIconWrapper backgroundColorProps="#1DA1F2" isDark={darkModeContext.value}>
+                  <Icon
+                    iconName={IconName.TwitterFlat}
+                    variant="flat"
+                    width="32px"
+                    height="32px"
+                    fill="#fff"
+                  />
+                </SingleIconWrapper>
+                <SingleIconWrapper
+                  backgroundColorProps="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)"
+                  isDark={darkModeContext.value}
+                >
+                  <Icon
+                    iconName={IconName.InstagramOutline}
+                    variant="flat"
+                    width="32px"
+                    height="32px"
+                    fill="#fff"
+                  />
+                </SingleIconWrapper>
+              </IconsContainer>
             </NavListItem>
           </NavList>
         </Menu>
