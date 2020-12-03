@@ -22,6 +22,7 @@ import Socials from '@assets/icons/Socials.svg';
 import SteeringWheel from '@assets/icons/SteeringWheel.svg';
 import Stop from '@assets/icons/Stop.svg';
 import Sun from '@assets/icons/Sun.svg';
+import ThinChevronRight from '@assets/icons/ThinChevronRight.svg';
 import Twitter from '@assets/icons/Twitter.svg';
 import TwitterFlat from '@assets/icons/TwitterFlat.svg';
 import IconName from '@utils/iconNames';
@@ -55,6 +56,7 @@ const icons: { [index: string]: IconVariantProps } = {
   [IconName.FacebookFlat]: { flat: FacebookFlat },
   [IconName.TwitterFlat]: { flat: TwitterFlat },
   [IconName.InstagramOutline]: { flat: InstagramOutline },
+  [IconName.ThinChevronRight]: { flat: ThinChevronRight },
 };
 
 type IconVariant = 'flat' | 'color';

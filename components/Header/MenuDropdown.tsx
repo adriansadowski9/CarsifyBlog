@@ -1,7 +1,8 @@
 import BackParagraph from './styled/BackParagraph';
+import DropdownCategoryName from './styled/DropdownCategoryName';
 import DropdownContainer from './styled/DropdownContainer';
-import DropdownInnerWrapper from './styled/DropdownInnerWrapper';
 import DropdownItem from './styled/DropdownItem';
+import DropdownWrapper from './styled/DropdownWrapper';
 import LinkButton from './styled/LinkButton';
 
 import * as React from 'react';
@@ -37,31 +38,36 @@ const MenuDropdown: React.FC<DropdownProps> = ({
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   return (
-    <DropdownInnerWrapper isOpen={isOpen && isMobileMenuOpened}>
+    <DropdownWrapper isOpen={isOpen && isMobileMenuOpened}>
       <DropdownContainer>
         {isMobileMenuOpened ? (
-          <DropdownItem>
-            <LinkButton onClick={toggleSubMenu}>
-              <Icon
-                iconName={IconName.ChevronDown}
-                variant="flat"
-                width="16px"
-                height="16px"
-                fill={themeContext.colors.menuArrow}
-              />
-              <BackParagraph>Cofnij</BackParagraph>
-            </LinkButton>
-          </DropdownItem>
+          <>
+            <DropdownItem>
+              <LinkButton onClick={toggleSubMenu}>
+                <Icon
+                  iconName={IconName.ChevronDown}
+                  variant="flat"
+                  width="16px"
+                  height="16px"
+                  fill={themeContext.colors.menuArrow}
+                />
+                <BackParagraph>Cofnij</BackParagraph>
+              </LinkButton>
+            </DropdownItem>
+
+            <DropdownItem isActive={isActive}>
+              <Link href={`${basePath}`} passHref>
+                <LinkButton onClick={closeMobileMenu} isActive={isActive}>
+                  Wszystkie
+                </LinkButton>
+              </Link>
+            </DropdownItem>
+          </>
         ) : (
-          ''
+          <DropdownCategoryName>
+            {basePath === '/artykuly' ? 'Aktualności' : 'Moto Porady'}
+          </DropdownCategoryName>
         )}
-        <DropdownItem isActive={isActive}>
-          <Link href={`${basePath}`} passHref>
-            <LinkButton onClick={closeMobileMenu} isActive={isActive}>
-              Wszystkie
-            </LinkButton>
-          </Link>
-        </DropdownItem>
         {categories.map((category, index) => (
           <DropdownItem
             key={index}
@@ -77,12 +83,23 @@ const MenuDropdown: React.FC<DropdownProps> = ({
                 }
               >
                 {category.attributes.title}
+                {!isMobileMenuOpened ? (
+                  <Icon
+                    iconName={IconName.ThinChevronRight}
+                    variant="flat"
+                    width="16px"
+                    height="16px"
+                    fill={themeContext.colors.menuArrow}
+                  />
+                ) : (
+                  ''
+                )}
               </LinkButton>
             </Link>
           </DropdownItem>
         ))}
       </DropdownContainer>
-    </DropdownInnerWrapper>
+    </DropdownWrapper>
   );
 };
 

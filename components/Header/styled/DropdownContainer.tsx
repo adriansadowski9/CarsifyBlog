@@ -15,6 +15,7 @@ const DropdownContainer = styled.ul<{ isOpen: boolean }>`
     background-color: ${(props) => props.theme.colors.bg};
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
     height: auto;
+    width: 350px;
     top: 90px;
     position: fixed;
     overflow: hidden;
