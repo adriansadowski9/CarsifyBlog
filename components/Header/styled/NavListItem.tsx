@@ -1,5 +1,5 @@
 import DropdownContainer from './DropdownContainer';
-import DropdownInnerWrapper from './DropdownInnerWrapper';
+import DropdownWrapper from './DropdownWrapper';
 
 import styled from 'styled-components';
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DropdownInnerWrapper = styled.div`
+const DropdownWrapper = styled.div`
   position: fixed;
   top: 90px;
   bottom: 0;
@@ -9,7 +9,6 @@ const DropdownInnerWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-
   transition: all 0.5s;
   transition: ${(props) =>
     props.isOpen
@@ -19,7 +18,8 @@ const DropdownInnerWrapper = styled.div`
   z-index: 155;
   background-color: ${(props) => props.theme.colors.bg};
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    position: relative;
+    width: 350px;
+    position: absolute;
     right: auto;
     left: 0;
     bottom: auto;
@@ -28,4 +28,4 @@ const DropdownInnerWrapper = styled.div`
     align-items: flex-start;
   }
 `;
-export default DropdownInnerWrapper;
+export default DropdownWrapper;

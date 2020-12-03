@@ -11,7 +11,7 @@ const LinkButton = styled.a<{ isActive?: boolean }>`
   text-decoration: none;
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: ${(props) => props.theme.spaces.s};
   text-align: left;
   ${(props) =>
     props.isActive
@@ -34,9 +34,7 @@ const LinkButton = styled.a<{ isActive?: boolean }>`
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     display: flex;
     margin: 0;
-    height: 90px;
-    line-height: 90px;
-    padding: 0 ${(props) => props.theme.spaces.m};
+    padding: ${(props) => props.theme.spaces.s};
 
     ${(props) =>
       props.isActive

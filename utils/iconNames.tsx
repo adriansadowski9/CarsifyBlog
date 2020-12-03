@@ -24,6 +24,7 @@ enum IconName {
   TwitterFlat = 'TWITTER_FLAT',
   FacebookFlat = 'FACEBOOK_FLAT',
   InstagramOutline = 'INSTAGRAM_OUTLINE',
+  ThinChevronRight = 'THIN_CHEVRON_RIGHT',
 }
 
 export default IconName;
