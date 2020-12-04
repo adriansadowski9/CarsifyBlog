@@ -2,8 +2,8 @@ import BackParagraph from './styled/BackParagraph';
 import DropdownCategoryName from './styled/DropdownCategoryName';
 import DropdownContainer from './styled/DropdownContainer';
 import DropdownItem from './styled/DropdownItem';
+import DropdownLinkButton from './styled/DropdownLinkButton';
 import DropdownWrapper from './styled/DropdownWrapper';
-import LinkButton from './styled/LinkButton';
 
 import * as React from 'react';
 import Link from 'next/link';
@@ -43,7 +43,7 @@ const MenuDropdown: React.FC<DropdownProps> = ({
         {isMobileMenuOpened ? (
           <>
             <DropdownItem>
-              <LinkButton onClick={toggleSubMenu}>
+              <DropdownLinkButton onClick={toggleSubMenu}>
                 <Icon
                   iconName={IconName.ChevronDown}
                   variant="flat"
@@ -52,14 +52,14 @@ const MenuDropdown: React.FC<DropdownProps> = ({
                   fill={themeContext.colors.menuArrow}
                 />
                 <BackParagraph>Cofnij</BackParagraph>
-              </LinkButton>
+              </DropdownLinkButton>
             </DropdownItem>
 
             <DropdownItem isActive={isActive}>
               <Link href={`${basePath}`} passHref>
-                <LinkButton onClick={closeMobileMenu} isActive={isActive}>
+                <DropdownLinkButton onClick={closeMobileMenu} isActive={isActive}>
                   Wszystkie
-                </LinkButton>
+                </DropdownLinkButton>
               </Link>
             </DropdownItem>
           </>
@@ -76,7 +76,7 @@ const MenuDropdown: React.FC<DropdownProps> = ({
             }
           >
             <Link as={`${basePath}/${category.slug}`} href={pagePath} passHref>
-              <LinkButton
+              <DropdownLinkButton
                 onClick={closeMobileMenu}
                 isActive={
                   basePath && isDropdownItemActive && isDropdownItemActive(basePath, category.slug)
@@ -94,7 +94,7 @@ const MenuDropdown: React.FC<DropdownProps> = ({
                 ) : (
                   ''
                 )}
-              </LinkButton>
+              </DropdownLinkButton>
             </Link>
           </DropdownItem>
         ))}
