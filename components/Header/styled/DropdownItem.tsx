@@ -14,6 +14,7 @@ const DropdownItem = styled.li`
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     > ${LinkButton} {
+      font-size: ${(props) => props.theme.fontSizes.l};
       padding-left: 40px;
       :hover {
         background-color: ${(props) => props.theme.colors.mobileMenuBorderBottom};

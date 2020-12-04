@@ -8,7 +8,10 @@ const ChevronWrapper = styled.button<{ isOpen?: boolean }>`
   border: none;
   background: transparent;
   outline: 0;
-  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+  &:hover {
+    cursor: pointer;
+  }
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     display: none;
     visibility: hidden;
   }
