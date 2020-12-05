@@ -14,7 +14,7 @@ const LinkButton = styled.a<{ isActive?: boolean; isMainCategory?: boolean }>`
   padding: ${(props) => props.theme.spaces.s};
   text-align: left;
   ${(props) =>
-    props.isActive
+    props.isActive || props.isMainCategory
       ? `
     &:after {
         content: '';
@@ -37,11 +37,11 @@ const LinkButton = styled.a<{ isActive?: boolean; isMainCategory?: boolean }>`
     padding: ${(props) => props.theme.spaces.s};
 
     ${(props) =>
-      props.isActive && props.isMainCategory
+      props.isActive
         ? `
     &:after {
         width: calc(100% - 2 * ${props.theme.spaces.xxl});
-        height: 5px;
+        height: 2px;
         top: unset;
         right: unset;
         left: 50%;

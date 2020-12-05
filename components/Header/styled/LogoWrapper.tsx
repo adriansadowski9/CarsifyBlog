@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const LogoWrapper = styled.a`
-  display: flex;
+const LogoWrapper = styled.a<{ isSearchOpened: boolean }>`
+  display: ${(props) => (props.isSearchOpened ? 'none' : 'flex')};
   align-items: center;
   text-decoration: none;
   z-index: 150;
@@ -13,7 +13,8 @@ const LogoWrapper = styled.a`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    margin-left: 37px;
+    display: flex;
+    margin-left: ${(props) => props.theme.spaces.xxs};
   }
 `;
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const DropdownWrapper = styled.div`
   position: fixed;
-  top: 90px;
+  top: 70px;
   bottom: 0;
   right: ${(props) => (props.isOpen ? '0' : '-100%')};
   list-style: none;

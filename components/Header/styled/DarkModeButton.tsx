@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const DarkModeButton = styled.button`
+  display: ${(props) => (props.isSearchOpened ? 'none' : 'block')};
   width: 70px;
   height: 70px;
   background: ${(props) => props.theme.colors.themeButtonBg};
@@ -18,9 +19,10 @@ const DarkModeButton = styled.button`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    display: block;
     svg {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
     }
   }
 `;

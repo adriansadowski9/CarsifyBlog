@@ -9,8 +9,8 @@ const SearchActionButton = styled.button`
   line-height: 0;
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 23px;
+    height: 23px;
   }
 
   &:focus {

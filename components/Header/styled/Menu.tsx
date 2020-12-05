@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Menu = styled.div<{ isOpen: boolean }>`
   position: fixed;
   top: 0;
-  padding-top: 90px;
+  padding-top: 70px;
 
   right: ${(props) => (props.isOpen ? '0%' : '-100%')};
   width: 100%;
@@ -25,9 +25,11 @@ const Menu = styled.div<{ isOpen: boolean }>`
     visibility: visible;
     opacity: 1;
     width: auto;
-    height: 90px;
+    height: 70px;
     flex-direction: row;
     background: none;
+
+    ${(props) => (props.isSearchOpened ? 'display: none' : 'display: block')};
   }
 `;
 

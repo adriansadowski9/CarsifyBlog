@@ -120,198 +120,195 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
     <header>
       <Navigation>
         <Link href="/" passHref>
-          <LogoWrapper onClick={() => setIsMobileMenuOpened(false)}>
+          <LogoWrapper onClick={() => setIsMobileMenuOpened(false)} isSearchOpened={isSearchOpened}>
             <LogoText as={router.pathname === '/' ? 'h1' : 'p'}>Carsify</LogoText>
             <LogoIconWrapper>
               <Icon iconName={IconName.CarsifyLogo} variant="color" />
             </LogoIconWrapper>
           </LogoWrapper>
         </Link>
-        {isSearchOpened ? (
-          <SearchContainer>
-            <SearchInput
-              value={searchValue}
-              onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-                setSearchValue(e.target.value)
-              }
-            />
-            <SearchButtonsContainer>
-              <SearchActionButton onClick={() => setIsSearchOpened(false)}>
-                <Icon
-                  iconName={IconName.Search}
-                  variant="flat"
-                  fill={themeContext.colors.actionButton}
-                />
-              </SearchActionButton>
-              <SearchActionButton onClick={() => setIsSearchOpened(false)}>
-                <Icon
-                  iconName={IconName.Close}
-                  variant="flat"
-                  fill={themeContext.colors.actionButton}
-                />
-              </SearchActionButton>
-            </SearchButtonsContainer>
-          </SearchContainer>
-        ) : (
-          <Menu isOpen={isMobileMenuOpened}>
-            <NavList>
-              <NavListItem>
-                <Link href="/" passHref>
-                  <LinkButton
-                    isActive={router.pathname === '/'}
-                    onClick={() => setIsMobileMenuOpened(false)}
-                  >
-                    Strona główna
-                  </LinkButton>
-                </Link>
-              </NavListItem>
-              <NavListItem>
-                {isMobileMenuOpened ? (
-                  <NavItemChevronContainer>
-                    <LinkButton
-                      as="button"
-                      onClick={() => handleArticlesOpen()}
-                      isActive={
-                        (router.pathname === '/artykuly' && !isArticlesOpen) ||
-                        (router.pathname === '/artykuly/[id]' && !isAnyArticleCategoryActive)
-                      }
-                    >
-                      Aktualności
-                    </LinkButton>
-                    <ChevronWrapper onClick={() => handleArticlesOpen()}>
-                      <Icon
-                        iconName={IconName.ChevronDown}
-                        variant="flat"
-                        width="16px"
-                        height="16px"
-                        fill={themeContext.colors.menuArrow}
-                      />
-                    </ChevronWrapper>
-                  </NavItemChevronContainer>
-                ) : (
-                  <Link href="/artykuly" passHref>
-                    <LinkButton isActive={router.pathname.startsWith('/artykuly')}>
-                      Aktualności
-                    </LinkButton>
-                  </Link>
-                )}
-
-                <MenuDropdown
-                  categories={articleCategories}
-                  basePath="/artykuly"
-                  pagePath="/artykuly/[id]"
-                  isDropdownItemActive={isDropdownItemActive}
-                  isActive={router.pathname === '/artykuly' && !isAnyArticleCategoryActive}
-                  isOpen={isArticlesOpen}
-                  closeMobileMenu={() => setIsMobileMenuOpened(false)}
-                  isMobileMenuOpened={isMobileMenuOpened}
-                  toggleSubMenu={toggleSubMenu}
-                />
-              </NavListItem>
-              <NavListItem>
-                {isMobileMenuOpened ? (
-                  <NavItemChevronContainer>
-                    <LinkButton
-                      as="button"
-                      onClick={() => handleTipsOpen()}
-                      isActive={
-                        (router.pathname.startsWith('/porady') && !isTipsOpen) ||
-                        (router.pathname === '/porady/[id]' && !isAnyTipCategoryActive)
-                      }
-                    >
-                      Moto porady
-                    </LinkButton>
-                    <ChevronWrapper onClick={() => handleTipsOpen()}>
-                      <Icon
-                        iconName={IconName.ChevronDown}
-                        variant="flat"
-                        width="16px"
-                        height="10px"
-                        fill={themeContext.colors.menuArrow}
-                      />
-                    </ChevronWrapper>
-                  </NavItemChevronContainer>
-                ) : (
-                  <Link href="/porady" passHref>
-                    <LinkButton isActive={router.pathname.startsWith('/porady')}>
-                      Moto porady
-                    </LinkButton>
-                  </Link>
-                )}
-
-                <MenuDropdown
-                  categories={tipCategories}
-                  basePath="/porady"
-                  pagePath="/porady/[id]"
-                  isDropdownItemActive={isDropdownItemActive}
-                  isActive={router.pathname === '/porady' && !isAnyTipCategoryActive}
-                  isOpen={isTipsOpen}
-                  closeMobileMenu={() => setIsMobileMenuOpened(false)}
-                  isMobileMenuOpened={isMobileMenuOpened}
-                  toggleSubMenu={toggleSubMenu}
-                />
-              </NavListItem>
-              <NavListItem>
-                <Link href="/ogloszenia" passHref>
-                  <LinkButton
-                    isActive={router.pathname.startsWith('/ogloszenia')}
-                    onClick={() => setIsMobileMenuOpened(false)}
-                  >
-                    Ogłoszenia
-                  </LinkButton>
-                </Link>
-              </NavListItem>
-              <NavListItem>
-                <Link href="/kontakt" passHref>
-                  <LinkButton
-                    isActive={router.pathname === '/kontakt'}
-                    onClick={() => setIsMobileMenuOpened(false)}
-                  >
-                    Kontakt
-                  </LinkButton>
-                </Link>
-              </NavListItem>
-            </NavList>
-            <IconsContainer isIconsVisible={isSocialIconsVisible}>
-              <a href="/" target="_blank" rel="noopener noreferrer">
-                <SingleIconWrapper backgroundColorProps="#4267B2" isDark={darkModeContext.value}>
-                  <Icon
-                    iconName={IconName.FacebookFlat}
-                    variant="flat"
-                    width="32px"
-                    height="32px"
-                    fill="#fff"
-                  />
-                </SingleIconWrapper>
-              </a>
-              <a href="/" target="_blank" rel="noopener noreferrer">
-                <SingleIconWrapper backgroundColorProps="#1DA1F2" isDark={darkModeContext.value}>
-                  <Icon
-                    iconName={IconName.TwitterFlat}
-                    variant="flat"
-                    width="32px"
-                    height="32px"
-                    fill="#fff"
-                  />
-                </SingleIconWrapper>
-              </a>
-              <a href="/" target="_blank" rel="noopener noreferrer">
-                <SingleIconWrapper
-                  backgroundColorProps="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)"
-                  isDark={darkModeContext.value}
+        <SearchContainer isSearchOpened={isSearchOpened}>
+          <SearchInput
+            value={searchValue}
+            onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+              setSearchValue(e.target.value)
+            }
+          />
+          <SearchButtonsContainer>
+            <SearchActionButton onClick={() => setIsSearchOpened(false)}>
+              <Icon
+                iconName={IconName.Search}
+                variant="flat"
+                fill={themeContext.colors.actionButton}
+              />
+            </SearchActionButton>
+            <SearchActionButton onClick={() => setIsSearchOpened(false)}>
+              <Icon
+                iconName={IconName.Close}
+                variant="flat"
+                fill={themeContext.colors.actionButton}
+              />
+            </SearchActionButton>
+          </SearchButtonsContainer>
+        </SearchContainer>
+        <Menu isOpen={isMobileMenuOpened} isSearchOpened={isSearchOpened}>
+          <NavList>
+            <NavListItem>
+              <Link href="/" passHref>
+                <LinkButton
+                  isActive={router.pathname === '/'}
+                  onClick={() => setIsMobileMenuOpened(false)}
                 >
-                  <Icon
-                    iconName={IconName.InstagramOutline}
-                    variant="flat"
-                    width="32px"
-                    height="32px"
-                    fill="#fff"
-                  />
-                </SingleIconWrapper>
-              </a>
-            </IconsContainer>
-          </Menu>
-        )}
+                  Strona główna
+                </LinkButton>
+              </Link>
+            </NavListItem>
+            <NavListItem>
+              {isMobileMenuOpened ? (
+                <NavItemChevronContainer>
+                  <LinkButton
+                    as="button"
+                    onClick={() => handleArticlesOpen()}
+                    isActive={
+                      (router.pathname === '/artykuly' && !isArticlesOpen) ||
+                      (router.pathname === '/artykuly/[id]' && !isAnyArticleCategoryActive)
+                    }
+                  >
+                    Aktualności
+                  </LinkButton>
+                  <ChevronWrapper onClick={() => handleArticlesOpen()}>
+                    <Icon
+                      iconName={IconName.ChevronDown}
+                      variant="flat"
+                      width="16px"
+                      height="16px"
+                      fill={themeContext.colors.menuArrow}
+                    />
+                  </ChevronWrapper>
+                </NavItemChevronContainer>
+              ) : (
+                <Link href="/artykuly" passHref>
+                  <LinkButton isActive={router.pathname.startsWith('/artykuly')}>
+                    Aktualności
+                  </LinkButton>
+                </Link>
+              )}
+
+              <MenuDropdown
+                categories={articleCategories}
+                basePath="/artykuly"
+                pagePath="/artykuly/[id]"
+                isDropdownItemActive={isDropdownItemActive}
+                isActive={router.pathname === '/artykuly' && !isAnyArticleCategoryActive}
+                isOpen={isArticlesOpen}
+                closeMobileMenu={() => setIsMobileMenuOpened(false)}
+                isMobileMenuOpened={isMobileMenuOpened}
+                toggleSubMenu={toggleSubMenu}
+              />
+            </NavListItem>
+            <NavListItem>
+              {isMobileMenuOpened ? (
+                <NavItemChevronContainer>
+                  <LinkButton
+                    as="button"
+                    onClick={() => handleTipsOpen()}
+                    isActive={
+                      (router.pathname.startsWith('/porady') && !isTipsOpen) ||
+                      (router.pathname === '/porady/[id]' && !isAnyTipCategoryActive)
+                    }
+                  >
+                    Moto porady
+                  </LinkButton>
+                  <ChevronWrapper onClick={() => handleTipsOpen()}>
+                    <Icon
+                      iconName={IconName.ChevronDown}
+                      variant="flat"
+                      width="16px"
+                      height="10px"
+                      fill={themeContext.colors.menuArrow}
+                    />
+                  </ChevronWrapper>
+                </NavItemChevronContainer>
+              ) : (
+                <Link href="/porady" passHref>
+                  <LinkButton isActive={router.pathname.startsWith('/porady')}>
+                    Moto porady
+                  </LinkButton>
+                </Link>
+              )}
+
+              <MenuDropdown
+                categories={tipCategories}
+                basePath="/porady"
+                pagePath="/porady/[id]"
+                isDropdownItemActive={isDropdownItemActive}
+                isActive={router.pathname === '/porady' && !isAnyTipCategoryActive}
+                isOpen={isTipsOpen}
+                closeMobileMenu={() => setIsMobileMenuOpened(false)}
+                isMobileMenuOpened={isMobileMenuOpened}
+                toggleSubMenu={toggleSubMenu}
+              />
+            </NavListItem>
+            <NavListItem>
+              <Link href="/ogloszenia" passHref>
+                <LinkButton
+                  isActive={router.pathname.startsWith('/ogloszenia')}
+                  onClick={() => setIsMobileMenuOpened(false)}
+                >
+                  Ogłoszenia
+                </LinkButton>
+              </Link>
+            </NavListItem>
+            <NavListItem>
+              <Link href="/kontakt" passHref>
+                <LinkButton
+                  isActive={router.pathname === '/kontakt'}
+                  onClick={() => setIsMobileMenuOpened(false)}
+                >
+                  Kontakt
+                </LinkButton>
+              </Link>
+            </NavListItem>
+          </NavList>
+          <IconsContainer isIconsVisible={isSocialIconsVisible}>
+            <a href="/" target="_blank" rel="noopener noreferrer">
+              <SingleIconWrapper backgroundColorProps="#4267B2" isDark={darkModeContext.value}>
+                <Icon
+                  iconName={IconName.FacebookFlat}
+                  variant="flat"
+                  width="32px"
+                  height="32px"
+                  fill="#fff"
+                />
+              </SingleIconWrapper>
+            </a>
+            <a href="/" target="_blank" rel="noopener noreferrer">
+              <SingleIconWrapper backgroundColorProps="#1DA1F2" isDark={darkModeContext.value}>
+                <Icon
+                  iconName={IconName.TwitterFlat}
+                  variant="flat"
+                  width="32px"
+                  height="32px"
+                  fill="#fff"
+                />
+              </SingleIconWrapper>
+            </a>
+            <a href="/" target="_blank" rel="noopener noreferrer">
+              <SingleIconWrapper
+                backgroundColorProps="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)"
+                isDark={darkModeContext.value}
+              >
+                <Icon
+                  iconName={IconName.InstagramOutline}
+                  variant="flat"
+                  width="32px"
+                  height="32px"
+                  fill="#fff"
+                />
+              </SingleIconWrapper>
+            </a>
+          </IconsContainer>
+        </Menu>
         <ActionButtonsContainer>
           {!isMobileMenuOpened && !isSearchOpened && (
             <SearchButton onClick={() => setIsSearchOpened(true)}>
@@ -332,11 +329,18 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               fill={themeContext.colors.actionButton}
             />
           </SocialsButton>
-          <HamburgerContainer onClick={() => toggleMobileMenuCloseDrop()}>
+          <HamburgerContainer
+            onClick={() => toggleMobileMenuCloseDrop()}
+            isSearchOpened={isSearchOpened}
+          >
             <Hamburger isMenuOpened={isMobileMenuOpened} />
           </HamburgerContainer>
           {darkModeContext.value ? (
-            <DarkModeButton type="button" onClick={darkModeContext.disable}>
+            <DarkModeButton
+              type="button"
+              onClick={darkModeContext.disable}
+              isSearchOpened={isSearchOpened}
+            >
               <Icon
                 iconName={IconName.Sun}
                 variant="flat"
@@ -344,7 +348,11 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               />
             </DarkModeButton>
           ) : (
-            <DarkModeButton type="button" onClick={darkModeContext.enable}>
+            <DarkModeButton
+              type="button"
+              onClick={darkModeContext.enable}
+              isSearchOpened={isSearchOpened}
+            >
               <Icon
                 iconName={IconName.Moon}
                 variant="flat"

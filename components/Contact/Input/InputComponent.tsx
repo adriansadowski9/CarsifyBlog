@@ -4,13 +4,13 @@ const InputComponent = styled.input<{
   customHeight: string;
   textarea?: boolean;
   customPaddingBottom?: string;
-  useBiggerFont?: boolean;
+  useBiggerFontForDesktop?: boolean;
 }>`
   width: 100%;
   height: ${(props) => (props.customHeight ? `${props.customHeight}px` : '100%')};
   color: ${(props) => props.theme.colors.text};
   font-size: ${(props) =>
-    props.useBiggerFont ? props.theme.fontSizes.xl : props.theme.fontSizes.l};
+    props.useBiggerFontForDesktop ? props.theme.fontSizes.m : props.theme.fontSizes.l};
 
   padding-left: ${(props) => props.theme.spaces.xs};
   padding-top: ${(props) => (props.textarea ? props.theme.spaces.l : props.theme.spaces.xs)};
@@ -24,6 +24,7 @@ const InputComponent = styled.input<{
   resize: none;
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     margin: 0;
+    ${(props) => (props.useBiggerFontForDesktop ? `font-size: ${props.theme.fontSizes.l};` : '')}
   }
 `;
 

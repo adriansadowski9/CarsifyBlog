@@ -19,8 +19,9 @@ const SearchInput: React.FC<SearchInputProps> = ({ value, onChange }) => {
       value={value}
       onChange={onChange}
       placeholder="Wyszukaj w Carsify..."
-      customPaddingBottom={themeContext.spaces.s}
-      useBiggerFont
+      customHeight={70}
+      customPaddingBottom={themeContext.spaces.xxs}
+      useBiggerFontForDesktop
     />
   );
 };

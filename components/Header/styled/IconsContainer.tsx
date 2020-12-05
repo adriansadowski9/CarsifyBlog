@@ -8,8 +8,8 @@ const IconsContainer = styled.div<{ isIconsVisible: boolean }>`
     visibility: ${(props) => (props.isIconsVisible ? 'visible' : 'hidden')};
     opacity: ${(props) => (props.isIconsVisible ? '1' : '0')};
     position: absolute;
-    right: 112px;
-    top: 90px;
+    right: 97px;
+    top: 70px;
   }
 `;
 

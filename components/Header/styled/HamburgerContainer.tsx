@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const HamburgerContainer = styled.div`
-  display: flex;
+const HamburgerContainer = styled.div<{ isSearchOpened: boolean }>`
+  display: ${(props) => (props.isSearchOpened ? 'none' : 'flex')};
   align-self: center;
   width: 46px;
   height: 33px;

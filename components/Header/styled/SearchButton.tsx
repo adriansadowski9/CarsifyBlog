@@ -21,8 +21,8 @@ const SearchButton = styled.button`
     margin-right: ${(props) => props.theme.spaces.s};
 
     svg {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
     }
   }
 `;

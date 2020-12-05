@@ -19,8 +19,8 @@ const SocialsButton = styled.button`
     margin-right: ${(props) => props.theme.spaces.m};
 
     svg {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
     }
   }
 `;
