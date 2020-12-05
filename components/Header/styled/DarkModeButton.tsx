@@ -18,9 +18,6 @@ const DarkModeButton = styled.button`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    width: 90px;
-    height: 90px;
-
     svg {
       width: 32px;
       height: 32px;

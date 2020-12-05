@@ -8,10 +8,6 @@ const Navigation = styled.nav<{ scrollStyles: boolean }>`
   align-items: center;
   padding: 0;
   z-index: 150;
-
-  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    height: 90px;
-  }
 `;
 
 export default Navigation;
