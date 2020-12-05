@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LinkButton = styled.a<{ isActive?: boolean }>`
+const LinkButton = styled.a<{ isActive?: boolean; isMainCategory?: boolean }>`
   width: 100%;
   color: ${(props) => props.theme.colors.text};
   font-size: ${(props) => props.theme.fontSizes.xl};
@@ -37,7 +37,7 @@ const LinkButton = styled.a<{ isActive?: boolean }>`
     padding: ${(props) => props.theme.spaces.s};
 
     ${(props) =>
-      props.isActive
+      props.isActive && props.isMainCategory
         ? `
     &:after {
         width: calc(100% - 2 * ${props.theme.spaces.xxl});
@@ -49,7 +49,10 @@ const LinkButton = styled.a<{ isActive?: boolean }>`
         transform: translateX(-50%);
     }
   `
-        : ''}
+        : `
+        &:after {
+          width:0;
+          }`}
   }
 `;
 

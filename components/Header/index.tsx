@@ -72,7 +72,13 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
 
   React.useEffect(() => {
     window.addEventListener('click', handleIconsVisible);
+    return () => window.removeEventListener('click', handleIconsVisible);
   }, [isSocialIconsVisible]);
+  React.useEffect(() => {
+    window.addEventListener('resize', handleCloseMobileMenuOnResize);
+
+    return () => window.removeEventListener('listener', handleCloseMobileMenuOnResize);
+  }, []);
 
   const isAnyArticleCategoryActive = articleCategories.some((articleCategory) =>
     router.asPath.startsWith(`/artykuly/${articleCategory.slug}`)
@@ -104,6 +110,10 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
   const toggleSubMenu = () => {
     setIsTipsOpen(false);
     setIsArticlesOpen(false);
+  };
+
+  const handleCloseMobileMenuOnResize = () => {
+    setIsMobileMenuOpened(false);
   };
 
   return (

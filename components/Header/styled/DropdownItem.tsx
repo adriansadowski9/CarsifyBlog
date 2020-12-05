@@ -13,12 +13,6 @@ const DropdownItem = styled.li`
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    > ${LinkButton} {
-      padding-left: 40px;
-      :hover {
-        background-color: ${(props) => props.theme.colors.mobileMenuBorderBottom};
-      }
-    }
     svg {
       position: absolute;
       transform: rotate(0deg);
