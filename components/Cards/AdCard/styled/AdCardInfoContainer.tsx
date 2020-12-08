@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const AdCardInfoContainer = styled.div`
+const AdCardInfoContainer = styled.div<{ enlargedCard: boolean }>`
   margin: 0 ${(props) => props.theme.spaces.l};
-  margin-top: -${(props) => props.theme.spaces.l};
+  margin-top: -${(props) => (props.enlargedCard ? '68px' : props.theme.spaces.l)};
   padding: ${(props) => props.theme.spaces.xs} ${(props) => props.theme.spaces.xs} 0
     ${(props) => props.theme.spaces.xs};
   position: relative;

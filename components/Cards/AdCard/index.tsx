@@ -30,7 +30,9 @@ interface AdCardProps {
   };
   slug: string;
   altTitleTag?: string;
+  enlargedCard?: boolean;
 }
+
 const AdCard: React.FC<AdCardProps> = ({
   image,
   title,
@@ -38,19 +40,21 @@ const AdCard: React.FC<AdCardProps> = ({
   carData,
   slug,
   altTitleTag,
+  enlargedCard,
 }) => {
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=300w&sizes[]=400w&sizes[]=600w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
     <Link href="/ogloszenia/[id]" as={`/ogloszenia/${slug}`} passHref>
-      <AdCardContainer>
+      <AdCardContainer enlargedCard={enlargedCard}>
         <article>
           <AdCardImage
             src={responsiveImage.src}
             srcSet={responsiveImage.srcSet}
             sizes="(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw"
             alt={title}
+            enlargedCard={enlargedCard}
           />
-          <AdCardInfoContainer>
+          <AdCardInfoContainer enlargedCard={enlargedCard}>
             <AdCardTitle as={altTitleTag}>{carData.name}</AdCardTitle>
             <AdCardLocalization city={carData.localization} />
             <AdCardCarInfoRow>
@@ -66,7 +70,7 @@ const AdCard: React.FC<AdCardProps> = ({
               <AdCardCarInfoText>{carData.hp} km</AdCardCarInfoText>
             </AdCardCarInfoRow>
             <AdCardCarInfoPrice>{carData.price}</AdCardCarInfoPrice>
-            <AdCardSnippet>{textSnippet}</AdCardSnippet>
+            <AdCardSnippet enlargedCard={enlargedCard}>{textSnippet}</AdCardSnippet>
           </AdCardInfoContainer>
         </article>
       </AdCardContainer>
