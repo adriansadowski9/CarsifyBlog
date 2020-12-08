@@ -21,6 +21,7 @@ interface TipCardProps {
   };
   slug: string;
   altTitleTag?: string;
+  smallerCard?: boolean;
 }
 const TipCard: React.FC<TipCardProps> = ({
   image,
@@ -29,6 +30,7 @@ const TipCard: React.FC<TipCardProps> = ({
   category,
   slug,
   altTitleTag,
+  smallerCard,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
@@ -41,6 +43,7 @@ const TipCard: React.FC<TipCardProps> = ({
             srcSet={responsiveImage.srcSet}
             sizes="(min-width: 768px) 400px, 100vw"
             alt={title}
+            smallerCard={smallerCard}
           />
           <TipCardInfoContainer>
             <TipCardTitle as={altTitleTag}>{title}</TipCardTitle>

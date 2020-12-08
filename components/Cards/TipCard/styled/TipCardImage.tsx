@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const TipCardImage = styled.img`
+const TipCardImage = styled.img<{ smallerCard: boolean }>`
   width: 100%;
-  height: 265px;
+  height: ${(props) => (props.smallerCard ? '248px' : '265px')};
   object-fit: cover;
   display: block;
 `;

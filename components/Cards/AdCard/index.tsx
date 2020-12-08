@@ -50,7 +50,11 @@ const AdCard: React.FC<AdCardProps> = ({
           <AdCardImage
             src={responsiveImage.src}
             srcSet={responsiveImage.srcSet}
-            sizes="(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw"
+            sizes={
+              enlargedCard
+                ? '(min-width: 768px) 400px, 100vw'
+                : '(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw'
+            }
             alt={title}
             enlargedCard={enlargedCard}
           />
