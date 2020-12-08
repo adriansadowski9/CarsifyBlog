@@ -7,7 +7,7 @@ const AdCardSnippet = styled.p<{ enlargedCard: boolean }>`
   ${(props) =>
     props.enlargedCard
       ? `
-    height: 42px;
+    height: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
   `
