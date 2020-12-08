@@ -147,7 +147,7 @@ text: >-
   font-style:normal; font-weight:normal; line-height:17px;
   text-decoration:none;" target="_blank">Post udostępniony przez Maserati
   (@maserati)</a></p></div></blockquote> <script async
-  src="https://www.instagram.com/embed.js"></script>
+  src="https://www.instagram.com/static/bundles/es6/EmbedSDK.js/363a6c0267bf.js"></script>
 
 
   Według potwierdzonych danych, Ford zamierza zwiększyć produkcję modelu (która
