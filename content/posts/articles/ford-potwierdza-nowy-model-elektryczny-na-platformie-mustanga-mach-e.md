@@ -15,6 +15,46 @@ highlightedText: >-
   nowy model elektryczny oparty na tej samej platformie co Ford Mustang Mach-E.
   Oba pojazdy będą montowane w zakładach Cuautitlán w Meksyku, gdzie elektryczny
   crossover jest już produkowany.
-text: "Dział pojazdów elektrycznych Forda rozrasta się w bardzo szybkim tempie. Po kilku latach względnego spokoju w mediach, w ostatnich miesiącach pojawiały się nowe wiadomości dotyczących nowych modeli i projektów. **Nowy Ford Mustang Mach-E** jest obecnie produkowany w fabryce Cuautitlán w Meksyku, choć według najnowszych oświadczeń firmy nie będzie jedynym modelem powstającym w tym miejscu.\n\nFord potwierdzili, że marka rozwija nowy model oparty na tej samej platformie co Mustang Mach-E, choć na razie nie są znane żadne szczegóły tego modelu, poza tym, że będzie dzielił architekturę i części mechaniczne z Mach-E.\n\nNa chwilę obecną możemy założyć, że nowy model będzie crossoverem, ciekawe natomiast jest to, czy będzie to wariant Mustanga Mach-E czy zupełnie nowy model, należący do większego lub mniejszego segmentu niż crossover, który jest już w produkcji.\n\n![Ford Mustang Mach-E podczas ładowania](/assets/img/ladowanie-mustang-mach-e.jpg \"Ford Mustang Mach-E podczas ładowania\")\n\n## Elektryczny Ford F-150 EV\n\nKolejną nowością związaną z pojazdami elektrycznym Forda jest wzrost produkcji przyszłego Forda F-150 EV, modelu, który powinien trafić do salonów dopiero w połowie 2022 r.. Według marki wzbudził tak duże zainteresowanie, że firma postanowił zmodyfikować swoje plany i zwiększyć planowaną początkową zdolność produkcyjną pierwszego pełnowymiarowego pick-upa „na baterie”.\n\n<div id=\"fb-root\"></div>\r\n<script async defer crossorigin=\"anonymous\" src=\"https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v9.0\" nonce=\"Grvzkky1\"></script>\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/okG6yNKaS1g\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Out on the pad in South Texas <a href=\"https://t.co/RcYOXXpTc2\">pic.twitter.com/RcYOXXpTc2</a></p>&mdash; Elon Musk (@elonmusk) <a href=\"https://twitter.com/elonmusk/status/1336041065879580673?ref_src=twsrc%5Etfw\">December 7, 2020</a></blockquote> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n\n<div class=\"fb-post\" data-href=\"https://www.facebook.com/gregor10pl/posts/2792325587694236\" data-show-text=\"true\" data-width=\"\"><blockquote cite=\"https://www.facebook.com/gregor10pl/posts/2792325587694236\" class=\"fb-xfbml-parse-ignore\"><p>Cześć , tym razem kultowa uwielbiana przeze mnie jednostka 1.8T 20V.\r\nRajdowy Seat Leon  4x4  1.8T  20VT  (Stroker 2.0L)...</p>Opublikowany przez <a href=\"https://www.facebook.com/gregor10pl/\">gregor10.pl</a>&nbsp;<a href=\"https://www.facebook.com/gregor10pl/posts/2792325587694236\">Niedziela, 6 grudnia 2020</a></blockquote></div>\n\n\n\nWedług potwierdzonych danych, Ford zamierza zwiększyć produkcję modelu (która obecnie jest wciąż w fazie rozwoju) o co najmniej 50%. W tym celu zdecydowano o uruchomieniu 200 dodatkowych stanowisk w obiektach River Rouge, w celu stworzenia nowe centrum przeznaczonego do montażu przyszłych F-150 Hybrid i F-150 EV. Obiekty te otrzymały inwestycję w wysokości 700 milionów przeznaczonych na ten cel."
+text: >-
+  Dział pojazdów elektrycznych Forda rozrasta się w bardzo szybkim tempie. Po
+  kilku latach względnego spokoju w mediach, w ostatnich miesiącach pojawiały
+  się nowe wiadomości dotyczących nowych modeli i projektów. **Nowy Ford Mustang
+  Mach-E** jest obecnie produkowany w fabryce Cuautitlán w Meksyku, choć według
+  najnowszych oświadczeń firmy nie będzie jedynym modelem powstającym w tym
+  miejscu.
+
+
+  Ford potwierdzili, że marka rozwija nowy model oparty na tej samej platformie
+  co Mustang Mach-E, choć na razie nie są znane żadne szczegóły tego modelu,
+  poza tym, że będzie dzielił architekturę i części mechaniczne z Mach-E.
+
+
+  Na chwilę obecną możemy założyć, że nowy model będzie crossoverem, ciekawe
+  natomiast jest to, czy będzie to wariant Mustanga Mach-E czy zupełnie nowy
+  model, należący do większego lub mniejszego segmentu niż crossover, który jest
+  już w produkcji.
+
+
+  ![Ford Mustang Mach-E podczas
+  ładowania](/assets/img/ladowanie-mustang-mach-e.jpg "Ford Mustang Mach-E
+  podczas ładowania")
+
+
+  ## Elektryczny Ford F-150 EV
+
+
+  Kolejną nowością związaną z pojazdami elektrycznym Forda jest wzrost produkcji
+  przyszłego Forda F-150 EV, modelu, który powinien trafić do salonów dopiero w
+  połowie 2022 r.. Według marki wzbudził tak duże zainteresowanie, że firma
+  postanowił zmodyfikować swoje plany i zwiększyć planowaną początkową zdolność
+  produkcyjną pierwszego pełnowymiarowego pick-upa „na baterie”.
+
+
+  Według potwierdzonych danych, Ford zamierza zwiększyć produkcję modelu (która
+  obecnie jest wciąż w fazie rozwoju) o co najmniej 50%. W tym celu zdecydowano
+  o uruchomieniu 200 dodatkowych stanowisk w obiektach River Rouge, w celu
+  stworzenia nowe centrum przeznaczonego do montażu przyszłych F-150 Hybrid i
+  F-150 EV. Obiekty te otrzymały inwestycję w wysokości 700 milionów
+  przeznaczonych na ten cel.
 ---
 
