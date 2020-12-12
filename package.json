@@ -17,6 +17,7 @@
     "@types/gtag.js": "^0.0.3",
     "browser-update": "^3.3.23",
     "dayjs": "^1.8.29",
+    "fuse.js": "^6.4.3",
     "html-react-parser": "^0.13.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",

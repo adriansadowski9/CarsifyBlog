@@ -47,6 +47,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
   const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState(false);
   const [isArticlesOpen, setIsArticlesOpen] = React.useState(false);
   const [isTipsOpen, setIsTipsOpen] = React.useState(false);
+  const searchInputRef = React.useRef<HTMLInputElement>(null);
   const [isSearchOpened, setIsSearchOpened] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
   const [isSocialIconsVisible, setIsSocialIconsVisible] = React.useState(false);
@@ -74,11 +75,18 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
     window.addEventListener('click', handleIconsVisible);
     return () => window.removeEventListener('click', handleIconsVisible);
   }, [isSocialIconsVisible]);
+
   React.useEffect(() => {
     window.addEventListener('resize', handleCloseMobileMenuOnResize);
 
     return () => window.removeEventListener('listener', handleCloseMobileMenuOnResize);
   }, []);
+
+  React.useEffect(() => {
+    if (isSearchOpened && searchInputRef && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isSearchOpened]);
 
   const isAnyArticleCategoryActive = articleCategories.some((articleCategory) =>
     router.asPath.startsWith(`/artykuly/${articleCategory.slug}`)
@@ -116,6 +124,31 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
     setIsMobileMenuOpened(false);
   };
 
+  const openSearch = () => {
+    setIsSearchOpened(true);
+  };
+
+  const handleSearch = () => {
+    if (searchValue) {
+      router.push({
+        pathname: '/szukaj',
+        query: {
+          q: searchValue,
+        },
+      });
+      setIsSearchOpened(false);
+      setSearchValue('');
+    } else if (searchInputRef && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  };
+
+  const handleSearchOnEnter = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <header>
       <Navigation>
@@ -129,13 +162,15 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
         </Link>
         <SearchContainer isSearchOpened={isSearchOpened}>
           <SearchInput
+            inputRef={searchInputRef}
             value={searchValue}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
               setSearchValue(e.target.value)
             }
+            onKeyUp={handleSearchOnEnter}
           />
           <SearchButtonsContainer>
-            <SearchActionButton onClick={() => setIsSearchOpened(false)}>
+            <SearchActionButton onClick={handleSearch}>
               <Icon
                 iconName={IconName.Search}
                 variant="flat"
@@ -311,7 +346,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
         </Menu>
         <ActionButtonsContainer>
           {!isMobileMenuOpened && !isSearchOpened && (
-            <SearchButton onClick={() => setIsSearchOpened(true)}>
+            <SearchButton onClick={openSearch}>
               <Icon
                 iconName={IconName.Search}
                 variant="flat"
