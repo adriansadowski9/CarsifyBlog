@@ -22,32 +22,18 @@ const ContactHeadingSection: React.FC<SocialProps> = ({
   twitterUrl,
   instagramUrl,
 }) => {
+  const withHttps = (url) => (!/^https?:\/\//i.test(url) ? `https://${url}` : url);
   return (
     <SocialWrapper>
       <SocialShareContainer horizontal="false">
-        <SocialButton
-          as="a"
-          href={`https://${facebookUrl}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <SocialButton as="a" href={withHttps(facebookUrl)} target="_blank">
           <Icon iconName={IconName.Facebook} variant="color" width="24px" height="24px" />
         </SocialButton>
-        <SocialButton
-          as="a"
-          href={`https://${twitterUrl}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <SocialButton as="a" href={withHttps(twitterUrl)} target="_blank">
           <Icon iconName={IconName.Twitter} variant="color" width="24px" height="24px" />
         </SocialButton>
-        <SocialButton
-          as="a"
-          href={`https://${instagramUrl}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon iconName={IconName.Instagram} variant="color" width="24px" height="24px" />
+        <SocialButton as="a" href={withHttps(instagramUrl)} target="_blank">
+          <Icon iconName={IconName.Pinterest} variant="color" width="24px" height="24px" />
         </SocialButton>
       </SocialShareContainer>
       <ContactHeading>Porozmawiajmy</ContactHeading>
