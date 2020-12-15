@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Maven Pro', sans-serif;
-    transition: color .3s linear, background .3s linear;
   }
   
   body {
