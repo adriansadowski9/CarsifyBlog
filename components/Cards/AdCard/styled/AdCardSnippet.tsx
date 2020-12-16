@@ -10,7 +10,7 @@ const AdCardSnippet = styled.p<{ enlargedCard: boolean }>`
   position: relative;
 
   &::before {
-    content: '...';
+    content: '\\02026';
     position: absolute;
     bottom: 0;
     right: 0;
