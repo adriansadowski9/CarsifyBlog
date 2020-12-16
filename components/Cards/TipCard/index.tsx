@@ -36,7 +36,7 @@ const TipCard: React.FC<TipCardProps> = ({
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
   return (
     <Link href="/porady/[id]" as={`/porady/${slug}`} passHref>
-      <TipCardContainer>
+      <TipCardContainer smallerCard={smallerCard}>
         <article>
           <TipCardImage
             src={responsiveImage.src}
@@ -45,7 +45,7 @@ const TipCard: React.FC<TipCardProps> = ({
             alt={title}
             smallerCard={smallerCard}
           />
-          <TipCardInfoContainer>
+          <TipCardInfoContainer smallerCard={smallerCard}>
             <TipCardTitle as={altTitleTag}>{title}</TipCardTitle>
             <TipCardSnippet>{textSnippet}</TipCardSnippet>
             <Category
