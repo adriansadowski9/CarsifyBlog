@@ -7,6 +7,7 @@ const ArticleCardContainer = styled.a`
   text-decoration: none;
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     width: 400px;
+    height: 385px;
     cursor: pointer;
   }
 `;

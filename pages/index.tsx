@@ -68,11 +68,7 @@ const Home: NextPage<HomeProps> = ({
                   key={`${title}-${index}`}
                   image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                   title={title}
-                  textSnippet={
-                    highlightedText.length > 160
-                      ? `${highlightedText.substring(0, 160)}...`
-                      : highlightedText
-                  }
+                  textSnippet={highlightedText}
                   category={{
                     name: categoryInfo.attributes.title,
                     icon: categoryInfo.attributes.icon,

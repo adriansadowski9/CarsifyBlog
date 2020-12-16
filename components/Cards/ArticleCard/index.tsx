@@ -51,6 +51,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
               nameColor={themeContext.colors.categoryName}
               bgColor={themeContext.colors.iconCircleBg}
               iconColor={themeContext.colors.icon}
+              paddingRight="6px"
             />
           </ArticleCardInfoContainer>
         </article>

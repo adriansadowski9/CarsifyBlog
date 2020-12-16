@@ -6,6 +6,7 @@ const ArticleCardTitle = styled.h3`
   color: ${(props) => props.theme.colors.text};
   margin-top: 0;
   margin-bottom: ${(props) => props.theme.spaces.xxs};
+  margin-right: 6px;
 `;
 
 export default ArticleCardTitle;
