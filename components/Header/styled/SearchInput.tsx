@@ -9,9 +9,16 @@ interface SearchInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyUp?: (e: React.KeyboardEvent) => void;
   inputRef?: React.MutableRefObject<HTMLInputElement>;
+  isSearchOpened: boolean;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ value, onChange, onKeyUp, inputRef }) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+  value,
+  onChange,
+  onKeyUp,
+  inputRef,
+  isSearchOpened,
+}) => {
   const themeContext: Theme = React.useContext(ThemeContext);
 
   return (
@@ -25,6 +32,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ value, onChange, onKeyUp, inp
       placeholder="Wyszukaj w Carsify..."
       customHeight={70}
       customPaddingBottom={themeContext.spaces.xxs}
+      isSearchOpened={isSearchOpened}
       useBiggerFontForDesktop
     />
   );

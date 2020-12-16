@@ -44,6 +44,7 @@ const Input: React.FC<InputProps> = ({
         textarea={textarea}
         ref={register}
         onChange={onChange}
+        isContactInput
       />
     </InputWrapper>
   );

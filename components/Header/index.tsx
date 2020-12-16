@@ -162,6 +162,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
         </Link>
         <SearchContainer isSearchOpened={isSearchOpened}>
           <SearchInput
+            isSearchOpened={isSearchOpened}
             inputRef={searchInputRef}
             value={searchValue}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -169,7 +170,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
             }
             onKeyUp={handleSearchOnEnter}
           />
-          <SearchButtonsContainer>
+          <SearchButtonsContainer isSearchOpened={isSearchOpened}>
             <SearchActionButton onClick={handleSearch}>
               <Icon
                 iconName={IconName.Search}
@@ -305,7 +306,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
               </Link>
             </NavListItem>
           </NavList>
-          <IconsContainer isIconsVisible={isSocialIconsVisible}>
+          <IconsContainer isIconsVisible={isSocialIconsVisible} isOpen={isMobileMenuOpened}>
             <a href="/" target="_blank" rel="noopener noreferrer">
               <SingleIconWrapper backgroundColorProps="#4267B2" isDark={darkModeContext.value}>
                 <Icon
@@ -344,6 +345,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
             </a>
           </IconsContainer>
         </Menu>
+
         <ActionButtonsContainer>
           {!isMobileMenuOpened && !isSearchOpened && (
             <SearchButton onClick={openSearch}>

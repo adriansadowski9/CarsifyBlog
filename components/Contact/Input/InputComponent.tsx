@@ -5,7 +5,11 @@ const InputComponent = styled.input<{
   textarea?: boolean;
   customPaddingBottom?: string;
   useBiggerFontForDesktop?: boolean;
+  isSearchOpened?: boolean;
+  isContactInput?: boolean;
 }>`
+  ${(props) =>
+    props.isSearchOpened || props.isContactInput ? 'visibility:visible' : 'visibility:hidden'};
   width: 100%;
   height: ${(props) => (props.customHeight ? `${props.customHeight}px` : '100%')};
   color: ${(props) => props.theme.colors.text};

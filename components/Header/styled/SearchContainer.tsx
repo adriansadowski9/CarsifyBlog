@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 
 const SearchContainer = styled.div<{ isSearchOpened: boolean }>`
-  position: relative;
+  position: absolute;
   display: flex;
-  flex: 1;
-  margin: 0 ${(props) => props.theme.spaces.s};
+  top: 0;
+  left: 0;
+  right: 0;
+  flex: ${(props) => (props.isSearchOpened ? '1' : '0')};
+  margin: 0 auto;
   align-self: flex-end;
-  ${(props) => (!props.isSearchOpened ? 'display: none' : 'display: block')};
-
+  transition: all 1s;
+  z-index: ${(props) => (props.isSearchOpened ? '1001' : '1')};
+  ${(props) => (props.isSearchOpened ? 'width:95%' : 'width:0')};
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    width: 100%;
-    max-width: 1260px;
+    max-width: 1160px;
   }
 `;
 

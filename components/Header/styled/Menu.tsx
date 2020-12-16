@@ -24,12 +24,11 @@ const Menu = styled.div<{ isOpen: boolean }>`
     position: static;
     visibility: visible;
     opacity: 1;
-    width: auto;
     height: 70px;
     flex-direction: row;
     background: none;
-
-    ${(props) => (props.isSearchOpened ? 'display: none' : 'display: block')};
+    z-index: ${(props) => (props.isSearchOpened ? '1' : '100')};
+    ${(props) => (props.isSearchOpened ? 'width: 0' : 'width: auto')};
   }
 `;
 
