@@ -140,11 +140,7 @@ const Ad: NextPage<AdProps> = ({
                     image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                     carData={carData}
                     title={title}
-                    textSnippet={
-                      highlightedText.length > 160
-                        ? `${highlightedText.substring(0, 160)}...`
-                        : highlightedText
-                    }
+                    textSnippet={highlightedText}
                     slug={slug}
                   />
                 );
