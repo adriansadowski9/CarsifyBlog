@@ -9,8 +9,8 @@ const InformationCardInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: ${(props) => props.theme.spaces.s} ${(props) => props.theme.spaces.s}
-    ${(props) => props.theme.spaces.xs} ${(props) => props.theme.spaces.s};
+  padding: ${(props) => props.theme.spaces.s} 6px ${(props) => props.theme.spaces.xs}
+    ${(props) => props.theme.spaces.s};
 `;
 
 export default InformationCardInfoContainer;

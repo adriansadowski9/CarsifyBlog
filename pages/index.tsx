@@ -109,7 +109,7 @@ const Home: NextPage<HomeProps> = ({
           <InformationSection>
             <SectionName name="Informacje" />
             <StyledCarousel
-              naturalSlideHeight={250}
+              naturalSlideHeight={239}
               naturalSlideWidth={400}
               interval={3000}
               totalSlides={infosList.length}
