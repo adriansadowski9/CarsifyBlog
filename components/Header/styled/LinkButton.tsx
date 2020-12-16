@@ -41,7 +41,7 @@ const LinkButton = styled.a<{ isActive?: boolean; isMainCategory?: boolean }>`
         ? `
     &:after {
         width: calc(100% - 2 * ${props.theme.spaces.xxl});
-        height: 2px;
+        height: 3px;
         top: unset;
         right: unset;
         left: 50%;
