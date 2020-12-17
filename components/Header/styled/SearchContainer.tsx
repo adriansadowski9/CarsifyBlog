@@ -9,9 +9,11 @@ const SearchContainer = styled.div<{ isSearchOpened: boolean }>`
   flex: ${(props) => (props.isSearchOpened ? '1' : '0')};
   margin: 0 auto;
   align-self: flex-end;
-  transition: all 1s;
+
   z-index: ${(props) => (props.isSearchOpened ? '1001' : '1')};
+  ${(props) => (props.isSearchOpened ? 'opacity:1' : 'opacity:0')};
   ${(props) => (props.isSearchOpened ? 'width:auto' : 'width:0')};
+  transition: all 0.2s;
   padding: 0 20px;
   @media only screen and (min-width: 1025px) {
     padding: 0;
