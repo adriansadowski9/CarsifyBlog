@@ -1,5 +1,3 @@
-import IconsContainer from './IconsContainer';
-
 import styled from 'styled-components';
 
 const SocialsButton = styled.button`
@@ -8,7 +6,6 @@ const SocialsButton = styled.button`
   border: none;
   cursor: pointer;
   line-height: 0;
-
   &:focus {
     outline: none;
   }

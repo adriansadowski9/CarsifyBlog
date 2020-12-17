@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const IconsContainer = styled.div<{ isIconsVisible: boolean }>`
   display: flex;
   align-self: flex-end;
+  z-index: 9999;
+
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     transition: all 0.3s;
     visibility: ${(props) => (props.isIconsVisible ? 'visible' : 'hidden')};
