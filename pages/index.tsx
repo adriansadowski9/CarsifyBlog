@@ -95,11 +95,7 @@ const Home: NextPage<HomeProps> = ({
                     key={`${title}-${index}`}
                     image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                     title={title}
-                    textSnippet={
-                      highlightedText.length > 160
-                        ? `${highlightedText.substring(0, 160)}...`
-                        : highlightedText
-                    }
+                    textSnippet={highlightedText}
                     category={{
                       name: categoryInfo.attributes.title,
                       icon: categoryInfo.attributes.icon,
@@ -113,7 +109,7 @@ const Home: NextPage<HomeProps> = ({
           <InformationSection>
             <SectionName name="Informacje" />
             <StyledCarousel
-              naturalSlideHeight={250}
+              naturalSlideHeight={239}
               naturalSlideWidth={400}
               interval={3000}
               totalSlides={infosList.length}
@@ -129,11 +125,7 @@ const Home: NextPage<HomeProps> = ({
                       <InformationCard
                         image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                         title={title}
-                        textSnippet={
-                          highlightedText.length > 160
-                            ? `${highlightedText.substring(0, 160)}...`
-                            : highlightedText
-                        }
+                        textSnippet={highlightedText}
                         slug={slug}
                       />
                     </Slide>
@@ -157,11 +149,7 @@ const Home: NextPage<HomeProps> = ({
                   key={`${title}-${index}`}
                   image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                   title={title}
-                  textSnippet={
-                    highlightedText.length > 160
-                      ? `${highlightedText.substring(0, 160)}...`
-                      : highlightedText
-                  }
+                  textSnippet={highlightedText}
                   carData={carData}
                   slug={slug}
                 />

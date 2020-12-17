@@ -44,11 +44,7 @@ const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) 
                 key={`${title}-${index}`}
                 image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                 title={title}
-                textSnippet={
-                  highlightedText.length > 160
-                    ? `${highlightedText.substring(0, 160)}...`
-                    : highlightedText
-                }
+                textSnippet={highlightedText}
                 carData={carData}
                 slug={slug}
                 altTitleTag="h2"
