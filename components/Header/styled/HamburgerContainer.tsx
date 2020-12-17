@@ -8,7 +8,9 @@ const HamburgerContainer = styled.div<{ isSearchOpened: boolean }>`
   padding: 5px;
   cursor: pointer;
   margin-right: ${(props) => props.theme.spaces.xs};
-
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    display: flex;
+  }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     display: none;
   }

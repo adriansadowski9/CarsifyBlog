@@ -11,10 +11,14 @@ const LogoWrapper = styled.a<{ isSearchOpened: boolean }>`
   &:hover {
     cursor: pointer;
   }
-
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     display: flex;
-    margin-left: ${(props) => props.theme.spaces.xxs};
+  }
+  @media only screen and (min-width: 1150px) {
+    margin-left: ${(props) => props.theme.spaces.s};
+  }
+  @media only screen and (min-width: 1180px) {
+    margin-left: ${(props) => props.theme.spaces.l};
   }
 `;
 

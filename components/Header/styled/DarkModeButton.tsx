@@ -17,9 +17,10 @@ const DarkModeButton = styled.button`
   &:focus {
     outline: none;
   }
-
-  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     display: block;
+  }
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     svg {
       width: 24px;
       height: 24px;
