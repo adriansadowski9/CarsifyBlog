@@ -6,7 +6,6 @@ const AdCardCarInfoPrice = styled.p`
   font-weight: ${(props) => props.theme.fontWeights.medium};
   margin-top: 0;
   margin-bottom: 7px;
-  margin-right: 9px;
   text-align: right;
 `;
 

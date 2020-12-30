@@ -1,4 +1,5 @@
 import * as React from 'react';
+import clamp from 'clamp-js';
 import Link from 'next/link';
 
 import AdCardLocalization from '@components/Cards/AdCard/AdCardLocalization';
@@ -42,7 +43,15 @@ const AdCard: React.FC<AdCardProps> = ({
   altTitleTag,
   enlargedCard,
 }) => {
+  const snippetRef = React.useRef(null);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=300w&sizes[]=400w&sizes[]=600w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
+
+  React.useEffect(() => {
+    if (snippetRef && snippetRef.current) {
+      clamp(snippetRef.current, { clamp: 'auto' });
+    }
+  }, [snippetRef]);
+
   return (
     <Link href="/ogloszenia/[id]" as={`/ogloszenia/${slug}`} passHref>
       <AdCardContainer enlargedCard={enlargedCard}>
@@ -74,7 +83,7 @@ const AdCard: React.FC<AdCardProps> = ({
               <AdCardCarInfoText>{carData.hp} km</AdCardCarInfoText>
             </AdCardCarInfoRow>
             <AdCardCarInfoPrice>{carData.price}</AdCardCarInfoPrice>
-            <AdCardSnippet enlargedCard={enlargedCard}>{textSnippet}</AdCardSnippet>
+            <AdCardSnippet ref={snippetRef}>{textSnippet}</AdCardSnippet>
           </AdCardInfoContainer>
         </article>
       </AdCardContainer>

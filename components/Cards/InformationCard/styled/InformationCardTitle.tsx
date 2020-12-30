@@ -6,8 +6,8 @@ const InformationCardTitle = styled.h3`
   color: ${(props) => props.theme.colors.informationText};
   margin-top: 0;
   margin-bottom: ${(props) => props.theme.spaces.xxs};
-  padding-right: 9px;
   text-align: right;
+  overflow: hidden;
 `;
 
 export default InformationCardTitle;

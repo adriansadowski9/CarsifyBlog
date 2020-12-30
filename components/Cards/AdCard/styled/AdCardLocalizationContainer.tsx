@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const AdCardLocalizationContainer = styled.div`
   margin-bottom: ${(props) => props.theme.spaces.xxxs};
-  margin-right: 9px;
 
   svg {
     width: 8px;

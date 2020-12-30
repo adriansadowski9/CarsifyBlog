@@ -12,17 +12,10 @@ interface CategoryProps {
   nameColor: string;
   bgColor: string;
   iconColor: string;
-  paddingRight?: string;
 }
-const Category: React.FC<CategoryProps> = ({
-  name,
-  iconName,
-  nameColor,
-  bgColor,
-  iconColor,
-  paddingRight,
-}) => (
-  <CategoryContainer paddingRight={paddingRight}>
+
+const Category: React.FC<CategoryProps> = ({ name, iconName, nameColor, bgColor, iconColor }) => (
+  <CategoryContainer>
     <CategoryName categoryColor={nameColor}>{name}</CategoryName>
     <CategoryIconContainer backgroundColor={bgColor} iconColor={iconColor}>
       <Icon iconName={iconName} variant="flat" width="16px" height="16px" fill={iconColor} />

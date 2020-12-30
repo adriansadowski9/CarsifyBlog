@@ -1,4 +1,5 @@
 import * as React from 'react';
+import clamp from 'clamp-js';
 import Link from 'next/link';
 import { ThemeContext } from 'styled-components';
 
@@ -32,8 +33,16 @@ const TipCard: React.FC<TipCardProps> = ({
   altTitleTag,
   smallerCard,
 }) => {
+  const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
+
+  React.useEffect(() => {
+    if (snippetRef && snippetRef.current) {
+      clamp(snippetRef.current, { clamp: 'auto' });
+    }
+  }, [snippetRef]);
+
   return (
     <Link href="/porady/[id]" as={`/porady/${slug}`} passHref>
       <TipCardContainer smallerCard={smallerCard}>
@@ -45,9 +54,9 @@ const TipCard: React.FC<TipCardProps> = ({
             alt={title}
             smallerCard={smallerCard}
           />
-          <TipCardInfoContainer smallerCard={smallerCard}>
+          <TipCardInfoContainer>
             <TipCardTitle as={altTitleTag}>{title}</TipCardTitle>
-            <TipCardSnippet>{textSnippet}</TipCardSnippet>
+            <TipCardSnippet ref={snippetRef}>{textSnippet}</TipCardSnippet>
             <Category
               name={category.name}
               iconName={category.icon}
