@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 const MainContent = styled.main`
+  display: flex;
+  flex-direction: column;
   padding: 0 ${(props) => props.theme.spaces.s};
-  display: grid;
   margin-bottom: ${(props) => props.theme.spaces.m};
 
   @media only screen and (max-width: 320px) {
+    display: grid;
     grid-template-columns: 280px;
   }
+
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     padding: 0 ${(props) => props.theme.spaces.xxs};
     margin: 0 auto;

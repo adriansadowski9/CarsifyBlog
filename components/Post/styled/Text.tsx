@@ -61,6 +61,7 @@ const Text = styled.div`
     position: relative;
     padding-left: ${(props) => props.theme.spaces.s};
     margin: ${(props) => props.theme.spaces.xs} 0;
+    text-align: left;
 
     a {
       font-weight: ${(props) => props.theme.fontWeights.medium};
