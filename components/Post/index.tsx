@@ -5,6 +5,7 @@ import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
 import showdown from 'showdown';
+import textFit from 'textfit';
 
 import Breadcrumbs, { BreadcrumbsItem } from '@components/Breadcrumbs';
 import CarDataBox from '@components/Post/styled/CarDataBox';
@@ -93,6 +94,16 @@ const Post: React.FC<PostProps> = ({
   carData,
   galleryImages,
 }) => {
+  const carNameRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (carNameRef && carNameRef.current) {
+      if (carNameRef.current.scrollWidth > carNameRef.current.offsetWidth) {
+        textFit(carNameRef.current);
+      }
+    }
+  }, [carNameRef]);
+
   showdown.extension('SeeAlso', {
     type: 'output',
     filter: (text: string) => {
@@ -118,6 +129,7 @@ const Post: React.FC<PostProps> = ({
     simplifiedAutoLink: true,
     extensions: ['SeeAlso', 'AddGallery'],
   });
+
   const images = galleryImages
     ? galleryImages.map((galleryItem) => ({
         original: galleryItem.image.images[galleryItem.image.images.length - 1].path,
@@ -170,11 +182,10 @@ const Post: React.FC<PostProps> = ({
       <Breadcrumbs items={breadcrumbs} />
       <Heading>{title}</Heading>
       <Subheading>{subtitle}</Subheading>
-
       <PostImageContainer isCarData={!!carData}>
         {!!carData && (
           <CarDataBox>
-            <CarDataName>{carData.name}</CarDataName>
+            <CarDataName ref={carNameRef}>{carData.name}</CarDataName>
             <CarDataLocalization>
               <p>{carData.localization}</p>
             </CarDataLocalization>
