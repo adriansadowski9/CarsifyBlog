@@ -1,5 +1,4 @@
 import DropdownContainer from './DropdownContainer';
-import DropdownWrapper from './DropdownWrapper';
 
 import styled from 'styled-components';
 
@@ -10,6 +9,7 @@ const NavListItem = styled.li`
   border-bottom: 1px solid ${(props) => props.theme.colors.mobileMenuBorderBottom};
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
+    height: 100%;
     border-bottom: none;
     margin-bottom: 0;
     &:hover ${DropdownContainer} {

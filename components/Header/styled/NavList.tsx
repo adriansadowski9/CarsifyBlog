@@ -9,6 +9,7 @@ const NavList = styled.ul`
   overflow-y: scroll;
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     display: flex;
+    height: 100%;
     margin-bottom: 0;
     overflow-y: hidden;
     align-items: center;
