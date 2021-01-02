@@ -191,6 +191,8 @@ const Article: NextPage<ArticleProps> = ({
           category={{
             name: categoryInfo.attributes.title,
             icon: categoryInfo.attributes.icon,
+            href: '/artykuly/[id]',
+            slug: `/artykuly/${categoryInfo.slug}`,
           }}
           breadcrumbs={[
             { name: 'Strona główna', link: { href: '/' } },

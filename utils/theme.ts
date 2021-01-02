@@ -127,6 +127,7 @@ export interface Theme {
     cookieConsentButtonBg: string;
     cookieConsentButtonText: string;
     mobileMenuBorderBottom: string;
+    linkHover: string;
   };
 }
 
@@ -194,6 +195,7 @@ export const lightTheme: Theme = {
     cookieConsentButtonBg: colors.red,
     cookieConsentButtonText: colors.white,
     mobileMenuBorderBottom: colors.lightGray,
+    linkHover: colors.red,
   },
 };
 
@@ -261,5 +263,6 @@ export const darkTheme: Theme = {
     cookieConsentButtonBg: colors.red,
     cookieConsentButtonText: colors.white,
     mobileMenuBorderBottom: colors.darkerGray,
+    linkHover: colors.red,
   },
 };

@@ -47,6 +47,8 @@ interface PostProps {
   category?: {
     name: string;
     icon: IconName;
+    href: string;
+    slug: string;
   };
   breadcrumbs: BreadcrumbsItem[];
   title: string;
@@ -177,7 +179,14 @@ const Post: React.FC<PostProps> = ({
     <article>
       <TopInfoContainer>
         <IconInfo text={dayjs(date).format('DD.MM.YYYY')} iconName={IconName.Calendar} />
-        {category && <IconInfo text={category.name} iconName={category.icon} />}
+        {category && (
+          <IconInfo
+            text={category.name}
+            iconName={category.icon}
+            href={category.href}
+            slug={category.slug}
+          />
+        )}
       </TopInfoContainer>
       <Breadcrumbs items={breadcrumbs} />
       <Heading>{title}</Heading>

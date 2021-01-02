@@ -188,6 +188,8 @@ const Tip: NextPage<TipProps> = ({
           category={{
             name: categoryInfo.attributes.title,
             icon: categoryInfo.attributes.icon,
+            href: '/porady/[id]',
+            slug: `/porady/${categoryInfo.slug}`,
           }}
           breadcrumbs={[
             { name: 'Strona główna', link: { href: '/' } },
