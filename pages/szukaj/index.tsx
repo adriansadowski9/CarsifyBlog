@@ -12,17 +12,25 @@ import SearchResultsContainer from '@components/Sections/SearchResultsContainer'
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/ads.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
+import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAllPosts } from '@utils/getPosts';
+import { getSocialsSettings } from '@utils/getSettings';
 
 interface SearchProps {
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
+  socialsSettings: SocialsSettings;
   allPosts: any[];
 }
 
-const SearchResults: NextPage<SearchProps> = ({ articleCategories, tipCategories, allPosts }) => {
+const SearchResults: NextPage<SearchProps> = ({
+  articleCategories,
+  tipCategories,
+  socialsSettings,
+  allPosts,
+}) => {
   const { pageTitle, pageDescription } = attributes;
   const {
     query: { q: searchQuery },
@@ -39,7 +47,11 @@ const SearchResults: NextPage<SearchProps> = ({ articleCategories, tipCategories
   const results = fuse.search(searchQuery?.toString() ?? '');
 
   return (
-    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+    <Layout
+      articleCategories={articleCategories}
+      tipCategories={tipCategories}
+      socialsSettings={socialsSettings}
+    >
       <PageHead title={pageTitle} description={pageDescription} path={asPath} ogType="website" />
       <section>
         <SectionName name={`Wyniki wyszukiwania dla: ${searchQuery}`} altTextTag="h1" />
@@ -113,12 +125,14 @@ export default SearchResults;
 export const getStaticProps: GetStaticProps = async () => {
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
+  const socialsSettings = await getSocialsSettings();
   const allPosts = await getAllPosts();
 
   return {
     props: {
       articleCategories,
       tipCategories,
+      socialsSettings,
       allPosts,
     },
   };

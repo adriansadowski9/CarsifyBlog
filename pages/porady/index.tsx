@@ -11,17 +11,25 @@ import SectionName from '@components/Sections/SectionName';
 import TipsContainer from '@components/Sections/TipsContainer';
 import { attributes } from '@content/pages/ads.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
+import { SocialsSettings } from '@pages/index';
 import { Tip, TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
+import { getSocialsSettings } from '@utils/getSettings';
 
 interface TipsProps {
   tipsList: Tip[];
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
+  socialsSettings: SocialsSettings;
 }
 
-const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories }) => {
+const Tips: NextPage<TipsProps> = ({
+  tipsList,
+  articleCategories,
+  tipCategories,
+  socialsSettings,
+}) => {
   const { pageTitle, pageDescription } = attributes;
   const router = useRouter();
   const categories = Array.from(tipCategories, (c: TipCategory) => {
@@ -38,7 +46,11 @@ const Tips: NextPage<TipsProps> = ({ tipsList, articleCategories, tipCategories 
   });
   tipsList.sort((a, b) => dayjs(b.attributes.date).diff(dayjs(a.attributes.date)));
   return (
-    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+    <Layout
+      articleCategories={articleCategories}
+      tipCategories={tipCategories}
+      socialsSettings={socialsSettings}
+    >
       <PageHead
         title={pageTitle}
         description={pageDescription}
@@ -86,5 +98,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const tipsList = await getTips({ sort: 'desc' });
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
-  return { props: { tipsList, articleCategories, tipCategories } };
+  const socialsSettings = await getSocialsSettings();
+
+  return { props: { tipsList, articleCategories, tipCategories, socialsSettings } };
 };

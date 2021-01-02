@@ -7,6 +7,7 @@ import Alert from '@components/Alert';
 import Header from '@components/Header';
 import MainContent from '@components/Layout/styled/MainContent';
 import { ArticleCategory } from '@pages/artykuly/[id]';
+import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
 import { Theme } from '@utils/theme';
 
@@ -14,9 +15,15 @@ interface LayoutProps {
   children: React.ReactNode;
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
+  socialsSettings: SocialsSettings;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, articleCategories, tipCategories }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  articleCategories,
+  tipCategories,
+  socialsSettings,
+}) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const {
     query: { alertType, alertHeading, alertMessage },
@@ -24,7 +31,11 @@ const Layout: React.FC<LayoutProps> = ({ children, articleCategories, tipCategor
 
   return (
     <>
-      <Header articleCategories={articleCategories} tipCategories={tipCategories} />
+      <Header
+        articleCategories={articleCategories}
+        tipCategories={tipCategories}
+        socialsSettings={socialsSettings}
+      />
       <MainContent>
         {alertType && alertMessage && (
           <Alert

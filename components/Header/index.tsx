@@ -30,6 +30,7 @@ import SocialsButton from '@components/Header/styled/SocialsButton';
 import Icon from '@components/Icon';
 import DarkModeContext from '@contexts/darkModeContext';
 import { ArticleCategory } from '@pages/artykuly/[id]';
+import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
 import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
@@ -37,9 +38,10 @@ import { Theme } from '@utils/theme';
 interface HeaderProps {
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
+  socialsSettings: SocialsSettings;
 }
 
-const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => {
+const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socialsSettings }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
   const darkModeContext = React.useContext(DarkModeContext);
   const router = useRouter();
@@ -51,7 +53,8 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
   const [isSearchOpened, setIsSearchOpened] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
   const [isSocialIconsVisible, setIsSocialIconsVisible] = React.useState(false);
-  const socialButtonRef = React.useRef<HTMLButtonElement>(null!);
+  const socialButtonRef = React.useRef<HTMLButtonElement>(null);
+  const { facebookUrl, instagramUrl, twitterUrl } = socialsSettings.attributes;
 
   React.useEffect(() => {
     const body = document.getElementsByTagName('body')[0];
@@ -307,7 +310,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
             </NavListItem>
           </NavList>
           <IconsContainer isIconsVisible={isSocialIconsVisible} isOpen={isMobileMenuOpened}>
-            <a href="/" target="_blank" rel="noopener noreferrer">
+            <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
               <SingleIconWrapper backgroundColorProps="#4267B2" isDark={darkModeContext.value}>
                 <Icon
                   iconName={IconName.FacebookFlat}
@@ -318,7 +321,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 />
               </SingleIconWrapper>
             </a>
-            <a href="/" target="_blank" rel="noopener noreferrer">
+            <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
               <SingleIconWrapper backgroundColorProps="#1DA1F2" isDark={darkModeContext.value}>
                 <Icon
                   iconName={IconName.TwitterFlat}
@@ -329,7 +332,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories }) => 
                 />
               </SingleIconWrapper>
             </a>
-            <a href="/" target="_blank" rel="noopener noreferrer">
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
               <SingleIconWrapper
                 backgroundColorProps="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)"
                 isDark={darkModeContext.value}

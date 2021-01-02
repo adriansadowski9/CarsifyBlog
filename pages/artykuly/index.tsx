@@ -10,17 +10,25 @@ import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/articles.md';
 import { Article, ArticleCategory } from '@pages/artykuly/[id]';
+import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
+import { getSocialsSettings } from '@utils/getSettings';
 
 interface ArticlesProps {
   articlesList: Article[];
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
+  socialsSettings: SocialsSettings;
 }
 
-const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, tipCategories }) => {
+const Articles: NextPage<ArticlesProps> = ({
+  articlesList,
+  articleCategories,
+  tipCategories,
+  socialsSettings,
+}) => {
   const categories = Array.from(articleCategories, (c: ArticleCategory) => {
     return {
       title: c.attributes.title,
@@ -36,7 +44,11 @@ const Articles: NextPage<ArticlesProps> = ({ articlesList, articleCategories, ti
   const { pageTitle, pageDescription } = attributes;
   const router = useRouter();
   return (
-    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+    <Layout
+      articleCategories={articleCategories}
+      tipCategories={tipCategories}
+      socialsSettings={socialsSettings}
+    >
       <PageHead
         title={pageTitle}
         description={pageDescription}
@@ -87,12 +99,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const articlesList = await getArticles({ sort: 'desc' });
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
+  const socialsSettings = await getSocialsSettings();
 
   return {
     props: {
       articlesList,
       articleCategories,
       tipCategories,
+      socialsSettings,
     },
   };
 };
