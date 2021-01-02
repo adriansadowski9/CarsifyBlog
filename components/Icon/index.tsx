@@ -55,7 +55,6 @@ const icons: { [index: string]: IconVariantProps } = {
   [IconName.Facebook]: { color: Facebook },
   [IconName.Instagram]: { color: Instagram },
   [IconName.Pinterest]: { color: Pinterest },
-  [IconName.Twitter]: { color: Twitter },
   [IconName.FacebookFlat]: { flat: FacebookFlat },
   [IconName.TwitterFlat]: { flat: TwitterFlat },
   [IconName.InstagramOutline]: { flat: InstagramOutline },

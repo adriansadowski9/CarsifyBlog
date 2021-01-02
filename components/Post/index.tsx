@@ -232,7 +232,9 @@ const Post: React.FC<PostProps> = ({
         <SocialShareSection
           shareUrl={shareUrl}
           quote={title}
-          pinterestMediaUrl={responsiveImage.src}
+          pinterestMediaUrl={`https://carsify.pl${
+            responsiveImage.images[responsiveImage.images.length - 1].path
+          }`}
           rightSide={!!carData}
           isAbsolute
         />
@@ -259,7 +261,9 @@ const Post: React.FC<PostProps> = ({
           <SocialShareSection
             shareUrl={shareUrl}
             quote={title}
-            pinterestMediaUrl={responsiveImage.src}
+            pinterestMediaUrl={`https://carsify.pl${
+              responsiveImage.images[responsiveImage.images.length - 1].path
+            }`}
             horizontal
           />
         </ShareSectionContainer>

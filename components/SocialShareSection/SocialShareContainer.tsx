@@ -10,10 +10,7 @@ const SocialShareContainer = styled.div<{
       ? `
   position: absolute;
   top: 50%;
-  
   ${props.rightSide ? `right: ${props.theme.spaces.l}` : `left: ${props.theme.spaces.l}`}; 
-
-
   transform: translateY(-50%);
   `
       : ''}
@@ -28,6 +25,7 @@ const SocialShareContainer = styled.div<{
   justify-content: space-between;
   background-color: ${(props) => props.theme.colors.socialBoxBg};
   border-radius: 20px;
+
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     ${(props) =>
       props.isAbsolute
