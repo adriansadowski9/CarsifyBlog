@@ -48,7 +48,7 @@ const AdCard: React.FC<AdCardProps> = ({
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
-      clamp(snippetRef.current, { clamp: 'auto' });
+      clamp(snippetRef.current, { clamp: '3' });
     }
   }, [snippetRef]);
 
