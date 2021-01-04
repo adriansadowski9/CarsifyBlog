@@ -4,6 +4,7 @@ const MainContent = styled.main`
   display: flex;
   flex-direction: column;
   padding: 0 ${(props) => props.theme.spaces.s};
+  margin-top: ${(props) => props.theme.spaces.xs};
   margin-bottom: ${(props) => props.theme.spaces.m};
 
   @media only screen and (max-width: 320px) {
