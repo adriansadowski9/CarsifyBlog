@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-const SingleIconWrapper = styled.div<{ backgroundColorProps: string; isDark: boolean }>`
+const SingleIconWrapper = styled.div<{ backgroundColorProps: string }>`
   background: ${(props) => props.backgroundColorProps};
-  opacity: ${(props) => (props.isDark ? 1 : 0.8)};
   width: 70px;
   height: 70px;
   display: flex;
