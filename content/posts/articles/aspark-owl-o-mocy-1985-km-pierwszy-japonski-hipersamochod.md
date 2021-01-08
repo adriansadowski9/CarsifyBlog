@@ -43,9 +43,9 @@ gallery:
 highlightedText: >-
   Już oficjalnie rozpoczęła się sprzedaż Aspark Owl – w pełni elektrycznego
   hipersamochodu o mocy 1985 koni mechanicznych, który został nazwany
-  najszybciej przyspieszającym samochodem na świecie. W rodzinnym mieście Aspark
-  w Osace w Japonii otwarto salon, a firma przyjmuje zamówienia nie tylko z
-  Azji, ale także z Europy i Ameryki Północnej.
+  najszybciej przyspieszającym samochodem na świecie. W Osace, rodzinnym mieście
+  Japońskiego producenta samochodów Aspark otwarto salon, a firma przyjmuje
+  zamówienia nie tylko z Azji, ale także z Europy i Ameryki Północnej.
 text: >-
   **Aspark Owl** po raz pierwszy został zaprezentowany na targach
   motoryzacyjnych we Frankfurcie w 2017 roku, natomiast jego produkcyjna wersja
@@ -63,13 +63,13 @@ text: >-
   sekundy. Prędkość maksymalna wynosi zawrotne 400km/h. 
 
 
-  Pojazd wyposażony jest w akulatory litowo-jonowe o pojemności 64
+  Pojazd wyposażony jest w akumulatory litowo-jonowe o pojemności 64
   kilowatogodzin, które jak deklaruje producent, przekładają się na realny
   zasięg około 450 kilometrów. Aspark twierdzi, że w najbliższej przyszłości
   zostanie wprowadzona także wersja z większym akumulatorem. 
 
-  Co ciekawe Owl ma jedyne 99 cm wysokości co czyni go prawdopodobnie najniższym
-  dopuszczonym do ruchu elektrycznym hipersamochodem.
+  Co ciekawe Owl ma jedynie 99 cm wysokości co czyni go prawdopodobnie
+  najniższym dopuszczonym do ruchu elektrycznym hipersamochodem.
 
 
   :-gallery>
