@@ -7,7 +7,7 @@ const AdCardContainer = styled.a<{ enlargedCard: boolean }>`
   text-decoration: none;
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     width: 400px;
-    height: ${(props) => (props.enlargedCard ? '390px' : '363px')};
+    height: ${(props) => (props.enlargedCard ? '390px' : 'auto')};
     cursor: pointer;
   }
 
