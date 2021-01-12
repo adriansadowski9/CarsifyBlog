@@ -14,7 +14,7 @@ category: Premiery
 contents:
   - link: '#specyfikacja'
     name: Specyfikacja techniczna NIO ET7
-  - link: '#NCAP'
+  - link: '#ncap'
     name: 'Pięć gwiazdek Euro NCAP '
   - link: '#wnetrze-i-wyposazenie'
     name: Wnętrze i wyposażenie NIO ET7
@@ -71,7 +71,7 @@ text: >-
   :-gallery>
 
 
-  ## Pięć gwiazdek Euro NCAP {NCAP}
+  ## Pięć gwiazdek Euro NCAP {ncap}
 
 
   W testach bezpieczeństwa Euro NCAP - podobnie jak większość obecnie
