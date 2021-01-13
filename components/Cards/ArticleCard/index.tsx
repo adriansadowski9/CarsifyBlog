@@ -1,4 +1,5 @@
 import * as React from 'react';
+import clamp from 'clamp-js';
 import Link from 'next/link';
 import { ThemeContext } from 'styled-components';
 
@@ -30,8 +31,16 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   slug,
   altTitleTag,
 }) => {
+  const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
+
+  React.useEffect(() => {
+    if (snippetRef && snippetRef.current) {
+      clamp(snippetRef.current, { clamp: 'auto' });
+    }
+  }, [snippetRef]);
+
   return (
     <Link href="/artykuly/[id]" as={`/artykuly/${slug}`} passHref>
       <ArticleCardContainer>
@@ -44,7 +53,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
           />
           <ArticleCardInfoContainer>
             <ArticleCardTitle as={altTitleTag}>{title}</ArticleCardTitle>
-            <ArticleCardSnippet>{textSnippet}</ArticleCardSnippet>
+            <ArticleCardSnippet ref={snippetRef}>{textSnippet}</ArticleCardSnippet>
             <Category
               name={category.name}
               iconName={category.icon}

@@ -9,9 +9,11 @@ import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import AdsContainer from '@components/Sections/AdsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
+import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds } from '@utils/getPosts';
+import { getSocialsSettings } from '@utils/getSettings';
 
 interface AdAttributes {
   pageTitle: string;
@@ -56,6 +58,7 @@ interface AdProps extends NextPageContext {
   tipCategories: TipCategory[];
   adExists: boolean;
   moreAds: Ad[];
+  socialsSettings: SocialsSettings;
 }
 
 const Ad: NextPage<AdProps> = ({
@@ -64,6 +67,7 @@ const Ad: NextPage<AdProps> = ({
   tipCategories,
   adExists,
   moreAds,
+  socialsSettings,
 }) => {
   const router = useRouter();
   if (adExists) {
@@ -101,7 +105,11 @@ const Ad: NextPage<AdProps> = ({
     const shareUrl = `https://carsify.pl${router.asPath}`;
 
     return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+      <Layout
+        articleCategories={articleCategories}
+        tipCategories={tipCategories}
+        socialsSettings={socialsSettings}
+      >
         <PageHead
           title={pageTitle}
           description={pageDescription}
@@ -140,11 +148,7 @@ const Ad: NextPage<AdProps> = ({
                     image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                     carData={carData}
                     title={title}
-                    textSnippet={
-                      highlightedText.length > 160
-                        ? `${highlightedText.substring(0, 160)}...`
-                        : highlightedText
-                    }
+                    textSnippet={highlightedText}
                     slug={slug}
                   />
                 );
@@ -165,6 +169,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const { id } = ctx.params;
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
+  const socialsSettings = await getSocialsSettings();
   let markdownFile;
   let moreAds;
   let adExists;
@@ -186,6 +191,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       ...markdownFile,
       articleCategories,
       tipCategories,
+      socialsSettings,
       moreAds: moreAds || null,
       adExists: adExists || null,
     },

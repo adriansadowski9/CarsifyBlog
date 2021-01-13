@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const ChevronWrapper = styled.button<{ isOpen: boolean }>`
+const ChevronWrapper = styled.button<{ isOpen?: boolean }>`
   position: absolute;
-  left: ${(props) => props.theme.spaces.l};
+  right: ${(props) => props.theme.spaces.xs};
   transition: transform 0.5s;
-  transform: ${(props) => (props.isOpen ? 'rotate(180deg)' : 'none')};
+  transform: ${(props) => (props.isOpen ? 'rotate(90deg)' : 'rotate(270deg)')};
   border: none;
   background: transparent;
   outline: 0;

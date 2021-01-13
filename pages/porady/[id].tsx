@@ -11,8 +11,10 @@ import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import SectionName from '@components/Sections/SectionName';
 import TipsContainer from '@components/Sections/TipsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
+import { SocialsSettings } from '@pages/index';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
+import { getSocialsSettings } from '@utils/getSettings';
 import IconName from '@utils/iconNames';
 
 interface TipAttributes {
@@ -58,6 +60,7 @@ interface TipProps extends NextPageContext {
   isCategory: boolean;
   tipExists: boolean;
   moreTips: Tip[];
+  socialsSettings: SocialsSettings;
 }
 
 const Tip: NextPage<TipProps> = ({
@@ -68,6 +71,7 @@ const Tip: NextPage<TipProps> = ({
   isCategory,
   tipExists,
   moreTips,
+  socialsSettings,
 }) => {
   const router = useRouter();
   if (isCategory) {
@@ -85,7 +89,11 @@ const Tip: NextPage<TipProps> = ({
       href: '/porady',
     });
     return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+      <Layout
+        articleCategories={articleCategories}
+        tipCategories={tipCategories}
+        socialsSettings={socialsSettings}
+      >
         <PageHead
           title={pageTitle}
           description={pageDescription}
@@ -110,11 +118,7 @@ const Tip: NextPage<TipProps> = ({
                 key={`${title}-${index}`}
                 image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                 title={title}
-                textSnippet={
-                  highlightedText.length > 160
-                    ? `${highlightedText.substring(0, 160)}...`
-                    : highlightedText
-                }
+                textSnippet={highlightedText}
                 category={{
                   name: categoryInfo.attributes.title,
                   icon: categoryInfo.attributes.icon,
@@ -164,7 +168,11 @@ const Tip: NextPage<TipProps> = ({
     );
 
     return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+      <Layout
+        articleCategories={articleCategories}
+        tipCategories={tipCategories}
+        socialsSettings={socialsSettings}
+      >
         <PageHead
           title={pageTitle}
           description={pageDescription}
@@ -180,6 +188,8 @@ const Tip: NextPage<TipProps> = ({
           category={{
             name: categoryInfo.attributes.title,
             icon: categoryInfo.attributes.icon,
+            href: '/porady/[id]',
+            slug: `/porady/${categoryInfo.slug}`,
           }}
           breadcrumbs={[
             { name: 'Strona główna', link: { href: '/' } },
@@ -213,11 +223,7 @@ const Tip: NextPage<TipProps> = ({
                     key={`${title}-${index}`}
                     image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                     title={title}
-                    textSnippet={
-                      highlightedText.length > 160
-                        ? `${highlightedText.substring(0, 160)}...`
-                        : highlightedText
-                    }
+                    textSnippet={highlightedText}
                     category={{
                       name: categoryInfo.attributes.title,
                       icon: categoryInfo.attributes.icon,
@@ -240,6 +246,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const { id } = ctx.params;
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
+  const socialsSettings = await getSocialsSettings();
   let markdownFile;
   let tipsList;
   let isCategory;
@@ -277,6 +284,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       ...markdownFile,
       articleCategories,
       tipCategories,
+      socialsSettings,
       tipsList: tipsList || null,
       isCategory: isCategory || null,
       tipExists: tipExists || null,

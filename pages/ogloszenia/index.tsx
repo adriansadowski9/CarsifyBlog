@@ -10,23 +10,35 @@ import AdsContainer from '@components/Sections/AdsContainer';
 import SectionName from '@components/Sections/SectionName';
 import { attributes } from '@content/pages/ads.md';
 import { ArticleCategory } from '@pages/artykuly/[id]';
+import { SocialsSettings } from '@pages/index';
 import { Ad } from '@pages/ogloszenia/[id]';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds } from '@utils/getPosts';
+import { getSocialsSettings } from '@utils/getSettings';
 
 interface AdsProps {
   adsList: Ad[];
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
+  socialsSettings: SocialsSettings;
 }
 
-const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) => {
+const Ads: NextPage<AdsProps> = ({
+  adsList,
+  articleCategories,
+  tipCategories,
+  socialsSettings,
+}) => {
   const { pageTitle, pageDescription } = attributes;
   const router = useRouter();
   adsList.sort((a, b) => dayjs(b.attributes.date).diff(dayjs(a.attributes.date)));
   return (
-    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+    <Layout
+      articleCategories={articleCategories}
+      tipCategories={tipCategories}
+      socialsSettings={socialsSettings}
+    >
       <PageHead
         title={pageTitle}
         description={pageDescription}
@@ -44,11 +56,7 @@ const Ads: NextPage<AdsProps> = ({ adsList, articleCategories, tipCategories }) 
                 key={`${title}-${index}`}
                 image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                 title={title}
-                textSnippet={
-                  highlightedText.length > 160
-                    ? `${highlightedText.substring(0, 160)}...`
-                    : highlightedText
-                }
+                textSnippet={highlightedText}
                 carData={carData}
                 slug={slug}
                 altTitleTag="h2"
@@ -67,12 +75,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const adsList = await getAds({ sort: 'desc' });
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
+  const socialsSettings = await getSocialsSettings();
 
   return {
     props: {
       adsList,
       articleCategories,
       tipCategories,
+      socialsSettings,
     },
   };
 };

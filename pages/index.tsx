@@ -3,7 +3,6 @@ import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { DotGroup, Slide, Slider } from 'pure-react-carousel';
 
-import Alert, { AlertProps, AlertType } from '@components/Alert';
 import AdCard from '@components/Cards/AdCard';
 import ArticleCard from '@components/Cards/ArticleCard';
 import InformationCard from '@components/Cards/InformationCard';
@@ -24,6 +23,16 @@ import { Ad } from '@pages/ogloszenia/[id]';
 import { Tip, TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds, getArticles, getTips } from '@utils/getPosts';
+import { getSocialsSettings } from '@utils/getSettings';
+
+export interface SocialsSettings {
+  attributes: {
+    facebookUrl: string;
+    instagramUrl: string;
+    twitterUrl: string;
+  };
+}
+
 interface HomeProps {
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
@@ -31,6 +40,7 @@ interface HomeProps {
   tipsList: Tip[];
   infosList: Tip[];
   adsList: Ad[];
+  socialsSettings: SocialsSettings;
 }
 
 const Home: NextPage<HomeProps> = ({
@@ -40,12 +50,17 @@ const Home: NextPage<HomeProps> = ({
   tipsList,
   infosList,
   adsList,
+  socialsSettings,
 }) => {
   const { pageTitle, pageDescription } = attributes;
   const router = useRouter();
 
   return (
-    <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+    <Layout
+      articleCategories={articleCategories}
+      tipCategories={tipCategories}
+      socialsSettings={socialsSettings}
+    >
       <PageHead
         title={pageTitle}
         description={pageDescription}
@@ -68,11 +83,7 @@ const Home: NextPage<HomeProps> = ({
                   key={`${title}-${index}`}
                   image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                   title={title}
-                  textSnippet={
-                    highlightedText.length > 160
-                      ? `${highlightedText.substring(0, 160)}...`
-                      : highlightedText
-                  }
+                  textSnippet={highlightedText}
                   category={{
                     name: categoryInfo.attributes.title,
                     icon: categoryInfo.attributes.icon,
@@ -99,11 +110,7 @@ const Home: NextPage<HomeProps> = ({
                     key={`${title}-${index}`}
                     image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                     title={title}
-                    textSnippet={
-                      highlightedText.length > 160
-                        ? `${highlightedText.substring(0, 160)}...`
-                        : highlightedText
-                    }
+                    textSnippet={highlightedText}
                     category={{
                       name: categoryInfo.attributes.title,
                       icon: categoryInfo.attributes.icon,
@@ -117,7 +124,7 @@ const Home: NextPage<HomeProps> = ({
           <InformationSection>
             <SectionName name="Informacje" />
             <StyledCarousel
-              naturalSlideHeight={250}
+              naturalSlideHeight={239}
               naturalSlideWidth={400}
               interval={3000}
               totalSlides={infosList.length}
@@ -133,11 +140,7 @@ const Home: NextPage<HomeProps> = ({
                       <InformationCard
                         image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                         title={title}
-                        textSnippet={
-                          highlightedText.length > 160
-                            ? `${highlightedText.substring(0, 160)}...`
-                            : highlightedText
-                        }
+                        textSnippet={highlightedText}
                         slug={slug}
                       />
                     </Slide>
@@ -161,11 +164,7 @@ const Home: NextPage<HomeProps> = ({
                   key={`${title}-${index}`}
                   image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                   title={title}
-                  textSnippet={
-                    highlightedText.length > 160
-                      ? `${highlightedText.substring(0, 160)}...`
-                      : highlightedText
-                  }
+                  textSnippet={highlightedText}
                   carData={carData}
                   slug={slug}
                 />
@@ -191,6 +190,7 @@ export const getStaticProps: GetStaticProps = async () => {
     categories: ['Bezpieczeństwo', 'Technika jazdy', 'Eksploatacja', 'Warto wiedzieć'],
   });
   const adsList = await getAds({ sort: 'desc', count: 4 });
+  const socialsSettings = await getSocialsSettings();
 
   return {
     props: {
@@ -200,6 +200,7 @@ export const getStaticProps: GetStaticProps = async () => {
       tipsList,
       infosList,
       adsList,
+      socialsSettings,
     },
   };
 };

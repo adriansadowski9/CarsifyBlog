@@ -5,20 +5,28 @@ import Calendar from '@assets/icons/Calendar.svg';
 import CarShow from '@assets/icons/CarShow.svg';
 import ChevronDown from '@assets/icons/ChevronDown.svg';
 import ChevronRight from '@assets/icons/ChevronRight.svg';
+import Close from '@assets/icons/Close.svg';
 import Documentation from '@assets/icons/Documentation.svg';
 import Facebook from '@assets/icons/Facebook.svg';
+import FacebookFlat from '@assets/icons/FacebookFlat.svg';
 import Fuel from '@assets/icons/Fuel.svg';
 import Instagram from '@assets/icons/Instagram.svg';
+import InstagramOutline from '@assets/icons/InstagramOutline.svg';
 import LightBulb from '@assets/icons/LightBulb.svg';
 import CarsifyLogo from '@assets/icons/Logo.svg';
+import Maximize from '@assets/icons/Maximize.svg';
+import Minimize from '@assets/icons/Minimize.svg';
 import Moon from '@assets/icons/Moon.svg';
 import News from '@assets/icons/News.svg';
 import Pinterest from '@assets/icons/Pinterest.svg';
+import Search from '@assets/icons/Search.svg';
 import SeatBelt from '@assets/icons/SeatBelt.svg';
+import Socials from '@assets/icons/Socials.svg';
 import SteeringWheel from '@assets/icons/SteeringWheel.svg';
 import Stop from '@assets/icons/Stop.svg';
 import Sun from '@assets/icons/Sun.svg';
-import Twitter from '@assets/icons/Twitter.svg';
+import ThinChevronRight from '@assets/icons/ThinChevronRight.svg';
+import TwitterFlat from '@assets/icons/TwitterFlat.svg';
 import IconName from '@utils/iconNames';
 
 interface IconVariantProps {
@@ -35,17 +43,25 @@ const icons: { [index: string]: IconVariantProps } = {
   [IconName.Bucket]: { flat: Bucket },
   [IconName.Calendar]: { flat: Calendar },
   [IconName.CarShow]: { flat: CarShow },
+  [IconName.Close]: { flat: Close },
   [IconName.Documentation]: { flat: Documentation },
   [IconName.Fuel]: { flat: Fuel },
   [IconName.LightBulb]: { flat: LightBulb },
   [IconName.News]: { flat: News },
+  [IconName.Search]: { flat: Search },
   [IconName.SeatBelt]: { flat: SeatBelt },
+  [IconName.Socials]: { flat: Socials },
   [IconName.SteeringWheel]: { flat: SteeringWheel },
   [IconName.Stop]: { flat: Stop },
   [IconName.Facebook]: { color: Facebook },
   [IconName.Instagram]: { color: Instagram },
   [IconName.Pinterest]: { color: Pinterest },
-  [IconName.Twitter]: { color: Twitter },
+  [IconName.FacebookFlat]: { flat: FacebookFlat },
+  [IconName.TwitterFlat]: { flat: TwitterFlat },
+  [IconName.InstagramOutline]: { flat: InstagramOutline },
+  [IconName.ThinChevronRight]: { flat: ThinChevronRight },
+  [IconName.Maximize]: { flat: Maximize },
+  [IconName.Minimize]: { flat: Minimize },
 };
 
 type IconVariant = 'flat' | 'color';

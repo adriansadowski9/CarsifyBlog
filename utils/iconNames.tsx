@@ -1,5 +1,3 @@
-import ChevronRight from '@assets/icons/ChevronRight.svg';
-
 enum IconName {
   CarsifyLogo = 'CARSIFY_LOGO',
   ChevronDown = 'CHEVRON_DOWN',
@@ -9,17 +7,26 @@ enum IconName {
   Bucket = 'BUCKET',
   Calendar = 'CALENDAR',
   CarShow = 'CAR_SHOW',
+  Close = 'CLOSE',
   Documentation = 'DOCUMENTATION',
   Fuel = 'FUEL',
   LightBulb = 'LIGHT_BULB',
   News = 'NEWS',
+  Search = 'SEARCH',
   SeatBelt = 'SEAT_BELT',
+  Socials = 'SOCIALS',
   SteeringWheel = 'STEERING_WHEEL',
   Stop = 'STOP',
   Facebook = 'FACEBOOK',
   Instagram = 'INSTAGRAM',
   Pinterest = 'PINTEREST',
   Twitter = 'TWITTER',
+  TwitterFlat = 'TWITTER_FLAT',
+  FacebookFlat = 'FACEBOOK_FLAT',
+  InstagramOutline = 'INSTAGRAM_OUTLINE',
+  ThinChevronRight = 'THIN_CHEVRON_RIGHT',
+  Maximize = 'MAXIMIZE',
+  Minimize = 'MINIMIZE',
 }
 
 export default IconName;

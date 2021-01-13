@@ -1,13 +1,23 @@
 import styled from 'styled-components';
 
-const LogoWrapper = styled.a`
-  display: flex;
+const LogoWrapper = styled.a<{ isSearchOpened: boolean }>`
+  display: ${(props) => (props.isSearchOpened ? 'none' : 'flex')};
   align-items: center;
   text-decoration: none;
   z-index: 150;
-  height: 90px;
+  height: 100%;
+  margin-left: ${(props) => props.theme.spaces.s};
+
   &:hover {
     cursor: pointer;
+  }
+
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    display: flex;
+  }
+
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    margin-left: ${(props) => props.theme.spaces.l};
   }
 `;
 

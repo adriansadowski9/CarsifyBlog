@@ -5,8 +5,10 @@ import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
 import showdown from 'showdown';
+import textFit from 'textfit';
 
 import Breadcrumbs, { BreadcrumbsItem } from '@components/Breadcrumbs';
+import Icon from '@components/Icon';
 import CarDataBox from '@components/Post/styled/CarDataBox';
 import CarDataLocalization from '@components/Post/styled/CarDataLocalization';
 import CarDataName from '@components/Post/styled/CarDataName';
@@ -15,9 +17,11 @@ import CarDataRow from '@components/Post/styled/CarDataRow';
 import CarDataRowTitle from '@components/Post/styled/CarDataRowTitle';
 import ContentsList from '@components/Post/styled/ContentsList';
 import ContentsListItem from '@components/Post/styled/ContentsListItem';
+import GalleryButton from '@components/Post/styled/GalleryButton';
 import Heading from '@components/Post/styled/Heading';
 import HighlightedText from '@components/Post/styled/HighlightedText';
 import IconInfo from '@components/Post/styled/IconInfo';
+import ImageGalleryContainer from '@components/Post/styled/ImageGalleryContainer';
 import PostImage from '@components/Post/styled/PostImage';
 import PostImageContainer from '@components/Post/styled/PostImageContainer';
 import ShareSectionBoldedText from '@components/Post/styled/ShareSectionBoldedText';
@@ -46,6 +50,8 @@ interface PostProps {
   category?: {
     name: string;
     icon: IconName;
+    href: string;
+    slug: string;
   };
   breadcrumbs: BreadcrumbsItem[];
   title: string;
@@ -93,6 +99,16 @@ const Post: React.FC<PostProps> = ({
   carData,
   galleryImages,
 }) => {
+  const carNameRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (carNameRef && carNameRef.current) {
+      if (carNameRef.current.scrollWidth > carNameRef.current.offsetWidth) {
+        textFit(carNameRef.current);
+      }
+    }
+  }, [carNameRef]);
+
   showdown.extension('SeeAlso', {
     type: 'output',
     filter: (text: string) => {
@@ -118,6 +134,7 @@ const Post: React.FC<PostProps> = ({
     simplifiedAutoLink: true,
     extensions: ['SeeAlso', 'AddGallery'],
   });
+
   const images = galleryImages
     ? galleryImages.map((galleryItem) => ({
         original: galleryItem.image.images[galleryItem.image.images.length - 1].path,
@@ -126,6 +143,29 @@ const Post: React.FC<PostProps> = ({
         thumbnailAlt: `${galleryItem.alt} (miniatura)`,
       }))
     : [];
+
+  const renderLeftNav = (onClick, disabled) => (
+    <GalleryButton type="button" onClick={onClick} left disabled={disabled}>
+      <Icon iconName={IconName.ChevronRight} variant="flat" width={64} height={64} />
+    </GalleryButton>
+  );
+
+  const renderRightNav = (onClick, disabled) => (
+    <GalleryButton type="button" onClick={onClick} disabled={disabled}>
+      <Icon iconName={IconName.ChevronRight} variant="flat" width={64} height={64} />
+    </GalleryButton>
+  );
+
+  const renderFullscreenButton = (onClick, isFullscreen) => (
+    <GalleryButton type="button" onClick={onClick} bottomRight>
+      <Icon
+        iconName={isFullscreen ? IconName.Minimize : IconName.Maximize}
+        variant="flat"
+        width={32}
+        height={32}
+      />
+    </GalleryButton>
+  );
 
   const turnIntoGallery = (parsedHtml: ReactElement[] | ReactElement) => {
     if (Array.isArray(parsedHtml)) {
@@ -137,16 +177,36 @@ const Post: React.FC<PostProps> = ({
           element.props.id === 'post-gallery' &&
           indexToReplace.push(index)
       );
+
       // CHANGE PLACEHOLDER DIV INTO GALLERY
       indexToReplace.forEach(
         (index) =>
           (parsedHtml[index] = (
-            <ImageGallery items={images} key={parsedHtml[index].key} showPlayButton={false} />
+            <ImageGalleryContainer key={index}>
+              <ImageGallery
+                items={images}
+                key={parsedHtml[index].key}
+                showPlayButton={false}
+                renderLeftNav={renderLeftNav}
+                renderRightNav={renderRightNav}
+                renderFullscreenButton={renderFullscreenButton}
+              />
+            </ImageGalleryContainer>
           ))
       );
       return parsedHtml;
     } else if (parsedHtml.type === 'div' && parsedHtml.props.id === 'post-gallery') {
-      return <ImageGallery items={images} showPlayButton={false} />;
+      return (
+        <ImageGalleryContainer>
+          <ImageGallery
+            items={images}
+            showPlayButton={false}
+            renderLeftNav={renderLeftNav}
+            renderRightNav={renderRightNav}
+            renderFullscreenButton={renderFullscreenButton}
+          />
+        </ImageGalleryContainer>
+      );
     } else {
       return parsedHtml;
     }
@@ -165,16 +225,22 @@ const Post: React.FC<PostProps> = ({
     <article>
       <TopInfoContainer>
         <IconInfo text={dayjs(date).format('DD.MM.YYYY')} iconName={IconName.Calendar} />
-        {category && <IconInfo text={category.name} iconName={category.icon} />}
+        {category && (
+          <IconInfo
+            text={category.name}
+            iconName={category.icon}
+            href={category.href}
+            slug={category.slug}
+          />
+        )}
       </TopInfoContainer>
       <Breadcrumbs items={breadcrumbs} />
       <Heading>{title}</Heading>
       <Subheading>{subtitle}</Subheading>
-
       <PostImageContainer isCarData={!!carData}>
         {!!carData && (
           <CarDataBox>
-            <CarDataName>{carData.name}</CarDataName>
+            <CarDataName ref={carNameRef}>{carData.name}</CarDataName>
             <CarDataLocalization>
               <p>{carData.localization}</p>
             </CarDataLocalization>
@@ -221,7 +287,9 @@ const Post: React.FC<PostProps> = ({
         <SocialShareSection
           shareUrl={shareUrl}
           quote={title}
-          pinterestMediaUrl={responsiveImage.src}
+          pinterestMediaUrl={`https://carsify.pl${
+            responsiveImage.images[responsiveImage.images.length - 1].path
+          }`}
           rightSide={!!carData}
           isAbsolute
         />
@@ -248,7 +316,9 @@ const Post: React.FC<PostProps> = ({
           <SocialShareSection
             shareUrl={shareUrl}
             quote={title}
-            pinterestMediaUrl={responsiveImage.src}
+            pinterestMediaUrl={`https://carsify.pl${
+              responsiveImage.images[responsiveImage.images.length - 1].path
+            }`}
             horizontal
           />
         </ShareSectionContainer>

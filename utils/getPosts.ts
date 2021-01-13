@@ -130,3 +130,15 @@ export const getAds: (args: getAdsArgs) => Promise<Ad[]> = async ({
 
   return count ? importedAds.slice(0, count) : importedAds;
 };
+
+export const getAllPosts = async () => {
+  const articles = await importArticles();
+  const tips = await importTips();
+  const ads = await importAds();
+
+  articles.map((article) => (article.card = 'article'));
+  tips.map((tip) => (tip.card = 'tip'));
+  ads.map((ad) => (ad.card = 'ad'));
+
+  return [...articles, ...tips, ...ads];
+};

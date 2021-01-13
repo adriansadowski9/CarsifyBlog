@@ -8,7 +8,7 @@ const SectionNameText = styled.h2`
   text-transform: uppercase;
   padding: 0 ${(props) => props.theme.spaces.xs};
   background: ${(props) => props.theme.colors.bg};
-  z-index: 1;
+  z-index: 0;
 `;
 
 export default SectionNameText;

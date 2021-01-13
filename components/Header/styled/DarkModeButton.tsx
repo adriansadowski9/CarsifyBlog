@@ -1,22 +1,30 @@
 import styled from 'styled-components';
 
 const DarkModeButton = styled.button`
-  background: none;
+  display: ${(props) => (props.isSearchOpened ? 'none' : 'block')};
+  width: 70px;
+  height: 70px;
+  background: ${(props) => props.theme.colors.themeButtonBg};
   border: none;
-  padding: ${(props) => props.theme.spaces.xxxs};
   margin: 0;
   cursor: pointer;
 
   svg {
-    width: 32px;
+    width: 23px;
+    height: 23px;
   }
 
   &:focus {
     outline: none;
   }
-
+  @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
+    display: block;
+  }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    margin-left: ${(props) => props.theme.spaces.xxl};
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 

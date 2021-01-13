@@ -1,13 +1,24 @@
 import styled from 'styled-components';
 
-const InputComponent = styled.input<{ customHeight: string; textarea: boolean }>`
+const InputComponent = styled.input<{
+  customHeight: string;
+  textarea?: boolean;
+  customPaddingBottom?: string;
+  useBiggerFontForDesktop?: boolean;
+  isSearchOpened?: boolean;
+  isContactInput?: boolean;
+}>`
+  ${(props) =>
+    props.isSearchOpened || props.isContactInput ? 'visibility:visible' : 'visibility:hidden'};
   width: 100%;
-  height: ${(props) => props.customHeight}px;
+  height: ${(props) => (props.customHeight ? `${props.customHeight}px` : '100%')};
   color: ${(props) => props.theme.colors.text};
-  font-size: ${(props) => props.theme.fontSizes.l};
+  font-size: ${(props) =>
+    props.useBiggerFontForDesktop ? props.theme.fontSizes.m : props.theme.fontSizes.l};
 
   padding-left: ${(props) => props.theme.spaces.xs};
   padding-top: ${(props) => (props.textarea ? props.theme.spaces.l : props.theme.spaces.xs)};
+  ${(props) => (props.customPaddingBottom ? `padding-bottom: ${props.customPaddingBottom};` : '')}
 
   background: transparent;
   border-top: none;
@@ -17,6 +28,7 @@ const InputComponent = styled.input<{ customHeight: string; textarea: boolean }>
   resize: none;
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     margin: 0;
+    ${(props) => (props.useBiggerFontForDesktop ? `font-size: ${props.theme.fontSizes.l};` : '')}
   }
 `;
 
