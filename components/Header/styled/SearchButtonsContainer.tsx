@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const SearchButtonsContainer = styled.div<{ isSearchOpened: boolean }>`
   position: absolute;
   top: 50%;
-  right: 30px;
+  right: ${(props) => props.theme.spaces.l};
   transform: translateY(-50%);
   visibility: ${(props) => (props.isSearchOpened ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.isSearchOpened ? '1' : '0')};
@@ -13,7 +13,7 @@ const SearchButtonsContainer = styled.div<{ isSearchOpened: boolean }>`
     margin-right: 0;
   }
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
-    right: 10px;
+    right: ${(props) => props.theme.spaces.xxs};
   }
 `;
 
