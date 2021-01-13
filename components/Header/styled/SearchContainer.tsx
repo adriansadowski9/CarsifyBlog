@@ -11,23 +11,28 @@ const SearchContainer = styled.div<{ isSearchOpened: boolean }>`
   align-self: flex-end;
 
   z-index: ${(props) => (props.isSearchOpened ? '1001' : '1')};
-  ${(props) => (props.isSearchOpened ? 'opacity:1' : 'opacity:0')};
-  ${(props) => (props.isSearchOpened ? 'width:auto' : 'width:0')};
+  opacity: ${(props) => (props.isSearchOpened ? '1' : '0')};
+  width: ${(props) => (props.isSearchOpened ? 'auto' : '0')};
   transition: all 0.2s;
-  padding: 0 20px;
+  padding: 0 ${(props) => props.theme.spaces.s};
+
   @media only screen and (min-width: 1025px) {
     padding: 0;
     max-width: 71vw;
   }
+
   @media only screen and (min-width: 1120px) {
     max-width: 820px;
   }
+
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     max-width: 74vw;
   }
+
   @media only screen and (min-width: 1400px) {
     max-width: 77vw;
   }
+
   @media only screen and (min-width: 1580px) {
     max-width: 1260px;
   }
