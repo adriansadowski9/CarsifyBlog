@@ -16,7 +16,7 @@ const DropdownItem = styled.li`
     svg {
       position: absolute;
       transform: rotate(0deg);
-      right: 40px;
+      right: ${(props) => props.theme.spaces.xl};
     }
     margin: 0;
     &:after {

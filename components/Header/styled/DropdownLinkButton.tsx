@@ -36,7 +36,7 @@ const DropdownLinkButton = styled.a<{ isActive: boolean }>`
     margin: 0;
     padding: ${(props) => props.theme.spaces.s};
     font-size: ${(props) => props.theme.fontSizes.l};
-    padding-left: 40px;
+    padding-left: ${(props) => props.theme.spaces.xl};
     :hover {
       background-color: ${(props) => props.theme.colors.mobileMenuBorderBottom};
     }
