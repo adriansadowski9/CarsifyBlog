@@ -311,7 +311,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
           </NavList>
           <IconsContainer isIconsVisible={isSocialIconsVisible}>
             <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
-              <SingleIconWrapper backgroundColorProps="#4267B2">
+              <SingleIconWrapper backgroundColor="#4267B2">
                 <Icon
                   iconName={IconName.FacebookFlat}
                   variant="flat"
@@ -322,7 +322,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
               </SingleIconWrapper>
             </a>
             <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
-              <SingleIconWrapper backgroundColorProps="#1DA1F2">
+              <SingleIconWrapper backgroundColor="#1DA1F2">
                 <Icon
                   iconName={IconName.TwitterFlat}
                   variant="flat"
@@ -333,7 +333,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
               </SingleIconWrapper>
             </a>
             <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
-              <SingleIconWrapper backgroundColorProps="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)">
+              <SingleIconWrapper backgroundColor="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)">
                 <Icon
                   iconName={IconName.InstagramOutline}
                   variant="flat"
@@ -345,7 +345,6 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
             </a>
           </IconsContainer>
         </Menu>
-
         <ActionButtonsContainer>
           {!isMobileMenuOpened && !isSearchOpened && (
             <SearchButton onClick={openSearch}>

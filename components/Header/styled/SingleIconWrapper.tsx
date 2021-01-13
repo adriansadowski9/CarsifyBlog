@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const SingleIconWrapper = styled.div<{ backgroundColorProps: string }>`
-  background: ${(props) => props.backgroundColorProps};
+const SingleIconWrapper = styled.div<{ backgroundColor: string }>`
+  background: ${(props) => props.backgroundColor};
   width: 70px;
   height: 70px;
   display: flex;
