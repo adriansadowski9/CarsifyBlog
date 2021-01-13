@@ -14,9 +14,6 @@ const GalleryButton = styled.button<{ left: boolean; disabled: boolean; bottomRi
 
   &:focus {
     outline: none;
-  }
-
-  &:active {
     svg {
       fill: ${(props) => props.theme.colors.galleryNavButtonHover};
     }
