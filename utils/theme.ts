@@ -128,6 +128,10 @@ export interface Theme {
     cookieConsentButtonText: string;
     mobileMenuBorderBottom: string;
     linkHover: string;
+    galleryNavButton: string;
+    galleryNavButtonHover: string;
+    galleryDisabledNavButton: string;
+    galleryThumbnailsBorder: string;
   };
 }
 
@@ -196,6 +200,10 @@ export const lightTheme: Theme = {
     cookieConsentButtonText: colors.white,
     mobileMenuBorderBottom: colors.lightGray,
     linkHover: colors.red,
+    galleryNavButton: colors.white,
+    galleryNavButtonHover: colors.red,
+    galleryDisabledNavButton: colors.gray,
+    galleryThumbnailsBorder: colors.red,
   },
 };
 
@@ -264,5 +272,9 @@ export const darkTheme: Theme = {
     cookieConsentButtonText: colors.white,
     mobileMenuBorderBottom: colors.darkerGray,
     linkHover: colors.red,
+    galleryNavButton: colors.white,
+    galleryNavButtonHover: colors.red,
+    galleryDisabledNavButton: colors.gray,
+    galleryThumbnailsBorder: colors.red,
   },
 };

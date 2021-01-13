@@ -8,6 +8,7 @@ import showdown from 'showdown';
 import textFit from 'textfit';
 
 import Breadcrumbs, { BreadcrumbsItem } from '@components/Breadcrumbs';
+import Icon from '@components/Icon';
 import CarDataBox from '@components/Post/styled/CarDataBox';
 import CarDataLocalization from '@components/Post/styled/CarDataLocalization';
 import CarDataName from '@components/Post/styled/CarDataName';
@@ -16,9 +17,11 @@ import CarDataRow from '@components/Post/styled/CarDataRow';
 import CarDataRowTitle from '@components/Post/styled/CarDataRowTitle';
 import ContentsList from '@components/Post/styled/ContentsList';
 import ContentsListItem from '@components/Post/styled/ContentsListItem';
+import GalleryButton from '@components/Post/styled/GalleryButton';
 import Heading from '@components/Post/styled/Heading';
 import HighlightedText from '@components/Post/styled/HighlightedText';
 import IconInfo from '@components/Post/styled/IconInfo';
+import ImageGalleryContainer from '@components/Post/styled/ImageGalleryContainer';
 import PostImage from '@components/Post/styled/PostImage';
 import PostImageContainer from '@components/Post/styled/PostImageContainer';
 import ShareSectionBoldedText from '@components/Post/styled/ShareSectionBoldedText';
@@ -141,6 +144,29 @@ const Post: React.FC<PostProps> = ({
       }))
     : [];
 
+  const renderLeftNav = (onClick, disabled) => (
+    <GalleryButton type="button" onClick={onClick} left disabled={disabled}>
+      <Icon iconName={IconName.ChevronRight} variant="flat" width={64} height={64} />
+    </GalleryButton>
+  );
+
+  const renderRightNav = (onClick, disabled) => (
+    <GalleryButton type="button" onClick={onClick} disabled={disabled}>
+      <Icon iconName={IconName.ChevronRight} variant="flat" width={64} height={64} />
+    </GalleryButton>
+  );
+
+  const renderFullscreenButton = (onClick, isFullscreen) => (
+    <GalleryButton type="button" onClick={onClick} bottomRight>
+      <Icon
+        iconName={isFullscreen ? IconName.Minimize : IconName.Maximize}
+        variant="flat"
+        width={32}
+        height={32}
+      />
+    </GalleryButton>
+  );
+
   const turnIntoGallery = (parsedHtml: ReactElement[] | ReactElement) => {
     if (Array.isArray(parsedHtml)) {
       const indexToReplace = [];
@@ -151,16 +177,36 @@ const Post: React.FC<PostProps> = ({
           element.props.id === 'post-gallery' &&
           indexToReplace.push(index)
       );
+
       // CHANGE PLACEHOLDER DIV INTO GALLERY
       indexToReplace.forEach(
         (index) =>
           (parsedHtml[index] = (
-            <ImageGallery items={images} key={parsedHtml[index].key} showPlayButton={false} />
+            <ImageGalleryContainer key={index}>
+              <ImageGallery
+                items={images}
+                key={parsedHtml[index].key}
+                showPlayButton={false}
+                renderLeftNav={renderLeftNav}
+                renderRightNav={renderRightNav}
+                renderFullscreenButton={renderFullscreenButton}
+              />
+            </ImageGalleryContainer>
           ))
       );
       return parsedHtml;
     } else if (parsedHtml.type === 'div' && parsedHtml.props.id === 'post-gallery') {
-      return <ImageGallery items={images} showPlayButton={false} />;
+      return (
+        <ImageGalleryContainer>
+          <ImageGallery
+            items={images}
+            showPlayButton={false}
+            renderLeftNav={renderLeftNav}
+            renderRightNav={renderRightNav}
+            renderFullscreenButton={renderFullscreenButton}
+          />
+        </ImageGalleryContainer>
+      );
     } else {
       return parsedHtml;
     }

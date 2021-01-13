@@ -14,6 +14,8 @@ import Instagram from '@assets/icons/Instagram.svg';
 import InstagramOutline from '@assets/icons/InstagramOutline.svg';
 import LightBulb from '@assets/icons/LightBulb.svg';
 import CarsifyLogo from '@assets/icons/Logo.svg';
+import Maximize from '@assets/icons/Maximize.svg';
+import Minimize from '@assets/icons/Minimize.svg';
 import Moon from '@assets/icons/Moon.svg';
 import News from '@assets/icons/News.svg';
 import Pinterest from '@assets/icons/Pinterest.svg';
@@ -24,7 +26,6 @@ import SteeringWheel from '@assets/icons/SteeringWheel.svg';
 import Stop from '@assets/icons/Stop.svg';
 import Sun from '@assets/icons/Sun.svg';
 import ThinChevronRight from '@assets/icons/ThinChevronRight.svg';
-import Twitter from '@assets/icons/Twitter.svg';
 import TwitterFlat from '@assets/icons/TwitterFlat.svg';
 import IconName from '@utils/iconNames';
 
@@ -59,6 +60,8 @@ const icons: { [index: string]: IconVariantProps } = {
   [IconName.TwitterFlat]: { flat: TwitterFlat },
   [IconName.InstagramOutline]: { flat: InstagramOutline },
   [IconName.ThinChevronRight]: { flat: ThinChevronRight },
+  [IconName.Maximize]: { flat: Maximize },
+  [IconName.Minimize]: { flat: Minimize },
 };
 
 type IconVariant = 'flat' | 'color';
