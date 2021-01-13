@@ -309,10 +309,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
               </Link>
             </NavListItem>
           </NavList>
-          <IconsContainer
-            isIconsVisible={isSocialIconsVisible}
-            isSubMenuOpened={isArticlesOpen || isTipsOpen}
-          >
+          <IconsContainer isIconsVisible={isSocialIconsVisible}>
             <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
               <SingleIconWrapper backgroundColorProps="#4267B2">
                 <Icon

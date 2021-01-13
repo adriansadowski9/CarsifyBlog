@@ -15,7 +15,7 @@ const DropdownWrapper = styled.div`
       ? 'right 0.4s cubic-bezier(0.33, 0.66, 0.75, 0.75)'
       : 'right 0.4s cubic-bezier(0.80, 0.25, 0.75, 0.75)'};
 
-  z-index: 155;
+  z-index: 10000;
   background-color: ${(props) => props.theme.colors.bg};
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
     width: 350px;
