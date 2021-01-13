@@ -46,21 +46,21 @@ text: >-
   ## Specyfikacja techniczna NIO ET7 {specyfikacja}
 
 
-  Początkowo NIO ET7 ma być oferowany z dwoma opcjami akumulatorów – 70 oraz 100
-  kWh co zgodnie z chińskim systemem NEDC przekładać ma się na zasięg
+  Początkowo **NIO ET7** ma być oferowany z dwoma opcjami akumulatorów – 70 oraz
+  100 kWh co zgodnie z chińskim systemem NEDC przekładać ma się na zasięg
   odpowiednio 311 i 435 mil (co w przeliczeniu daje 500 i 700 km) na jednym
   ładowaniu. 
 
 
   W przyszłości ma pojawić się także wersja z akumulatorem o pojemności 150 kWh
-  o zawrotnym zasięgu 621 mil czyli w przeliczeniu aż 1000 km! Niestety wartości
-  te zapewne spadną, gdy zamiast przez NEDC, zostaną ocenione przez bardziej
-  realistyczny system WLTP. 
+  o zawrotnym zasięgu 621 mil czyli w przeliczeniu aż **1000 km**! Niestety
+  wartości te zapewne spadną, gdy zamiast przez NEDC, zostaną ocenione przez
+  bardziej realistyczny system WLTP. 
 
 
   Dwa silniki o łącznej mocy 644 KM i momencie obrotowym 850 Nm, mają pozwolić
-  na rozpędzenie się nowego sedana Nio w zaledwie 3,9 sekundy do 100 km/h! Co
-  więcej NIO twierdzi, że układ hamulcowy pozwoli na zatrzymanie tak dużej
+  na rozpędzenie się nowego sedana Nio w zaledwie **3,9 sekundy do 100 km/h**!
+  Co więcej NIO twierdzi, że układ hamulcowy pozwoli na zatrzymanie tak dużej
   limuzyny z prędkości 100 km/h na dystansie zaledwie 33,5 metra.
 
 
@@ -84,9 +84,10 @@ text: >-
 
 
   ET7 będzie wyposażony w pokaźny zestaw czujników – łącznie 33, z czego
-  jedenaście to kamery o wysokiej rozdzielczości. Firma twierdzi, że ich system
-  autonomicznej jazdy ma być zdecydowanie bardziej zaawansowany niż ten dostępny
-  w Tesli. System ten ma być ofertowany w ramach miesięcznej subskrypcji. 
+  jedenaście to kamery o wysokiej rozdzielczości. Firma twierdzi, że ich
+  **system autonomicznej jazdy** ma być zdecydowanie bardziej zaawansowany niż
+  ten dostępny w Tesli. System ten ma być ofertowany w ramach miesięcznej
+  subskrypcji. 
 
 
   Nio ET7 ma być bardzo wygodnym samochodem. W standardzie wszystkie fotele
@@ -97,11 +98,7 @@ text: >-
   pneumatyczne. 
 
 
-
-
   ![Wnętrze NIO ET7](/assets/img/nio-interior.jpg "Wnętrze NIO ET7")
-
-
 
 
   Chiński producent wprowadził podobno pierwszy na świecie klucz cyfrowy UWB,
@@ -117,9 +114,9 @@ text: >-
   ## Dostępność i cena {dostepnosc-i-cena}
 
 
-  NIO ET7 już teraz można zamówić w przedsprzedaży, natomiast pierwsze dostawy
-  planowane są na pierwszy kwartał 2022 roku. Ceny w przeliczeniu z juanów
-  prezentują się następująco: 
+  **NIO ET7** już teraz można zamówić w przedsprzedaży, natomiast pierwsze
+  dostawy planowane są na pierwszy kwartał 2022 roku. Ceny w przeliczeniu z
+  juanów prezentują się następująco: 
 
 
   * ET7 70 kWh – około 260tys. zł.
