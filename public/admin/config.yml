@@ -291,3 +291,18 @@ collections:
           required: true,
         }
       - { label: 'Treść', name: 'text', widget: 'markdown', required: true }
+  - name: 'settings'
+    label: 'Ustawienia'
+    files:
+      - name: 'contact'
+        label: 'Kontakt'
+        file: 'contact/settings/contact.md'
+        fields:
+          - { label: 'Email kontaktowy', name: 'contactEmail', widget: 'string', required: true }
+      - name: 'socials'
+        label: 'Social media'
+        file: 'contact/settings/socials.md'
+        fields:
+          - { label: 'Facebook', name: 'facebookUrl', widget: 'string', required: true }
+          - { label: 'Instagram', name: 'instagramUrl', widget: 'string', required: true }
+          - { label: 'Twitter', name: 'twitterUrl', widget: 'string', required: true }

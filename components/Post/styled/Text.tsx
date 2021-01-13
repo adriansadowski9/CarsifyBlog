@@ -6,6 +6,8 @@ const Text = styled.div`
   font-size: ${(props) => props.theme.fontSizes.m};
   color: ${(props) => props.theme.colors.text};
   margin-top: ${(props) => props.theme.spaces.xs};
+  word-wrap: break-word;
+
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     font-size: ${(props) => props.theme.fontSizes.l};
   }
@@ -59,6 +61,7 @@ const Text = styled.div`
     position: relative;
     padding-left: ${(props) => props.theme.spaces.s};
     margin: ${(props) => props.theme.spaces.xs} 0;
+    text-align: left;
 
     a {
       font-weight: ${(props) => props.theme.fontWeights.medium};

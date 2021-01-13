@@ -10,9 +10,11 @@ import Post from '@components/Post';
 import MoreSectionTitle from '@components/Post/styled/MoreSectionTitle';
 import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import SectionName from '@components/Sections/SectionName';
+import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
+import { getSocialsSettings } from '@utils/getSettings';
 import IconName from '@utils/iconNames';
 
 interface ArticleAttributes {
@@ -58,6 +60,7 @@ interface ArticleProps extends NextPageContext {
   isCategory: boolean;
   articleExists: boolean;
   moreArticles: Article[];
+  socialsSettings: SocialsSettings;
 }
 
 const Article: NextPage<ArticleProps> = ({
@@ -68,6 +71,7 @@ const Article: NextPage<ArticleProps> = ({
   isCategory,
   articleExists,
   moreArticles,
+  socialsSettings,
 }) => {
   const router = useRouter();
   if (isCategory) {
@@ -86,7 +90,11 @@ const Article: NextPage<ArticleProps> = ({
     });
 
     return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+      <Layout
+        articleCategories={articleCategories}
+        tipCategories={tipCategories}
+        socialsSettings={socialsSettings}
+      >
         <PageHead
           title={pageTitle}
           description={pageDescription}
@@ -114,11 +122,7 @@ const Article: NextPage<ArticleProps> = ({
                 key={`${title}-${index}`}
                 image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                 title={title}
-                textSnippet={
-                  highlightedText.length > 160
-                    ? `${highlightedText.substring(0, 160)}...`
-                    : highlightedText
-                }
+                textSnippet={highlightedText}
                 category={{
                   name: categoryInfo.attributes.title,
                   icon: categoryInfo.attributes.icon,
@@ -167,7 +171,11 @@ const Article: NextPage<ArticleProps> = ({
       (articleCategory) => articleCategory.attributes.title === category
     );
     return (
-      <Layout articleCategories={articleCategories} tipCategories={tipCategories}>
+      <Layout
+        articleCategories={articleCategories}
+        tipCategories={tipCategories}
+        socialsSettings={socialsSettings}
+      >
         <PageHead
           title={pageTitle}
           description={pageDescription}
@@ -183,6 +191,8 @@ const Article: NextPage<ArticleProps> = ({
           category={{
             name: categoryInfo.attributes.title,
             icon: categoryInfo.attributes.icon,
+            href: '/artykuly/[id]',
+            slug: `/artykuly/${categoryInfo.slug}`,
           }}
           breadcrumbs={[
             { name: 'Strona główna', link: { href: '/' } },
@@ -216,11 +226,7 @@ const Article: NextPage<ArticleProps> = ({
                     key={`${title}-${index}`}
                     image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
                     title={title}
-                    textSnippet={
-                      highlightedText.length > 160
-                        ? `${highlightedText.substring(0, 160)}...`
-                        : highlightedText
-                    }
+                    textSnippet={highlightedText}
                     category={{
                       name: categoryInfo.attributes.title,
                       icon: categoryInfo.attributes.icon,
@@ -243,6 +249,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const { id } = ctx.params;
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
+  const socialsSettings = await getSocialsSettings();
   let markdownFile;
   let articlesList;
   let isCategory;
@@ -280,6 +287,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       ...markdownFile,
       articleCategories,
       tipCategories,
+      socialsSettings,
       articlesList: articlesList || null,
       isCategory: isCategory || null,
       articleExists: articleExists || null,

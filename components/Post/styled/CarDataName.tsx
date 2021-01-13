@@ -4,7 +4,7 @@ const CarDataName = styled.h2`
   margin: 0;
   font-size: ${(props) => props.theme.fontSizes.l};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  text-overflow: ellipsis;
+  text-overflow: clip;
   white-space: nowrap;
   overflow: hidden;
 

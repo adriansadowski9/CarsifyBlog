@@ -1,11 +1,14 @@
 const colors = {
   white: '#FFFFFF',
-  black: '#0D0D0D',
-  red: '#C20708',
-  silver: '#CCD4DA',
-  darkSilver: '#A4B3BF',
+  lightestGray: '#FEFEFE',
+  lightGray: '#F0F0F0',
   gray: '#A6A6A6',
   darkGray: '#262626',
+  darkerGray: '#212121',
+  silver: '#CCD4DA',
+  darkSilver: '#A4B3BF',
+  black: '#0D0D0D',
+  red: '#C20708',
   green: '#239B56',
 };
 
@@ -78,6 +81,9 @@ export interface Theme {
     tipIconCircleBg: string;
     tipIcon: string;
     menuActiveItem: string;
+    themeButtonBg: string;
+    themeButtonIcon: string;
+    actionButton: string;
     hamburger: string;
     menuArrow: string;
     iconInfoBg: string;
@@ -120,6 +126,12 @@ export interface Theme {
     cookieConsentText: string;
     cookieConsentButtonBg: string;
     cookieConsentButtonText: string;
+    mobileMenuBorderBottom: string;
+    linkHover: string;
+    galleryNavButton: string;
+    galleryNavButtonHover: string;
+    galleryDisabledNavButton: string;
+    galleryThumbnailsBorder: string;
   };
 }
 
@@ -129,7 +141,7 @@ export const lightTheme: Theme = {
   spaces,
   breakpoints,
   colors: {
-    bg: colors.white,
+    bg: colors.lightestGray,
     text: colors.black,
     sectionText: colors.gray,
     border: colors.silver,
@@ -141,6 +153,9 @@ export const lightTheme: Theme = {
     tipIconCircleBg: colors.black,
     tipIcon: colors.white,
     menuActiveItem: colors.red,
+    themeButtonBg: colors.darkGray,
+    themeButtonIcon: colors.white,
+    actionButton: colors.black,
     hamburger: colors.red,
     menuArrow: colors.red,
     iconInfoBg: colors.silver,
@@ -170,7 +185,7 @@ export const lightTheme: Theme = {
     inputBorder: colors.darkGray,
     submitButton: colors.red,
     socialBoxBg: colors.white,
-    selectHover: colors.gray,
+    selectHover: colors.lightGray,
     carouselDot: colors.gray,
     validationError: colors.red,
     alertSuccessBg: colors.green,
@@ -183,6 +198,12 @@ export const lightTheme: Theme = {
     cookieConsentText: colors.black,
     cookieConsentButtonBg: colors.red,
     cookieConsentButtonText: colors.white,
+    mobileMenuBorderBottom: colors.lightGray,
+    linkHover: colors.red,
+    galleryNavButton: colors.white,
+    galleryNavButtonHover: colors.red,
+    galleryDisabledNavButton: colors.gray,
+    galleryThumbnailsBorder: colors.red,
   },
 };
 
@@ -204,6 +225,9 @@ export const darkTheme: Theme = {
     tipIconCircleBg: colors.black,
     tipIcon: colors.white,
     menuActiveItem: colors.red,
+    themeButtonBg: colors.lightestGray,
+    themeButtonIcon: colors.darkGray,
+    actionButton: colors.white,
     hamburger: colors.red,
     menuArrow: colors.red,
     iconInfoBg: colors.silver,
@@ -233,7 +257,7 @@ export const darkTheme: Theme = {
     inputBorder: colors.white,
     submitButton: colors.red,
     socialBoxBg: colors.white,
-    selectHover: colors.gray,
+    selectHover: colors.darkerGray,
     carouselDot: colors.white,
     validationError: colors.red,
     alertSuccessBg: colors.green,
@@ -246,5 +270,11 @@ export const darkTheme: Theme = {
     cookieConsentText: colors.white,
     cookieConsentButtonBg: colors.red,
     cookieConsentButtonText: colors.white,
+    mobileMenuBorderBottom: colors.darkerGray,
+    linkHover: colors.red,
+    galleryNavButton: colors.white,
+    galleryNavButtonHover: colors.red,
+    galleryDisabledNavButton: colors.gray,
+    galleryThumbnailsBorder: colors.red,
   },
 };

@@ -5,6 +5,5 @@ const NavItemChevronContainer = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  justify-content: center;
 `;
 export default NavItemChevronContainer;

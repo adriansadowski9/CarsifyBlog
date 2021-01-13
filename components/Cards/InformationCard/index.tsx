@@ -1,4 +1,5 @@
 import * as React from 'react';
+import clamp from 'clamp-js';
 import Link from 'next/link';
 
 import InformationCardContainer from '@components/Cards/InformationCard/styled/InformationCardContainer';
@@ -15,7 +16,15 @@ interface InformationCardProps {
   slug: string;
 }
 const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSnippet, slug }) => {
+  const snippetRef = React.useRef(null);
   const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
+
+  React.useEffect(() => {
+    if (snippetRef && snippetRef.current) {
+      clamp(snippetRef.current, { clamp: 2 });
+    }
+  }, [snippetRef]);
+
   return (
     <Link href="/porady/[id]" as={`/porady/${slug}`}>
       <a>
@@ -29,7 +38,7 @@ const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSni
           <InformationCardImageOverlay />
           <InformationCardInfoContainer>
             <InformationCardTitle>{title}</InformationCardTitle>
-            <InformationCardSnippet>{textSnippet}</InformationCardSnippet>
+            <InformationCardSnippet ref={snippetRef}>{textSnippet}</InformationCardSnippet>
           </InformationCardInfoContainer>
         </InformationCardContainer>
       </a>

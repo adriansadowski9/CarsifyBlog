@@ -1,5 +1,3 @@
-import SocialButton from './SocialButton';
-
 import * as React from 'react';
 import { FacebookShareButton, PinterestShareButton, TwitterShareButton } from 'react-share';
 
@@ -23,18 +21,26 @@ const SocialShareSection: React.FC<SocialShareSectionProps> = ({
   quote,
   pinterestMediaUrl,
   rightSide,
-}) => (
-  <SocialShareContainer isAbsolute={isAbsolute} horizontal={horizontal} rightSide={rightSide}>
-    <FacebookShareButton title="test" url={shareUrl} quote={quote}>
-      <Icon iconName={IconName.Facebook} variant="color" width="24px" height="24px" />
-    </FacebookShareButton>
-    <TwitterShareButton title="test" url={shareUrl}>
-      <Icon iconName={IconName.Twitter} variant="color" width="24px" height="24px" />
-    </TwitterShareButton>
-    <PinterestShareButton title="test" url={shareUrl} media={pinterestMediaUrl}>
-      <Icon iconName={IconName.Pinterest} variant="color" width="24px" height="24px" />
-    </PinterestShareButton>
-  </SocialShareContainer>
-);
+}) => {
+  return (
+    <SocialShareContainer isAbsolute={isAbsolute} horizontal={horizontal} rightSide={rightSide}>
+      <FacebookShareButton url={shareUrl} quote={quote}>
+        <Icon iconName={IconName.Facebook} variant="color" width="24px" height="24px" />
+      </FacebookShareButton>
+      <TwitterShareButton url={shareUrl} title={quote}>
+        <Icon
+          iconName={IconName.TwitterFlat}
+          variant="flat"
+          fill="#00acee"
+          width="24px"
+          height="24px"
+        />
+      </TwitterShareButton>
+      <PinterestShareButton url={shareUrl} description={quote} media={pinterestMediaUrl}>
+        <Icon iconName={IconName.Pinterest} variant="color" width="24px" height="24px" />
+      </PinterestShareButton>
+    </SocialShareContainer>
+  );
+};
 
 export default SocialShareSection;

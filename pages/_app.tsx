@@ -3,7 +3,6 @@ import * as gtag from '../utils/gtag';
 import * as React from 'react';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import 'react-image-gallery/styles/css/image-gallery.css';
-
 import { DarkModeContext } from 'contexts/darkModeContext';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
@@ -30,8 +29,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     color: ${(props) => props.theme.colors.text};
-    background: ${(props) => props.theme.colors.bg};
+    background: ${(props) => props.theme.colors.bg}; 
   }
+  
+  
 `;
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
