@@ -28,7 +28,7 @@ const Menu = styled.div<{ isOpen: boolean }>`
     flex-direction: row;
     background: none;
     z-index: ${(props) => (props.isSearchOpened ? '1' : '100')};
-    ${(props) => (props.isSearchOpened ? 'width: 0' : 'width: auto')};
+    width: ${(props) => (props.isSearchOpened ? '0' : 'auto')};
   }
 `;
 
