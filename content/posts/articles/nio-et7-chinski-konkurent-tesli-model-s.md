@@ -1,7 +1,7 @@
 ---
 pageTitle: NIO ET7 – chiński konkurent Tesli Model S
 pageDescription: >-
-  Nio ET7 - chiński samochód elektryczny z bardzo mocno rozwiniętym systemem
+  Nio ET7 - chiński samochód elektryczny z mocno rozwiniętym systemem
   autonomicznej jazdy. Czy będzie to mocna konkurencja dla Tesli Model S?
 title: NIO ET7 – chiński konkurent Tesli Model S
 subtitle: >-
