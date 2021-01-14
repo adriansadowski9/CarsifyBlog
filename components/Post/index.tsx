@@ -183,8 +183,6 @@ const Post: React.FC<PostProps> = ({
           indexToReplace.push(index)
       );
 
-      console.log(images);
-
       // CHANGE PLACEHOLDER DIV INTO GALLERY
       indexToReplace.forEach(
         (index) =>
