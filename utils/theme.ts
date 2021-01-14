@@ -132,6 +132,8 @@ export interface Theme {
     galleryNavButtonHover: string;
     galleryDisabledNavButton: string;
     galleryThumbnailsBorder: string;
+    imageSourceBg: string;
+    imageSourceText: string;
   };
 }
 
@@ -204,6 +206,8 @@ export const lightTheme: Theme = {
     galleryNavButtonHover: colors.red,
     galleryDisabledNavButton: colors.gray,
     galleryThumbnailsBorder: colors.red,
+    imageSourceBg: colors.darkGray,
+    imageSourceText: colors.white,
   },
 };
 
@@ -276,5 +280,7 @@ export const darkTheme: Theme = {
     galleryNavButtonHover: colors.red,
     galleryDisabledNavButton: colors.gray,
     galleryThumbnailsBorder: colors.red,
+    imageSourceBg: colors.black,
+    imageSourceText: colors.white,
   },
 };
