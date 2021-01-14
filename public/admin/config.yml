@@ -166,6 +166,7 @@ collections:
           required: true,
           allow_multiple: false,
         }
+      - { label: 'Źródło obrazka', name: 'imageSource', widget: 'string' }
       - {
           label: 'Kategorie',
           name: 'category',
@@ -187,6 +188,7 @@ collections:
         fields:
           - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
           - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
+          - { label: 'Źródło zdjęcia', name: 'source', widget: 'string' }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -211,7 +213,7 @@ collections:
           required: true,
           allowMultiple: false,
         }
-
+      - { label: 'Źródło obrazka', name: 'imageSource', widget: 'string' }
       - {
           label: 'Kategorie',
           name: 'category',
@@ -232,6 +234,7 @@ collections:
         fields:
           - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
           - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
+          - { label: 'Źródło zdjęcia', name: 'source', widget: 'string' }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
@@ -257,6 +260,7 @@ collections:
           required: true,
           allowMultiple: false,
         }
+      - { label: 'Źródło obrazka', name: 'imageSource', widget: 'string' }
       - label: 'Dane pojazdu'
         name: 'carData'
         widget: 'object'
@@ -284,6 +288,7 @@ collections:
         fields:
           - { label: 'Zdjęcie', name: 'image', widget: 'image', required: true }
           - { label: 'Alt zdjęcia', name: 'alt', widget: 'string', required: true }
+          - { label: 'Źródło zdjęcia', name: 'source', widget: 'string' }
       - {
           label: 'Wyróżniony nagłówek',
           name: 'highlightedText',
