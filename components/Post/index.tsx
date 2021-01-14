@@ -22,6 +22,7 @@ import Heading from '@components/Post/styled/Heading';
 import HighlightedText from '@components/Post/styled/HighlightedText';
 import IconInfo from '@components/Post/styled/IconInfo';
 import ImageGalleryContainer from '@components/Post/styled/ImageGalleryContainer';
+import ImageSource from '@components/Post/styled/ImageSource';
 import PostImage from '@components/Post/styled/PostImage';
 import PostImageContainer from '@components/Post/styled/PostImageContainer';
 import ShareSectionBoldedText from '@components/Post/styled/ShareSectionBoldedText';
@@ -58,6 +59,7 @@ interface PostProps {
   subtitle: string;
   highlightedText: string;
   responsiveImage: ResponsiveImage;
+  imageSource?: string;
   shareUrl: string;
   contents?: {
     name: string;
@@ -81,6 +83,7 @@ interface PostProps {
   galleryImages: {
     image: ResponsiveImage;
     alt: string;
+    source?: string;
   }[];
 }
 
@@ -92,6 +95,7 @@ const Post: React.FC<PostProps> = ({
   subtitle,
   highlightedText,
   responsiveImage,
+  imageSource,
   shareUrl,
   contents,
   text,
@@ -141,6 +145,7 @@ const Post: React.FC<PostProps> = ({
         thumbnail: galleryItem.image.images[0].path,
         originalAlt: galleryItem.alt,
         thumbnailAlt: `${galleryItem.alt} (miniatura)`,
+        description: galleryItem.source ? `Źródło: ${galleryItem.source}` : undefined,
       }))
     : [];
 
@@ -177,6 +182,8 @@ const Post: React.FC<PostProps> = ({
           element.props.id === 'post-gallery' &&
           indexToReplace.push(index)
       );
+
+      console.log(images);
 
       // CHANGE PLACEHOLDER DIV INTO GALLERY
       indexToReplace.forEach(
@@ -293,6 +300,7 @@ const Post: React.FC<PostProps> = ({
           rightSide={!!carData}
           isAbsolute
         />
+        {imageSource && <ImageSource>Źródło: {imageSource}</ImageSource>}
       </PostImageContainer>
       <TextContainer>
         <HighlightedText>
