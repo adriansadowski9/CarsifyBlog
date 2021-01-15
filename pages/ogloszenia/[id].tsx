@@ -45,6 +45,7 @@ interface AdAttributes {
   gallery?: {
     image: string;
     alt: string;
+    source?: string;
   }[];
 }
 
@@ -98,11 +99,13 @@ const Ad: NextPage<AdProps> = ({
       ? galleryArray.map((galleryItem) => ({
           image: galleryItem.image.substring(galleryItem.image.lastIndexOf('/') + 1),
           alt: galleryItem.alt,
+          source: galleryItem.source,
         }))
       : [];
     const galleryResponsiveImages = galleryImages.map((galleryItem) => ({
       image: require(`../../public/assets/img/${galleryItem.image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&sizes[]=1260&sizes[]=1640&sizes[]=2520`),
       alt: galleryItem.alt,
+      source: galleryItem.source,
     }));
     const shareUrl = `https://carsify.pl${router.asPath}`;
 
