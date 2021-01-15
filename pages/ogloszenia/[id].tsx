@@ -22,6 +22,7 @@ interface AdAttributes {
   subtitle: string;
   date: Date;
   featuredImage: string;
+  imageSource?: string;
   carData: {
     name: string;
     localization: string;
@@ -78,6 +79,7 @@ const Ad: NextPage<AdProps> = ({
       subtitle,
       date,
       featuredImage,
+      imageSource,
       carData,
       contents,
       highlightedText,
@@ -131,6 +133,7 @@ const Ad: NextPage<AdProps> = ({
           subtitle={subtitle}
           highlightedText={highlightedText}
           responsiveImage={responsiveImage}
+          imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
           carData={carData}

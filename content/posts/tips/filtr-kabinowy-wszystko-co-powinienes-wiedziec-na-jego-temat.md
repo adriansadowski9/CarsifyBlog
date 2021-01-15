@@ -11,7 +11,7 @@ subtitle: >-
   rolę.
 date: 2021-01-15T11:38:34.546Z
 featuredImage: /assets/img/filtr-kabinowy.jpg
-imageSource: Carsify (c)
+imageSource: Carsify ©
 category: Eksploatacja
 contents:
   - link: '#czym-jest-filtr-kabinowy-i-jakie-pelni-funkcje'

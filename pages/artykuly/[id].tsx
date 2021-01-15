@@ -24,6 +24,7 @@ interface ArticleAttributes {
   subtitle: string;
   date: Date;
   featuredImage: string;
+  imageSource?: string;
   category: string;
   contents: {
     name: string;
@@ -143,6 +144,7 @@ const Article: NextPage<ArticleProps> = ({
       subtitle,
       date,
       featuredImage,
+      imageSource,
       category,
       contents,
       highlightedText,
@@ -207,6 +209,7 @@ const Article: NextPage<ArticleProps> = ({
           subtitle={subtitle}
           highlightedText={highlightedText}
           responsiveImage={responsiveImage}
+          imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
           contents={contents}
