@@ -181,7 +181,7 @@ text: >-
 
 
   ## Popraw jakość powietrza w swoim samochodzie
-  {popraw-jakosc-powietrza-w-swoim-samochodzie)
+  {popraw-jakosc-powietrza-w-swoim-samochodzie}
 
 
   Aby dodatkowo poprawić jakość powietrza w samochodzie pamiętaj także o
