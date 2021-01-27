@@ -67,7 +67,7 @@ text: >-
   sprawdzą się dużo lepiej niż ich stalowe odpowiedniki), a przy tym są o 23 kg
   lżejsze. Między innymi przeprojektowana maska z włókna węglowego, spojler oraz
   tylny dyfuzor przekładają się na zmniejszoną wagę tego torowego potwora o
-  łącznie 90kg względem „zwykłego” M5! 
+  łącznie 70kg względem M5 Competition! 
 
 
   Wszystko to sprawia, że BMW M5 CS jest znacznie szybsze i pokonuję sprint od 0
