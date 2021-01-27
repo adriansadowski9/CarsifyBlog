@@ -10,6 +10,7 @@ subtitle: >-
   czy tak rzeczywiście będzie? Wkrótce się przekonamy!
 date: 2021-01-12T19:58:55.949Z
 featuredImage: /assets/img/nio.png
+imageSource: Materiał prasowy NIO
 category: Premiery
 contents:
   - link: '#specyfikacja'
@@ -23,16 +24,22 @@ contents:
 gallery:
   - alt: Nio ET7
     image: /assets/img/nio2.jpg
+    source: Materiał prasowy NIO
   - alt: Nio ET7 z boku
     image: /assets/img/nio3.png
+    source: Materiał prasowy NIO
   - alt: Nio ET7 z góry
     image: /assets/img/nio.png
+    source: Materiał prasowy NIO
   - alt: Tył Nio ET7
     image: /assets/img/nio4.jpg
+    source: Materiał prasowy NIO
   - alt: Wnętrze Nio ET7
     image: /assets/img/nio-interior.jpg
+    source: Materiał prasowy NIO
   - alt: Tylna kanapa Nio ET7
     image: /assets/img/et7_interior_rear.jpg
+    source: Materiał prasowy NIO
 highlightedText: >-
   Podczas NIO Day, który odbył się 9 stycznia 2021 roku, chiński producent
   samochodów elektrycznych, NIO zaprezentowało swój czwarty model samochodu
