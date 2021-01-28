@@ -97,6 +97,7 @@ text: >-
   czerwonymi akcentami. Zaciski hamulcowe dostępne są w dwóch wariantach –
   złotym lub czerwonym.
 
+  <center>
 
   Zachęcamy do obejrzenia krótkiego filmiku z prezentacji nowego BMW M5 CS:
 
@@ -104,7 +105,7 @@ text: >-
   <iframe width="560" height="315"
   src="https://www.youtube.com/embed/vQXvyV0zIP4" frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
-  picture-in-picture" allowfullscreen></iframe>
+  picture-in-picture" allowfullscreen></iframe></center>
 
 
   ## Wnętrze BMW M5 CS {wnetrze}
