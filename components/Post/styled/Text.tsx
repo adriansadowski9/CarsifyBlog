@@ -53,7 +53,7 @@ const Text = styled.div`
     text-decoration: underline;
   }
 
-  img {
+  * {
     max-width: 100%;
   }
 
