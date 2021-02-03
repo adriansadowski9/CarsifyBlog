@@ -53,8 +53,8 @@ text: >-
 
   BMW M5 CS napędzane jest przez ten sam 4,4-litrowy silnik V8 z podwójnym
   turbodoładowaniem, co wszystkie obecnie produkowane warianty M5. Nie oznacza
-  to jednak, że moc pozostała bez zmian – omawiana wersja szczyci się mocą 627
-  koni mechanicznych, a to o 26 koni więcej niż standardowa wersja M5. 
+  to jednak, że moc pozostała bez zmian – omawiana wersja szczyci się mocą 635
+  koni mechanicznych, a to o 34 konie więcej niż standardowa wersja M5. 
 
 
   Za przeniesienie napędu odpowiada ośmiostopniowa skrzynia M Steptronic i napęd
@@ -97,6 +97,7 @@ text: >-
   czerwonymi akcentami. Zaciski hamulcowe dostępne są w dwóch wariantach –
   złotym lub czerwonym.
 
+
   <center>
 
   Zachęcamy do obejrzenia krótkiego filmiku z prezentacji nowego BMW M5 CS:
@@ -134,5 +135,14 @@ text: >-
   konkurencji w tradycyjnym nadwoziu sedana dla nowego BMW, jego cena zbliżona
   jest do nowego Porsche Panamera Turbo S i Mercedesa AMG GT63S 4-door co z
   pewnością czyni z nich rywali o potencjalnego klienta.
+
+
+  ### Edit:
+
+
+  BMW udostępniło polski konfigurator modelu M5 CS. Możemy się zatem dowiedzieć,
+  że cena bazowa w Polsce wynosi 849 900zł, a po dodaniu wszystkich dostępnych
+  dodatków i pakietów przekracza ona 900 000 zł! Konfigurator BMW M5 CS dostępny
+  jest na stronie: <https://configure.bmw.pl/pl_PL/configure/F90/71CH>
 ---
 
