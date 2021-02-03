@@ -135,7 +135,7 @@ const Post: React.FC<PostProps> = ({
         ? appendScript({
             isAsync: true,
             isDefer: true,
-            src: 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2',
+            src: 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v9.0',
           })
         : socialsWindow.FB.XFBML.parse();
     }
