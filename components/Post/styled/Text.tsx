@@ -77,6 +77,14 @@ const Text = styled.div`
       background: ${(props) => props.theme.colors.seeAlsoBar};
     }
   }
+
+  .instagram-media,
+  .twitter-tweet,
+  .fb-post {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto !important;
+  }
 `;
 
 export default Text;

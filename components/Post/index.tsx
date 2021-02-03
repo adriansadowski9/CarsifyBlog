@@ -34,6 +34,7 @@ import Text from '@components/Post/styled/Text';
 import TextContainer from '@components/Post/styled/TextContainer';
 import TopInfoContainer from '@components/Post/styled/TopInfoContainer';
 import SocialShareSection from '@components/SocialShareSection';
+import appendScript from '@utils/appendScript';
 import IconName from '@utils/iconNames';
 
 type ResponsiveImage = {
@@ -112,6 +113,33 @@ const Post: React.FC<PostProps> = ({
       }
     }
   }, [carNameRef]);
+
+  React.useEffect(() => {
+    const socialsWindow = window as any;
+    if (document.getElementsByClassName('instagram-media').length) {
+      !socialsWindow.instgrm
+        ? appendScript({ isAsync: true, isDefer: true, src: '//www.instagram.com/embed.js' })
+        : socialsWindow.instgrm.Embeds.process();
+    }
+    if (document.getElementsByClassName('twitter-tweet').length) {
+      !socialsWindow.twttr
+        ? appendScript({
+            isAsync: true,
+            isDefer: true,
+            src: 'https://platform.twitter.com/widgets.js',
+          })
+        : socialsWindow.twttr.widgets.load();
+    }
+    if (document.getElementsByClassName('fb-post').length) {
+      !socialsWindow.FB
+        ? appendScript({
+            isAsync: true,
+            isDefer: true,
+            src: 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2',
+          })
+        : socialsWindow.FB.XFBML.parse();
+    }
+  }, []);
 
   showdown.extension('SeeAlso', {
     type: 'output',
