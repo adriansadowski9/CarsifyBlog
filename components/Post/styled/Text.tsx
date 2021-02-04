@@ -53,7 +53,7 @@ const Text = styled.div`
     text-decoration: underline;
   }
 
-  img {
+  * {
     max-width: 100%;
   }
 
@@ -76,6 +76,14 @@ const Text = styled.div`
       height: 100%;
       background: ${(props) => props.theme.colors.seeAlsoBar};
     }
+  }
+
+  .instagram-media,
+  .twitter-tweet,
+  .fb-post {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto !important;
   }
 `;
 
