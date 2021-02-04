@@ -1,9 +1,11 @@
 ---
-title: Premiery motoryzacyjne | Carsify.pl
+title: Premiery
 pageTitle: >-
   Nadchodzące i obecne premiery ze świata motoryzacji! Planujesz zakup nowego
   auta? Sprawdź jakie premiery samochodów miały miejsce w ostatnim czasie!
-pageDescription: opis premiery
+pageDescription: >-
+  Nadchodzące i obecne premiery ze świata motoryzacji! Planujesz zakup nowego
+  auta? Sprawdź jakie premiery samochodów miały miejsce w ostatnim czasie!
 icon: CAR_SHOW
 ---
 
