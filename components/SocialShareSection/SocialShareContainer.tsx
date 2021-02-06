@@ -1,4 +1,3 @@
-import { FacebookShareButton, PinterestShareButton, TwitterShareButton } from 'react-share';
 import styled from 'styled-components';
 
 const SocialShareContainer = styled.div<{
