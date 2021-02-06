@@ -1,3 +1,4 @@
+import { FacebookShareButton, PinterestShareButton, TwitterShareButton } from 'react-share';
 import styled from 'styled-components';
 
 const SocialShareContainer = styled.div<{
@@ -25,6 +26,10 @@ const SocialShareContainer = styled.div<{
   justify-content: space-between;
   background-color: ${(props) => props.theme.colors.socialBoxBg};
   border-radius: 20px;
+
+  button {
+    line-height: 0 !important;
+  }
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     ${(props) =>
