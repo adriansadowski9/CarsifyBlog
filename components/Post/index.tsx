@@ -5,9 +5,11 @@ import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
 import showdown from 'showdown';
+import { ThemeContext } from 'styled-components';
 import textFit from 'textfit';
 
 import Breadcrumbs, { BreadcrumbsItem } from '@components/Breadcrumbs';
+import HyvorTalkComments from '@components/HyvorTalkComments';
 import Icon from '@components/Icon';
 import CarDataBox from '@components/Post/styled/CarDataBox';
 import CarDataLocalization from '@components/Post/styled/CarDataLocalization';
@@ -34,8 +36,10 @@ import Text from '@components/Post/styled/Text';
 import TextContainer from '@components/Post/styled/TextContainer';
 import TopInfoContainer from '@components/Post/styled/TopInfoContainer';
 import SocialShareSection from '@components/SocialShareSection';
+import DarkModeContext from '@contexts/darkModeContext';
 import appendScript from '@utils/appendScript';
 import IconName from '@utils/iconNames';
+import { darkTheme, lightTheme, Theme } from '@utils/theme';
 
 type ResponsiveImage = {
   src: string;
@@ -104,6 +108,7 @@ const Post: React.FC<PostProps> = ({
   carData,
   galleryImages,
 }) => {
+  const darkModeContext = React.useContext(DarkModeContext);
   const carNameRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -356,6 +361,9 @@ const Post: React.FC<PostProps> = ({
             horizontal
           />
         </ShareSectionContainer>
+        <HyvorTalkComments
+          palette={darkModeContext.value ? darkTheme.colors.hyvorTalk : lightTheme.colors.hyvorTalk}
+        />
       </TextContainer>
       {moreSection}
     </article>
