@@ -6,6 +6,7 @@ const MoreSectionTitle = styled.h2<{ isMore: boolean }>`
   font-size: ${(props) => props.theme.fontSizes.xl};
   color: ${(props) => props.theme.colors.moreSection};
   font-weight: ${(props) => props.theme.fontWeights.medium};
+  margin-top: 0;
   margin-bottom: ${(props) => props.theme.spaces.s};
   padding-left: ${(props) => props.theme.spaces.s};
   position: relative;
