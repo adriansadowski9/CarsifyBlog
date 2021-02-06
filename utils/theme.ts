@@ -134,6 +134,16 @@ export interface Theme {
     galleryThumbnailsBorder: string;
     imageSourceBg: string;
     imageSourceText: string;
+    hyvorTalk: {
+      accent: string;
+      accentText: string;
+      footerHeader: string;
+      footerHeaderText: string;
+      box: string;
+      boxText: string;
+      boxLightText: string;
+      backgroundText: string;
+    };
   };
 }
 
@@ -208,6 +218,16 @@ export const lightTheme: Theme = {
     galleryThumbnailsBorder: colors.red,
     imageSourceBg: colors.darkGray,
     imageSourceText: colors.white,
+    hyvorTalk: {
+      accent: colors.red,
+      accentText: colors.white,
+      footerHeader: colors.lightestGray,
+      footerHeaderText: colors.darkGray,
+      box: colors.lightestGray,
+      boxText: colors.black,
+      boxLightText: colors.black,
+      backgroundText: colors.darkGray,
+    },
   },
 };
 
@@ -282,5 +302,15 @@ export const darkTheme: Theme = {
     galleryThumbnailsBorder: colors.red,
     imageSourceBg: colors.black,
     imageSourceText: colors.white,
+    hyvorTalk: {
+      accent: colors.red,
+      accentText: colors.white,
+      footerHeader: colors.black,
+      footerHeaderText: colors.lightestGray,
+      box: colors.black,
+      boxText: colors.white,
+      boxLightText: colors.white,
+      backgroundText: colors.white,
+    },
   },
 };

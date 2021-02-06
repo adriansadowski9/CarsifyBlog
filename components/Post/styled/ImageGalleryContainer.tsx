@@ -22,6 +22,14 @@ const ImageGalleryContainer = styled.div`
     height: auto;
   }
 
+  .image-gallery-thumbnails-container {
+    cursor: initial;
+  }
+
+  .image-gallery-thumbnail {
+    cursor: pointer;
+  }
+
   .image-gallery-thumbnail.active,
   .image-gallery-thumbnail:hover,
   .image-gallery-thumbnail:focus {
