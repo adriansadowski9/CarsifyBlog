@@ -55,6 +55,7 @@ export interface Tip {
 }
 
 interface TipProps extends NextPageContext {
+  id: string;
   attributes: TipAttributes;
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
@@ -66,6 +67,7 @@ interface TipProps extends NextPageContext {
 }
 
 const Tip: NextPage<TipProps> = ({
+  id,
   attributes,
   articleCategories,
   tipCategories,
@@ -214,6 +216,7 @@ const Tip: NextPage<TipProps> = ({
           text={text}
           contents={contents}
           galleryImages={galleryResponsiveImages}
+          postId={`tip-${id}`}
           moreSection={
             <TipsContainer isHorizontal>
               <MoreSectionTitle isMore={moreTips.length}>Więcej porad</MoreSectionTitle>
@@ -287,6 +290,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 
   return {
     props: {
+      id,
       ...markdownFile,
       articleCategories,
       tipCategories,

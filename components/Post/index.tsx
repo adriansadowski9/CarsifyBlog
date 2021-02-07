@@ -5,7 +5,6 @@ import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
 import showdown from 'showdown';
-import { ThemeContext } from 'styled-components';
 import textFit from 'textfit';
 
 import Breadcrumbs, { BreadcrumbsItem } from '@components/Breadcrumbs';
@@ -90,6 +89,7 @@ interface PostProps {
     alt: string;
     source?: string;
   }[];
+  postId: string;
 }
 
 const Post: React.FC<PostProps> = ({
@@ -107,6 +107,7 @@ const Post: React.FC<PostProps> = ({
   moreSection,
   carData,
   galleryImages,
+  postId,
 }) => {
   const darkModeContext = React.useContext(DarkModeContext);
   const carNameRef = React.useRef(null);
@@ -363,6 +364,7 @@ const Post: React.FC<PostProps> = ({
         </ShareSectionContainer>
         <HyvorTalkComments
           palette={darkModeContext.value ? darkTheme.colors.hyvorTalk : lightTheme.colors.hyvorTalk}
+          pageId={postId}
         />
       </TextContainer>
       {moreSection}

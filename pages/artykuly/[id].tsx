@@ -55,6 +55,7 @@ export interface Article {
 }
 
 interface ArticleProps extends NextPageContext {
+  id: string;
   attributes: ArticleAttributes;
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
@@ -66,6 +67,7 @@ interface ArticleProps extends NextPageContext {
 }
 
 const Article: NextPage<ArticleProps> = ({
+  id,
   attributes,
   articleCategories,
   tipCategories,
@@ -217,6 +219,7 @@ const Article: NextPage<ArticleProps> = ({
           text={text}
           contents={contents}
           galleryImages={galleryResponsiveImages}
+          postId={`article-${id}`}
           moreSection={
             <ArticlesContainer>
               <MoreSectionTitle isMore={moreArticles.length}>Więcej artykułów</MoreSectionTitle>
@@ -290,6 +293,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 
   return {
     props: {
+      id,
       ...markdownFile,
       articleCategories,
       tipCategories,

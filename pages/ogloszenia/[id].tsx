@@ -55,6 +55,7 @@ export interface Ad {
 }
 
 interface AdProps extends NextPageContext {
+  id: string;
   attributes: AdAttributes;
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
@@ -64,6 +65,7 @@ interface AdProps extends NextPageContext {
 }
 
 const Ad: NextPage<AdProps> = ({
+  id,
   attributes,
   articleCategories,
   tipCategories,
@@ -142,6 +144,7 @@ const Ad: NextPage<AdProps> = ({
           carData={carData}
           contents={contents}
           galleryImages={galleryResponsiveImages}
+          postId={`ad-${id}`}
           moreSection={
             <AdsContainer isHorizontal>
               <MoreSectionTitle isMore={moreAds.length}>Więcej perełek z ogłoszeń</MoreSectionTitle>
@@ -194,6 +197,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 
   return {
     props: {
+      id,
       ...markdownFile,
       articleCategories,
       tipCategories,
