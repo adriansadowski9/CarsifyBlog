@@ -6,6 +6,7 @@ import { DotGroup, Slide, Slider } from 'pure-react-carousel';
 import AdCard from '@components/Cards/AdCard';
 import ArticleCard from '@components/Cards/ArticleCard';
 import InformationCard from '@components/Cards/InformationCard';
+import MFindWidgetCard from '@components/Cards/MFindWidgetCard';
 import TipCard from '@components/Cards/TipCard';
 import Layout from '@components/Layout';
 import Row from '@components/Layout/styled/Row';
@@ -54,6 +55,7 @@ const Home: NextPage<HomeProps> = ({
 }) => {
   const { pageTitle, pageDescription } = attributes;
   const router = useRouter();
+  const MFIND_WIDGET_POSITION = 3;
 
   return (
     <Layout
@@ -79,17 +81,28 @@ const Home: NextPage<HomeProps> = ({
               );
 
               return (
-                <ArticleCard
-                  key={`${title}-${index}`}
-                  image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
-                  title={title}
-                  textSnippet={highlightedText}
-                  category={{
-                    name: categoryInfo.attributes.title,
-                    icon: categoryInfo.attributes.icon,
-                  }}
-                  slug={slug}
-                />
+                <React.Fragment
+                  key={`${title}-${index}${
+                    index === MFIND_WIDGET_POSITION ? '-with-mfind-widget' : ''
+                  }`}
+                >
+                  {index === MFIND_WIDGET_POSITION ? (
+                    <MFindWidgetCard key={`mfind-widget-${index}`} />
+                  ) : (
+                    ''
+                  )}
+                  <ArticleCard
+                    key={`${title}-${index}`}
+                    image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                    title={title}
+                    textSnippet={highlightedText}
+                    category={{
+                      name: categoryInfo.attributes.title,
+                      icon: categoryInfo.attributes.icon,
+                    }}
+                    slug={slug}
+                  />
+                </React.Fragment>
               );
             })}
           </ArticlesContainer>
@@ -182,7 +195,7 @@ export default Home;
 export const getStaticProps: GetStaticProps = async () => {
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
-  const articlesList = await getArticles({ sort: 'desc', count: 6 });
+  const articlesList = await getArticles({ sort: 'desc', count: 5 });
   const tipsList = await getTips({ sort: 'desc', count: 2 });
   const infosList = await getTips({
     sort: 'desc',
