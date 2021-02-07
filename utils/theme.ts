@@ -144,7 +144,7 @@ export interface Theme {
       boxLightText: string;
       backgroundText: string;
     };
-    punkta: {
+    mfind: {
       bg: string;
       text: string;
       headerHighlight: string;
@@ -235,7 +235,7 @@ export const lightTheme: Theme = {
       boxLightText: colors.black,
       backgroundText: colors.darkGray,
     },
-    punkta: {
+    mfind: {
       bg: colors.white,
       text: colors.black,
       headerHighlight: colors.red,
@@ -326,7 +326,7 @@ export const darkTheme: Theme = {
       boxLightText: colors.white,
       backgroundText: colors.white,
     },
-    punkta: {
+    mfind: {
       bg: colors.darkGray,
       text: colors.white,
       headerHighlight: colors.red,

@@ -21,7 +21,7 @@ const MFindWidgetCardContainer = styled.div`
 
   .mfind-widget .mfind-widget-container {
     padding: 0;
-    background: ${(props) => props.theme.colors.punkta.bg};
+    background: ${(props) => props.theme.colors.mfind.bg};
 
     h3 {
       display: none;
@@ -29,13 +29,13 @@ const MFindWidgetCardContainer = styled.div`
   }
 
   .mfind-widget .mf-header {
-    color: ${(props) => props.theme.colors.punkta.text};
+    color: ${(props) => props.theme.colors.mfind.text};
     margin-top: 0;
     margin-bottom: ${(props) => props.theme.spaces.xs};
     font-family: 'Maven Pro', sans-serif;
 
     span {
-      color: ${(props) => props.theme.colors.punkta.headerHighlight};
+      color: ${(props) => props.theme.colors.mfind.headerHighlight};
     }
   }
 
@@ -57,7 +57,7 @@ const MFindWidgetCardContainer = styled.div`
     label {
       font-family: 'Maven Pro', sans-serif;
       width: 100%;
-      color: ${(props) => props.theme.colors.punkta.text};
+      color: ${(props) => props.theme.colors.mfind.text};
       text-align: left;
       margin-bottom: 2.5px;
     }
@@ -67,7 +67,7 @@ const MFindWidgetCardContainer = styled.div`
       flex: 1;
       max-width: 100%;
       margin: 0;
-      border: 1px solid ${(props) => props.theme.colors.punkta.selectBorder};
+      border: 1px solid ${(props) => props.theme.colors.mfind.selectBorder};
     }
   }
 
@@ -102,7 +102,7 @@ const MFindWidgetCardContainer = styled.div`
     font-family: 'Maven Pro', sans-serif;
     font-weight: ${(props) => props.theme.fontWeights.bold};
     display: block;
-    background-color: ${(props) => props.theme.colors.punkta.buttonBg};
+    background-color: ${(props) => props.theme.colors.mfind.buttonBg};
     padding: 8px 16px;
     border-radius: 0;
   }
