@@ -144,6 +144,13 @@ export interface Theme {
       boxLightText: string;
       backgroundText: string;
     };
+    punkta: {
+      bg: string;
+      text: string;
+      headerHighlight: string;
+      buttonBg: string;
+      selectBorder: string;
+    };
   };
 }
 
@@ -228,6 +235,13 @@ export const lightTheme: Theme = {
       boxLightText: colors.black,
       backgroundText: colors.darkGray,
     },
+    punkta: {
+      bg: colors.white,
+      text: colors.black,
+      headerHighlight: colors.red,
+      buttonBg: colors.red,
+      selectBorder: colors.silver,
+    },
   },
 };
 
@@ -311,6 +325,13 @@ export const darkTheme: Theme = {
       boxText: colors.white,
       boxLightText: colors.white,
       backgroundText: colors.white,
+    },
+    punkta: {
+      bg: colors.darkGray,
+      text: colors.white,
+      headerHighlight: colors.red,
+      buttonBg: colors.red,
+      selectBorder: colors.silver,
     },
   },
 };
