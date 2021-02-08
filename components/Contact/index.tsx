@@ -9,11 +9,11 @@ import InputContainer from './styled/InputsContainer';
 
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import { ThemeContext } from 'styled-components';
 
 import { Theme } from '@utils/theme';
-
 interface ContactProps {
   width?: string;
   name?: string;
@@ -49,20 +49,22 @@ const ContactPage: React.FC<ContactProps> = ({
   const { register, handleSubmit, errors } = useForm<UseFormProps>();
   const router = useRouter();
 
-  const handleChange = (e: { target: { name: string; value: string } }) =>
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     setState({ ...state, [e.target.name]: e.target.value });
-
-  const encode = (data) => {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
   };
 
   const onSubmit = () => {
-    fetch('https://formspree.io/f/mqkgjnwa', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: encode(state),
+    axios({
+      url: 'https://formspree.io/f/mqkgjnwa',
+      method: 'post',
+      headers: { Accept: 'application/json' },
+      data: {
+        name: state['name'],
+        email: state['email'],
+        category: state['category'],
+        topic: state['topic'],
+        message: state['message'],
+      },
     })
       .then(() => {
         router.push(
