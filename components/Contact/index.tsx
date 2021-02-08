@@ -59,7 +59,7 @@ const ContactPage: React.FC<ContactProps> = ({
   };
 
   const onSubmit = () => {
-    fetch('/', {
+    fetch('https://formspree.io/f/mqkgjnwa', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
