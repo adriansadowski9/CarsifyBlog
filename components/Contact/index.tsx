@@ -61,7 +61,7 @@ const ContactPage: React.FC<ContactProps> = ({
   const onSubmit = () => {
     fetch('https://formspree.io/f/mqkgjnwa', {
       method: 'POST',
-      headers: { Accept: 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: encode(state),
     })
       .then(() => {
@@ -93,12 +93,7 @@ const ContactPage: React.FC<ContactProps> = ({
   };
 
   return (
-    <ContactContainer
-      onSubmit={handleSubmit(onSubmit)}
-      method="POST"
-      name="contact"
-      data-netlify="true"
-    >
+    <ContactContainer onSubmit={handleSubmit(onSubmit)} method="POST">
       <ContactHeadingSection
         contactEmail={contactEmail}
         facebookUrl={facebookUrl}
