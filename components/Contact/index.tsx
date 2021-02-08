@@ -61,11 +61,8 @@ const ContactPage: React.FC<ContactProps> = ({
   const onSubmit = () => {
     fetch('https://formspree.io/f/mqkgjnwa', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'contact',
-        ...state,
-      }),
+      headers: { Accept: 'application/json' },
+      body: encode(state),
     })
       .then(() => {
         router.push(
