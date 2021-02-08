@@ -1,5 +1,6 @@
 import * as React from 'react';
 import clamp from 'clamp-js';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import AdCardLocalization from '@components/Cards/AdCard/AdCardLocalization';
@@ -7,7 +8,7 @@ import AdCardCarInfoPrice from '@components/Cards/AdCard/styled/AdCardCarInfoPri
 import AdCardCarInfoRow from '@components/Cards/AdCard/styled/AdCardCarInfoRow';
 import AdCardCarInfoText from '@components/Cards/AdCard/styled/AdCardCarInfoText';
 import AdCardContainer from '@components/Cards/AdCard/styled/AdCardContainer';
-import AdCardImage from '@components/Cards/AdCard/styled/AdCardImage';
+import AdCardImageContainer from '@components/Cards/AdCard/styled/AdCardImageContainer';
 import AdCardInfoContainer from '@components/Cards/AdCard/styled/AdCardInfoContainer';
 import AdCardSnippet from '@components/Cards/AdCard/styled/AdCardSnippet';
 import AdCardTitle from '@components/Cards/AdCard/styled/AdCardTitle';
@@ -44,7 +45,6 @@ const AdCard: React.FC<AdCardProps> = ({
   enlargedCard,
 }) => {
   const snippetRef = React.useRef(null);
-  const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=300w&sizes[]=400w&sizes[]=600w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -56,17 +56,19 @@ const AdCard: React.FC<AdCardProps> = ({
     <Link href="/ogloszenia/[id]" as={`/ogloszenia/${slug}`} passHref>
       <AdCardContainer enlargedCard={enlargedCard}>
         <article>
-          <AdCardImage
-            src={responsiveImage.src}
-            srcSet={responsiveImage.srcSet}
-            sizes={
-              enlargedCard
-                ? '(min-width: 768px) 400px, 100vw'
-                : '(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw'
-            }
-            alt={title}
-            enlargedCard={enlargedCard}
-          />
+          <AdCardImageContainer enlargedCard={enlargedCard}>
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              sizes={
+                enlargedCard
+                  ? '(min-width: 768px) 400px, 100vw'
+                  : '(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw'
+              }
+              objectFit="cover"
+            />
+          </AdCardImageContainer>
           <AdCardInfoContainer enlargedCard={enlargedCard}>
             <AdCardTitle as={altTitleTag}>{carData.name}</AdCardTitle>
             <AdCardLocalization city={carData.localization} />

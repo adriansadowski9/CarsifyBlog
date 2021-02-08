@@ -93,22 +93,7 @@ const Ad: NextPage<AdProps> = ({
       ? gallery
       : typeof gallery === 'string'
       ? [gallery]
-      : undefined;
-    const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1);
-    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
-
-    const galleryImages = galleryArray
-      ? galleryArray.map((galleryItem) => ({
-          image: galleryItem.image.substring(galleryItem.image.lastIndexOf('/') + 1),
-          alt: galleryItem.alt,
-          source: galleryItem.source,
-        }))
       : [];
-    const galleryResponsiveImages = galleryImages.map((galleryItem) => ({
-      image: require(`../../public/assets/img/${galleryItem.image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&sizes[]=1260&sizes[]=1640&sizes[]=2520`),
-      alt: galleryItem.alt,
-      source: galleryItem.source,
-    }));
     const shareUrl = `https://carsify.pl${router.asPath}`;
 
     return (
@@ -122,10 +107,7 @@ const Ad: NextPage<AdProps> = ({
           description={pageDescription}
           path={router.asPath}
           ogType="article"
-          image={
-            responsiveImage.images.find((image) => image.width === 1200)?.path ??
-            responsiveImage.src
-          }
+          image={featuredImage}
         />
         <Post
           date={date}
@@ -137,13 +119,13 @@ const Ad: NextPage<AdProps> = ({
           title={title}
           subtitle={subtitle}
           highlightedText={highlightedText}
-          responsiveImage={responsiveImage}
+          image={featuredImage}
           imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
           carData={carData}
           contents={contents}
-          galleryImages={galleryResponsiveImages}
+          galleryImages={galleryArray}
           postId={`ad-${id}`}
           moreSection={
             <AdsContainer isHorizontal>
@@ -154,7 +136,7 @@ const Ad: NextPage<AdProps> = ({
                 return (
                   <AdCard
                     key={`${title}-${index}`}
-                    image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                    image={featuredImage}
                     carData={carData}
                     title={title}
                     textSnippet={highlightedText}

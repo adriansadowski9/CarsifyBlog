@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-const AdCardImage = styled.img<{ enlargedCard: boolean }>`
+const AdCardImageContainer = styled.div<{ enlargedCard: boolean }>`
+  position: relative;
   width: 100%;
   height: 215px;
-  object-fit: cover;
-  display: block;
 
   @media only screen and (min-width: 768px) {
     height: 265px;
@@ -15,4 +14,4 @@ const AdCardImage = styled.img<{ enlargedCard: boolean }>`
   }
 `;
 
-export default AdCardImage;
+export default AdCardImageContainer;
