@@ -93,7 +93,7 @@ const Home: NextPage<HomeProps> = ({
                   )}
                   <ArticleCard
                     key={`${title}-${index}`}
-                    image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                    image={featuredImage}
                     title={title}
                     textSnippet={highlightedText}
                     category={{
@@ -121,7 +121,7 @@ const Home: NextPage<HomeProps> = ({
                 return (
                   <TipCard
                     key={`${title}-${index}`}
-                    image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                    image={featuredImage}
                     title={title}
                     textSnippet={highlightedText}
                     category={{
@@ -151,7 +151,7 @@ const Home: NextPage<HomeProps> = ({
                   return (
                     <Slide index={index} key={`${title}-${index}`}>
                       <InformationCard
-                        image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                        image={featuredImage}
                         title={title}
                         textSnippet={highlightedText}
                         slug={slug}
@@ -175,7 +175,7 @@ const Home: NextPage<HomeProps> = ({
               return (
                 <AdCard
                   key={`${title}-${index}`}
-                  image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                  image={featuredImage}
                   title={title}
                   textSnippet={highlightedText}
                   carData={carData}

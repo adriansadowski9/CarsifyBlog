@@ -154,21 +154,7 @@ const Tip: NextPage<TipProps> = ({
       ? gallery
       : typeof gallery === 'string'
       ? [gallery]
-      : undefined;
-    const image = featuredImage.substring(featuredImage.lastIndexOf('/') + 1);
-    const responsiveImage = require(`../../public/assets/img/${image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&&sizes[]=1260&sizes[]=1640&sizes[]=2520`);
-    const galleryImages = galleryArray
-      ? galleryArray.map((galleryItem) => ({
-          image: galleryItem.image.substring(galleryItem.image.lastIndexOf('/') + 1),
-          alt: galleryItem.alt,
-          source: galleryItem.source,
-        }))
       : [];
-    const galleryResponsiveImages = galleryImages.map((galleryItem) => ({
-      image: require(`../../public/assets/img/${galleryItem.image}?resize&sizes[]=300&sizes[]=400&sizes[]=500&sizes[]=600&sizes[]=800&sizes[]=820&sizes[]=1200&sizes[]=1260&sizes[]=1640&sizes[]=2520`),
-      alt: galleryItem.alt,
-      source: galleryItem.source,
-    }));
     const shareUrl = `https://carsify.pl${router.asPath}`;
     const categoryInfo = tipCategories.find(
       (tipCategory) => tipCategory.attributes.title === category
@@ -185,10 +171,7 @@ const Tip: NextPage<TipProps> = ({
           description={pageDescription}
           path={router.asPath}
           ogType="article"
-          image={
-            responsiveImage.images.find((image) => image.width === 1200)?.path ??
-            responsiveImage.src
-          }
+          image={featuredImage}
         />
         <Post
           date={date}
@@ -210,12 +193,12 @@ const Tip: NextPage<TipProps> = ({
           title={title}
           subtitle={subtitle}
           highlightedText={highlightedText}
-          responsiveImage={responsiveImage}
+          image={featuredImage}
           imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
           contents={contents}
-          galleryImages={galleryResponsiveImages}
+          galleryImages={galleryArray}
           postId={`tip-${id}`}
           moreSection={
             <TipsContainer isHorizontal>
@@ -230,7 +213,7 @@ const Tip: NextPage<TipProps> = ({
                 return (
                   <TipCard
                     key={`${title}-${index}`}
-                    image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                    image={featuredImage}
                     title={title}
                     textSnippet={highlightedText}
                     category={{

@@ -74,7 +74,7 @@ const Tips: NextPage<TipsProps> = ({
             return (
               <TipCard
                 key={`${title}-${index}`}
-                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                image={featuredImage}
                 title={title}
                 textSnippet={highlightedText}
                 category={{

@@ -8,6 +8,7 @@ const importArticleCategories = async () => {
     .context('../content/categories/articles', false, /\.md$/)
     .keys()
     .map((relativePath) => relativePath.substring(2));
+
   return Promise.all(
     markdownFiles.map(async (path) => {
       const markdown = await import(`../content/categories/articles/${path}`);

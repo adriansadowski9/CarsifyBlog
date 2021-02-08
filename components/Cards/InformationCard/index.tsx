@@ -1,9 +1,10 @@
 import * as React from 'react';
 import clamp from 'clamp-js';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import InformationCardContainer from '@components/Cards/InformationCard/styled/InformationCardContainer';
-import InformationCardImage from '@components/Cards/InformationCard/styled/InformationCardImage';
+import InformationCardImageContainer from '@components/Cards/InformationCard/styled/InformationCardImageContainer';
 import InformationCardImageOverlay from '@components/Cards/InformationCard/styled/InformationCardImageOverlay';
 import InformationCardInfoContainer from '@components/Cards/InformationCard/styled/InformationCardInfoContainer';
 import InformationCardSnippet from '@components/Cards/InformationCard/styled/InformationCardSnippet';
@@ -17,7 +18,6 @@ interface InformationCardProps {
 }
 const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSnippet, slug }) => {
   const snippetRef = React.useRef(null);
-  const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -29,12 +29,15 @@ const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSni
     <Link href="/porady/[id]" as={`/porady/${slug}`}>
       <a>
         <InformationCardContainer>
-          <InformationCardImage
-            src={responsiveImage.src}
-            srcSet={responsiveImage.srcSet}
-            sizes="(min-width: 768px) 400px, 100vw"
-            alt={title}
-          />
+          <InformationCardImageContainer>
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              sizes="(min-width: 768px) 400px, 100vw"
+              objectFit="cover"
+            />
+          </InformationCardImageContainer>
           <InformationCardImageOverlay />
           <InformationCardInfoContainer>
             <InformationCardTitle>{title}</InformationCardTitle>
