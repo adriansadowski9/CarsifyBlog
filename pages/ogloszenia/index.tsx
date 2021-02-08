@@ -54,7 +54,7 @@ const Ads: NextPage<AdsProps> = ({
             return (
               <AdCard
                 key={`${title}-${index}`}
-                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                image={featuredImage}
                 title={title}
                 textSnippet={highlightedText}
                 carData={carData}

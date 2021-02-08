@@ -65,7 +65,7 @@ const SearchResults: NextPage<SearchProps> = ({
               return (
                 <ArticleCard
                   key={`${post.slug}-${index}`}
-                  image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                  image={featuredImage}
                   title={title}
                   textSnippet={highlightedText}
                   category={{
@@ -85,7 +85,7 @@ const SearchResults: NextPage<SearchProps> = ({
               return (
                 <TipCard
                   key={`${post.slug}-${index}`}
-                  image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                  image={featuredImage}
                   title={title}
                   textSnippet={highlightedText}
                   category={{
@@ -103,7 +103,7 @@ const SearchResults: NextPage<SearchProps> = ({
               return (
                 <AdCard
                   key={`${post.slug}-${index}`}
-                  image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                  image={featuredImage}
                   title={title}
                   textSnippet={highlightedText}
                   carData={carData}

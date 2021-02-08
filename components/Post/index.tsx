@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery';
 import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
+import Image from 'next/image';
 import showdown from 'showdown';
 import textFit from 'textfit';
 
@@ -22,9 +23,9 @@ import GalleryButton from '@components/Post/styled/GalleryButton';
 import Heading from '@components/Post/styled/Heading';
 import HighlightedText from '@components/Post/styled/HighlightedText';
 import IconInfo from '@components/Post/styled/IconInfo';
+import ImageContainer from '@components/Post/styled/ImageContainer';
 import ImageGalleryContainer from '@components/Post/styled/ImageGalleryContainer';
 import ImageSource from '@components/Post/styled/ImageSource';
-import PostImage from '@components/Post/styled/PostImage';
 import PostImageContainer from '@components/Post/styled/PostImageContainer';
 import ShareSectionBoldedText from '@components/Post/styled/ShareSectionBoldedText';
 import ShareSectionContainer from '@components/Post/styled/ShareSectionContainer';
@@ -33,22 +34,13 @@ import ShareSectionTextContainer from '@components/Post/styled/ShareSectionTextC
 import Subheading from '@components/Post/styled/Subheading';
 import Text from '@components/Post/styled/Text';
 import TextContainer from '@components/Post/styled/TextContainer';
+import TextImageContainer from '@components/Post/styled/TextImageContainer';
 import TopInfoContainer from '@components/Post/styled/TopInfoContainer';
 import SocialShareSection from '@components/SocialShareSection';
 import DarkModeContext from '@contexts/darkModeContext';
 import appendScript from '@utils/appendScript';
 import IconName from '@utils/iconNames';
-import { darkTheme, lightTheme, Theme } from '@utils/theme';
-
-type ResponsiveImage = {
-  src: string;
-  srcSet: string;
-  images: {
-    path: string;
-    width: number;
-    height: number;
-  }[];
-};
+import { darkTheme, lightTheme } from '@utils/theme';
 
 interface PostProps {
   date: Date;
@@ -62,7 +54,7 @@ interface PostProps {
   title: string;
   subtitle: string;
   highlightedText: string;
-  responsiveImage: ResponsiveImage;
+  image: string;
   imageSource?: string;
   shareUrl: string;
   contents?: {
@@ -85,7 +77,7 @@ interface PostProps {
     price: string;
   };
   galleryImages: {
-    image: ResponsiveImage;
+    image: string;
     alt: string;
     source?: string;
   }[];
@@ -99,7 +91,7 @@ const Post: React.FC<PostProps> = ({
   title,
   subtitle,
   highlightedText,
-  responsiveImage,
+  image,
   imageSource,
   shareUrl,
   contents,
@@ -175,8 +167,8 @@ const Post: React.FC<PostProps> = ({
 
   const images = galleryImages
     ? galleryImages.map((galleryItem) => ({
-        original: galleryItem.image.images[galleryItem.image.images.length - 1].path,
-        thumbnail: galleryItem.image.images[0].path,
+        original: galleryItem.image,
+        thumbnail: galleryItem.image,
         originalAlt: galleryItem.alt,
         thumbnailAlt: `${galleryItem.alt} (miniatura)`,
         description: galleryItem.source ? `Źródło: ${galleryItem.source}` : undefined,
@@ -206,6 +198,26 @@ const Post: React.FC<PostProps> = ({
     </GalleryButton>
   );
 
+  const renderItem = (item) => {
+    return (
+      <div className="image-gallery-slide">
+        <Image layout="fill" src={item.original} alt={item.originalAlt} objectFit="cover" />
+        {item.description && <span className="image-gallery-description">{item.description}</span>}
+      </div>
+    );
+  };
+
+  const renderThumbInner = (item) => {
+    return (
+      <div className="image-gallery-thumbnail-inner">
+        <Image src={item.thumbnail} alt={item.thumbnailAlt} layout="fill" objectFit="cover" />
+        {item.thumbnailLabel && (
+          <div className="image-gallery-thumbnail-label">{item.thumbnailLabel}</div>
+        )}
+      </div>
+    );
+  };
+
   const turnIntoGallery = (parsedHtml: ReactElement[] | ReactElement) => {
     if (Array.isArray(parsedHtml)) {
       const indexToReplace = [];
@@ -229,6 +241,8 @@ const Post: React.FC<PostProps> = ({
                 renderLeftNav={renderLeftNav}
                 renderRightNav={renderRightNav}
                 renderFullscreenButton={renderFullscreenButton}
+                renderItem={renderItem}
+                renderThumbInner={renderThumbInner}
               />
             </ImageGalleryContainer>
           ))
@@ -243,6 +257,8 @@ const Post: React.FC<PostProps> = ({
             renderLeftNav={renderLeftNav}
             renderRightNav={renderRightNav}
             renderFullscreenButton={renderFullscreenButton}
+            renderItem={renderItem}
+            renderThumbInner={renderThumbInner}
           />
         </ImageGalleryContainer>
       );
@@ -251,10 +267,85 @@ const Post: React.FC<PostProps> = ({
     }
   };
 
+  const convertImgToNextImages = (parsedHtml: ReactElement[] | ReactElement) => {
+    if (Array.isArray(parsedHtml)) {
+      const elementToReplace: { index: number; src: string; alt: string }[] = [];
+      parsedHtml.forEach((element, index) => {
+        if (element.type === 'img') {
+          elementToReplace.push({ index, src: element.props.src, alt: element.props.alt });
+        } else if (element.props?.children) {
+          React.Children.map(element.props.children, (childElement) => {
+            if (childElement.type === 'img') {
+              parsedHtml[index] = childElement;
+              elementToReplace.push({
+                index,
+                src: childElement.props.src,
+                alt: childElement.props.alt,
+              });
+            }
+          });
+        }
+      });
+
+      elementToReplace.forEach((element) => {
+        parsedHtml[element.index] = (
+          <TextImageContainer key={element.index}>
+            <Image
+              src={element.src}
+              alt={element.alt}
+              layout="responsive"
+              width={1600}
+              height={900}
+              objectFit="cover"
+            />
+          </TextImageContainer>
+        );
+      });
+      return parsedHtml;
+    } else if (
+      parsedHtml.type === 'img' ||
+      parsedHtml.props.children.find((childElement) => childElement.type === 'img')
+    ) {
+      if (parsedHtml.type === 'img') {
+        return (
+          <TextImageContainer>
+            <Image
+              src={parsedHtml.props.src}
+              alt={parsedHtml.props.alt}
+              layout="responsive"
+              width={1600}
+              height={900}
+              objectFit="cover"
+            />
+          </TextImageContainer>
+        );
+      } else {
+        const childIndex = parsedHtml.props.children.findIndex(
+          (childElement) => childElement.type === 'img'
+        );
+        return (
+          <TextImageContainer>
+            <Image
+              src={parsedHtml.props.children[childIndex].props.src}
+              alt={parsedHtml.props.children[childIndex].props.alt}
+              layout="responsive"
+              width={1600}
+              height={900}
+              objectFit="cover"
+            />
+          </TextImageContainer>
+        );
+      }
+      return parsedHtml;
+    } else {
+      return parsedHtml;
+    }
+  };
+
   const parseToHtml = (text) => {
     const parsedHtml = parse(mdConverter.makeHtml(text));
     if (galleryImages.length) {
-      return turnIntoGallery(parsedHtml);
+      return turnIntoGallery(convertImgToNextImages(parsedHtml));
     } else {
       return parsedHtml;
     }
@@ -316,19 +407,19 @@ const Post: React.FC<PostProps> = ({
             <CarDataPrice>{carData.price}</CarDataPrice>
           </CarDataBox>
         )}
-        <PostImage
-          src={responsiveImage.src}
-          srcSet={responsiveImage.srcSet}
-          sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
-          alt={title}
-          notFullWidth={!!carData}
-        />
+        <ImageContainer notFullWidth={!!carData}>
+          <Image
+            src={image}
+            alt={title}
+            layout="fill"
+            sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
+            objectFit="cover"
+          />
+        </ImageContainer>
         <SocialShareSection
           shareUrl={shareUrl}
           quote={title}
-          pinterestMediaUrl={`https://carsify.pl${
-            responsiveImage.images[responsiveImage.images.length - 1].path
-          }`}
+          pinterestMediaUrl={`https://carsify.pl${image}`}
           rightSide={!!carData}
           isAbsolute
         />
@@ -356,9 +447,7 @@ const Post: React.FC<PostProps> = ({
           <SocialShareSection
             shareUrl={shareUrl}
             quote={title}
-            pinterestMediaUrl={`https://carsify.pl${
-              responsiveImage.images[responsiveImage.images.length - 1].path
-            }`}
+            pinterestMediaUrl={`https://carsify.pl${image}`}
             horizontal
           />
         </ShareSectionContainer>

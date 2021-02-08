@@ -78,6 +78,7 @@ const Text = styled.div`
     }
   }
 
+  iframe,
   .instagram-media,
   .twitter-tweet,
   .fb-post {
