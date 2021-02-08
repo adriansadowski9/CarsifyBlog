@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
 const ImageGalleryContainer = styled.div`
-  .image-gallery-slide img {
+  .image-gallery-slide {
     height: 350px;
     object-fit: cover;
   }
 
   @media only screen and (min-width: 768px) {
-    .image-gallery-slide img {
+    .image-gallery-slide {
       height: 450px;
     }
   }
 
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    .image-gallery-slide img {
+    .image-gallery-slide {
       height: 600px;
     }
   }
 
-  .image-gallery-content.fullscreen .image-gallery-slide img {
-    height: auto;
+  .image-gallery-content.fullscreen .image-gallery-slide {
+    height: calc(100vh - 83px);
   }
 
   .image-gallery-thumbnails-container {
@@ -34,6 +34,10 @@ const ImageGalleryContainer = styled.div`
   .image-gallery-thumbnail:hover,
   .image-gallery-thumbnail:focus {
     border: 3px solid ${(props) => props.theme.colors.galleryThumbnailsBorder};
+  }
+
+  .image-gallery-thumbnail-inner {
+    height: 65px;
   }
 
   .image-gallery-description {

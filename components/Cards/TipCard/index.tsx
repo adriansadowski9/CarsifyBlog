@@ -1,11 +1,12 @@
 import * as React from 'react';
 import clamp from 'clamp-js';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ThemeContext } from 'styled-components';
 
 import Category from '@components/Cards/Category';
 import TipCardContainer from '@components/Cards/TipCard/styled/TipCardContainer';
-import TipCardImage from '@components/Cards/TipCard/styled/TipCardImage';
+import TipCardImageContainer from '@components/Cards/TipCard/styled/TipCardImageContainer';
 import TipCardInfoContainer from '@components/Cards/TipCard/styled/TipCardInfoContainer';
 import TipCardSnippet from '@components/Cards/TipCard/styled/TipCardSnippet';
 import TipCardTitle from '@components/Cards/TipCard/styled/TipCardTitle';
@@ -35,7 +36,6 @@ const TipCard: React.FC<TipCardProps> = ({
 }) => {
   const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
-  const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -47,13 +47,15 @@ const TipCard: React.FC<TipCardProps> = ({
     <Link href="/porady/[id]" as={`/porady/${slug}`} passHref>
       <TipCardContainer smallerCard={smallerCard}>
         <article>
-          <TipCardImage
-            src={responsiveImage.src}
-            srcSet={responsiveImage.srcSet}
-            sizes="(min-width: 768px) 400px, 100vw"
-            alt={title}
-            smallerCard={smallerCard}
-          />
+          <TipCardImageContainer smallerCard={smallerCard}>
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              sizes="(min-width: 768px) 400px, 100vw"
+              objectFit="cover"
+            />
+          </TipCardImageContainer>
           <TipCardInfoContainer>
             <TipCardTitle as={altTitleTag}>{title}</TipCardTitle>
             <TipCardSnippet ref={snippetRef}>{textSnippet}</TipCardSnippet>

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import clamp from 'clamp-js';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ThemeContext } from 'styled-components';
 
 import ArticleCardContainer from '@components/Cards/ArticleCard/styled/ArticleCardContainer';
-import ArticleCardImage from '@components/Cards/ArticleCard/styled/ArticleCardImage';
+import ArticleCardImageContainer from '@components/Cards/ArticleCard/styled/ArticleCardImageContainer';
 import ArticleCardInfoContainer from '@components/Cards/ArticleCard/styled/ArticleCardInfoContainer';
 import ArticleCardSnippet from '@components/Cards/ArticleCard/styled/ArticleCardSnippet';
 import ArticleCardTitle from '@components/Cards/ArticleCard/styled/ArticleCardTitle';
@@ -33,7 +34,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
 }) => {
   const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
-  const responsiveImage = require(`../../../public/assets/img/${image}?resize&sizes[]=400w&sizes[]=800&sizes[]=1200&sizes[]=1600`);
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -45,12 +45,15 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
     <Link href="/artykuly/[id]" as={`/artykuly/${slug}`} passHref>
       <ArticleCardContainer>
         <article>
-          <ArticleCardImage
-            src={responsiveImage.src}
-            srcSet={responsiveImage.srcSet}
-            sizes="(min-width: 768px) 400px, 100vw"
-            alt={title}
-          />
+          <ArticleCardImageContainer>
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              sizes="(min-width: 768px) 400px, 100vw"
+              objectFit="cover"
+            />
+          </ArticleCardImageContainer>
           <ArticleCardInfoContainer>
             <ArticleCardTitle as={altTitleTag}>{title}</ArticleCardTitle>
             <ArticleCardSnippet ref={snippetRef}>{textSnippet}</ArticleCardSnippet>
