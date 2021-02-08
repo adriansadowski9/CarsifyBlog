@@ -4,7 +4,6 @@ import ImageGallery from 'react-image-gallery';
 import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
-import NextImage from 'next/image';
 import Image from 'next/image';
 import showdown from 'showdown';
 import textFit from 'textfit';
@@ -41,17 +40,7 @@ import SocialShareSection from '@components/SocialShareSection';
 import DarkModeContext from '@contexts/darkModeContext';
 import appendScript from '@utils/appendScript';
 import IconName from '@utils/iconNames';
-import { darkTheme, lightTheme, Theme } from '@utils/theme';
-
-type ResponsiveImage = {
-  src: string;
-  srcSet: string;
-  images: {
-    path: string;
-    width: number;
-    height: number;
-  }[];
-};
+import { darkTheme, lightTheme } from '@utils/theme';
 
 interface PostProps {
   date: Date;
@@ -301,7 +290,7 @@ const Post: React.FC<PostProps> = ({
       elementToReplace.forEach((element) => {
         parsedHtml[element.index] = (
           <TextImageContainer key={element.index}>
-            <NextImage
+            <Image
               src={element.src}
               alt={element.alt}
               layout="responsive"
@@ -320,7 +309,7 @@ const Post: React.FC<PostProps> = ({
       if (parsedHtml.type === 'img') {
         return (
           <TextImageContainer>
-            <NextImage
+            <Image
               src={parsedHtml.props.src}
               alt={parsedHtml.props.alt}
               layout="responsive"
@@ -336,7 +325,7 @@ const Post: React.FC<PostProps> = ({
         );
         return (
           <TextImageContainer>
-            <NextImage
+            <Image
               src={parsedHtml.props.children[childIndex].props.src}
               alt={parsedHtml.props.children[childIndex].props.alt}
               layout="responsive"
@@ -419,7 +408,7 @@ const Post: React.FC<PostProps> = ({
           </CarDataBox>
         )}
         <ImageContainer notFullWidth={!!carData}>
-          <NextImage
+          <Image
             src={image}
             alt={title}
             layout="fill"
