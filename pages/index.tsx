@@ -25,7 +25,6 @@ import { Tip, TipCategory } from '@pages/porady/[id]';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds, getArticles, getTips } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
-
 export interface SocialsSettings {
   attributes: {
     facebookUrl: string;
