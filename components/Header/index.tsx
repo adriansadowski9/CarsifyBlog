@@ -53,6 +53,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
   const [isSearchOpened, setIsSearchOpened] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
   const [isSocialIconsVisible, setIsSocialIconsVisible] = React.useState(false);
+  const [isTopOfPage, setIsTopOfPage] = React.useState(true);
   const socialButtonRef = React.useRef<HTMLButtonElement>(null);
   const { facebookUrl, instagramUrl, twitterUrl } = socialsSettings.attributes;
 
@@ -74,15 +75,30 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
     }
   };
 
+  const closeDropdownOnScroll = () => {
+    if (window.pageYOffset > 50) {
+      setIsTopOfPage(false);
+    } else {
+      setIsTopOfPage(true);
+    }
+  };
+
   React.useEffect(() => {
     window.addEventListener('click', handleIconsVisible);
+
     return () => window.removeEventListener('click', handleIconsVisible);
   }, [isSocialIconsVisible]);
 
   React.useEffect(() => {
     window.addEventListener('resize', handleCloseMobileMenuOnResize);
 
-    return () => window.removeEventListener('listener', handleCloseMobileMenuOnResize);
+    return () => window.removeEventListener('resize', handleCloseMobileMenuOnResize);
+  }, []);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', closeDropdownOnScroll);
+
+    return () => window.removeEventListener('scroll', closeDropdownOnScroll);
   }, []);
 
   React.useEffect(() => {
@@ -202,7 +218,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
                 </LinkButton>
               </Link>
             </NavListItem>
-            <NavListItem>
+            <NavListItem isTopOfPage={isTopOfPage}>
               {isMobileMenuOpened ? (
                 <NavItemChevronContainer>
                   <LinkButton
@@ -245,7 +261,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
                 toggleSubMenu={toggleSubMenu}
               />
             </NavListItem>
-            <NavListItem>
+            <NavListItem isTopOfPage={isTopOfPage}>
               {isMobileMenuOpened ? (
                 <NavItemChevronContainer>
                   <LinkButton
