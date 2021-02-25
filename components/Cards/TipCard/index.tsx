@@ -50,7 +50,7 @@ const TipCard: React.FC<TipCardProps> = ({
         <article>
           <TipCardImageContainer smallerCard={smallerCard}>
             <Defer
-              render={
+              render={() => (
                 <Image
                   src={image}
                   alt={title}
@@ -59,7 +59,7 @@ const TipCard: React.FC<TipCardProps> = ({
                   objectFit="cover"
                   loading="eager"
                 />
-              }
+              )}
             />
           </TipCardImageContainer>
           <TipCardInfoContainer>

@@ -48,7 +48,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         <article>
           <ArticleCardImageContainer>
             <Defer
-              render={
+              render={() => (
                 <Image
                   src={image}
                   alt={title}
@@ -57,7 +57,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
                   objectFit="cover"
                   loading="eager"
                 />
-              }
+              )}
             />
           </ArticleCardImageContainer>
           <ArticleCardInfoContainer>

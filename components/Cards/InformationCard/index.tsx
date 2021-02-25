@@ -32,7 +32,7 @@ const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSni
         <InformationCardContainer>
           <InformationCardImageContainer>
             <Defer
-              render={
+              render={() => (
                 <Image
                   src={image}
                   alt={title}
@@ -41,7 +41,7 @@ const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSni
                   objectFit="cover"
                   loading="eager"
                 />
-              }
+              )}
             />
           </InformationCardImageContainer>
           <InformationCardImageOverlay />
