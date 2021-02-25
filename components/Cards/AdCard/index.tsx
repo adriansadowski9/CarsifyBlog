@@ -67,6 +67,7 @@ const AdCard: React.FC<AdCardProps> = ({
                   : '(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw'
               }
               objectFit="cover"
+              loading="eager"
             />
           </AdCardImageContainer>
           <AdCardInfoContainer enlargedCard={enlargedCard}>

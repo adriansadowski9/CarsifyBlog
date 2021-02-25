@@ -166,12 +166,13 @@ const Post: React.FC<PostProps> = ({
   });
 
   const images = galleryImages
-    ? galleryImages.map((galleryItem) => ({
+    ? galleryImages.map((galleryItem, index) => ({
         original: galleryItem.image,
         thumbnail: galleryItem.image,
         originalAlt: galleryItem.alt,
         thumbnailAlt: `${galleryItem.alt} (miniatura)`,
         description: galleryItem.source ? `Źródło: ${galleryItem.source}` : undefined,
+        index,
       }))
     : [];
 
@@ -201,7 +202,13 @@ const Post: React.FC<PostProps> = ({
   const renderItem = (item) => {
     return (
       <div className="image-gallery-slide">
-        <Image layout="fill" src={item.original} alt={item.originalAlt} objectFit="cover" />
+        <Image
+          layout="fill"
+          src={item.original}
+          alt={item.originalAlt}
+          objectFit="cover"
+          loading={item.index === 0 ? 'eager' : 'lazy'}
+        />
         {item.description && <span className="image-gallery-description">{item.description}</span>}
       </div>
     );
@@ -210,7 +217,13 @@ const Post: React.FC<PostProps> = ({
   const renderThumbInner = (item) => {
     return (
       <div className="image-gallery-thumbnail-inner">
-        <Image src={item.thumbnail} alt={item.thumbnailAlt} layout="fill" objectFit="cover" />
+        <Image
+          src={item.thumbnail}
+          alt={item.thumbnailAlt}
+          layout="fill"
+          objectFit="cover"
+          loading="eager"
+        />
         {item.thumbnailLabel && (
           <div className="image-gallery-thumbnail-label">{item.thumbnailLabel}</div>
         )}
@@ -297,6 +310,7 @@ const Post: React.FC<PostProps> = ({
               width={1600}
               height={900}
               objectFit="cover"
+              loading="eager"
             />
           </TextImageContainer>
         );
@@ -316,6 +330,7 @@ const Post: React.FC<PostProps> = ({
               width={1600}
               height={900}
               objectFit="cover"
+              loading="eager"
             />
           </TextImageContainer>
         );
@@ -332,6 +347,7 @@ const Post: React.FC<PostProps> = ({
               width={1600}
               height={900}
               objectFit="cover"
+              loading="eager"
             />
           </TextImageContainer>
         );
@@ -414,6 +430,7 @@ const Post: React.FC<PostProps> = ({
             layout="fill"
             sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
             objectFit="cover"
+            loading="eager"
           />
         </ImageContainer>
         <SocialShareSection
