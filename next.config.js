@@ -1,5 +1,6 @@
 const withFonts = require('next-fonts');
 const withPWA = require('next-pwa');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = withPWA(
   withFonts({
@@ -23,6 +24,15 @@ module.exports = withPWA(
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       });
+      cfg.optimization.minimizer = [
+        new UglifyJsPlugin({
+          sourceMap: true,
+          uglifyOptions: {
+            warnings: false,
+          },
+        }),
+      ];
+
       return cfg;
     },
   })

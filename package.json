@@ -37,6 +37,7 @@
     "showdown": "^1.9.1",
     "styled-components": "^5.1.1",
     "textfit": "^2.4.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
     "use-dark-mode": "^2.3.1"
   },
