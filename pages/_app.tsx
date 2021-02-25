@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
       src: url('/assets/fonts/MavenPro-Regular.ttf');
       src: url('/static/fonts/MavenPro-Medium.ttf');
       src: url('/static/fonts/MavenPro-Bold.ttf');
+      font-display:swap;
   }
 
   *, *::before, *::after {
