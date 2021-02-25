@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Defer } from 'react-progressive-loader';
 import clamp from 'clamp-js';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -31,17 +30,13 @@ const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSni
       <a>
         <InformationCardContainer>
           <InformationCardImageContainer>
-            <Defer
-              render={() => (
-                <Image
-                  src={image}
-                  alt={title}
-                  layout="fill"
-                  sizes="(min-width: 768px) 400px, 100vw"
-                  objectFit="cover"
-                  loading="eager"
-                />
-              )}
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              sizes="(min-width: 768px) 400px, 100vw"
+              objectFit="cover"
+              loading="eager"
             />
           </InformationCardImageContainer>
           <InformationCardImageOverlay />
