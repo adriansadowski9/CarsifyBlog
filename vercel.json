@@ -1,6 +1,8 @@
 {
   "redirects": [
     { "source": "/admin", "destination": "/admin/" },
-    { "source": "/index.html", "destination": "/" }
+    { "source": "/index.html", "destination": "/" },
+    { "source": "/robots.txt", "destination": "/_next/static/robots.txt" },
+    { "source": "/sitemap.xml", "destination": "/_next/static/sitemap.xml" }
   ]
 }
