@@ -2,7 +2,7 @@ import DropdownContainer from './DropdownContainer';
 
 import styled from 'styled-components';
 
-const NavListItem = styled.li`
+const NavListItem = styled.li<{ isTopOfPage: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,8 +13,8 @@ const NavListItem = styled.li`
     border-bottom: none;
     margin-bottom: 0;
     &:hover ${DropdownContainer} {
-      opacity: 1;
-      visibility: visible;
+      opacity: ${(props) => (props.isTopOfPage ? '1' : '0')};
+      visibility: ${(props) => (props.isTopOfPage ? 'visible' : 'hidden')};
     }
   }
 `;
