@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ReactElement } from 'react';
 import ImageGallery from 'react-image-gallery';
 import Linkify from 'react-linkify';
+import { Defer } from 'react-progressive-loader';
 import dayjs from 'dayjs';
 import parse from 'html-react-parser';
 import Image from 'next/image';
@@ -172,7 +173,6 @@ const Post: React.FC<PostProps> = ({
         originalAlt: galleryItem.alt,
         thumbnailAlt: `${galleryItem.alt} (miniatura)`,
         description: galleryItem.source ? `Źródło: ${galleryItem.source}` : undefined,
-        index,
       }))
     : [];
 
@@ -202,12 +202,16 @@ const Post: React.FC<PostProps> = ({
   const renderItem = (item) => {
     return (
       <div className="image-gallery-slide">
-        <Image
-          layout="fill"
-          src={item.original}
-          alt={item.originalAlt}
-          objectFit="cover"
-          loading={item.index === 0 ? 'eager' : 'lazy'}
+        <Defer
+          render={() => (
+            <Image
+              layout="fill"
+              src={item.original}
+              alt={item.originalAlt}
+              objectFit="cover"
+              loading="eager"
+            />
+          )}
         />
         {item.description && <span className="image-gallery-description">{item.description}</span>}
       </div>
@@ -217,12 +221,16 @@ const Post: React.FC<PostProps> = ({
   const renderThumbInner = (item) => {
     return (
       <div className="image-gallery-thumbnail-inner">
-        <Image
-          src={item.thumbnail}
-          alt={item.thumbnailAlt}
-          layout="fill"
-          objectFit="cover"
-          loading="eager"
+        <Defer
+          render={() => (
+            <Image
+              src={item.thumbnail}
+              alt={item.thumbnailAlt}
+              layout="fill"
+              objectFit="cover"
+              loading="eager"
+            />
+          )}
         />
         {item.thumbnailLabel && (
           <div className="image-gallery-thumbnail-label">{item.thumbnailLabel}</div>
@@ -303,14 +311,18 @@ const Post: React.FC<PostProps> = ({
       elementToReplace.forEach((element) => {
         parsedHtml[element.index] = (
           <TextImageContainer key={element.index}>
-            <Image
-              src={element.src}
-              alt={element.alt}
-              layout="responsive"
-              width={1600}
-              height={900}
-              objectFit="cover"
-              loading="eager"
+            <Defer
+              render={() => (
+                <Image
+                  src={element.src}
+                  alt={element.alt}
+                  layout="responsive"
+                  width={1600}
+                  height={900}
+                  objectFit="cover"
+                  loading="eager"
+                />
+              )}
             />
           </TextImageContainer>
         );
@@ -323,14 +335,18 @@ const Post: React.FC<PostProps> = ({
       if (parsedHtml.type === 'img') {
         return (
           <TextImageContainer>
-            <Image
-              src={parsedHtml.props.src}
-              alt={parsedHtml.props.alt}
-              layout="responsive"
-              width={1600}
-              height={900}
-              objectFit="cover"
-              loading="eager"
+            <Defer
+              render={() => (
+                <Image
+                  src={parsedHtml.props.src}
+                  alt={parsedHtml.props.alt}
+                  layout="responsive"
+                  width={1600}
+                  height={900}
+                  objectFit="cover"
+                  loading="eager"
+                />
+              )}
             />
           </TextImageContainer>
         );
@@ -340,14 +356,18 @@ const Post: React.FC<PostProps> = ({
         );
         return (
           <TextImageContainer>
-            <Image
-              src={parsedHtml.props.children[childIndex].props.src}
-              alt={parsedHtml.props.children[childIndex].props.alt}
-              layout="responsive"
-              width={1600}
-              height={900}
-              objectFit="cover"
-              loading="eager"
+            <Defer
+              render={() => (
+                <Image
+                  src={parsedHtml.props.children[childIndex].props.src}
+                  alt={parsedHtml.props.children[childIndex].props.alt}
+                  layout="responsive"
+                  width={1600}
+                  height={900}
+                  objectFit="cover"
+                  loading="eager"
+                />
+              )}
             />
           </TextImageContainer>
         );
@@ -424,13 +444,17 @@ const Post: React.FC<PostProps> = ({
           </CarDataBox>
         )}
         <ImageContainer notFullWidth={!!carData}>
-          <Image
-            src={image}
-            alt={title}
-            layout="fill"
-            sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
-            objectFit="cover"
-            loading="eager"
+          <Defer
+            render={() => (
+              <Image
+                src={image}
+                alt={title}
+                layout="fill"
+                sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
+                objectFit="cover"
+                loading="eager"
+              />
+            )}
           />
         </ImageContainer>
         <SocialShareSection

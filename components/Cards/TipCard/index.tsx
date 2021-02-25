@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Defer } from 'react-progressive-loader';
 import clamp from 'clamp-js';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -48,13 +49,17 @@ const TipCard: React.FC<TipCardProps> = ({
       <TipCardContainer smallerCard={smallerCard}>
         <article>
           <TipCardImageContainer smallerCard={smallerCard}>
-            <Image
-              src={image}
-              alt={title}
-              layout="fill"
-              sizes="(min-width: 768px) 400px, 100vw"
-              objectFit="cover"
-              loading="eager"
+            <Defer
+              render={
+                <Image
+                  src={image}
+                  alt={title}
+                  layout="fill"
+                  sizes="(min-width: 768px) 400px, 100vw"
+                  objectFit="cover"
+                  loading="eager"
+                />
+              }
             />
           </TipCardImageContainer>
           <TipCardInfoContainer>

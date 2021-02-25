@@ -32,6 +32,7 @@
     "react-hook-form": "^6.9.5",
     "react-image-gallery": "^1.0.8",
     "react-linkify": "^1.0.0-alpha",
+    "react-progressive-loader": "^0.4.1",
     "react-responsive-carousel": "^3.2.9",
     "react-share": "^4.2.1",
     "showdown": "^1.9.1",
