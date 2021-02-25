@@ -27,6 +27,9 @@ module.exports = withPWA(
       cfg.optimization.minimizer = [
         new UglifyJsPlugin({
           sourceMap: true,
+          uglifyOptions: {
+            warnings: false,
+          },
         }),
       ];
 
