@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DropdownWrapper = styled.div`
+const DropdownWrapper = styled.div<{ isOpen: boolean }>`
   position: fixed;
   top: 70px;
   bottom: 0;
