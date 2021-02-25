@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DropdownContainer = styled.ul<{ isOpen: boolean }>`
+const DropdownContainer = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;

@@ -37,6 +37,7 @@ const MenuDropdown: React.FC<DropdownProps> = ({
   isMobileMenuOpened,
 }) => {
   const themeContext: Theme = React.useContext(ThemeContext);
+
   return (
     <DropdownWrapper isOpen={isOpen && isMobileMenuOpened}>
       <DropdownContainer>
