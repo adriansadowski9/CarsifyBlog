@@ -12,7 +12,8 @@ module.exports = withPWA(
     },
     images: {
       deviceSizes: [
-        92,
+        94,
+        110,
         300,
         350,
         400,
