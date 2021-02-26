@@ -10,6 +10,28 @@ module.exports = withPWA(
       disable: process.env.NODE_ENV === 'development',
       dest: 'public',
     },
+    images: {
+      deviceSizes: [
+        92,
+        300,
+        350,
+        400,
+        475,
+        550,
+        625,
+        640,
+        700,
+        750,
+        775,
+        820,
+        850,
+        964,
+        996,
+        1080,
+        1260,
+        1400,
+      ],
+    },
     webpack: (cfg) => {
       cfg.module.rules.push({
         test: /\.md$/,
