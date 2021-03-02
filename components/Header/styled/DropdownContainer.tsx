@@ -9,7 +9,7 @@ const DropdownContainer = styled.ul`
   display: flex;
   flex-direction: column;
   @media only screen and (min-width: ${(props) => props.theme.breakpoints[1]}) {
-    transition: all 0.5s;
+    transition: all 0.2s cubic-bezier(0.42, 0, 1, 1);
     opacity: 0;
     visibility: hidden;
     background-color: ${(props) => props.theme.colors.bg};
