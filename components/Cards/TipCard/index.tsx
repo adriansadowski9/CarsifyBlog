@@ -54,6 +54,7 @@ const TipCard: React.FC<TipCardProps> = ({
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
+              loading="eager"
             />
           </TipCardImageContainer>
           <TipCardInfoContainer>

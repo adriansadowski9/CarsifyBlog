@@ -36,6 +36,7 @@ const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSni
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
+              loading="eager"
             />
           </InformationCardImageContainer>
           <InformationCardImageOverlay />

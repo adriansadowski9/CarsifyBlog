@@ -52,6 +52,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
+              loading="eager"
             />
           </ArticleCardImageContainer>
           <ArticleCardInfoContainer>

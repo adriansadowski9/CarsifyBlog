@@ -297,6 +297,7 @@ const Post: React.FC<PostProps> = ({
               width={1600}
               height={900}
               objectFit="cover"
+              loading="eager"
             />
           </TextImageContainer>
         );
@@ -316,6 +317,7 @@ const Post: React.FC<PostProps> = ({
               width={1600}
               height={900}
               objectFit="cover"
+              loading="eager"
             />
           </TextImageContainer>
         );
@@ -332,6 +334,7 @@ const Post: React.FC<PostProps> = ({
               width={1600}
               height={900}
               objectFit="cover"
+              loading="eager"
             />
           </TextImageContainer>
         );
@@ -414,6 +417,7 @@ const Post: React.FC<PostProps> = ({
             layout="fill"
             sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
             objectFit="cover"
+            loading="eager"
           />
         </ImageContainer>
         <SocialShareSection
