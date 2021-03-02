@@ -3,10 +3,11 @@ import { ReactElement } from 'react';
 import ImageGallery from 'react-image-gallery';
 import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
-import parse from 'html-react-parser';
 import Image from 'next/image';
 import showdown from 'showdown';
 import textFit from 'textfit';
+import { getImage } from '@plaiceholder/next';
+import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
 
 import Breadcrumbs, { BreadcrumbsItem } from '@components/Breadcrumbs';
 import HyvorTalkComments from '@components/HyvorTalkComments';
@@ -41,6 +42,7 @@ import DarkModeContext from '@contexts/darkModeContext';
 import appendScript from '@utils/appendScript';
 import IconName from '@utils/iconNames';
 import { darkTheme, lightTheme } from '@utils/theme';
+import parse from 'html-react-parser';
 
 interface PostProps {
   date: Date;
@@ -55,6 +57,7 @@ interface PostProps {
   subtitle: string;
   highlightedText: string;
   image: string;
+  imagePlaceholder: PixelsCSS;
   imageSource?: string;
   shareUrl: string;
   contents?: {
@@ -62,6 +65,10 @@ interface PostProps {
     link: string;
   }[];
   text: string;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   moreSection?: React.ReactElement;
   carData?: {
     name: string;
@@ -80,9 +87,21 @@ interface PostProps {
     image: string;
     alt: string;
     source?: string;
+    placeholder?: PixelsCSS;
   }[];
   postId: string;
 }
+
+const placeholderStyle = {
+  filter: 'blur(24px)',
+  position: 'absolute' as 'absolute',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+};
 
 const Post: React.FC<PostProps> = ({
   date,
@@ -92,10 +111,12 @@ const Post: React.FC<PostProps> = ({
   subtitle,
   highlightedText,
   image,
+  imagePlaceholder,
   imageSource,
   shareUrl,
   contents,
   text,
+  textImagesPlaceholders,
   moreSection,
   carData,
   galleryImages,
@@ -139,6 +160,128 @@ const Post: React.FC<PostProps> = ({
     }
   }, []);
 
+  const convertImgToNextImages = (parsedHtml: ReactElement[] | ReactElement) => {
+    if (Array.isArray(parsedHtml)) {
+      const elementToReplace: {
+        index: number;
+        src: string;
+        alt: string;
+        placeholder: PixelsCSS;
+      }[] = [];
+      parsedHtml.forEach((element, index) => {
+        if (element.type === 'img') {
+          const textImagePlaceholder = textImagesPlaceholders.find(
+            (placeholder) => placeholder.src === element.props.src
+          );
+          elementToReplace.push({
+            index,
+            src: element.props.src,
+            alt: element.props.alt,
+            placeholder: textImagePlaceholder?.placeholder,
+          });
+        } else if (element.props?.children) {
+          React.Children.map(element.props.children, (childElement) => {
+            if (childElement.type === 'img') {
+              parsedHtml[index] = childElement;
+              const textImagePlaceholder = textImagesPlaceholders.find(
+                (placeholder) => placeholder.src === childElement.props.src
+              );
+              elementToReplace.push({
+                index,
+                src: childElement.props.src,
+                alt: childElement.props.alt,
+                placeholder: textImagePlaceholder?.placeholder,
+              });
+            }
+          });
+        }
+      });
+
+      elementToReplace.forEach((element) => {
+        parsedHtml[element.index] = (
+          <TextImageContainer key={element.index}>
+            {element.placeholder && (
+              <div
+                style={{
+                  ...placeholderStyle,
+                  ...element.placeholder,
+                }}
+              />
+            )}
+            <Image
+              src={element.src}
+              alt={element.alt}
+              layout="responsive"
+              width={1260}
+              height={700}
+              objectFit="cover"
+            />
+          </TextImageContainer>
+        );
+      });
+      return parsedHtml;
+    } else if (
+      parsedHtml.type === 'img' ||
+      parsedHtml.props.children.find((childElement) => childElement.type === 'img')
+    ) {
+      if (parsedHtml.type === 'img') {
+        const textImagePlaceholder = textImagesPlaceholders.find(
+          (placeholder) => placeholder.src === parsedHtml.props.src
+        );
+        return (
+          <TextImageContainer>
+            {textImagePlaceholder?.placeholder && (
+              <div
+                style={{
+                  ...placeholderStyle,
+                  ...textImagePlaceholder.placeholder,
+                }}
+              />
+            )}
+            <Image
+              src={parsedHtml.props.src}
+              alt={parsedHtml.props.alt}
+              layout="responsive"
+              width={1260}
+              height={700}
+              objectFit="cover"
+            />
+          </TextImageContainer>
+        );
+      } else {
+        const childIndex = parsedHtml.props.children.findIndex(
+          (childElement) => childElement.type === 'img'
+        );
+        const textImagePlaceholder = textImagesPlaceholders.find(
+          (placeholder) => placeholder.src === parsedHtml.props.children[childIndex].props.src
+        );
+        return (
+          <TextImageContainer>
+            {textImagePlaceholder?.placeholder && (
+              <div
+                style={{
+                  ...placeholderStyle,
+                  ...textImagePlaceholder.placeholder,
+                }}
+              />
+            )}
+            <Image
+              src={parsedHtml.props.children[childIndex].props.src}
+              alt={parsedHtml.props.children[childIndex].props.alt}
+              layout="responsive"
+              width={1260}
+              height={700}
+              objectFit="cover"
+            />
+          </TextImageContainer>
+        );
+      }
+      return parsedHtml;
+    } else {
+      return parsedHtml;
+    }
+  };
+
   showdown.extension('SeeAlso', {
     type: 'output',
     filter: (text: string) => {
@@ -158,13 +301,6 @@ const Post: React.FC<PostProps> = ({
     },
   });
 
-  const mdConverter = new showdown.Converter({
-    ghCompatibleHeaderId: true,
-    customizedHeaderId: true,
-    simplifiedAutoLink: true,
-    extensions: ['SeeAlso', 'AddGallery'],
-  });
-
   const images = galleryImages
     ? galleryImages.map((galleryItem) => ({
         original: galleryItem.image,
@@ -172,6 +308,7 @@ const Post: React.FC<PostProps> = ({
         originalAlt: galleryItem.alt,
         thumbnailAlt: `${galleryItem.alt} (miniatura)`,
         description: galleryItem.source ? `Źródło: ${galleryItem.source}` : undefined,
+        placeholder: galleryItem.placeholder ? galleryItem.placeholder : undefined,
       }))
     : [];
 
@@ -200,7 +337,15 @@ const Post: React.FC<PostProps> = ({
 
   const renderItem = (item) => {
     return (
-      <div className="image-gallery-slide">
+      <div className="image-gallery-slide" style={{ overflow: 'hidden' }}>
+        {item.placeholder && (
+          <div
+            style={{
+              ...placeholderStyle,
+              ...item.placeholder,
+            }}
+          />
+        )}
         <Image layout="fill" src={item.original} alt={item.originalAlt} objectFit="cover" />
         {item.description && <span className="image-gallery-description">{item.description}</span>}
       </div>
@@ -209,7 +354,15 @@ const Post: React.FC<PostProps> = ({
 
   const renderThumbInner = (item) => {
     return (
-      <div className="image-gallery-thumbnail-inner">
+      <div className="image-gallery-thumbnail-inner" style={{ overflow: 'hidden' }}>
+        {item.placeholder && (
+          <div
+            style={{
+              ...placeholderStyle,
+              ...item.placeholder,
+            }}
+          />
+        )}
         <Image src={item.thumbnail} alt={item.thumbnailAlt} layout="fill" objectFit="cover" />
         {item.thumbnailLabel && (
           <div className="image-gallery-thumbnail-label">{item.thumbnailLabel}</div>
@@ -267,88 +420,36 @@ const Post: React.FC<PostProps> = ({
     }
   };
 
-  const convertImgToNextImages = (parsedHtml: ReactElement[] | ReactElement) => {
-    if (Array.isArray(parsedHtml)) {
-      const elementToReplace: { index: number; src: string; alt: string }[] = [];
-      parsedHtml.forEach((element, index) => {
-        if (element.type === 'img') {
-          elementToReplace.push({ index, src: element.props.src, alt: element.props.alt });
-        } else if (element.props?.children) {
-          React.Children.map(element.props.children, (childElement) => {
-            if (childElement.type === 'img') {
-              parsedHtml[index] = childElement;
-              elementToReplace.push({
-                index,
-                src: childElement.props.src,
-                alt: childElement.props.alt,
-              });
-            }
-          });
-        }
+  showdown.extension('SeeAlso', {
+    type: 'output',
+    filter: (text: string) => {
+      const mainRegex = new RegExp('(^[ \t]*<p>:-&gt[ \t]?.+)', 'gm');
+      return text.replace(mainRegex, (content) => {
+        content = content.replace(/^([ \t]*)<p>:-&gt;([ \t])?/gm, '');
+        return `<aside class="see-also"><p>${content}</aside>`;
       });
+    },
+  });
 
-      elementToReplace.forEach((element) => {
-        parsedHtml[element.index] = (
-          <TextImageContainer key={element.index}>
-            <Image
-              src={element.src}
-              alt={element.alt}
-              layout="responsive"
-              width={1600}
-              height={900}
-              objectFit="cover"
-              loading="eager"
-            />
-          </TextImageContainer>
-        );
-      });
-      return parsedHtml;
-    } else if (
-      parsedHtml.type === 'img' ||
-      parsedHtml.props.children.find((childElement) => childElement.type === 'img')
-    ) {
-      if (parsedHtml.type === 'img') {
-        return (
-          <TextImageContainer>
-            <Image
-              src={parsedHtml.props.src}
-              alt={parsedHtml.props.alt}
-              layout="responsive"
-              width={1600}
-              height={900}
-              objectFit="cover"
-              loading="eager"
-            />
-          </TextImageContainer>
-        );
-      } else {
-        const childIndex = parsedHtml.props.children.findIndex(
-          (childElement) => childElement.type === 'img'
-        );
-        return (
-          <TextImageContainer>
-            <Image
-              src={parsedHtml.props.children[childIndex].props.src}
-              alt={parsedHtml.props.children[childIndex].props.alt}
-              layout="responsive"
-              width={1600}
-              height={900}
-              objectFit="cover"
-              loading="eager"
-            />
-          </TextImageContainer>
-        );
-      }
-      return parsedHtml;
-    } else {
-      return parsedHtml;
-    }
-  };
+  showdown.extension('AddGallery', {
+    type: 'output',
+    filter: (text: string) => {
+      const mainRegex = new RegExp('(^[ \t]*<p>:-gallery&gt;[ \t]?.+)', 'gm');
+      return text.replace(mainRegex, 1 ? `<div id="post-gallery"></div>` : '');
+    },
+  });
 
-  const parseToHtml = (text) => {
-    const parsedHtml = parse(mdConverter.makeHtml(text));
+  const mdConverter = new showdown.Converter({
+    ghCompatibleHeaderId: true,
+    customizedHeaderId: true,
+    simplifiedAutoLink: true,
+    extensions: ['SeeAlso', 'AddGallery'],
+  });
+
+  const checkGalleries = (text) => {
+    const parsedHtml = convertImgToNextImages(parse(mdConverter.makeHtml(text)));
     if (galleryImages.length) {
-      return turnIntoGallery(convertImgToNextImages(parsedHtml));
+      return turnIntoGallery(parsedHtml);
     } else {
       return parsedHtml;
     }
@@ -411,13 +512,18 @@ const Post: React.FC<PostProps> = ({
           </CarDataBox>
         )}
         <ImageContainer notFullWidth={!!carData}>
+          <div
+            style={{
+              ...placeholderStyle,
+              ...imagePlaceholder,
+            }}
+          />
           <Image
             src={image}
             alt={title}
             layout="fill"
             sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
             objectFit="cover"
-            loading="eager"
           />
         </ImageContainer>
         <SocialShareSection
@@ -442,7 +548,7 @@ const Post: React.FC<PostProps> = ({
             ))}
           </ContentsList>
         )}
-        <Text>{parseToHtml(text)}</Text>
+        <Text>{checkGalleries(text)}</Text>
         <ShareSectionContainer>
           <ShareSectionTextContainer>
             <ShareSectionText>Spodobał Ci się ten tekst?</ShareSectionText>

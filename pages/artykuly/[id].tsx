@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
+import { getImage } from '@plaiceholder/next';
+import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
+import showdown from 'showdown';
+import parse from 'html-react-parser';
 
 import ArticleCard from '@components/Cards/ArticleCard';
 import Categories from '@components/Categories';
@@ -16,6 +20,7 @@ import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
 import IconName from '@utils/iconNames';
+import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
 
 interface ArticleAttributes {
   pageTitle: string;
@@ -24,6 +29,7 @@ interface ArticleAttributes {
   subtitle: string;
   date: Date;
   featuredImage: string;
+  imagePlaceholder: PixelsCSS;
   imageSource?: string;
   category: string;
   contents: {
@@ -32,10 +38,15 @@ interface ArticleAttributes {
   }[];
   highlightedText: string;
   text: string;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   gallery?: {
     image: string;
     alt: string;
     source?: string;
+    placeholder?: PixelsCSS;
   }[];
 }
 
@@ -57,6 +68,10 @@ export interface Article {
 interface ArticleProps extends NextPageContext {
   id: string;
   attributes: ArticleAttributes;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
   articlesList: Article[];
@@ -69,6 +84,7 @@ interface ArticleProps extends NextPageContext {
 const Article: NextPage<ArticleProps> = ({
   id,
   attributes,
+  textImagesPlaceholders,
   articleCategories,
   tipCategories,
   articlesList,
@@ -147,6 +163,7 @@ const Article: NextPage<ArticleProps> = ({
       subtitle,
       date,
       featuredImage,
+      imagePlaceholder,
       imageSource,
       category,
       contents,
@@ -197,9 +214,11 @@ const Article: NextPage<ArticleProps> = ({
           subtitle={subtitle}
           highlightedText={highlightedText}
           image={featuredImage}
+          imagePlaceholder={imagePlaceholder}
           imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
+          textImagesPlaceholders={textImagesPlaceholders}
           contents={contents}
           galleryImages={galleryArray}
           postId={`article-${id}`}
@@ -242,6 +261,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
   const socialsSettings = await getSocialsSettings();
+  let textImagesPlaceholders;
   let markdownFile;
   let articlesList;
   let isCategory;
@@ -268,12 +288,30 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
         count: 3,
         excludeSlug: id.toString(),
       });
+      const featureImagePlaceholder = await getImage(markdownFile.attributes.featuredImage);
+      const featureImageCssPlaceholder = await getPixelsCSS(featureImagePlaceholder);
+      markdownFile.attributes.imagePlaceholder = featureImageCssPlaceholder;
+      if (markdownFile.attributes.gallery) {
+        markdownFile.attributes.gallery.forEach(async (galleryItem, index) => {
+          const placeholderImage = await getImage(galleryItem.image);
+          const placeholderCssImage = await getPixelsCSS(placeholderImage);
+          markdownFile.attributes.gallery[index].placeholder = placeholderCssImage;
+        });
+      }
+
+      const mdConverter = new showdown.Converter({
+        ghCompatibleHeaderId: true,
+        customizedHeaderId: true,
+        simplifiedAutoLink: true,
+      });
+
+      const parsedHtml = parse(mdConverter.makeHtml(markdownFile.attributes.text));
+      textImagesPlaceholders = await createTextImagesPlaceholders(parsedHtml);
       articleExists = true;
     } catch {
       articleExists = false;
     }
   }
-
   return {
     props: {
       id,
@@ -281,6 +319,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       articleCategories,
       tipCategories,
       socialsSettings,
+      textImagesPlaceholders: textImagesPlaceholders || [],
       articlesList: articlesList || null,
       isCategory: isCategory || null,
       articleExists: articleExists || null,

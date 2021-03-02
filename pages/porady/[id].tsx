@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
+import showdown from 'showdown';
+import parse from 'html-react-parser';
 
 import TipCard from '@components/Cards/TipCard';
 import Categories from '@components/Categories';
@@ -16,6 +18,9 @@ import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
 import IconName from '@utils/iconNames';
+import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
+import { getImage } from '@plaiceholder/next';
+import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
 
 interface TipAttributes {
   pageTitle: string;
@@ -24,6 +29,7 @@ interface TipAttributes {
   subtitle: string;
   date: Date;
   featuredImage: string;
+  imagePlaceholder: PixelsCSS;
   imageSource?: string;
   category: string;
   contents: {
@@ -32,10 +38,15 @@ interface TipAttributes {
   }[];
   highlightedText: string;
   text: string;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   gallery?: {
     image: string;
     alt: string;
     source?: string;
+    placeholder?: PixelsCSS;
   }[];
 }
 
@@ -57,6 +68,10 @@ export interface Tip {
 interface TipProps extends NextPageContext {
   id: string;
   attributes: TipAttributes;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
   tipsList: Tip[];
@@ -69,6 +84,7 @@ interface TipProps extends NextPageContext {
 const Tip: NextPage<TipProps> = ({
   id,
   attributes,
+  textImagesPlaceholders,
   articleCategories,
   tipCategories,
   tipsList,
@@ -143,6 +159,7 @@ const Tip: NextPage<TipProps> = ({
       subtitle,
       date,
       featuredImage,
+      imagePlaceholder,
       imageSource,
       category,
       contents,
@@ -194,9 +211,11 @@ const Tip: NextPage<TipProps> = ({
           subtitle={subtitle}
           highlightedText={highlightedText}
           image={featuredImage}
+          imagePlaceholder={imagePlaceholder}
           imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
+          textImagesPlaceholders={textImagesPlaceholders}
           contents={contents}
           galleryImages={galleryArray}
           postId={`tip-${id}`}
@@ -239,6 +258,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
   const socialsSettings = await getSocialsSettings();
+  let textImagesPlaceholders;
   let markdownFile;
   let tipsList;
   let isCategory;
@@ -265,6 +285,26 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
         count: 3,
         excludeSlug: id.toString(),
       });
+
+      const featureImagePlaceholder = await getImage(markdownFile.attributes.featuredImage);
+      const featureImageCssPlaceholder = await getPixelsCSS(featureImagePlaceholder);
+      markdownFile.attributes.imagePlaceholder = featureImageCssPlaceholder;
+      if (markdownFile.attributes.gallery) {
+        markdownFile.attributes.gallery.forEach(async (galleryItem, index) => {
+          const placeholderImage = await getImage(galleryItem.image);
+          const placeholderCssImage = await getPixelsCSS(placeholderImage);
+          markdownFile.attributes.gallery[index].placeholder = placeholderCssImage;
+        });
+      }
+
+      const mdConverter = new showdown.Converter({
+        ghCompatibleHeaderId: true,
+        customizedHeaderId: true,
+        simplifiedAutoLink: true,
+      });
+
+      const parsedHtml = parse(mdConverter.makeHtml(markdownFile.attributes.text));
+      textImagesPlaceholders = await createTextImagesPlaceholders(parsedHtml);
       tipExists = true;
     } catch {
       tipExists = false;
@@ -278,6 +318,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       articleCategories,
       tipCategories,
       socialsSettings,
+      textImagesPlaceholders: textImagesPlaceholders || [],
       tipsList: tipsList || null,
       isCategory: isCategory || null,
       tipExists: tipExists || null,

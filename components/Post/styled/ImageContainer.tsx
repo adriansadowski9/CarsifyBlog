@@ -4,6 +4,7 @@ const ImageContainer = styled.div<{ notFullWidth: boolean }>`
   position: relative;
   width: 100%;
   height: 200px;
+  overflow: hidden;
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints[0]}) {
     left: 0;

@@ -12,6 +12,8 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'"
   },
   "dependencies": {
+    "@plaiceholder/css": "^1.0.0",
+    "@plaiceholder/next": "^1.0.0",
     "@svgr/webpack": "^5.4.0",
     "@types/gtag.js": "^0.0.3",
     "axios": "^0.21.1",
