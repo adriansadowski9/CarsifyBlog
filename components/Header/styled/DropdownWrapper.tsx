@@ -9,7 +9,6 @@ const DropdownWrapper = styled.div<{ isOpen: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
-  transition: all 0.5s;
   transition: ${(props) =>
     props.isOpen
       ? 'right 0.4s cubic-bezier(0.33, 0.66, 0.75, 0.75)'
