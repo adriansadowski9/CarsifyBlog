@@ -38,17 +38,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
 
-  const placeholderStyle = {
-    filter: 'blur(24px)',
-    position: 'absolute' as const,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-  };
-
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
       clamp(snippetRef.current, { clamp: 'auto' });
@@ -63,7 +52,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             {imagePlaceholder && (
               <div
                 style={{
-                  ...placeholderStyle,
+                  ...themeContext.imagePlaceholder,
                   ...imagePlaceholder,
                 }}
               />

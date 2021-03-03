@@ -1,8 +1,6 @@
 import * as React from 'react';
-import parse from 'html-react-parser';
 import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
-import showdown from 'showdown';
 
 import TipCard from '@components/Cards/TipCard';
 import Categories from '@components/Categories';
@@ -14,9 +12,10 @@ import SectionName from '@components/Sections/SectionName';
 import TipsContainer from '@components/Sections/TipsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { SocialsSettings } from '@pages/index';
-import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
-import { getImage } from '@plaiceholder/next';
+import { PixelsCSS } from '@plaiceholder/css';
+import basicHtmlParse from '@utils/basicHtmlParse';
 import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
+import generateImagePlaceholder from '@utils/generateImagePlaceholder';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
@@ -296,24 +295,18 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
         excludeSlug: id.toString(),
       });
 
-      const featureImagePlaceholder = await getImage(markdownFile.attributes.featuredImage);
-      const featureImageCssPlaceholder = await getPixelsCSS(featureImagePlaceholder);
-      markdownFile.attributes.imagePlaceholder = featureImageCssPlaceholder;
+      markdownFile.attributes.imagePlaceholder = await generateImagePlaceholder(
+        markdownFile.attributes.featuredImage
+      );
       if (markdownFile.attributes.gallery) {
         markdownFile.attributes.gallery.forEach(async (galleryItem, index) => {
-          const placeholderImage = await getImage(galleryItem.image);
-          const placeholderCssImage = await getPixelsCSS(placeholderImage);
-          markdownFile.attributes.gallery[index].placeholder = placeholderCssImage;
+          markdownFile.attributes.gallery[index].placeholder = await generateImagePlaceholder(
+            galleryItem.image
+          );
         });
       }
 
-      const mdConverter = new showdown.Converter({
-        ghCompatibleHeaderId: true,
-        customizedHeaderId: true,
-        simplifiedAutoLink: true,
-      });
-
-      const parsedHtml = parse(mdConverter.makeHtml(markdownFile.attributes.text));
+      const parsedHtml = basicHtmlParse(markdownFile.attributes.text);
       textImagesPlaceholders = await createTextImagesPlaceholders(parsedHtml);
       tipExists = true;
     } catch {

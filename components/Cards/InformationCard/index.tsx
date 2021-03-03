@@ -2,6 +2,7 @@ import * as React from 'react';
 import clamp from 'clamp-js';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ThemeContext } from 'styled-components';
 
 import InformationCardContainer from '@components/Cards/InformationCard/styled/InformationCardContainer';
 import InformationCardImageContainer from '@components/Cards/InformationCard/styled/InformationCardImageContainer';
@@ -10,6 +11,7 @@ import InformationCardInfoContainer from '@components/Cards/InformationCard/styl
 import InformationCardSnippet from '@components/Cards/InformationCard/styled/InformationCardSnippet';
 import InformationCardTitle from '@components/Cards/InformationCard/styled/InformationCardTitle';
 import { PixelsCSS } from '@plaiceholder/css';
+import { Theme } from '@utils/theme';
 
 interface InformationCardProps {
   image: string;
@@ -26,17 +28,7 @@ const InformationCard: React.FC<InformationCardProps> = ({
   slug,
 }) => {
   const snippetRef = React.useRef(null);
-
-  const placeholderStyle = {
-    filter: 'blur(24px)',
-    position: 'absolute' as const,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-  };
+  const themeContext: Theme = React.useContext(ThemeContext);
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -52,7 +44,7 @@ const InformationCard: React.FC<InformationCardProps> = ({
             {imagePlaceholder && (
               <div
                 style={{
-                  ...placeholderStyle,
+                  ...themeContext.imagePlaceholder,
                   ...imagePlaceholder,
                 }}
               />

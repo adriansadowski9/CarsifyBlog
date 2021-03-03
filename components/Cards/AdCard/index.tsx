@@ -2,6 +2,7 @@ import * as React from 'react';
 import clamp from 'clamp-js';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ThemeContext } from 'styled-components';
 
 import AdCardLocalization from '@components/Cards/AdCard/AdCardLocalization';
 import AdCardCarInfoPrice from '@components/Cards/AdCard/styled/AdCardCarInfoPrice';
@@ -13,6 +14,7 @@ import AdCardInfoContainer from '@components/Cards/AdCard/styled/AdCardInfoConta
 import AdCardSnippet from '@components/Cards/AdCard/styled/AdCardSnippet';
 import AdCardTitle from '@components/Cards/AdCard/styled/AdCardTitle';
 import { PixelsCSS } from '@plaiceholder/css';
+import { Theme } from '@utils/theme';
 
 interface AdCardProps {
   image: string;
@@ -48,17 +50,7 @@ const AdCard: React.FC<AdCardProps> = ({
   enlargedCard,
 }) => {
   const snippetRef = React.useRef(null);
-
-  const placeholderStyle = {
-    filter: 'blur(24px)',
-    position: 'absolute' as const,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-  };
+  const themeContext: Theme = React.useContext(ThemeContext);
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -74,7 +66,7 @@ const AdCard: React.FC<AdCardProps> = ({
             {imagePlaceholder && (
               <div
                 style={{
-                  ...placeholderStyle,
+                  ...themeContext.imagePlaceholder,
                   ...imagePlaceholder,
                 }}
               />

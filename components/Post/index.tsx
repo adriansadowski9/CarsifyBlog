@@ -3,11 +3,11 @@ import { ReactElement } from 'react';
 import ImageGallery from 'react-image-gallery';
 import Linkify from 'react-linkify';
 import dayjs from 'dayjs';
+import parse from 'html-react-parser';
 import Image from 'next/image';
 import showdown from 'showdown';
+import { ThemeContext } from 'styled-components';
 import textFit from 'textfit';
-import { getImage } from '@plaiceholder/next';
-import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
 
 import Breadcrumbs, { BreadcrumbsItem } from '@components/Breadcrumbs';
 import HyvorTalkComments from '@components/HyvorTalkComments';
@@ -39,10 +39,10 @@ import TextImageContainer from '@components/Post/styled/TextImageContainer';
 import TopInfoContainer from '@components/Post/styled/TopInfoContainer';
 import SocialShareSection from '@components/SocialShareSection';
 import DarkModeContext from '@contexts/darkModeContext';
+import { PixelsCSS } from '@plaiceholder/css';
 import appendScript from '@utils/appendScript';
 import IconName from '@utils/iconNames';
-import { darkTheme, lightTheme } from '@utils/theme';
-import parse from 'html-react-parser';
+import { darkTheme, lightTheme, Theme } from '@utils/theme';
 
 interface PostProps {
   date: Date;
@@ -92,17 +92,6 @@ interface PostProps {
   postId: string;
 }
 
-const placeholderStyle = {
-  filter: 'blur(24px)',
-  position: 'absolute' as 'absolute',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-};
-
 const Post: React.FC<PostProps> = ({
   date,
   category,
@@ -122,6 +111,7 @@ const Post: React.FC<PostProps> = ({
   galleryImages,
   postId,
 }) => {
+  const themeContext: Theme = React.useContext(ThemeContext);
   const darkModeContext = React.useContext(DarkModeContext);
   const carNameRef = React.useRef(null);
 
@@ -203,7 +193,7 @@ const Post: React.FC<PostProps> = ({
             {element.placeholder && (
               <div
                 style={{
-                  ...placeholderStyle,
+                  ...themeContext.imagePlaceholder,
                   ...element.placeholder,
                 }}
               />
@@ -233,7 +223,7 @@ const Post: React.FC<PostProps> = ({
             {textImagePlaceholder?.placeholder && (
               <div
                 style={{
-                  ...placeholderStyle,
+                  ...themeContext.imagePlaceholder,
                   ...textImagePlaceholder.placeholder,
                 }}
               />
@@ -260,7 +250,7 @@ const Post: React.FC<PostProps> = ({
             {textImagePlaceholder?.placeholder && (
               <div
                 style={{
-                  ...placeholderStyle,
+                  ...themeContext.imagePlaceholder,
                   ...textImagePlaceholder.placeholder,
                 }}
               />
@@ -341,7 +331,7 @@ const Post: React.FC<PostProps> = ({
         {item.placeholder && (
           <div
             style={{
-              ...placeholderStyle,
+              ...themeContext.imagePlaceholder,
               ...item.placeholder,
             }}
           />
@@ -358,7 +348,7 @@ const Post: React.FC<PostProps> = ({
         {item.placeholder && (
           <div
             style={{
-              ...placeholderStyle,
+              ...themeContext.imagePlaceholder,
               ...item.placeholder,
             }}
           />
@@ -435,7 +425,7 @@ const Post: React.FC<PostProps> = ({
     type: 'output',
     filter: (text: string) => {
       const mainRegex = new RegExp('(^[ \t]*<p>:-gallery&gt;[ \t]?.+)', 'gm');
-      return text.replace(mainRegex, 1 ? `<div id="post-gallery"></div>` : '');
+      return text.replace(mainRegex, galleryImages.length ? `<div id="post-gallery"></div>` : '');
     },
   });
 
@@ -514,7 +504,7 @@ const Post: React.FC<PostProps> = ({
         <ImageContainer notFullWidth={!!carData}>
           <div
             style={{
-              ...placeholderStyle,
+              ...themeContext.imagePlaceholder,
               ...imagePlaceholder,
             }}
           />

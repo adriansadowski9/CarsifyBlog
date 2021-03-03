@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 const colors = {
   white: '#FFFFFF',
   lightestGray: '#FEFEFE',
@@ -42,6 +44,17 @@ const spaces = {
 
 const breakpoints = ['1024px', '1280px'];
 
+const imagePlaceholder = {
+  filter: 'blur(24px)',
+  position: 'absolute' as const,
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+};
+
 export interface Theme {
   fontSizes: {
     xs: string;
@@ -68,6 +81,7 @@ export interface Theme {
     xxxl: string;
   };
   breakpoints: string[];
+  imagePlaceholder: CSSProperties;
   colors: {
     bg: string;
     text: string;
@@ -159,6 +173,7 @@ export const lightTheme: Theme = {
   fontWeights,
   spaces,
   breakpoints,
+  imagePlaceholder,
   colors: {
     bg: colors.lightestGray,
     text: colors.black,
@@ -250,6 +265,7 @@ export const darkTheme: Theme = {
   fontWeights,
   spaces,
   breakpoints,
+  imagePlaceholder,
   colors: {
     bg: colors.darkGray,
     text: colors.white,
