@@ -147,6 +147,7 @@ const Tip: NextPage<TipProps> = ({
                 }}
                 slug={slug}
                 altTitleTag="h2"
+                preloadImage={index < 2}
               />
             );
           })}

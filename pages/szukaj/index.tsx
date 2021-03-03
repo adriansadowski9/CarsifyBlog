@@ -81,6 +81,7 @@ const SearchResults: NextPage<SearchProps> = ({
                   }}
                   slug={post.slug}
                   altTitleTag="h2"
+                  preloadImage={index < 2}
                 />
               );
             }
@@ -109,6 +110,7 @@ const SearchResults: NextPage<SearchProps> = ({
                   slug={post.slug}
                   altTitleTag="h2"
                   smallerCard
+                  preloadImage={index < 2}
                 />
               );
             }
@@ -131,6 +133,7 @@ const SearchResults: NextPage<SearchProps> = ({
                   slug={post.slug}
                   altTitleTag="h2"
                   enlargedCard
+                  preloadImage={index < 2}
                 />
               );
             }

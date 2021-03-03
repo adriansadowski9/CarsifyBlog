@@ -155,6 +155,7 @@ const Article: NextPage<ArticleProps> = ({
                 }}
                 slug={slug}
                 altTitleTag="h2"
+                preloadImage={index < 2}
               />
             );
           })}

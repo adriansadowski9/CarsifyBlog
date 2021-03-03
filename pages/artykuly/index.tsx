@@ -91,6 +91,7 @@ const Articles: NextPage<ArticlesProps> = ({
                 }}
                 slug={slug}
                 altTitleTag="h2"
+                preloadImage={index < 2}
               />
             );
           })}
