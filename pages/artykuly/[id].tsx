@@ -1,10 +1,8 @@
 import * as React from 'react';
+import parse from 'html-react-parser';
 import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
-import { getImage } from '@plaiceholder/next';
-import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
 import showdown from 'showdown';
-import parse from 'html-react-parser';
 
 import ArticleCard from '@components/Cards/ArticleCard';
 import Categories from '@components/Categories';
@@ -16,11 +14,13 @@ import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import SectionName from '@components/Sections/SectionName';
 import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
+import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
+import { getImage } from '@plaiceholder/next';
+import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
 import IconName from '@utils/iconNames';
-import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
 
 interface ArticleAttributes {
   pageTitle: string;
@@ -131,7 +131,13 @@ const Article: NextPage<ArticleProps> = ({
             containerHeight={categories.length > 5 ? '811px' : '393px'}
           />
           {articlesList.map((article, index) => {
-            const { featuredImage, title, highlightedText, category } = article.attributes;
+            const {
+              featuredImage,
+              imagePlaceholder,
+              title,
+              highlightedText,
+              category,
+            } = article.attributes;
             const { slug } = article;
             const categoryInfo = articleCategories.find(
               (articleCategory) => articleCategory.attributes.title === category
@@ -141,6 +147,7 @@ const Article: NextPage<ArticleProps> = ({
               <ArticleCard
                 key={`${title}-${index}`}
                 image={featuredImage}
+                imagePlaceholder={imagePlaceholder}
                 title={title}
                 textSnippet={highlightedText}
                 category={{
@@ -226,7 +233,13 @@ const Article: NextPage<ArticleProps> = ({
             <ArticlesContainer>
               <MoreSectionTitle isMore={moreArticles.length}>Więcej artykułów</MoreSectionTitle>
               {moreArticles.map((article, index) => {
-                const { featuredImage, title, highlightedText, category } = article.attributes;
+                const {
+                  featuredImage,
+                  imagePlaceholder,
+                  title,
+                  highlightedText,
+                  category,
+                } = article.attributes;
                 const { slug } = article;
                 const categoryInfo = articleCategories.find(
                   (articleCategory) => articleCategory.attributes.title === category
@@ -236,6 +249,7 @@ const Article: NextPage<ArticleProps> = ({
                   <ArticleCard
                     key={`${title}-${index}`}
                     image={featuredImage}
+                    imagePlaceholder={imagePlaceholder}
                     title={title}
                     textSnippet={highlightedText}
                     category={{

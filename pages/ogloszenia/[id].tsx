@@ -1,6 +1,8 @@
 import * as React from 'react';
+import parse from 'html-react-parser';
 import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
+import showdown from 'showdown';
 
 import AdCard from '@components/Cards/AdCard';
 import Layout from '@components/Layout';
@@ -11,6 +13,9 @@ import AdsContainer from '@components/Sections/AdsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
+import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
+import { getImage } from '@plaiceholder/next';
+import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getAds } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
@@ -22,6 +27,7 @@ interface AdAttributes {
   subtitle: string;
   date: Date;
   featuredImage: string;
+  imagePlaceholder: PixelsCSS;
   imageSource?: string;
   carData: {
     name: string;
@@ -46,6 +52,7 @@ interface AdAttributes {
     image: string;
     alt: string;
     source?: string;
+    placeholder?: PixelsCSS;
   }[];
 }
 
@@ -57,6 +64,10 @@ export interface Ad {
 interface AdProps extends NextPageContext {
   id: string;
   attributes: AdAttributes;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
   adExists: boolean;
@@ -67,6 +78,7 @@ interface AdProps extends NextPageContext {
 const Ad: NextPage<AdProps> = ({
   id,
   attributes,
+  textImagesPlaceholders,
   articleCategories,
   tipCategories,
   adExists,
@@ -82,6 +94,7 @@ const Ad: NextPage<AdProps> = ({
       subtitle,
       date,
       featuredImage,
+      imagePlaceholder,
       imageSource,
       carData,
       contents,
@@ -120,9 +133,11 @@ const Ad: NextPage<AdProps> = ({
           subtitle={subtitle}
           highlightedText={highlightedText}
           image={featuredImage}
+          imagePlaceholder={imagePlaceholder}
           imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
+          textImagesPlaceholders={textImagesPlaceholders}
           carData={carData}
           contents={contents}
           galleryImages={galleryArray}
@@ -131,12 +146,19 @@ const Ad: NextPage<AdProps> = ({
             <AdsContainer isHorizontal>
               <MoreSectionTitle isMore={moreAds.length}>Więcej perełek z ogłoszeń</MoreSectionTitle>
               {moreAds.map((article, index) => {
-                const { featuredImage, title, highlightedText, carData } = article.attributes;
+                const {
+                  featuredImage,
+                  imagePlaceholder,
+                  title,
+                  highlightedText,
+                  carData,
+                } = article.attributes;
                 const { slug } = article;
                 return (
                   <AdCard
                     key={`${title}-${index}`}
                     image={featuredImage}
+                    imagePlaceholder={imagePlaceholder}
                     carData={carData}
                     title={title}
                     textSnippet={highlightedText}
@@ -161,6 +183,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
   const socialsSettings = await getSocialsSettings();
+  let textImagesPlaceholders;
   let markdownFile;
   let moreAds;
   let adExists;
@@ -172,6 +195,27 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       count: 4,
       excludeSlug: id.toString(),
     });
+
+    const featureImagePlaceholder = await getImage(markdownFile.attributes.featuredImage);
+    const featureImageCssPlaceholder = await getPixelsCSS(featureImagePlaceholder);
+    markdownFile.attributes.imagePlaceholder = featureImageCssPlaceholder;
+    if (markdownFile.attributes.gallery) {
+      markdownFile.attributes.gallery.forEach(async (galleryItem, index) => {
+        const placeholderImage = await getImage(galleryItem.image);
+        const placeholderCssImage = await getPixelsCSS(placeholderImage);
+        markdownFile.attributes.gallery[index].placeholder = placeholderCssImage;
+      });
+    }
+
+    const mdConverter = new showdown.Converter({
+      ghCompatibleHeaderId: true,
+      customizedHeaderId: true,
+      simplifiedAutoLink: true,
+    });
+
+    const parsedHtml = parse(mdConverter.makeHtml(markdownFile.attributes.text));
+    textImagesPlaceholders = await createTextImagesPlaceholders(parsedHtml);
+
     adExists = true;
   } catch {
     adExists = false;
@@ -184,6 +228,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       articleCategories,
       tipCategories,
       socialsSettings,
+      textImagesPlaceholders: textImagesPlaceholders || [],
       moreAds: moreAds || null,
       adExists: adExists || null,
     },

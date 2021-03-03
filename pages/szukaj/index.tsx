@@ -58,7 +58,13 @@ const SearchResults: NextPage<SearchProps> = ({
         <SearchResultsContainer>
           {results.map(({ item: post }, index) => {
             if (post.card === 'article') {
-              const { featuredImage, title, highlightedText, category } = post.attributes;
+              const {
+                featuredImage,
+                imagePlaceholder,
+                title,
+                highlightedText,
+                category,
+              } = post.attributes;
               const categoryInfo = articleCategories.find(
                 (articleCategory) => articleCategory.attributes.title === category
               );
@@ -66,6 +72,7 @@ const SearchResults: NextPage<SearchProps> = ({
                 <ArticleCard
                   key={`${post.slug}-${index}`}
                   image={featuredImage}
+                  imagePlaceholder={imagePlaceholder}
                   title={title}
                   textSnippet={highlightedText}
                   category={{
@@ -78,7 +85,13 @@ const SearchResults: NextPage<SearchProps> = ({
               );
             }
             if (post.card === 'tip') {
-              const { featuredImage, title, highlightedText, category } = post.attributes;
+              const {
+                featuredImage,
+                imagePlaceholder,
+                title,
+                highlightedText,
+                category,
+              } = post.attributes;
               const categoryInfo = tipCategories.find(
                 (tipCategory) => tipCategory.attributes.title === category
               );
@@ -86,6 +99,7 @@ const SearchResults: NextPage<SearchProps> = ({
                 <TipCard
                   key={`${post.slug}-${index}`}
                   image={featuredImage}
+                  imagePlaceholder={imagePlaceholder}
                   title={title}
                   textSnippet={highlightedText}
                   category={{
@@ -99,11 +113,18 @@ const SearchResults: NextPage<SearchProps> = ({
               );
             }
             if (post.card === 'ad') {
-              const { featuredImage, title, highlightedText, carData } = post.attributes;
+              const {
+                featuredImage,
+                imagePlaceholder,
+                title,
+                highlightedText,
+                carData,
+              } = post.attributes;
               return (
                 <AdCard
                   key={`${post.slug}-${index}`}
                   image={featuredImage}
+                  imagePlaceholder={imagePlaceholder}
                   title={title}
                   textSnippet={highlightedText}
                   carData={carData}

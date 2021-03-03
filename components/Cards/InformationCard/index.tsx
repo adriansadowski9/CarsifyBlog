@@ -9,15 +9,34 @@ import InformationCardImageOverlay from '@components/Cards/InformationCard/style
 import InformationCardInfoContainer from '@components/Cards/InformationCard/styled/InformationCardInfoContainer';
 import InformationCardSnippet from '@components/Cards/InformationCard/styled/InformationCardSnippet';
 import InformationCardTitle from '@components/Cards/InformationCard/styled/InformationCardTitle';
+import { PixelsCSS } from '@plaiceholder/css';
 
 interface InformationCardProps {
   image: string;
+  imagePlaceholder: PixelsCSS;
   title: string;
   textSnippet: string;
   slug: string;
 }
-const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSnippet, slug }) => {
+const InformationCard: React.FC<InformationCardProps> = ({
+  image,
+  imagePlaceholder,
+  title,
+  textSnippet,
+  slug,
+}) => {
   const snippetRef = React.useRef(null);
+
+  const placeholderStyle = {
+    filter: 'blur(24px)',
+    position: 'absolute' as const,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+  };
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -30,13 +49,20 @@ const InformationCard: React.FC<InformationCardProps> = ({ image, title, textSni
       <a>
         <InformationCardContainer>
           <InformationCardImageContainer>
+            {imagePlaceholder && (
+              <div
+                style={{
+                  ...placeholderStyle,
+                  ...imagePlaceholder,
+                }}
+              />
+            )}
             <Image
               src={image}
               alt={title}
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
-              loading="eager"
             />
           </InformationCardImageContainer>
           <InformationCardImageOverlay />

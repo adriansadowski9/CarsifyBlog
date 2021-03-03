@@ -65,7 +65,13 @@ const Tips: NextPage<TipsProps> = ({
             containerHeight={categories.length > 5 ? '911px' : '443px'}
           />
           {tipsList.map((tip, index) => {
-            const { featuredImage, title, highlightedText, category } = tip.attributes;
+            const {
+              featuredImage,
+              imagePlaceholder,
+              title,
+              highlightedText,
+              category,
+            } = tip.attributes;
             const { slug } = tip;
             const categoryInfo = tipCategories.find(
               (tipCategory) => tipCategory.attributes.title === category
@@ -75,6 +81,7 @@ const Tips: NextPage<TipsProps> = ({
               <TipCard
                 key={`${title}-${index}`}
                 image={featuredImage}
+                imagePlaceholder={imagePlaceholder}
                 title={title}
                 textSnippet={highlightedText}
                 category={{

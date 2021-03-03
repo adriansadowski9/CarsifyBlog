@@ -3,6 +3,9 @@ import { Article } from 'pages/artykuly/[id]';
 import { Ad } from 'pages/ogloszenia/[id]';
 import { Tip } from 'pages/porady/[id]';
 
+import { getPixelsCSS } from '@plaiceholder/css';
+import { getImage } from '@plaiceholder/next';
+
 const importArticles = async () => {
   const markdownFiles = require
     .context('../content/posts/articles', false, /\.md$/)
@@ -11,6 +14,9 @@ const importArticles = async () => {
   return Promise.all(
     markdownFiles.map(async (path) => {
       const markdown = await import(`../content/posts/articles/${path}`);
+      const featureImagePlaceholder = await getImage(markdown.attributes.featuredImage);
+      const featureImageCssPlaceholder = await getPixelsCSS(featureImagePlaceholder);
+      markdown.attributes.imagePlaceholder = featureImageCssPlaceholder;
       return { ...markdown, slug: path.substring(0, path.length - 3) };
     })
   );
@@ -24,6 +30,9 @@ const importTips = async () => {
   return Promise.all(
     markdownFiles.map(async (path) => {
       const markdown = await import(`../content/posts/tips/${path}`);
+      const featureImagePlaceholder = await getImage(markdown.attributes.featuredImage);
+      const featureImageCssPlaceholder = await getPixelsCSS(featureImagePlaceholder);
+      markdown.attributes.imagePlaceholder = featureImageCssPlaceholder;
       return { ...markdown, slug: path.substring(0, path.length - 3) };
     })
   );
@@ -37,6 +46,9 @@ const importAds = async () => {
   return Promise.all(
     markdownFiles.map(async (path) => {
       const markdown = await import(`../content/posts/ads/${path}`);
+      const featureImagePlaceholder = await getImage(markdown.attributes.featuredImage);
+      const featureImageCssPlaceholder = await getPixelsCSS(featureImagePlaceholder);
+      markdown.attributes.imagePlaceholder = featureImageCssPlaceholder;
       return { ...markdown, slug: path.substring(0, path.length - 3) };
     })
   );

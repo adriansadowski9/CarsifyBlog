@@ -12,9 +12,11 @@ import AdCardImageContainer from '@components/Cards/AdCard/styled/AdCardImageCon
 import AdCardInfoContainer from '@components/Cards/AdCard/styled/AdCardInfoContainer';
 import AdCardSnippet from '@components/Cards/AdCard/styled/AdCardSnippet';
 import AdCardTitle from '@components/Cards/AdCard/styled/AdCardTitle';
+import { PixelsCSS } from '@plaiceholder/css';
 
 interface AdCardProps {
   image: string;
+  imagePlaceholder: PixelsCSS;
   title: string;
   textSnippet: string;
   carData: {
@@ -37,6 +39,7 @@ interface AdCardProps {
 
 const AdCard: React.FC<AdCardProps> = ({
   image,
+  imagePlaceholder,
   title,
   textSnippet,
   carData,
@@ -45,6 +48,17 @@ const AdCard: React.FC<AdCardProps> = ({
   enlargedCard,
 }) => {
   const snippetRef = React.useRef(null);
+
+  const placeholderStyle = {
+    filter: 'blur(24px)',
+    position: 'absolute' as const,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+  };
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -57,6 +71,14 @@ const AdCard: React.FC<AdCardProps> = ({
       <AdCardContainer enlargedCard={enlargedCard}>
         <article>
           <AdCardImageContainer enlargedCard={enlargedCard}>
+            {imagePlaceholder && (
+              <div
+                style={{
+                  ...placeholderStyle,
+                  ...imagePlaceholder,
+                }}
+              />
+            )}
             <Image
               src={image}
               alt={title}
@@ -67,7 +89,6 @@ const AdCard: React.FC<AdCardProps> = ({
                   : '(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw'
               }
               objectFit="cover"
-              loading="eager"
             />
           </AdCardImageContainer>
           <AdCardInfoContainer enlargedCard={enlargedCard}>

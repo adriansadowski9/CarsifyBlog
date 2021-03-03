@@ -1,8 +1,8 @@
 import * as React from 'react';
+import parse from 'html-react-parser';
 import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 import showdown from 'showdown';
-import parse from 'html-react-parser';
 
 import TipCard from '@components/Cards/TipCard';
 import Categories from '@components/Categories';
@@ -14,13 +14,13 @@ import SectionName from '@components/Sections/SectionName';
 import TipsContainer from '@components/Sections/TipsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { SocialsSettings } from '@pages/index';
+import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
+import { getImage } from '@plaiceholder/next';
+import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
 import IconName from '@utils/iconNames';
-import { getPixelsCSS, PixelsCSS } from '@plaiceholder/css';
-import { getImage } from '@plaiceholder/next';
-import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
 
 interface TipAttributes {
   pageTitle: string;
@@ -38,10 +38,6 @@ interface TipAttributes {
   }[];
   highlightedText: string;
   text: string;
-  textImagesPlaceholders: {
-    src: string;
-    placeholder: PixelsCSS;
-  }[];
   gallery?: {
     image: string;
     alt: string;
@@ -127,7 +123,13 @@ const Tip: NextPage<TipProps> = ({
             containerHeight={categories.length > 5 ? '911px' : '443px'}
           />
           {tipsList.map((tip, index) => {
-            const { featuredImage, title, highlightedText, category } = tip.attributes;
+            const {
+              featuredImage,
+              imagePlaceholder,
+              title,
+              highlightedText,
+              category,
+            } = tip.attributes;
             const { slug } = tip;
             const categoryInfo = tipCategories.find(
               (tipCategory) => tipCategory.attributes.title === category
@@ -136,7 +138,8 @@ const Tip: NextPage<TipProps> = ({
             return (
               <TipCard
                 key={`${title}-${index}`}
-                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                image={featuredImage}
+                imagePlaceholder={imagePlaceholder}
                 title={title}
                 textSnippet={highlightedText}
                 category={{
@@ -223,7 +226,13 @@ const Tip: NextPage<TipProps> = ({
             <TipsContainer isHorizontal>
               <MoreSectionTitle isMore={moreTips.length}>Więcej porad</MoreSectionTitle>
               {moreTips.map((article, index) => {
-                const { featuredImage, title, highlightedText, category } = article.attributes;
+                const {
+                  featuredImage,
+                  imagePlaceholder,
+                  title,
+                  highlightedText,
+                  category,
+                } = article.attributes;
                 const { slug } = article;
                 const categoryInfo = tipCategories.find(
                   (tipCategory) => tipCategory.attributes.title === category
@@ -233,6 +242,7 @@ const Tip: NextPage<TipProps> = ({
                   <TipCard
                     key={`${title}-${index}`}
                     image={featuredImage}
+                    imagePlaceholder={imagePlaceholder}
                     title={title}
                     textSnippet={highlightedText}
                     category={{
