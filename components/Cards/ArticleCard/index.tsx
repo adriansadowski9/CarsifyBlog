@@ -25,6 +25,7 @@ interface ArticleCardProps {
   };
   slug: string;
   altTitleTag?: string;
+  preloadImage?: boolean;
 }
 const ArticleCard: React.FC<ArticleCardProps> = ({
   image,
@@ -34,6 +35,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   category,
   slug,
   altTitleTag,
+  preloadImage = false,
 }) => {
   const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
@@ -63,6 +65,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
+              priority={preloadImage}
             />
           </ArticleCardImageContainer>
           <ArticleCardInfoContainer>

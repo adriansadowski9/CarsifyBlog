@@ -26,6 +26,7 @@ interface TipCardProps {
   slug: string;
   altTitleTag?: string;
   smallerCard?: boolean;
+  preloadImage?: boolean;
 }
 const TipCard: React.FC<TipCardProps> = ({
   image,
@@ -36,6 +37,7 @@ const TipCard: React.FC<TipCardProps> = ({
   slug,
   altTitleTag,
   smallerCard,
+  preloadImage = false,
 }) => {
   const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
@@ -65,6 +67,7 @@ const TipCard: React.FC<TipCardProps> = ({
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
+              priority={preloadImage}
             />
           </TipCardImageContainer>
           <TipCardInfoContainer>

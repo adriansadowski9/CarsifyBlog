@@ -19,6 +19,7 @@ interface InformationCardProps {
   title: string;
   textSnippet: string;
   slug: string;
+  preloadImage?: boolean;
 }
 const InformationCard: React.FC<InformationCardProps> = ({
   image,
@@ -26,6 +27,7 @@ const InformationCard: React.FC<InformationCardProps> = ({
   title,
   textSnippet,
   slug,
+  preloadImage = false,
 }) => {
   const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
@@ -55,6 +57,7 @@ const InformationCard: React.FC<InformationCardProps> = ({
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
+              priority={preloadImage}
             />
           </InformationCardImageContainer>
           <InformationCardImageOverlay />
