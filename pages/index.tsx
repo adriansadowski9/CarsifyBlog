@@ -107,6 +107,7 @@ const Home: NextPage<HomeProps> = ({
                       icon: categoryInfo.attributes.icon,
                     }}
                     slug={slug}
+                    preloadImage={index < 2}
                   />
                 </React.Fragment>
               );

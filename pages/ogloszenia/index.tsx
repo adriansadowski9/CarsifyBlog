@@ -67,6 +67,7 @@ const Ads: NextPage<AdsProps> = ({
                 carData={carData}
                 slug={slug}
                 altTitleTag="h2"
+                preloadImage={index < 2}
               />
             );
           })}

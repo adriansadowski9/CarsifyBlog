@@ -90,6 +90,7 @@ const Tips: NextPage<TipsProps> = ({
                 }}
                 slug={slug}
                 altTitleTag="h2"
+                preloadImage={index < 2}
               />
             );
           })}

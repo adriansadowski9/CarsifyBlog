@@ -37,6 +37,7 @@ interface AdCardProps {
   slug: string;
   altTitleTag?: string;
   enlargedCard?: boolean;
+  preloadImage?: boolean;
 }
 
 const AdCard: React.FC<AdCardProps> = ({
@@ -48,6 +49,7 @@ const AdCard: React.FC<AdCardProps> = ({
   slug,
   altTitleTag,
   enlargedCard,
+  preloadImage = false,
 }) => {
   const snippetRef = React.useRef(null);
   const themeContext: Theme = React.useContext(ThemeContext);
@@ -81,6 +83,7 @@ const AdCard: React.FC<AdCardProps> = ({
                   : '(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw'
               }
               objectFit="cover"
+              priority={preloadImage}
             />
           </AdCardImageContainer>
           <AdCardInfoContainer enlargedCard={enlargedCard}>

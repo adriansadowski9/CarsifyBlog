@@ -514,6 +514,7 @@ const Post: React.FC<PostProps> = ({
             layout="fill"
             sizes="(min-width: 1280px) 1260px, (min-width: 1024px) 820px, 100vw"
             objectFit="cover"
+            priority
           />
         </ImageContainer>
         <SocialShareSection
