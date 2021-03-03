@@ -49,12 +49,19 @@ const Ads: NextPage<AdsProps> = ({
         <SectionName name="Perełki z ogłoszeń" altTextTag="h1" />
         <AdsContainer>
           {adsList.map((ad, index) => {
-            const { featuredImage, title, highlightedText, carData } = ad.attributes;
+            const {
+              featuredImage,
+              imagePlaceholder,
+              title,
+              highlightedText,
+              carData,
+            } = ad.attributes;
             const { slug } = ad;
             return (
               <AdCard
                 key={`${title}-${index}`}
                 image={featuredImage}
+                imagePlaceholder={imagePlaceholder}
                 title={title}
                 textSnippet={highlightedText}
                 carData={carData}
