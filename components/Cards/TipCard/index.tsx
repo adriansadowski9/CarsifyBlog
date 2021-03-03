@@ -10,11 +10,13 @@ import TipCardImageContainer from '@components/Cards/TipCard/styled/TipCardImage
 import TipCardInfoContainer from '@components/Cards/TipCard/styled/TipCardInfoContainer';
 import TipCardSnippet from '@components/Cards/TipCard/styled/TipCardSnippet';
 import TipCardTitle from '@components/Cards/TipCard/styled/TipCardTitle';
+import { PixelsCSS } from '@plaiceholder/css';
 import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
 
 interface TipCardProps {
   image: string;
+  imagePlaceholder: PixelsCSS;
   title: string;
   textSnippet: string;
   category: {
@@ -27,6 +29,7 @@ interface TipCardProps {
 }
 const TipCard: React.FC<TipCardProps> = ({
   image,
+  imagePlaceholder,
   title,
   textSnippet,
   category,
@@ -48,13 +51,20 @@ const TipCard: React.FC<TipCardProps> = ({
       <TipCardContainer smallerCard={smallerCard}>
         <article>
           <TipCardImageContainer smallerCard={smallerCard}>
+            {imagePlaceholder && (
+              <div
+                style={{
+                  ...themeContext.imagePlaceholder,
+                  ...imagePlaceholder,
+                }}
+              />
+            )}
             <Image
               src={image}
               alt={title}
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
-              loading="eager"
             />
           </TipCardImageContainer>
           <TipCardInfoContainer>

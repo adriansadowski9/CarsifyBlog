@@ -2,6 +2,7 @@ import * as React from 'react';
 import clamp from 'clamp-js';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ThemeContext } from 'styled-components';
 
 import AdCardLocalization from '@components/Cards/AdCard/AdCardLocalization';
 import AdCardCarInfoPrice from '@components/Cards/AdCard/styled/AdCardCarInfoPrice';
@@ -12,9 +13,12 @@ import AdCardImageContainer from '@components/Cards/AdCard/styled/AdCardImageCon
 import AdCardInfoContainer from '@components/Cards/AdCard/styled/AdCardInfoContainer';
 import AdCardSnippet from '@components/Cards/AdCard/styled/AdCardSnippet';
 import AdCardTitle from '@components/Cards/AdCard/styled/AdCardTitle';
+import { PixelsCSS } from '@plaiceholder/css';
+import { Theme } from '@utils/theme';
 
 interface AdCardProps {
   image: string;
+  imagePlaceholder: PixelsCSS;
   title: string;
   textSnippet: string;
   carData: {
@@ -37,6 +41,7 @@ interface AdCardProps {
 
 const AdCard: React.FC<AdCardProps> = ({
   image,
+  imagePlaceholder,
   title,
   textSnippet,
   carData,
@@ -45,6 +50,7 @@ const AdCard: React.FC<AdCardProps> = ({
   enlargedCard,
 }) => {
   const snippetRef = React.useRef(null);
+  const themeContext: Theme = React.useContext(ThemeContext);
 
   React.useEffect(() => {
     if (snippetRef && snippetRef.current) {
@@ -57,6 +63,14 @@ const AdCard: React.FC<AdCardProps> = ({
       <AdCardContainer enlargedCard={enlargedCard}>
         <article>
           <AdCardImageContainer enlargedCard={enlargedCard}>
+            {imagePlaceholder && (
+              <div
+                style={{
+                  ...themeContext.imagePlaceholder,
+                  ...imagePlaceholder,
+                }}
+              />
+            )}
             <Image
               src={image}
               alt={title}
@@ -67,7 +81,6 @@ const AdCard: React.FC<AdCardProps> = ({
                   : '(min-width: 1280px) 300px, (min-width: 768px) 400px, 100vw'
               }
               objectFit="cover"
-              loading="eager"
             />
           </AdCardImageContainer>
           <AdCardInfoContainer enlargedCard={enlargedCard}>

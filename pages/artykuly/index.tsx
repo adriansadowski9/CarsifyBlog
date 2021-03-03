@@ -66,7 +66,13 @@ const Articles: NextPage<ArticlesProps> = ({
             containerHeight={categories.length > 5 ? '811px' : '393px'}
           />
           {articlesList.map((article, index) => {
-            const { featuredImage, title, highlightedText, category } = article.attributes;
+            const {
+              featuredImage,
+              imagePlaceholder,
+              title,
+              highlightedText,
+              category,
+            } = article.attributes;
             const { slug } = article;
             const categoryInfo = articleCategories.find(
               (articleCategory) => articleCategory.attributes.title === category
@@ -76,6 +82,7 @@ const Articles: NextPage<ArticlesProps> = ({
               <ArticleCard
                 key={`${title}-${index}`}
                 image={featuredImage}
+                imagePlaceholder={imagePlaceholder}
                 title={title}
                 textSnippet={highlightedText}
                 category={{

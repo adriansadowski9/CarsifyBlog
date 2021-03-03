@@ -3,6 +3,8 @@ import { Article } from 'pages/artykuly/[id]';
 import { Ad } from 'pages/ogloszenia/[id]';
 import { Tip } from 'pages/porady/[id]';
 
+import generateImagePlaceholder from '@utils/generateImagePlaceholder';
+
 const importArticles = async () => {
   const markdownFiles = require
     .context('../content/posts/articles', false, /\.md$/)
@@ -11,6 +13,9 @@ const importArticles = async () => {
   return Promise.all(
     markdownFiles.map(async (path) => {
       const markdown = await import(`../content/posts/articles/${path}`);
+      markdown.attributes.imagePlaceholder = await generateImagePlaceholder(
+        markdown.attributes.featuredImage
+      );
       return { ...markdown, slug: path.substring(0, path.length - 3) };
     })
   );
@@ -24,6 +29,9 @@ const importTips = async () => {
   return Promise.all(
     markdownFiles.map(async (path) => {
       const markdown = await import(`../content/posts/tips/${path}`);
+      markdown.attributes.imagePlaceholder = await generateImagePlaceholder(
+        markdown.attributes.featuredImage
+      );
       return { ...markdown, slug: path.substring(0, path.length - 3) };
     })
   );
@@ -37,6 +45,9 @@ const importAds = async () => {
   return Promise.all(
     markdownFiles.map(async (path) => {
       const markdown = await import(`../content/posts/ads/${path}`);
+      markdown.attributes.imagePlaceholder = await generateImagePlaceholder(
+        markdown.attributes.featuredImage
+      );
       return { ...markdown, slug: path.substring(0, path.length - 3) };
     })
   );

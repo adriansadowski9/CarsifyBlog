@@ -12,6 +12,10 @@ import ArticlesContainer from '@components/Sections/ArticlesContainer';
 import SectionName from '@components/Sections/SectionName';
 import { SocialsSettings } from '@pages/index';
 import { TipCategory } from '@pages/porady/[id]';
+import { PixelsCSS } from '@plaiceholder/css';
+import basicHtmlParse from '@utils/basicHtmlParse';
+import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
+import generateImagePlaceholder from '@utils/generateImagePlaceholder';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getArticles } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
@@ -24,6 +28,7 @@ interface ArticleAttributes {
   subtitle: string;
   date: Date;
   featuredImage: string;
+  imagePlaceholder: PixelsCSS;
   imageSource?: string;
   category: string;
   contents: {
@@ -32,10 +37,15 @@ interface ArticleAttributes {
   }[];
   highlightedText: string;
   text: string;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   gallery?: {
     image: string;
     alt: string;
     source?: string;
+    placeholder?: PixelsCSS;
   }[];
 }
 
@@ -57,6 +67,10 @@ export interface Article {
 interface ArticleProps extends NextPageContext {
   id: string;
   attributes: ArticleAttributes;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
   articlesList: Article[];
@@ -69,6 +83,7 @@ interface ArticleProps extends NextPageContext {
 const Article: NextPage<ArticleProps> = ({
   id,
   attributes,
+  textImagesPlaceholders,
   articleCategories,
   tipCategories,
   articlesList,
@@ -115,7 +130,13 @@ const Article: NextPage<ArticleProps> = ({
             containerHeight={categories.length > 5 ? '811px' : '393px'}
           />
           {articlesList.map((article, index) => {
-            const { featuredImage, title, highlightedText, category } = article.attributes;
+            const {
+              featuredImage,
+              imagePlaceholder,
+              title,
+              highlightedText,
+              category,
+            } = article.attributes;
             const { slug } = article;
             const categoryInfo = articleCategories.find(
               (articleCategory) => articleCategory.attributes.title === category
@@ -125,6 +146,7 @@ const Article: NextPage<ArticleProps> = ({
               <ArticleCard
                 key={`${title}-${index}`}
                 image={featuredImage}
+                imagePlaceholder={imagePlaceholder}
                 title={title}
                 textSnippet={highlightedText}
                 category={{
@@ -147,6 +169,7 @@ const Article: NextPage<ArticleProps> = ({
       subtitle,
       date,
       featuredImage,
+      imagePlaceholder,
       imageSource,
       category,
       contents,
@@ -197,9 +220,11 @@ const Article: NextPage<ArticleProps> = ({
           subtitle={subtitle}
           highlightedText={highlightedText}
           image={featuredImage}
+          imagePlaceholder={imagePlaceholder}
           imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
+          textImagesPlaceholders={textImagesPlaceholders}
           contents={contents}
           galleryImages={galleryArray}
           postId={`article-${id}`}
@@ -207,7 +232,13 @@ const Article: NextPage<ArticleProps> = ({
             <ArticlesContainer>
               <MoreSectionTitle isMore={moreArticles.length}>Więcej artykułów</MoreSectionTitle>
               {moreArticles.map((article, index) => {
-                const { featuredImage, title, highlightedText, category } = article.attributes;
+                const {
+                  featuredImage,
+                  imagePlaceholder,
+                  title,
+                  highlightedText,
+                  category,
+                } = article.attributes;
                 const { slug } = article;
                 const categoryInfo = articleCategories.find(
                   (articleCategory) => articleCategory.attributes.title === category
@@ -217,6 +248,7 @@ const Article: NextPage<ArticleProps> = ({
                   <ArticleCard
                     key={`${title}-${index}`}
                     image={featuredImage}
+                    imagePlaceholder={imagePlaceholder}
                     title={title}
                     textSnippet={highlightedText}
                     category={{
@@ -242,6 +274,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
   const socialsSettings = await getSocialsSettings();
+  let textImagesPlaceholders;
   let markdownFile;
   let articlesList;
   let isCategory;
@@ -268,12 +301,25 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
         count: 3,
         excludeSlug: id.toString(),
       });
+
+      markdownFile.attributes.imagePlaceholder = await generateImagePlaceholder(
+        markdownFile.attributes.featuredImage
+      );
+      if (markdownFile.attributes.gallery) {
+        markdownFile.attributes.gallery.forEach(async (galleryItem, index) => {
+          markdownFile.attributes.gallery[index].placeholder = await generateImagePlaceholder(
+            galleryItem.image
+          );
+        });
+      }
+
+      const parsedHtml = basicHtmlParse(markdownFile.attributes.text);
+      textImagesPlaceholders = await createTextImagesPlaceholders(parsedHtml);
       articleExists = true;
     } catch {
       articleExists = false;
     }
   }
-
   return {
     props: {
       id,
@@ -281,6 +327,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       articleCategories,
       tipCategories,
       socialsSettings,
+      textImagesPlaceholders: textImagesPlaceholders || [],
       articlesList: articlesList || null,
       isCategory: isCategory || null,
       articleExists: articleExists || null,

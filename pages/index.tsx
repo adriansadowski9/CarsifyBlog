@@ -73,7 +73,13 @@ const Home: NextPage<HomeProps> = ({
           <SectionName name="Aktualności" />
           <ArticlesContainer withMargin indexPage={true}>
             {articlesList.map((article, index) => {
-              const { featuredImage, title, highlightedText, category } = article.attributes;
+              const {
+                featuredImage,
+                imagePlaceholder,
+                title,
+                highlightedText,
+                category,
+              } = article.attributes;
               const { slug } = article;
               const categoryInfo = articleCategories.find(
                 (articleCategory) => articleCategory.attributes.title === category
@@ -93,6 +99,7 @@ const Home: NextPage<HomeProps> = ({
                   <ArticleCard
                     key={`${title}-${index}`}
                     image={featuredImage}
+                    imagePlaceholder={imagePlaceholder}
                     title={title}
                     textSnippet={highlightedText}
                     category={{
@@ -111,7 +118,13 @@ const Home: NextPage<HomeProps> = ({
             <SectionName name="Moto porady" />
             <TipsContainer>
               {tipsList.map((tip, index) => {
-                const { featuredImage, title, highlightedText, category } = tip.attributes;
+                const {
+                  featuredImage,
+                  imagePlaceholder,
+                  title,
+                  highlightedText,
+                  category,
+                } = tip.attributes;
                 const { slug } = tip;
                 const categoryInfo = tipCategories.find(
                   (tipCategory) => tipCategory.attributes.title === category
@@ -121,6 +134,7 @@ const Home: NextPage<HomeProps> = ({
                   <TipCard
                     key={`${title}-${index}`}
                     image={featuredImage}
+                    imagePlaceholder={imagePlaceholder}
                     title={title}
                     textSnippet={highlightedText}
                     category={{
@@ -145,12 +159,18 @@ const Home: NextPage<HomeProps> = ({
             >
               <Slider moveThreshold={0.2}>
                 {infosList.map((information, index) => {
-                  const { featuredImage, title, highlightedText } = information.attributes;
+                  const {
+                    featuredImage,
+                    imagePlaceholder,
+                    title,
+                    highlightedText,
+                  } = information.attributes;
                   const { slug } = information;
                   return (
                     <Slide index={index} key={`${title}-${index}`}>
                       <InformationCard
                         image={featuredImage}
+                        imagePlaceholder={imagePlaceholder}
                         title={title}
                         textSnippet={highlightedText}
                         slug={slug}
@@ -169,12 +189,19 @@ const Home: NextPage<HomeProps> = ({
           <SectionName name="Perełki z ogłoszeń" />
           <AdsContainer indexPage={true}>
             {adsList.map((ad, index) => {
-              const { featuredImage, title, highlightedText, carData } = ad.attributes;
+              const {
+                featuredImage,
+                imagePlaceholder,
+                title,
+                highlightedText,
+                carData,
+              } = ad.attributes;
               const { slug } = ad;
               return (
                 <AdCard
                   key={`${title}-${index}`}
                   image={featuredImage}
+                  imagePlaceholder={imagePlaceholder}
                   title={title}
                   textSnippet={highlightedText}
                   carData={carData}

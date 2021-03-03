@@ -10,11 +10,13 @@ import ArticleCardInfoContainer from '@components/Cards/ArticleCard/styled/Artic
 import ArticleCardSnippet from '@components/Cards/ArticleCard/styled/ArticleCardSnippet';
 import ArticleCardTitle from '@components/Cards/ArticleCard/styled/ArticleCardTitle';
 import Category from '@components/Cards/Category';
+import { PixelsCSS } from '@plaiceholder/css';
 import IconName from '@utils/iconNames';
 import { Theme } from '@utils/theme';
 
 interface ArticleCardProps {
   image: string;
+  imagePlaceholder: PixelsCSS;
   title: string;
   textSnippet: string;
   category: {
@@ -26,6 +28,7 @@ interface ArticleCardProps {
 }
 const ArticleCard: React.FC<ArticleCardProps> = ({
   image,
+  imagePlaceholder,
   title,
   textSnippet,
   category,
@@ -46,13 +49,20 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
       <ArticleCardContainer>
         <article>
           <ArticleCardImageContainer>
+            {imagePlaceholder && (
+              <div
+                style={{
+                  ...themeContext.imagePlaceholder,
+                  ...imagePlaceholder,
+                }}
+              />
+            )}
             <Image
               src={image}
               alt={title}
               layout="fill"
               sizes="(min-width: 768px) 400px, 100vw"
               objectFit="cover"
-              loading="eager"
             />
           </ArticleCardImageContainer>
           <ArticleCardInfoContainer>

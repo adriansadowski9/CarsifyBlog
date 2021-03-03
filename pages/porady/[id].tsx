@@ -12,6 +12,10 @@ import SectionName from '@components/Sections/SectionName';
 import TipsContainer from '@components/Sections/TipsContainer';
 import { ArticleCategory } from '@pages/artykuly/[id]';
 import { SocialsSettings } from '@pages/index';
+import { PixelsCSS } from '@plaiceholder/css';
+import basicHtmlParse from '@utils/basicHtmlParse';
+import createTextImagesPlaceholders from '@utils/createTextImagesPlaceholders';
+import generateImagePlaceholder from '@utils/generateImagePlaceholder';
 import { getArticleCategories, getTipCategories } from '@utils/getCategories';
 import { getTips } from '@utils/getPosts';
 import { getSocialsSettings } from '@utils/getSettings';
@@ -24,6 +28,7 @@ interface TipAttributes {
   subtitle: string;
   date: Date;
   featuredImage: string;
+  imagePlaceholder: PixelsCSS;
   imageSource?: string;
   category: string;
   contents: {
@@ -36,6 +41,7 @@ interface TipAttributes {
     image: string;
     alt: string;
     source?: string;
+    placeholder?: PixelsCSS;
   }[];
 }
 
@@ -57,6 +63,10 @@ export interface Tip {
 interface TipProps extends NextPageContext {
   id: string;
   attributes: TipAttributes;
+  textImagesPlaceholders: {
+    src: string;
+    placeholder: PixelsCSS;
+  }[];
   articleCategories: ArticleCategory[];
   tipCategories: TipCategory[];
   tipsList: Tip[];
@@ -69,6 +79,7 @@ interface TipProps extends NextPageContext {
 const Tip: NextPage<TipProps> = ({
   id,
   attributes,
+  textImagesPlaceholders,
   articleCategories,
   tipCategories,
   tipsList,
@@ -111,7 +122,13 @@ const Tip: NextPage<TipProps> = ({
             containerHeight={categories.length > 5 ? '911px' : '443px'}
           />
           {tipsList.map((tip, index) => {
-            const { featuredImage, title, highlightedText, category } = tip.attributes;
+            const {
+              featuredImage,
+              imagePlaceholder,
+              title,
+              highlightedText,
+              category,
+            } = tip.attributes;
             const { slug } = tip;
             const categoryInfo = tipCategories.find(
               (tipCategory) => tipCategory.attributes.title === category
@@ -120,7 +137,8 @@ const Tip: NextPage<TipProps> = ({
             return (
               <TipCard
                 key={`${title}-${index}`}
-                image={featuredImage.substring(featuredImage.lastIndexOf('/') + 1)}
+                image={featuredImage}
+                imagePlaceholder={imagePlaceholder}
                 title={title}
                 textSnippet={highlightedText}
                 category={{
@@ -143,6 +161,7 @@ const Tip: NextPage<TipProps> = ({
       subtitle,
       date,
       featuredImage,
+      imagePlaceholder,
       imageSource,
       category,
       contents,
@@ -194,9 +213,11 @@ const Tip: NextPage<TipProps> = ({
           subtitle={subtitle}
           highlightedText={highlightedText}
           image={featuredImage}
+          imagePlaceholder={imagePlaceholder}
           imageSource={imageSource}
           shareUrl={shareUrl}
           text={text}
+          textImagesPlaceholders={textImagesPlaceholders}
           contents={contents}
           galleryImages={galleryArray}
           postId={`tip-${id}`}
@@ -204,7 +225,13 @@ const Tip: NextPage<TipProps> = ({
             <TipsContainer isHorizontal>
               <MoreSectionTitle isMore={moreTips.length}>Więcej porad</MoreSectionTitle>
               {moreTips.map((article, index) => {
-                const { featuredImage, title, highlightedText, category } = article.attributes;
+                const {
+                  featuredImage,
+                  imagePlaceholder,
+                  title,
+                  highlightedText,
+                  category,
+                } = article.attributes;
                 const { slug } = article;
                 const categoryInfo = tipCategories.find(
                   (tipCategory) => tipCategory.attributes.title === category
@@ -214,6 +241,7 @@ const Tip: NextPage<TipProps> = ({
                   <TipCard
                     key={`${title}-${index}`}
                     image={featuredImage}
+                    imagePlaceholder={imagePlaceholder}
                     title={title}
                     textSnippet={highlightedText}
                     category={{
@@ -239,6 +267,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const articleCategories = await getArticleCategories();
   const tipCategories = await getTipCategories();
   const socialsSettings = await getSocialsSettings();
+  let textImagesPlaceholders;
   let markdownFile;
   let tipsList;
   let isCategory;
@@ -265,6 +294,20 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
         count: 3,
         excludeSlug: id.toString(),
       });
+
+      markdownFile.attributes.imagePlaceholder = await generateImagePlaceholder(
+        markdownFile.attributes.featuredImage
+      );
+      if (markdownFile.attributes.gallery) {
+        markdownFile.attributes.gallery.forEach(async (galleryItem, index) => {
+          markdownFile.attributes.gallery[index].placeholder = await generateImagePlaceholder(
+            galleryItem.image
+          );
+        });
+      }
+
+      const parsedHtml = basicHtmlParse(markdownFile.attributes.text);
+      textImagesPlaceholders = await createTextImagesPlaceholders(parsedHtml);
       tipExists = true;
     } catch {
       tipExists = false;
@@ -278,6 +321,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       articleCategories,
       tipCategories,
       socialsSettings,
+      textImagesPlaceholders: textImagesPlaceholders || [],
       tipsList: tipsList || null,
       isCategory: isCategory || null,
       tipExists: tipExists || null,
