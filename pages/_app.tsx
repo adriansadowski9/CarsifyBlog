@@ -12,11 +12,27 @@ import useDarkMode from 'use-dark-mode';
 import { darkTheme, lightTheme, Theme } from '@utils/theme';
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: 'Montserrat';
-      src: url('/assets/fonts/MavenPro-Regular.ttf');
-      src: url('/static/fonts/MavenPro-Medium.ttf');
-      src: url('/static/fonts/MavenPro-Bold.ttf');
-      font-display: swap;
+    font-family: 'Maven Pro';
+    src: url('/assets/fonts/MavenPro-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Maven Pro';
+    src: url('/assets/fonts/MavenPro-Medium.ttf');
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Maven Pro';
+    src: url('/assets/fonts/MavenPro-Bold.ttf');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
   }
 
   *, *::before, *::after {
