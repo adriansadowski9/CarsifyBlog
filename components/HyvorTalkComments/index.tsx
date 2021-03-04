@@ -12,7 +12,11 @@ const HyvorTalkComments: React.FC<HyvorTalkComments> = ({ palette, pageId }) => 
   React.useEffect(() => {
     const appWindow = window as any;
     if (appWindow.hyvor_talk) {
-      appWindow.hyvor_talk.setPalette(palette);
+      try {
+        appWindow.hyvor_talk.setPalette(palette);
+      } catch {
+        console.error('Hyvor talk setPallete error');
+      }
     }
   }, [palette]);
 
