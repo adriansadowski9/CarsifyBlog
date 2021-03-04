@@ -51,6 +51,9 @@ export default class MyDocument extends Document {
               />
             </>
           )}
+          <link rel="preload" href="/assets/fonts/MavenPro-Regular.ttf" as="font" crossOrigin="" />
+          <link rel="preload" href="/assets/fonts/MavenPro-Medium.ttf" as="font" crossOrigin="" />
+          <link rel="preload" href="/assets/fonts/MavenPro-Bold.ttf" as="font" crossOrigin="" />
         </Head>
         <body>
           <Main />
