@@ -9,9 +9,9 @@ const MFindWidgetCard = () => {
     const mFindWindow = window as any;
     if (!mFindWindow.mFindWidget) {
       appendScript({
-        isAsync: false,
-        isDefer: true,
-        src: 'https://cdn.mfind.pl/scripts/autka-widget.js',
+        isAsync: true,
+        isDefer: false,
+        src: '/js/mfind-script.js',
       });
     } else {
       mFindWindow.mFindWidget.findAndInit();
