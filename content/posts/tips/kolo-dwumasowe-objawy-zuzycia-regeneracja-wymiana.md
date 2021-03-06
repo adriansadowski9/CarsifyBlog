@@ -20,7 +20,7 @@ contents:
     name: Gdzie występuje koło dwumasowe?
   - link: '#typowe-objawy-zuzytego-kola-dwumasowego'
     name: Typowe objawy zużytego koła dwumasowego
-  - link: regeneracja-kola-dwumasowego
+  - link: '#regeneracja-kola-dwumasowego'
     name: Regeneracja koła dwumasowego - czy warto?
   - link: '#wymiana-kola-dwumasowego'
     name: Wymiana koła dwumasowego
