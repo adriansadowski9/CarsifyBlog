@@ -33,20 +33,12 @@ export default class MyDocument extends Document {
         <Head>
           {process.env.NODE_ENV === 'production' && (
             <>
-              <script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}
-              />
+              <script async src="https://www.google-analytics.com/analytics.js" />
               <script
                 dangerouslySetInnerHTML={{
                   __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.GA_TRACKING_ID}', {
-                page_path: window.location.pathname,
-              });
-          `,
+                window.ga=window.ga||function(){(ga.q = ga.q || []).push(arguments)};ga.l=+new Date;
+                ga('create', '${process.env.GA_TRACKING_ID}', 'auto'); ga('send', 'pageview');`,
                 }}
               />
             </>
