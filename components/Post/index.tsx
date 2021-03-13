@@ -303,19 +303,25 @@ const Post: React.FC<PostProps> = ({
     : [];
 
   const renderLeftNav = (onClick, disabled) => (
-    <GalleryButton type="button" onClick={onClick} left disabled={disabled}>
+    <GalleryButton
+      type="button"
+      onClick={onClick}
+      left
+      disabled={disabled}
+      aria-label="Previous Image"
+    >
       <Icon iconName={IconName.ChevronRight} variant="flat" width={64} height={64} />
     </GalleryButton>
   );
 
   const renderRightNav = (onClick, disabled) => (
-    <GalleryButton type="button" onClick={onClick} disabled={disabled}>
+    <GalleryButton type="button" onClick={onClick} disabled={disabled} aria-label="Next Image">
       <Icon iconName={IconName.ChevronRight} variant="flat" width={64} height={64} />
     </GalleryButton>
   );
 
   const renderFullscreenButton = (onClick, isFullscreen) => (
-    <GalleryButton type="button" onClick={onClick} bottomRight>
+    <GalleryButton type="button" onClick={onClick} bottomRight aria-label="Fullscreen">
       <Icon
         iconName={isFullscreen ? IconName.Minimize : IconName.Maximize}
         variant="flat"
