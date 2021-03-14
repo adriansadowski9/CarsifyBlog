@@ -2,6 +2,7 @@ const withPWA = require('next-pwa');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = withPWA({
+  productionBrowserSourceMaps: true,
   target: 'serverless',
   future: { webpack5: true },
   pwa: {

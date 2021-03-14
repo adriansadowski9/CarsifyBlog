@@ -363,7 +363,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
         </Menu>
         <ActionButtonsContainer>
           {!isMobileMenuOpened && !isSearchOpened && (
-            <SearchButton onClick={openSearch}>
+            <SearchButton onClick={openSearch} aria-label="Open Search Bar">
               <Icon
                 iconName={IconName.Search}
                 variant="flat"
@@ -372,6 +372,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
             </SearchButton>
           )}
           <SocialsButton
+            aria-label="Open social window"
             onClick={() => setIsSocialIconsVisible((isVisible) => !isVisible)}
             ref={socialButtonRef}
           >
@@ -389,6 +390,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
           </HamburgerContainer>
           {darkModeContext.value ? (
             <DarkModeButton
+              aria-label="Switch Color Mode"
               type="button"
               onClick={darkModeContext.disable}
               isSearchOpened={isSearchOpened}
@@ -401,6 +403,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
             </DarkModeButton>
           ) : (
             <DarkModeButton
+              aria-label="Switch Color Mode"
               type="button"
               onClick={darkModeContext.enable}
               isSearchOpened={isSearchOpened}
