@@ -72,7 +72,7 @@ const Select: React.FC<SelectProps> = ({
           />
         </ChevronContainer>
       </ChosenCategory>
-      <HiddenInput value={selectedItem} ref={register} name={name} />
+      <HiddenInput value={selectedItem} ref={register} name={name} readOnly />
       <SelectDropdown isOpen={isOpen}>
         {contactCategories.map((item, index) => (
           <li key={index}>
