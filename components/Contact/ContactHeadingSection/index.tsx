@@ -26,10 +26,22 @@ const ContactHeadingSection: React.FC<SocialProps> = ({
   return (
     <SocialWrapper>
       <SocialShareContainer horizontal="false">
-        <SocialButton as="a" href={withHttps(facebookUrl)} target="_blank">
+        <SocialButton
+          as="a"
+          href={withHttps(facebookUrl)}
+          target="_blank"
+          aria-label="Facebook"
+          rel="noopener noreferrer"
+        >
           <Icon iconName={IconName.Facebook} variant="color" width="24px" height="24px" />
         </SocialButton>
-        <SocialButton as="a" href={withHttps(twitterUrl)} target="_blank">
+        <SocialButton
+          as="a"
+          href={withHttps(twitterUrl)}
+          target="_blank"
+          aria-label="Twitter"
+          rel="noopener noreferrer"
+        >
           <Icon
             iconName={IconName.TwitterFlat}
             variant="flat"
@@ -38,7 +50,13 @@ const ContactHeadingSection: React.FC<SocialProps> = ({
             height="24px"
           />
         </SocialButton>
-        <SocialButton as="a" href={withHttps(instagramUrl)} target="_blank">
+        <SocialButton
+          as="a"
+          href={withHttps(instagramUrl)}
+          target="_blank"
+          aria-label="Instagram"
+          rel="noopener noreferrer"
+        >
           <Icon iconName={IconName.Instagram} variant="color" width="24px" height="24px" />
         </SocialButton>
       </SocialShareContainer>
