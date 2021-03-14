@@ -326,7 +326,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
             </NavListItem>
           </NavList>
           <IconsContainer isIconsVisible={isSocialIconsVisible}>
-            <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
+            <a href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <SingleIconWrapper backgroundColor="#4267B2">
                 <Icon
                   iconName={IconName.FacebookFlat}
@@ -337,7 +337,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
                 />
               </SingleIconWrapper>
             </a>
-            <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
+            <a href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <SingleIconWrapper backgroundColor="#1DA1F2">
                 <Icon
                   iconName={IconName.TwitterFlat}
@@ -348,7 +348,7 @@ const Header: React.FC<HeaderProps> = ({ articleCategories, tipCategories, socia
                 />
               </SingleIconWrapper>
             </a>
-            <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <SingleIconWrapper backgroundColor="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)">
                 <Icon
                   iconName={IconName.InstagramOutline}
