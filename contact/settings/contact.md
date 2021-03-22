@@ -1,3 +1,0 @@
----
-contactEmail: kontakt@carsify.pl
----
