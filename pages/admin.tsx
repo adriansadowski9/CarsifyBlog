@@ -29,7 +29,7 @@ const CMS = dynamic(
     import('netlify-cms-app').then((cms) => {
       cms.init({ config });
     }),
-  { ssr: false, loading: () => Loading }
+  { ssr: false, loading: Loading }
 );
 
 const AdminPage: React.FC = () => {
