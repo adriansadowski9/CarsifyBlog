@@ -24,6 +24,7 @@
     "html-react-parser": "^0.13.0",
     "hyvor-talk-react": "^1.0.3",
     "markdown-it": "^11.0.1",
+    "netlify-cms-app": "^2.14.32",
     "next": "10.0.5",
     "next-pwa": "^3.1.5",
     "pure-react-carousel": "^1.27.5",
