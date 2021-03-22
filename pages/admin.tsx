@@ -1,5 +1,8 @@
+// eslint-disable-next-line
+// @ts-nocheck
 import config from '../cms/config';
 
+import * as React from 'react';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
@@ -23,15 +26,10 @@ const Loading = () => (
 
 const CMS = dynamic(
   () =>
-    import('netlify-cms-app').then((netlifyCMS) => {
-      if (netlifyCMS.init) {
-        netlifyCMS.init({ config });
-      }
+    import('netlify-cms-app').then((cms) => {
+      cms.init({ config });
     }),
-  {
-    ssr: false,
-    loading: Loading,
-  }
+  { ssr: false, loading: () => Loading }
 );
 
 const AdminPage: React.FC = () => {
