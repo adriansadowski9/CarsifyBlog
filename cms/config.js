@@ -1,4 +1,5 @@
 export default {
+  cms_manual_init: true,
   backend: {
     name: 'git-gateway',
     branch: 'master',
