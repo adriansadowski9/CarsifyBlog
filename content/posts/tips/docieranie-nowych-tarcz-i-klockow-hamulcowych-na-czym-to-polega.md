@@ -10,7 +10,7 @@ subtitle: Po wymianie klocków i tarcz hamulcowych zazwyczaj w znacznym stopniu
   artykule poniżej!
 date: 2021-06-11T11:05:07.926Z
 featuredImage: /assets/img/ate_pp_brakes_high_res_uv.jpg
-imageSource: "Źródło: Materiał prasowy producenta"
+imageSource: Materiał prasowy producenta
 category: Eksploatacja
 contents:
   - link: "#dlaczego-docierac-hamulce"
