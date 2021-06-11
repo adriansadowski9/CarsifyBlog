@@ -24,7 +24,7 @@ highlightedText: Po wymianie klocków i tarcz hamulcowych zazwyczaj w znacznym
   pamiętać o jednej bardzo ważnej rzeczy – prawidłowym dotarciu klocków i tarcz
   hamulcowych. Czym jest i na czym polega ten proces? Odpowiedź znajdziesz w
   artykule poniżej!
-text: "##Dlaczego tarcze i klocki należy docierać po wymianie?
+text: "## Dlaczego tarcze i klocki należy docierać po wymianie?
   {dlaczego-docierac-hamulce}
 
 
@@ -59,7 +59,8 @@ text: "##Dlaczego tarcze i klocki należy docierać po wymianie?
   Porsche\")
 
 
-  ##Proces docierania tarcz i klocków hamulcowych {proces-docierania-hamulcow}
+  ## Proces docierania tarcz i klocków hamulcowych
+  {proces-docierania-hamulcow}
 
 
   Przy docieraniu tarcz i klocków hamulcowych należy przede wszystkim zabrać o
@@ -86,7 +87,7 @@ text: "##Dlaczego tarcze i klocki należy docierać po wymianie?
   y-je-wymieniac>
 
 
-  ###Jak docierać ceramiczne klocki hamulcowe?
+  ### Jak docierać ceramiczne klocki hamulcowe?
   {docieranie-klockow-ceramicznych}
 
 
