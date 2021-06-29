@@ -47,7 +47,7 @@ text: "## Dlaczego tarcze i klocki należy docierać po wymianie?
   wymieniamy same klocki czy też komplet) pomaga poprawić skuteczność hamowania,
   zmniejszyć zużycie części ciernych układu, redukcję poziomu hałasu podczas
   użycia układu hamulcowego. a także uniknąć innych niepożądanych konsekwencji
-  nieprzeprowadzonego lub przeprowadzonego nieprawidłowo tego procesu.\ 
+  nieprzeprowadzonego lub przeprowadzonego nieprawidłowo tego procesu.
 
 
   Nieprawidłowe dotarcie może także skutkować drganiem kierownicy podczas
