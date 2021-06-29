@@ -8,8 +8,8 @@ subtitle: Dbanie o odpowiedni stan i wymiana klocków hamulcowych we właściwym
   czasie zapewnia bezpieczeństwo i może uchronić nas przed przykrym w skutkach
   zdarzeniem drogowym.
 date: 2020-11-09T19:54:52.886Z
-featuredImage: /assets/img/ate_pp_brakes_high_res_uv.jpg
-imageSource: ATE
+featuredImage: /assets/img/klocki-hamulcowe.jpg
+imageSource: Mercedes-Benz
 category: Eksploatacja
 contents:
   - link: "#czym-sa"
